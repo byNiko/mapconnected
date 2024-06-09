@@ -1,0 +1,25 @@
+
+.glass {
+	background: hsla(0, 0%, 0%, .1);
+	border-radius: var(--radius-2);
+	box-shadow: 0  0px 8px -3px var(--color-secondary-400);
+}
+
+.bold-stat {
+	color: var(--color-secondary-400);
+	font-family: var(--font-family--display);
+	font-family: 'montserrat', var(--font-family--display);
+	padding: 1em;
+	sup {
+		font-size: .5em;
+	}
+	&__number {
+		font-size: var(--font-size--display);
+		font-weight: 1000;
+		line-height: 1;
+		letter-spacing: -1.51px;
+	}
+	&__title {
+		font-weight: 400;
+	}
+}

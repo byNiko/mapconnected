@@ -1,0 +1,58 @@
+@use './components/buttons';
+.menu-toggle {
+	display:none;
+}
+.site-description {
+	display: none;
+}
+.site-header{
+	padding-top: var(--spacer);
+	position: relative;
+}
+.site-branding{
+	width: 30%;
+    min-width: 150px;
+    max-width: 300px;
+
+	img {
+		width: 100%;
+	}
+}
+
+
+.top-nav--container {
+	display: flex;
+	align-items: center;
+}
+.top-nav--menu {
+	margin-left:auto;
+	list-style-type: none;
+	display:flex;
+	word-spacing: -0.1em;
+	column-gap: var(--spacer-6);
+	font-size: var(--font-size--xs);
+	.menu-item {
+		font-weight: 300;
+		letter-spacing: 1px;
+	}
+	a:hover {
+		border-bottom: 1px dotted;
+	}
+}
+
+.highlight-button a {
+	@extend .button;
+	border-color: var(--color-secondary-800);
+	font-size: var(--font-size--sm);
+	font-size:inherit;
+	padding-top: var(--spacer-1);
+	padding-bottom: var(--spacer-1);
+	background: var(--color-secondary-400);
+	font-weight: 400;
+	color: var(--color-link);
+	// text-transform: uppercase;
+	letter-spacing: .1px;
+	&:hover {
+		border: 1px solid;
+	}
+}

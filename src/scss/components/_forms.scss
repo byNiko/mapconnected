@@ -1,0 +1,10 @@
+input, 
+textarea {
+	border: 1px dotted var(--color-secondary-400);
+	background: var(--color-primary--1000)!important;
+	border-radius: var(--radius-input);
+}
+input {
+	
+	padding-left: var(--spacer);
+}

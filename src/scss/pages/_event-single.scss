@@ -1,0 +1,7 @@
+@use '../grid';
+.single-event {
+	.site-content {
+		@extend .container--narrow;
+	}
+}
+

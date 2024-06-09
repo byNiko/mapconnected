@@ -1,0 +1,13 @@
+
+@keyframes flash {
+	0% {
+
+	}
+	75% {
+		background-color: var(--color-secondary-400);
+	}
+
+	100% {
+		background-color: transparent;
+	}
+}

@@ -1,0 +1,20 @@
+/**
+ * Media & Text Section
+ */
+.media-text {
+   
+   // padding: 3rem 0;
+
+    .#{$container} {
+        display: flex;
+        gap: var(--spacer);
+
+        @include max-screen(md) {
+            flex-direction: column;
+        }
+    }
+
+    &__block {
+        flex: 1;
+    }
+}

@@ -1,0 +1,164 @@
+// Font 
+	// https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=400&minRatio=1.25&maxFontSize=19&maxWidth=1280&maxRatio=1.333&steps=xxs%2C+xs%2Csm%2Cmd%2Clg%2Cxl%2Cxxl%2Cxxxl%2Cxxxxl&baseStep=md&prefix=font-size-&decimals=2&includeFallbacks=on&useRems=on&remValue=16&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground
+	/* For browsers that support clamp  */
+	@supports (font-size: clamp(1rem, 1vi, 1rem)) {
+		:root {
+			  --font-size--xxs: clamp(0.51rem, -0.02vi + 0.52rem, 0.5rem);
+			  --font-size--xs: clamp(0.64rem, 0.05vi + 0.63rem, 0.67rem);
+			  --font-size--sm: clamp(0.8rem, 0.17vi + 0.76rem, 0.89rem);
+			  --font-size--md: clamp(1rem, 0.34vi + 0.91rem, 1.19rem);
+			  --font-size--lg: clamp(1.25rem, 0.61vi + 1.1rem, 1.4rem);
+			  --font-size--xl: clamp(1.56rem, 1vi + 1.31rem, 2.11rem);
+			  --font-size--xxl: clamp(1.95rem, 1.56vi + 1.56rem, 2.81rem);
+			  --font-size--xxxl: clamp(2.44rem, 2.38vi + 1.85rem, 3.75rem);
+			  --font-size--xxxxl: clamp(3.05rem, 3.54vi + 2.17rem, 5rem);
+			  --font-size--display: var(--font-size--xxxxl);
+		}
+	  }
+	  /* For browsers that don't support clamp */
+	  @supports not (font-size: clamp(1rem, 1vi, 1rem)) {
+		:root {
+			  --font-size--xxs: 0.51rem;
+			  --font-size--xs: 0.64rem;
+			  --font-size--sm: 0.8rem;
+			  --font-size--md: 1rem;
+			  --font-size--lg: 1.25rem;
+			  --font-size--xl: 1.56rem;
+			  --font-size--xxl: 1.95rem;
+			  --font-size--xxxl: 2.44rem;
+			  --font-size--xxxxl: 3.05rem;
+			  --font-size--display: var(--font-size-xxxl);
+		}
+		@media screen and (min-width: 1280px) {
+		  :root {
+				  --font-size--xxs: 0.5rem;
+				  --font-size--xs: 0.67rem;
+				  --font-size--sm: 0.89rem;
+				  --font-size--md: 1.19rem;
+				  --font-size--lg: 1.58rem;
+				  --font-size--xl: 2.11rem;
+				  --font-size--xxl: 2.81rem;
+				  --font-size--xxxl: 3.75rem;
+				  --font-size--xxxxl: 5rem;
+				  --font-size--display: var(--font-size-xxxl);
+		  }
+		}
+	  }
+	
+:root {
+
+	--container--narrow : 60rem;
+	// Primitives //
+
+	// COLORS
+	--color-primary-25: #fcfdfc;
+	--color-primary-33: #F3F7F3;
+	--color-primary-50: #EBF2EC;
+	--color-primary-75: #B2CFCB;
+	--color-primary-100: #6DD87E;
+	--color-primary-200: #00C21F;
+	--color-primary-300: #8BAE91;
+	--color-primary-400: #00A41A;
+	--color-primary-500: #028371;
+	--color-primary-600: #008014;
+	--color-primary-800: #017969;
+	--color-primary-900: #005F52;
+	--color-primary-950: #01590F;
+	--color-primary-1000: #01342D;
+	--color-primary-accent: var(--color-primary-400);
+	--color-primary-accent-light: #45ee62;
+
+	--color-secondary-100: #FFFEFA;
+	--color-secondary-200: #FAF3DF;
+	--color-secondary-300: #FBE9BA;
+	--color-secondary-400: #FFDF8C;
+	--color-secondary-600: #FFC223;
+	--color-secondary-800: #DFA200;
+
+	--color-accent-200: #F0D9FA;
+	--color-accent-400: #A30083;
+	--color-accent-800: #8F35BA;
+
+	--color-greys-100: #DBDDDA;
+	--color-greys-200: #BABBB9;
+	--color-greys-400: #8A9287;
+	--color-greys-600: #5E5E5E;
+	--color-greys-800: #3E4A41;
+
+
+
+	// SPACERS
+	--spacer-1: .25rem;
+	--spacer-2: calc(2 * var(--spacer-1));
+	--spacer-3: calc(3 * var(--spacer-1));
+	--spacer-4: calc(4 * var(--spacer-1));
+	--spacer-5: calc(5 * var(--spacer-1));
+	--spacer-6: calc(6 * var(--spacer-1));
+	--spacer-7: calc(7 * var(--spacer-1));
+	--spacer-8: calc(8 * var(--spacer-1));
+	--spacer-9: calc(9 * var(--spacer-1));
+	--spacer-10: calc(10 * var(--spacer-1));
+	--spacer-11: calc(11 * var(--spacer-1));
+	--spacer-12: calc(12 * var(--spacer-1));
+	--spacer-13: calc(13 * var(--spacer-1));
+	--spacer-14: calc(14 * var(--spacer-1));
+
+	// Border Radius
+	--radius-1: 4px;
+	--radius-2: 8px;
+	--radius-3: 12px;
+	--radius-4: 16px;
+	--border-radius: var(--radius-2);
+
+	--radius-btn: var(--radius-1);
+	--radius-input: var(--radius-1);
+
+	// columns 
+	--spacer-col: var(--spacer);
+
+	--font-family--main: "Roboto", sans-serif;
+	--font-family--display: "Ubuntu", sans-serif;
+	--font-text: var(--font-family--main);
+	--font-heading: var(--font-family--display);
+
+	--font-size--body-sm: var(--font-size--sm);
+	--font-size--body-md: var(--font-size--md);
+	--font-size--body-lg: var(--font-size--lg);
+	--font-size--body-xl: var(--font-size--xl);
+	--font-size--body-xl: var(--font-size--xxl);
+
+
+
+	// SEMANTIC Colors
+	--black: var(--color-primary-950);
+	--white: #FFF;
+	--white-200: var(--color-secondary-100);
+	--white-199: var(--color-primary-25);
+	--body-bg: var(--color-primary-25, #fff);
+
+	--color-text: var(--color-primary-950);
+	--color-link: currentColor;
+
+	--color-primary-cta : var(--color-primary-800);
+	--color-secondary-cta : var(--color-secondary-600);
+
+	--color-main-nav-link: var(--color-black);
+	--color-link__hover: var(--color-primary-400);
+
+	--dark-gradient-1: linear-gradient(to bottom right, var(--color-primary-900), var(--color-primary-800));
+	--box-shadow-1 : 0 3px 5px #999;
+	--box-shadow : var(--box-shadow-1);
+
+	// font sizes
+	--font-size--main-nav: var(--font-size--md);
+
+	// SEMANTIC PADDING
+	--spacer-xs : var(--spacer-1);
+	--spacer-md : var(--spacer-6);
+	--spacer-lg : var(--spacer-9);
+	--spacer-xl : var(--spacer-12);
+	--spacer: var(--spacer-4); // 1rem (16px)
+	--spacer-grid: 2rem;
+	--spacer-inner-container: var(--spacer-10) var(--spacer-12);
+	--scroll-padding  : 1rem;
+}

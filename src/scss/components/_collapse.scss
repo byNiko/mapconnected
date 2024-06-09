@@ -1,0 +1,16 @@
+.collapse-panel {
+	transition: max-height .2s;
+	position: relative;
+	&:after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 50px;
+		background-image: linear-gradient(to top, white, transparent);
+	}
+	&[aria-expanded="true"]:after {
+		display:none;
+	}
+}

@@ -1,0 +1,31 @@
+.theme--light-1 {
+	color: var(--color-text);
+	background-color: var(--color-secondary-100);
+}
+
+.theme--light-2 {
+	color: var(--color-text);
+	background-color: var(--color-primary-33);
+}
+.theme--light-3 {
+	color: var(--color-text);
+	background-color: var(--color-secondary-300);
+}
+.theme--medium-1 {
+	color: var(--color-text);
+	background-color: var(--color-primary-50);
+}
+.theme--medium-2 {
+	color: var(--color-text);
+	background-color: var(--color-primary-75);
+}
+
+.theme--dark-1{
+	color: var(--color-primary-25);
+	background-color: var(--color-primary-900);
+}
+
+.theme--dark-gradient-1{
+	color: var(--color-primary-25);
+	background-image: var(--dark-gradient-1)
+}

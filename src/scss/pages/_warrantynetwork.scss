@@ -1,0 +1,20 @@
+.sponsor-item  {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1rem;
+	border: 1px solid;
+	border-radius: var(--radius-4);
+	padding: 2rem 2rem;
+
+	.sponsor__name {
+		display: none;
+		font-weight: 500;
+		font-size: var(--font-size--lg);
+	}
+	.sponsor__description {
+		max-height: 90px;
+		overflow: hidden;;
+	}
+}

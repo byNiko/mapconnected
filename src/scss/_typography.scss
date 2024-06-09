@@ -1,0 +1,87 @@
+.fz-display {
+	font-size: var(--font-size--display);
+	font-family: var(--font-family--display);
+	font-weight: 800;
+	letter-spacing: -.07em;
+}
+.h1 {
+	font-size: var(--font-size--xxl);
+	font-weight: 800;
+	letter-spacing: -.041em;
+	line-height: 1.2;
+	// font-family: var(--font-family--display);
+}
+.h2 {
+	font-size: var(--font-size--xl);
+	// font-family: var(--font-family--display);
+}
+.h3 {
+	font-size: var(--font-size--lg);
+}
+.h4 {
+	font-size: var(--font-size--md);
+}
+.h5 {
+	font-size: var(--font-size--sm);
+}
+.h6 {
+	font-size: var(--font-size--xs);
+}
+
+h1,h2,h3,h4,h5,h6 {
+	& + .subtitle {
+		margin-top: -.6rem;
+	}
+}
+
+p {
+	margin-bottom: 1rem;
+}
+
+// SIZES
+.fz-xs{
+	font-size: var(--font-size--xs);
+}
+.fz-sm{
+	font-size: var(--font-size--sm);
+}
+.fz-md{
+	font-size: var(--font-size--md);
+}
+.fz-lg{
+	font-size: var(--font-size--lg);
+}
+.fz-xl{
+	font-size: var(--font-size--xl);
+}
+.fz-xxl{
+	font-size: var(--font-size--xxl);
+}
+.fz-xxxl{
+	font-size: var(--font-size--xxxl);
+}
+.fz-xxxxl{
+	font-size: var(--font-size--xxxxl);
+}
+
+.fw-semi-bold {
+	font-weight: 500;
+}
+.fw-bold {
+	font-weight: 800;
+}
+.fw-extra-bold {
+	font-weight: 900;
+	
+}
+.ff-display {
+	font-family: var(--font-family--display);
+}
+
+// DISPLAY
+.display-1 {
+	font-size: var(--font-size--display);
+	font-family: var(--font-family--display);
+	font-weight: 800;
+	letter-spacing: -.07em;
+}

@@ -1,0 +1,27 @@
+
+.site-footer {
+	--color-text: var(--white-199);
+	color: var(--color-text);
+	background: var(--dark-gradient-1);
+	.inner-footer{
+		padding-top: var(--spacer-8);
+		padding-bottom: var(--spacer-8);
+	}
+	.site-footer-logo {
+		display: inline-block;
+		max-width: 200px;
+	}
+	.site-description {
+		display: block;
+		margin-bottom: 0;
+		font-size: var(--font-size--xs);
+		color: var(--color-secondary-300);
+		letter-spacing: 1px;
+		font-family: var(--font-family--display);
+	}
+
+	.menu {
+		list-style-type: none;
+
+	}
+}

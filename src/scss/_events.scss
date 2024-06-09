@@ -1,0 +1,21 @@
+
+.event-archive-item-sidebar {}
+.single-event {
+	.h1 {
+		font-size: var(--font-size--xl);
+		font-weight: 500;
+	}
+}
+
+.event--sponsors-wrap {
+	.event-sponsor {
+		opacity: .8;
+		width: 80px;
+		border-bottom: 2px solid transparent;
+		transition: border .2s, opacity .2s;
+		&:hover {
+			border-color: currentColor;
+			opacity: 1;
+		}
+	}
+}

@@ -1,0 +1,105 @@
+// @use "sass:map";
+// $sizes: (
+//   sm : var(--font-size--sm),
+//   md: var(--font-size--md),
+//   lg : var(--font-size--lg),
+//   xl : 
+// );
+@mixin button($backgroundColor: transparent, $color: var(--color-primary-400), $hoverBackground: transparent, $hoverColor: var(--color--accent), $size: "sm", $weight: 500){
+	// @if map-has-key($sizes, $size) {
+	// 	//$size: map-get($sizes, $size);
+	//   } 
+	font-size: $size;
+	font-size: var(--font-size--#{$size});
+	background-color: #{$backgroundColor};
+	color: $color;
+	font-weight: $weight;
+	border: 1px solid ;
+    padding: calc(.75 * var(--spacer)) calc(1.5 * var(--spacer));
+    padding: var(--spacer-3) var(--spacer-5);
+    border-radius: var(--radius-btn);
+    line-height: 1;
+    text-align: center;
+	margin-bottom: var(--spacer-2);
+	transition: background-color .2s, color .2s;
+	&:hover {
+		background-color: #{$hoverBackground};
+		color: #{$hoverColor};
+	}
+}
+.has-shadow-1 {
+	box-shadow: 0 .125rem 3px #c2c2c2;
+}
+.button {
+	@include button();
+}
+
+.button--sm {
+	@include button($size: "xs");
+}
+.button--accent {
+	@include button();
+}
+
+.button--secondary{
+	--color: var(--color-secondary-cta);
+	background-color: var(--color);
+	border: 1px solid var(--color-secondary-800);
+	color: var(--white);
+	&.button--outline {
+		// border-width:2rem;
+		border-color: var(--color);
+		color: var(--color);
+		background: transparent;
+		&:hover {
+			--color: var(--white);
+			background: var(--color-secondary-cta);
+			border-color: var(--color-secondary-cta);
+		}
+	}
+	
+}
+
+
+.button--primary{
+	--color: var(--color-primary-cta);
+	background: var(--color);
+	color: var(--white);
+	border-color: var(--color);
+	&.button--outline {
+		border-color: var(--color);
+		color: var(--color);
+		background: transparent;
+	}
+	
+}
+.button--accent {
+	color: var(--white);
+	font-weight: 400;
+	border-color: var(--color-primary-200);
+	background-color: var(--color-primary-accent);
+	&:hover {
+		background-color: var(--color-primary-accent);
+		color: var(--black);
+	}
+}
+.button--md {
+	font-size: var(--font-size--md);
+}
+
+.button--full-width {
+	display: inline-block;
+	width: 100%;
+}
+.button--lg{
+	font-size: var(--font-size--lg);
+}
+
+
+.button--text {
+	
+	background: none;
+	color: var(--color-link);
+	border:none;
+	
+}

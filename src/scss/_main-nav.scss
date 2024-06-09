@@ -1,0 +1,24 @@
+.primary-bar {
+	display: flex;
+	align-items: center;
+	margin-top: var(--spacer-md);
+}
+.main-navigation {
+	margin-left: auto;
+	margin-right: auto;
+	.main-nav--menu {
+		list-style-type: none;
+		display: flex;
+		column-gap: var(--spacer);
+		word-spacing: -0.1em;
+	}
+	.menu-item {
+		font-weight: 400;
+		font-size: var(--font-size--main-nav);
+		color: var(--color-main-nav-link);
+		border-bottom: 1px solid transparent;
+		&.current-menu-item {
+			    border-color: var(--color-link);
+		}
+	}
+}

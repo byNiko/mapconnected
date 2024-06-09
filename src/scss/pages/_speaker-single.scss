@@ -1,0 +1,10 @@
+@use "../grid";
+.single-speaker {
+	.site-content {
+		@extend .container--narrow;
+	}
+	.speaker__bio {
+		margin-top: var(--spacer-lg);
+	}
+
+}

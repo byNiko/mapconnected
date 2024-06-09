@@ -1,0 +1,52 @@
+<?php
+// Set slider options
+$splideOptions = filter_empty_values([
+	'type' => 'loop',
+	'perPage' => 20,
+	'perMove' => 5,
+	'pagination' => true,
+	'arrows' => false,
+	'autoplay' => false,
+	'interval' => 2000,
+	'pauseOnHover' => false,
+	'gap' => "1rem",
+	// 'breakpoints' => $breakpoints,
+	// 'adaptiveHeight' => $adaptive_height, // custom option to auto adjust height per slide
+	// More Splide.js options can be added here
+], ['pagination', 'arrows', 'pauseOnHover']); // Retain false values for these keys
+
+$sponsor_levels = get_sub_field('sponsorship_types');
+$args = array(
+	'post_type' => 'sponsor',
+	'status' => 'publish',
+	'tax_query' => array(
+		'taxonomy' => 'Sponsor Levels',
+		'field' => 'id',
+		'terms' => $sponsor_levels,
+	),
+
+);
+$query = new WP_Query($args);
+print_r($query);
+if ($query->have_posts()) : ?>
+	<div class="sponsor-logos__wrapper">
+		<div class="splide"  data-splide='<?= wp_json_encode($splideOptions); ?>'>
+			<div class="splide__track">
+				<div class="splide__list">
+					<?php
+					while ($query->have_posts()) : $query->the_post();
+						$logoId = get_field('logo');
+					?>
+						<div class="splide__slide">
+							<?php echo wp_get_attachment_image($logoId, 'medium'); ?>
+						</div>
+					<?php
+					endwhile; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<?php
+endif;
+wp_reset_query();

@@ -1,0 +1,96 @@
+.annual_summit {
+	font-family: "montserrat", var(--font-family--display);
+	display:flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	.landing__container {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding-top: 3rem;
+		padding-bottom: 3rem;
+	}
+
+	.landing__text {
+		text-align: center;
+		font-weight: 500;
+		font-size: var(--font-size--xl);
+		line-height: 1.1;
+	}
+
+	.secondary-nav__wrapper {
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translatex(-50%);
+		display: flex;
+		justify-content: center;
+
+		.secondary-nav {
+			background: var(--color-primary-800);
+			display: flex;
+			justify-content: center;
+			border-bottom-left-radius: var(--radius-1);
+			border-bottom-right-radius: var(--radius-1);
+			padding: .51em 2em;
+	
+		}
+
+		.button--text {
+			font-size: var(--font-size--sm);
+			white-space:nowrap;
+			font-weight: 400;
+			&:hover {
+				color: var(--color-secondary-400);
+			}
+		}
+	}
+.title-section {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacer-12);
+}
+	.summit-title {
+		letter-spacing: -2px;
+		line-height: 1;
+	}
+
+	.summit-subtitle {
+		font-size: var(--font-size--lg);
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+
+	.text-block {
+		font-weight: 400;
+		font-size: var(--font-size--md);
+	}
+
+	.inner-container {
+		padding: 2rem;
+		border-radius: var(--radius-4);
+
+	}
+
+	.single-testimonial .inner-container{
+		background: var(--color-secondary-200);
+	}
+
+	dt {
+		&:before {
+			content: "- ";
+		}
+	}
+	dd {
+		font-weight: 400;
+		font-size: var(--font-size--sm);
+		margin-left: .7rem;
+	}
+	blockquote {
+		font-size: var(--font-size--lg);
+		font-family: "montserrat";
+		font-weight: 400;
+	}
+}

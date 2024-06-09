@@ -1,0 +1,18 @@
+@use "sass:map";
+$breakpoints: (
+  sm : 30rem, //480px,
+  md: 50rem, //800px, 
+  lg : var(--container--narrow) // 1024
+);
+
+@mixin bp($breakpoint, $constraint: "min-width") {
+  // If $mq-breakpoint is a key that exists in
+  // $mq-breakpoints, get and use the value
+  @if map-has-key($breakpoints, $breakpoint) {
+    $breakpoint: map-get($breakpoints, $breakpoint);
+  } 
+  
+  @media screen and (#{$constraint}: #{$breakpoint}) {
+    @content;
+  }
+}

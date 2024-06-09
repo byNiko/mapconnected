@@ -1,0 +1,157 @@
+@use "mixins" as *;
+
+.site {
+	display: flex;
+	flex-direction: column;
+}
+
+.site-content {
+	display: flex;
+	flex: 1;
+	column-gap: var(--spacer-grid);
+	// padding-left: var(--spacer-8);
+	// padding-right: var(--spacer-8);
+	aside {
+		flex: 0 0 250px;
+	}
+}
+
+main {
+	flex: 1;
+}
+
+.container {
+	width: 100%;
+	max-width: 80rem; //1280px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--spacer-grid);
+	padding-right: var(--spacer-grid);
+}
+.container-fluid {
+	width: 100%;
+	padding-left: var(--spacer-grid);
+	padding-right: var(--spacer-grid);
+}
+.container--narrow {
+	@extend .container;
+	max-width: 60rem;
+}
+.container--very-narrow {
+	@extend .container;
+	max-width:48rem;
+}
+.container--single-column {
+	@extend .container;
+	max-width: 40rem;
+	&.has_background {
+		padding: 2rem;
+	}
+}
+
+.has-sidebar .site-content {
+	@extend .container--narrow;
+}
+
+.no-sidebar .site-content {
+	@extend .container;
+}
+
+.grid {
+	display: grid;
+	gap: var(--spacer-grid);
+	&.__2x {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	&.__3x
+	{
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+.row {
+	margin-left: calc(-1 * var(--spacer-grid));
+	margin-right: calc(-1 * var(--spacer-grid));
+	& > .col {
+		padding-left: var(--spacer-grid);
+		padding-right: var(--spacer-grid);
+	}
+}
+.flex-row {
+	display: flex;
+	column-gap: var(--spacer-grid);
+	flex-wrap: wrap;
+	&.__2x, 
+	&.__3x {
+		
+	}
+	&.__2x > * {
+		flex: calc(50% - var(--spacer-grid));
+	}
+	&.__3x > * {
+		flex: calc(33% - var(--spacer-grid));
+	}
+	&.__4x > * {
+		flex: calc(25% - var(--spacer-grid));
+	}
+}
+
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+.col {
+	flex: 1;
+}
+.gap-1 {
+	gap: var(--spacer-4);
+}
+.column-gap--large {
+	column-gap: var(--spacer-14);
+}
+
+// .column {
+// 	padding-left: var(--spacer-col);
+// 	padding-right: var(--spacer-col);
+// }
+
+.flex-col-30 {
+	flex: 0 0 30%;
+}
+
+.flex-col-50{
+		flex: 1;
+	
+	@include bp(md){
+	flex: 0 0 50%;
+	}
+}
+
+.column-12,
+.w-100 {
+	width: 100%;
+}
+
+.order-0{
+	order:0;
+}
+.order-1{
+	order:1;
+}
+
+
+.container{
+	&--very-narrow,
+	&--narrow,
+	&--single-column {
+border-radius: var(--radius-2);
+	}
+}
+
+.inner-container {
+	padding: var(--spacer-inner-container);
+}
+
+.media-text .flex-row {
+	padding: 3rem;
+}
