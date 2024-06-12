@@ -411,3 +411,6 @@ function byniko_add_secondary_logo($wp_customize) {
 	}
 	
 	add_action('customize_register', 'byniko_add_secondary_logo');
+
+
+	add_image_size( 'home-slider', 2000, 700, false );

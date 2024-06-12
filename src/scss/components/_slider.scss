@@ -1,10 +1,21 @@
+.homepage-top-slider{
+	--slider-aspect-ratio: 28/9;
+}
+
 .slider {
+	
+	aspect-ratio: var(--slider-aspect-ratio);
 	// margin-left: calc(-1 * var(--spacer-8));
 	// margin-right: calc(-1 * var(--spacer-8));
 	// background: var(--color-primary-900);
-	// background-image: url(/images/background-dark-gears.jpg);
+	// background-image: url('/images/background-dark-gears.jpg');
+	
+	
+	.splide__slide {
+		aspect-ratio: var(--slider-aspect-ratio);
 	background-size: cover;
 	background-position: center;
+	}
 
 	.slide__overlay {
 		position:absolute;
@@ -17,5 +28,10 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+	}
+	.inner-slide {
+		max-width: 1080px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 }

@@ -13,7 +13,22 @@
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
 		<header id="masthead" class="site-header container container--wide">
-				<div class="flex-row justify--space-between">
+				<div class="flex-row justify--end">
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' 	=> 'menu-2',
+						'menu_class' 		=> 'top-nav--menu menu',
+						'menu_id'        	=> 'top-nav',
+						'container'			=> 'nav',
+						'container_class'	=> 'top-nav--container',
+						'container_id'		=> 'top-nav--container',
+						'item_spacing'		=> 'discard'
+					)
+				);
+				?>
+				</div>
+				<div class="primary-bar">
 				<div class="site-branding">
 					<?php
 
@@ -35,21 +50,6 @@
 													?></p>
 					<?php endif; ?>
 				</div><!-- .site-branding -->
-				<?php
-				wp_nav_menu(
-					array(
-						'theme_location' 	=> 'menu-2',
-						'menu_class' 		=> 'top-nav--menu menu',
-						'menu_id'        	=> 'top-nav',
-						'container'			=> 'nav',
-						'container_class'	=> 'top-nav--container',
-						'container_id'		=> 'top-nav--container',
-						'item_spacing'		=> 'discard'
-					)
-				);
-				?>
-				</div>
-				<div class="primary-bar row">
 					<nav id="site-navigation" class="main-navigation">
 						<button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false"><?php esc_html_e('Primary Nav', 'byniko'); ?></button>
 

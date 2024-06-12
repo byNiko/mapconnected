@@ -8,6 +8,7 @@
 .site-header{
 	padding-top: var(--spacer);
 	position: relative;
+	border-bottom: 1px solid; 
 }
 .site-branding{
 	width: 30%;
@@ -16,6 +17,7 @@
 
 	img {
 		width: 100%;
+		height: auto;
 	}
 }
 

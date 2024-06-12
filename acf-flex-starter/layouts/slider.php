@@ -13,6 +13,7 @@ $autoplay_duration = $autoplay ? get_sub_field('autoplay_duration') : '';
 $pause_on_hover = $autoplay ? get_sub_field('pause_on_hover') : false;
 $responsive = get_sub_field('responsive');
 $adaptive_height = get_sub_field('adaptive_height');
+$admin_label = get_sub_field('admin_label');
 
 // Gap between slides
 $gap = '1rem';
@@ -46,72 +47,60 @@ $splideOptions = filter_empty_values([
     'adaptiveHeight' => $adaptive_height, // custom option to auto adjust height per slide
     // More Splide.js options can be added here
 ], ['pagination', 'arrows', 'pauseOnHover']); // Retain false values for these keys
-$background_img_url = get_template_directory_uri() ."/src/images/background-dark-gears.jpg";
+$background_img_url = get_template_directory_uri() . "/src/images/background-dark-gears.jpg";
 // SVG arrow icon
 $arrowSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
 ?>
 
-<section class="slider" style="background-image: url()">
-    <?php if (have_rows('slides')): ?>
+<section id="<?=sanitize_title($admin_label);?>" class="slider <?=sanitize_title($admin_label);?>" >
+    <?php if (have_rows('slides')) : ?>
         <!-- Replace "=container--narrow" with your own container class if needed -->
-        <div class="container">
-            <div class="splide <?= $adaptive_height?'splide--adaptiveHeight' : '';?>" data-splide='<?= wp_json_encode($splideOptions); ?>'>
+        <div class="">
+            <div class="splide <?= $adaptive_height ? 'splide--adaptiveHeight' : ''; ?>" data-splide='<?= wp_json_encode($splideOptions); ?>'>
                 <div class="splide__track">
                     <ul class="splide__list">
-                        <?php 
+                        <?php
                         // Loop through each slide
-                        while (have_rows('slides')): the_row();
+                        while (have_rows('slides')) : the_row();
                             $image = get_sub_field('image');
                             $title = get_sub_field('title');
                             $description = get_sub_field('description');
                             $link = get_sub_field('link');
-                            $backgroundUrl = wp_get_attachment_url($image['ID']);
-                            ?>
-                            <li class="splide__slide">
-                                <?php if ($image): ?>
-                                    <?= wp_get_attachment_image($image['ID'], 'full'); ?>
-                                <?php endif; ?>
+                            $backgroundUrl = ($image) ? wp_get_attachment_url($image['ID'], 'home-slider') : false;
+                        ?>
+                            <li class="splide__slide" style="background-image: url(<?= $backgroundUrl; ?>);">
                                 <div class="slide__overlay">
-                                <?php if ($title): ?>
-                                    <h3><?= esc_html($title); ?></h3>
-                                <?php endif; ?>
+                                    <div class="inner-slide">
+                                        <?php if ($title) : ?>
+                                            <h2 class="fz-display"><?= esc_html($title); ?></h2>
+                                        <?php endif; ?>
+                                        <?php if ($description) : ?>
+                                            <p class="fz-xl"><?= esc_html($description); ?></p>
+                                        <?php endif; ?>
 
-                                <?php if ($description): ?>
-                                    <p><?= esc_html($description); ?></p>
-                                <?php endif; ?>
-
-                                <?php if (!empty($link)): ?>
-                                    <?= get_acf_link($link, 'button'); ?>
-                                <?php endif; ?>
+                                        <?php if (!empty($link)) : ?>
+                                            <?= get_acf_link($link, 'button'); ?>
+                                        <?php endif; ?>
+                                    </div>
                                 </div>
                             </li>
                         <?php endwhile; ?>
                     </ul>
                 </div>
-           
-                <?php if ($arrows): ?>
+
+                <?php if ($arrows) : ?>
                     <!-- Navigation Arrow -->
                     <div class="splide__arrows splide__arrows--ltr">
-                        <button
-                            class="splide__arrow splide__arrow--prev"
-                            type="button"
-                            aria-label="Previous slide"
-                            aria-controls="<?= 'splide0' . esc_attr($slider_id) . '-track'; ?>"
-                        >
+                        <button class="splide__arrow splide__arrow--prev" type="button" aria-label="Previous slide" aria-controls="<?= 'splide0' . esc_attr($slider_id) . '-track'; ?>">
                             <?= $arrowSVG; ?>
                         </button>
-                        <button
-                            class="splide__arrow splide__arrow--next"
-                            type="button"
-                            aria-label="Next slide"
-                            aria-controls="<?= 'splide0' . esc_attr($slider_id) . '-track'; ?>"
-                        >
+                        <button class="splide__arrow splide__arrow--next" type="button" aria-label="Next slide" aria-controls="<?= 'splide0' . esc_attr($slider_id) . '-track'; ?>">
                             <?= $arrowSVG; ?>
                         </button>
                     </div>
                 <?php endif; ?>
-                
-                <?php if ($pagination): ?>
+
+                <?php if ($pagination) : ?>
                     <!-- Pagination Dots -->
                     <ul class="splide__pagination"></ul>
                 <?php endif; ?>

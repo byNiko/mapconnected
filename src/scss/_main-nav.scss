@@ -1,11 +1,11 @@
 .primary-bar {
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	margin-top: var(--spacer-md);
 }
 .main-navigation {
 	margin-left: auto;
-	margin-right: auto;
+	// margin-right: auto;sli
 	.main-nav--menu {
 		list-style-type: none;
 		display: flex;
