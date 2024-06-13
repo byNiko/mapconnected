@@ -1,0 +1,28 @@
+.mapconnected-network {
+	
+	position: relative;
+
+	.inner-container {
+		position: relative;
+	}
+
+	&:before,
+	&:after {
+		content: "";
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	}
+&:before {
+	background-color:var(--color-primary-50);
+	opacity: .85;
+}
+	&:after {
+		background-image: url('/src/images/mapconnected-network.jpg');
+		background-size: cover;
+		filter: blur(4px);
+		z-index: -1;
+	}
+}

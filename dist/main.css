@@ -1813,6 +1813,31 @@ input {
   font-weight: 400;
 }
 
+.mapconnected-network {
+  position: relative;
+}
+.mapconnected-network .inner-container {
+  position: relative;
+}
+.mapconnected-network:before, .mapconnected-network:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.mapconnected-network:before {
+  background-color: var(--color-primary-50);
+  opacity: 0.85;
+}
+.mapconnected-network:after {
+  background-image: url(images/mapconnected-network.a7b50c1a.jpg);
+  background-size: cover;
+  filter: blur(4px);
+  z-index: -1;
+}
+
 .single-event .h1 {
   font-size: var(--font-size--xl);
   font-weight: 500;
