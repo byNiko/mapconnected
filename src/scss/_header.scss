@@ -9,11 +9,16 @@
 	padding-top: var(--spacer);
 	position: relative;
 	border-bottom: 1px solid; 
+	.top-row {
+		justify-content: space-between;
+	}
 }
 .site-branding{
-	width: 30%;
+    width: 30%;
     min-width: 150px;
-    max-width: 300px;
+    max-width: 400px;
+    // position: absolute;
+    // bottom: 0;
 
 	img {
 		width: 100%;

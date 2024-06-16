@@ -1,10 +1,23 @@
 @use "../grid";
+
 .single-speaker {
+
 	.site-content {
+		padding-top: var(--spacer-body-top-margin);
 		@extend .container--narrow;
 	}
-	.speaker__bio {
-		margin-top: var(--spacer-lg);
-	}
 
+	.speaker__bio {
+		// margin-top: var(--spacer-lg);
+	}
+	.speaker__logo-wrapper {
+		order:10;
+		justify-content: start;
+		padding: 0;
+	}
+	.speaker-card {
+		.speaker__name {
+			display: none;
+		}
+	}
 }

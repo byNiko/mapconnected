@@ -149,7 +149,7 @@ function byNiko_add_preconnect_links() {
 	foreach ($domains as $domain) {
 ?>
 		<link rel="preconnect" href="<?= $domain; ?>" crossorigin>
-<?php
+	<?php
 	}
 }
 /**
@@ -164,7 +164,7 @@ function byniko_enqueue_fonts() {
 		null
 	);
 
-	if(is_page('annual-summit')){
+	if (is_page('annual-summit')) {
 		wp_enqueue_style(
 			'byniko-montserrat',
 			"fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap",
@@ -373,10 +373,10 @@ function byniko_add_archive_to_link_query($results, $query) {
 			$link = get_post_type_archive_link($type->name);
 			error_log(print_r($link, true));
 			$arr = array(
-			"ID"=>0,
-			"title"=>$type->labels->archives,
-			"permalink"=>$link,
-			"info"=>"Archive Page"
+				"ID" => 0,
+				"title" => $type->labels->archives,
+				"permalink" => $link,
+				"info" => "Archive Page"
 			);
 			$results[] = $arr;
 		}
@@ -387,30 +387,129 @@ add_filter('wp_link_query', 'byniko_add_archive_to_link_query', 9, 2);
 
 
 function byniko_track_testimonials_on_page_with_session() {
-    if(!session_id()) {
-        session_start();
-    }
+	if (!session_id()) {
+		session_start();
+	}
 	// track testimonials post on page already
 	// use as value for 'post__not_in' in wp_queries 
 	// where you don't want to repeat testimonials on a page.
-	$_SESSION['testimonials_on_page']=[];
-	
+	$_SESSION['testimonials_on_page'] = [];
 }
 add_action('init', 'byniko_track_testimonials_on_page_with_session', 1);
 
 function byniko_add_secondary_logo($wp_customize) {
 	// add a setting 
-		$wp_customize->add_setting('secondary_logo');
+	$wp_customize->add_setting('secondary_logo');
 	// Add a control to upload the hover logo
-		$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'secondary_logo', array(
-			'label' => 'Upload 2nd Logo',
-			'section' => 'title_tagline', //this is the section where the custom-logo from WordPress is
-			'settings' => 'secondary_logo',
-			'priority' => 8 // show it just below the custom-logo
-		)));
+	$wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'secondary_logo', array(
+		'label' => 'Upload 2nd Logo',
+		'section' => 'title_tagline', //this is the section where the custom-logo from WordPress is
+		'settings' => 'secondary_logo',
+		'priority' => 8 // show it just below the custom-logo
+	)));
+}
+
+add_action('customize_register', 'byniko_add_secondary_logo');
+
+
+add_image_size('home-slider', 2000, 700, false);
+add_image_size('portrait', 250, 375, true);
+
+
+function byniko_get_theme_image($filename, $atts) {
+	$path = get_template_directory_uri() . "/dist/images/" . $filename;
+	$att = '';
+	foreach ($atts as $a => $value) {
+		$att .= " $a = '$value'";
 	}
-	
-	add_action('customize_register', 'byniko_add_secondary_logo');
+	return "<img src='$path' $att/>";
+}
+
+/***********************
+RESOLVE ISSUE WITH ACF DATE FIELDS NOT RETURNING INFORMATION USING THE WP TIMEZONE
+ ***********************/
+// add_filter('date_i18n', function ($date, $format, $timestamp, $gmt) { 
+// 	if ( is_admin() )
+// 		return $date;
+// 	return wp_date($format, $timestamp); 
+// }, 99, 4);
 
 
-	add_image_size( 'home-slider', 2000, 700, false );
+
+
+add_action('wp_head', 'byniko_fb_opengraph');
+function byniko_fb_opengraph() {
+	global $post;
+
+	if (is_singular(array('event'))) {
+		if (has_post_thumbnail($post->ID)) {
+			$img_src = wp_get_attachment_image_url(get_post_thumbnail_id($post->ID), 'medium');
+		} else {
+			// fallback
+			$img_src = get_stylesheet_directory_uri() . '/img/opengraph_image.jpg';
+		}
+		if ($excerpt = $post->post_excerpt) {
+			$excerpt = strip_tags($post->post_excerpt);
+			$excerpt = str_replace("", "'", $excerpt);
+		} else {
+			$excerpt = get_bloginfo('description');
+		}
+	?>
+		<meta property="og:title" content="<?php echo the_title(); ?>" />
+		<meta property="og:description" content="<?php echo $excerpt; ?>" />
+		<meta property="og:type" content="article" />
+		<meta property="og:url" content="<?php echo the_permalink(); ?>" />
+		<meta property="og:site_name" content="<?php echo get_bloginfo(); ?>" />
+		<meta property="og:image" content="<?php echo $img_src; ?>" />
+
+<?php
+	} else {
+		return;
+	}
+}
+
+
+function byniko_pre_get_events($query) {
+
+	if (is_admin()) {
+		return $query;
+	}
+
+	if (isset($query->query_vars['post_type']) && $query->query_vars['post_type'] == 'event' && $query->is_main_query()) {
+		// localized for NY based on time settings
+		// $dateNow = wp_date( 'Ymd' ); 
+		$dateNow = wp_date( 'Y/m/d h:m:s' );
+		// remove 43000 seconds = 12 hours from comparison to keep the post up for the day of the event.
+		$dateNow = date( 'Y-m-d H:i:s', strtotime( $dateNow ) - 43000 ); 
+
+		$query->set('posts_per_page', -1);
+		$query->set('orderby', 'meta_value');
+		$query->set('order', 'ASC');
+		$query->set('meta_query', array(
+			array(
+				'key' => 'start_date__time',
+				'compare' => '>',
+				'value' => $dateNow ,
+				'type' => 'DATETIME'
+			)
+		));
+		// $query->set('compare', '>=');
+		// $query->set('value', current_time('timestamp'));
+		// $query->set('meta_type', 'DATETIME');
+
+		// $query->set(
+		// 	'meta_query',
+		// 	array(
+		// 		array(
+		// 			'meta_key'           => 'start_date__time',
+		// 			'compare'       => '>=',
+		// 			'value'         => $dateNow,//current_datetime()->format('Y-m-d H:i:s'), //current_time('timestamp'),
+		// 			'type'          => 'DATETIME',
+		// 		),
+		// 	)
+		// );
+	}
+	return $query;
+}
+
+add_action('pre_get_posts', 'byniko_pre_get_events');

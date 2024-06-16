@@ -1247,6 +1247,28 @@
                     "display": "block",
                     "sub_fields": [
                         {
+                            "key": "field_666b4a224b4db",
+                            "label": "Header",
+                            "name": "header",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_665b9ddbb181a"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        },
+                        {
                             "key": "field_665510a96e505",
                             "label": "Testimonial Type",
                             "name": "testimonial_type",
@@ -2087,6 +2109,64 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_666b178465e26": {
+                    "key": "layout_666b178465e26",
+                    "name": "who_attends_logos_slider",
+                    "label": "Who Attends Logos Slider",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_666b179465e2b",
+                            "label": "Section Title",
+                            "name": "section_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "Logos are populated from the \"Icons - Who Attends\" field inside the Admin Menu item -- Site Settings",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "Join Professionals from these companies",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_666b1886eeb9e",
+                            "label": "Icons - Who Attends",
+                            "name": "icons_who_attends",
+                            "aria-label": "",
+                            "type": "gallery",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "library": "all",
+                            "min": "",
+                            "max": "",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "insert": "append",
+                            "preview_size": "medium"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2305,7 +2385,7 @@
         },
         {
             "key": "field_665b9ddbb181a",
-            "label": "Headings",
+            "label": "Headings Group",
             "name": "headings",
             "aria-label": "",
             "type": "group",
@@ -2427,5 +2507,5 @@
     "active": false,
     "description": "This group provides template structures for the other field groups. It is the source of truth for repeated elements liked buttons, layouts, etc.",
     "show_in_rest": 0,
-    "modified": 1718145868
+    "modified": 1718308875
 }

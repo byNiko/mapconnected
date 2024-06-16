@@ -1,5 +1,7 @@
 </div> <!-- <div class="site-content"> -->
+
 <footer id="colophon" class="site-footer ">
+<?php get_template_part('/template-parts/components/footer-gallery'); ?>
 	<div id="inner-footer" class="inner-footer container">
 		<div class="flex-row">
 			<div class="footer-col">
@@ -10,7 +12,7 @@
 						$byniko_description = get_bloginfo('description', 'display');
 						if ($alt_logo_url = get_theme_mod('secondary_logo')) : ?>
 							<a href='<?= $homeUrl; ?>'>
-								<img src='<?= $alt_logo_url;?>' alt='MAPconnected Logo' class='site-footer-logo'>
+								<img src='<?= $alt_logo_url; ?>' alt='MAPconnected Logo' class='site-footer-logo'>
 								<p class='site-description'>
 									<?= $byniko_description; ?>
 								</p>
@@ -71,9 +73,9 @@
 				);
 				?>
 			</div>
-			<div class="footer-col">
+			<div class="footer-col-wide">
 				<div class="h3 fw-semi-bold">Stay Connected!</div>
-			<?php echo FrmFormsController::get_form_shortcode( array( 'id' => 3 ) ); ?>
+				<?php echo FrmFormsController::get_form_shortcode(array('id' => 3)); ?>
 			</div>
 		</div><!-- .site-info -->
 	</div>

@@ -142,18 +142,21 @@
 	--color-primary-cta : var(--color-primary-800);
 	--color-secondary-cta : var(--color-secondary-600);
 
-	--color-main-nav-link: var(--color-black);
+	--color-main-nav-link: var(--color-secondary-100);
 	--color-link__hover: var(--color-primary-400);
 
 	--dark-gradient-1: linear-gradient(to bottom right, var(--color-primary-900), var(--color-primary-800));
 	--box-shadow-1 : 0 3px 5px #999;
 	--box-shadow : var(--box-shadow-1);
 
+	--sidebar-width: 300px;
+
 	// font sizes
 	--font-size--main-nav: var(--font-size--md);
 
 	// SEMANTIC PADDING
-	--spacer-xs : var(--spacer-1);
+	--spacer-xs : var(--spacer-2);
+	--spacer-sm : var(--spacer-4);
 	--spacer-md : var(--spacer-6);
 	--spacer-lg : var(--spacer-9);
 	--spacer-xl : var(--spacer-12);
@@ -161,4 +164,5 @@
 	--spacer-grid: 2rem;
 	--spacer-inner-container: var(--spacer-10) var(--spacer-12);
 	--scroll-padding  : 1rem;
+	--spacer-body-top-margin: 3rem;
 }

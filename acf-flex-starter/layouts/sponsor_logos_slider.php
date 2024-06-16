@@ -4,7 +4,7 @@ load_class("Sponsor");
 // Set slider options
 $splideOptions = filter_empty_values([
 	// 'type' => 'loop',
-	'perPage' => 20,
+	'perPage' => 12,
 	'perMove' => 2,
 	'autoWidth' => true,
 	'pagination' => false,

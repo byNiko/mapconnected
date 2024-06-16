@@ -1,3 +1,4 @@
+
 .d-flex {
 	display:flex;
 }
@@ -7,6 +8,9 @@
 
 .justify--space-between {
 	justify-content: space-between;
+}
+.justify--space-evenly {
+	justify-content: space-evenly;
 }
 .justify--center {
 	justify-content: center;
@@ -60,7 +64,70 @@
 	margin-right: auto!important;
 }
 
+.ml-1{
+	margin-left: var(--spacer-4);
+}
+.mt-1 {
+	margin-top: var(--spacer-4);
+}
+.mb-1{
+	margin-bottom: var(--spacer-4);
+}
+.mx-1{
+	margin-left: var(--spacer-4);
+	margin-right: var(--spacer-4);
+}
+.my-1{
+	margin-top: var(--spacer-4);
+	margin-bottom: var(--spacer-4);
+}
+.mr-1{
+	margin-right: var(--spacer-4);
+}
 
+.pb-0{
+	padding-bottom: 0!important;
+}
+.pl-1{
+	padding-left: var(--spacer-4);
+}
+.pt-1 {
+	padding-top: var(--spacer-4);
+}
+.pb-1{
+	padding-bottom: var(--spacer-4);
+}
+.px-1{
+	padding-left: var(--spacer-4);
+	padding-right: var(--spacer-4);
+}
+.py-1{
+	padding-top: var(--spacer-4);
+	padding-bottom: var(--spacer-4);
+}
+.pr-1{
+	padding-right: var(--spacer-4);
+}
+.pl-4{
+	padding-left: var(--spacer-12);
+}
+.pt-4 {
+	padding-top: var(--spacer-12);
+}
+.pb-4{
+	padding-bottom: var(--spacer-12);
+}
+.px-4{
+	padding-left: var(--spacer-12);
+	padding-right: var(--spacer-12);
+}
+.py-4{
+	padding-top: var(--spacer-12);
+	padding-bottom: var(--spacer-12);
+}
+.pr-4{
+	padding-right: var(--spacer-12);
+}
 .border-radius--1 {
 	border-radius:var(--radius-1);
 }

@@ -3,6 +3,8 @@
 .icon-grid {}
 
 .icon-card {
+	position: relative;
+	color: var(--color-text);
 // padding: var(--spacer-grid) 0;
 	&.has-border {
 		border: 1px solid currentColor;
@@ -43,6 +45,7 @@
 }
 
 .image-card {
+	position: relative;
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -73,6 +76,7 @@
 }
 
 .event-card__wrapper {
+	position: relative;
 	flex: 1;
 	max-width: 400px;
 	height: auto;

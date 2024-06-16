@@ -13,43 +13,28 @@ $speaker = new Speaker($post);
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php
-		if (function_exists('yoast_breadcrumb')) {
-			//yoast_breadcrumb('<div id="breadcrumbs" class="breadcrumbs">', '</div>');
-		}
-		?>
-		<?php $headshot = $speaker->get_headshot1($speaker); ?>
-	</header><!-- .entry-header -->
+	<?php
+	if (function_exists('yoast_breadcrumb')) {
+		//yoast_breadcrumb('<div id="breadcrumbs" class="breadcrumbs">', '</div>');
+	}
+	?>
+	<div class="entry-content ">
+		<div class="d-flex column-gap--large">
+			<aside class="flex-30 ">
+				<?= $speaker->the_speaker_card(); ?>
+			</aside>
 
-	<div class="entry-content">
-		<div class="flex-row column-gap--large">
-			<div class="speaker__headshot flex-30">
-				<?php
-				echo !empty($headshot['id'])
-					? wp_get_attachment_image($headshot['id'], 'full')
-					: "need headshot fallback";
-				?>
-			</div>
 			<div class="speaker__info">
-				<?php the_title('<h1 class="entry-title h1 mb-0">', '</h1>'); ?>
-
-				<div class="speaker__meta fz-sm">
-					<div><?= $speaker->get_title(); ?></div>
-					<div><?= $speaker->get_company(); ?></div>
-					<div class="speaker__logo">
-					<?php 
-					$logo = $speaker->get_logo($speaker);
-					echo !empty($logo['id'])
-					? wp_get_attachment_image($logo['id'], 'sm')
-					: "need logo fallback";
-					?>
-				</div>
-				</div>
-
-				<section class="speaker__bio">
+				<header class="entry-header">
+					<?php the_title('<h1 class="entry-title h1">', '</h1>'); ?>
+				</header><!-- .entry-header -->
+				<div class="speaker__bio">
 					<?= $speaker->get_bio(); ?>
-				</section>
+				</div>
+				<div class="speaker__events-list">
+					<h4 class="h4">Associated Events</h4>
+					<?php $speaker->the_events_list(); ?>
+				</div>
 			</div>
 		</div>
 

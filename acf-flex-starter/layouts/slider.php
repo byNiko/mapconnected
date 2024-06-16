@@ -72,7 +72,7 @@ $arrowSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" view
                                 <div class="slide__overlay">
                                     <div class="inner-slide">
                                         <?php if ($title) : ?>
-                                            <h2 class="fz-display"><?= esc_html($title); ?></h2>
+                                            <h2 class="fz-xxl"><?= esc_html($title); ?></h2>
                                         <?php endif; ?>
                                         <?php if ($description) : ?>
                                             <p class="fz-xl"><?= esc_html($description); ?></p>

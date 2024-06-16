@@ -26,7 +26,8 @@ get_header();
 			<h2 class="h2 subtitle">Join us and showcase your thought leadership.</h2>
 		</header>
 		<div class="content">
-			<p class="fz-md">Do you have experience and expertise that would benefit the network? If so, why not share them. We have lots of opportunities open: </p>
+			<p class="fz-md">Do you have experience and expertise that would benefit the network? If so, why not share
+				them. We have lots of opportunities open: </p>
 		</div>
 
 	</section>
@@ -58,7 +59,8 @@ get_header();
 		</div>
 		<div class="container--very-narrow">
 			<div class="content">
-				<p class="fz-md">We are soliciting your stories that share and validate hard won successes and innovative warranty and service operations insights.</p>
+				<p class="fz-md">We are soliciting your stories that share and validate hard won successes and
+					innovative warranty and service operations insights.</p>
 			</div>
 			<div class="flex-row __2x justify--center">
 				<div class="d-flex"><a href="" class="button button--primary">Apply to Speak</a></div>
@@ -76,35 +78,21 @@ get_header();
 	<section class="theme--medium-1">
 		<div class="container--narrow">
 			<header class="h2 text-center">Thought Leadership At It’s Best! </header>
-			<div class="flex-row __4x">
+			<div class="flex-row __4x speakers-list">
 				<?php
 				load_class("Speaker");
 				$speakers = new Speaker();
 				$speakers = $speakers->get_speakers();
 				foreach ($speakers as $sp) :
 					$s = new Speaker($sp);
+					$s->the_speaker_card();
+
+				endforeach;
 				?>
-					<div class="flex-column">
-						<div class="speaker__logo text-center">
-							<?= $s->get_logo(); ?>
-						</div>
-						<div class="speaker__headshot">
-							<?= $s->get_headshot1(); ?>
-						</div>
-						<div class="speaker__meta">
-							<div class="speaker__name">
-								<?= $s->get_name(); ?>
-							</div>
-							<div class="speaker__title fz-xs">
-								<?= $s->get_title(); ?>
-							</div>
-						</div>
-					</div>
-				<?php endforeach; 	?>
 			</div>
 		</div>
 	</section>
-	<section id="speaker-form" class="theme--dark-gradient-1">
+	<section id="speaker-form" class="theme--dark-gradient-1 last-section py-4">
 		<div class="container--very-narrow justify--center align-center">
 			<header class="text-center">
 				<h2 class="h2">Become a Speaker </h2>
@@ -114,17 +102,17 @@ get_header();
 	</section>
 
 	<?php
-	while (have_posts()) :
-		the_post();
+	// while (have_posts()) :
+	// 	the_post();
 
-		get_template_part('template-parts/content', 'page');
+	// 	get_template_part('template-parts/content', 'page');
 
-		// If comments are open or we have at least one comment, load up the comment template.
-		if (comments_open() || get_comments_number()) :
-			comments_template();
-		endif;
+	// 	// If comments are open or we have at least one comment, load up the comment template.
+	// 	if (comments_open() || get_comments_number()) :
+	// 		comments_template();
+	// 	endif;
 
-	endwhile; // End of the loop.
+	// endwhile; // End of the loop.
 	?>
 
 </main><!-- #main -->

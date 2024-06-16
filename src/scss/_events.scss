@@ -5,6 +5,17 @@
 		font-size: var(--font-size--xl);
 		font-weight: 500;
 	}
+	.site-content {
+		margin-top: var(--spacer-body-top-margin, 2rem);
+		display:grid;
+		grid-template-columns : 1fr var(--sidebar-width);
+	}
+	
+	.entry-content {
+		display: flex;
+		flex-direction: column;
+		gap: var(--grid-gap, 2rem);
+	}
 }
 
 .event--sponsors-wrap {
@@ -18,4 +29,21 @@
 			opacity: 1;
 		}
 	}
+}
+
+.event__time {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	line-height: 1.2;
+	font-size: var(--font-size--sm);
+
+}
+.event__time-label {
+	text-align:left;
+	max-width: 45%;
+	font-weight: 400;
+}
+.event__time-value {
+	margin:0;
 }

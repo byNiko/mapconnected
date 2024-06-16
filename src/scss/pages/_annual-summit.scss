@@ -1,6 +1,6 @@
 .annual_summit {
 	font-family: "montserrat", var(--font-family--display);
-	display:flex;
+	display: flex;
 	flex-direction: column;
 	gap: 2rem;
 
@@ -18,15 +18,25 @@
 		font-weight: 500;
 		font-size: var(--font-size--xl);
 		line-height: 1.1;
+		color: var(--color-text)
 	}
 
 	.secondary-nav__wrapper {
-		position: absolute;
-		top: 0;
-		left: 50%;
-		transform: translatex(-50%);
+		z-index: 10;
 		display: flex;
 		justify-content: center;
+		color: var(--color-text);
+
+		.secondary-nav {
+			// border: 2px solid transparent;
+			// border-top:0px;
+		}
+
+		&.is-pinned {
+			top:-1px;
+			.secondary-nav {
+			}
+		}
 
 		.secondary-nav {
 			background: var(--color-primary-800);
@@ -35,23 +45,26 @@
 			border-bottom-left-radius: var(--radius-1);
 			border-bottom-right-radius: var(--radius-1);
 			padding: .51em 2em;
-	
+
 		}
 
 		.button--text {
 			font-size: var(--font-size--sm);
-			white-space:nowrap;
+			white-space: nowrap;
 			font-weight: 400;
+
 			&:hover {
 				color: var(--color-secondary-400);
 			}
 		}
 	}
-.title-section {
-	display: flex;
-	flex-direction: column;
-	gap: var(--spacer-12);
-}
+
+	.title-section {
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacer-12);
+	}
+
 	.summit-title {
 		letter-spacing: -2px;
 		line-height: 1;
@@ -74,7 +87,7 @@
 
 	}
 
-	.single-testimonial .inner-container{
+	.single-testimonial .inner-container {
 		background: var(--color-secondary-200);
 	}
 
@@ -83,14 +96,33 @@
 			content: "- ";
 		}
 	}
+
 	dd {
 		font-weight: 400;
 		font-size: var(--font-size--sm);
 		margin-left: .7rem;
 	}
+
 	blockquote {
 		font-size: var(--font-size--lg);
 		font-family: "montserrat";
 		font-weight: 400;
+	}
+}
+
+.sponsor__logo__wrapper {
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	aspect-ratio: 1/1;
+	opacity: .8;
+	transition: opacity .2s;
+	&:hover {
+		opacity: 1;
+	}
+	.sponsor__link {
+		display: block;
+		height: 100%;
+		width: 100%;
 	}
 }

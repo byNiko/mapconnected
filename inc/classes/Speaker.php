@@ -27,7 +27,8 @@ class Speaker {
 		return $this->ID;
 	}
 	public function get_name() {
-		return $this->name;
+		$hide = get_field('hide_names_group_hide_speaker_names', 'option');
+		return $hide? false : $this->name;
 	}
 	public function get_bio() {
 		return $this->bio;
@@ -43,13 +44,21 @@ class Speaker {
 		return $this->company_logo_object;
 	}
 	public function get_logo() {
-		return wp_get_attachment_image($this->company_logo_object['ID'], 'medium');
+		
+		return $this->company_logo_object
+		? wp_get_attachment_image($this->company_logo_object['ID'], 'medium')
+		: null;
 	}
 	public function get_headshot1_object() {
+		
 		return $this->headshot1_object;
 	}
 	public function get_headshot1(){
-		return wp_get_attachment_image($this->get_headshot1_object()['ID'],'full');
+		if($ID = $this->get_headshot1_object()['ID'])
+		return wp_get_attachment_image($ID,'portrait');
+	}
+	public function get_the_headshot1(){
+		echo $this->get_headshot1();
 	}
 	public function get_headshot2_object() {
 		return $this->headshot2_object;
@@ -79,4 +88,70 @@ class Speaker {
 		$args = array_merge($default_args, $args);
 		return get_posts($args);
 	}
+
+	public function get_the_speaker_card($include_anchor = false){
+		
+		return sprintf("%s
+		<div class='speaker-card'>
+			<div class='speaker__logo-wrapper'>
+				<div class='speaker__logo-content'>
+				 %s
+				 </div>
+			</div>
+			 <div class='speaker__headshot'>
+				%s
+			</div>
+			 <div class='speaker__meta'>
+				<div class='speaker__name'>
+					 %s
+				</div>
+				<div class='speaker__title'>
+				 %s 
+				</div>
+		</div>
+	</div>%s",
+		$include_anchor? "<a href='". $this->get_permalink(). "'>" : null,
+		$this->get_logo() ,
+		$this->get_headshot1(),
+		$this->get_name(),
+		$this->get_title(),
+		$include_anchor? "</a>": null,
+	);					
+							
+	}
+
+	public function the_speaker_card($include_anchor = false){
+		echo $this->get_the_speaker_card($include_anchor);
+	}
+
+	public function get_permalink(){
+		return get_permalink($this->ID);
+	}
+	public function the_speaker_card_with_anchor(){
+		echo "<a class='speaker__card-anchor' href='" . $this->get_permalink(). "'>" 
+		. $this->get_the_speaker_card()
+		. "</a>";
+	}
+
+	public function get_events(){
+		return $this->associated_events;
+	}
+
+	public function the_events_list(){
+		$events = $this->get_events();
+		if (!$events) return;
+
+;		$html = "<ul class='speaker-events-list'>";
+		foreach($events as $e){
+			$evt = new Event($e);
+			$format = "
+			<li class='speaker__event'>
+			<a href='%s' class='event__title'>%s</a>
+			</li>";
+			$html .= sprintf($format, $evt->get_permalink(), $evt->post->post_title);
+		}
+		$html .= "</ul>";
+		echo $html;
+	}
+
 }

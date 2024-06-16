@@ -2,6 +2,8 @@
 load_class('Testimonial');
 // $args are from get_template_part include
 // print_r($args['template_args']);
+$arrows = true;
+$pagination = true;
 $query_args = array(
 	'posts_per_page' => 15,
 	'post_type' => 'testimonial',
@@ -17,18 +19,13 @@ $query_args = array(
 	),
 );
 $posts = get_posts($query_args);
-// print_r($posts);
-// $query = $args['query'];
-
-// $slider_id = get_query_var('slider_id', 'default-slider-id');
-
 // Set slider options
 $splideOptions = filter_empty_values([
 	'type' => 'slide', // loop, slide, fade - only for single slides
 	'perPage' => 3,
 	'perMove' => 1,
-	'pagination' => true,
-	'arrows' => true,
+	'pagination' => $pagination,
+	'arrows' => $arrows,
 	'autoplay' => false,
 	'interval' => 3000,
 	'pauseOnHover' => true,
@@ -46,30 +43,25 @@ $arrowSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" view
 ?>
 <?php if ($posts) : ?>
 	<section class="slider testimonial-slider">
+		<?php if ($headings = get_sub_field('headings')) : ?>
+			<div class="container--narrow">
+				<?php get_template_part('/acf-flex-starter/layouts/headings'); ?>
+			</div>
+		<?php endif; ?>
 		<div class="container">
 			<div class="splide" data-splide='<?= wp_json_encode($splideOptions); ?>'>
 				<div class="splide__track">
 					<ul class="splide__list">
-						<?php foreach($posts as $p): ?>
-							<?php $t = new Testimonial($p); ?>
-							<li class="splide__slide">
-								<div class="testimonial-card testimonial-slider--item d-flex">
+						<?php foreach ($posts as $p) : ?>
+							<?php
+							$t = new Testimonial($p);
+							$video_url = $t->get_video_url();
+							?>
+							<li class="splide__slide <?= $video_url ? "has-video" : null; ?>">
+								<div class="testimonial-card testimonial-slider--item d-flex <?= $video_url ? "has-video" : null; ?> ">
 									<div class="testimonial-card__quote-wrapper">
 										<q><?= $t->get_short_quote(); ?></q>
-										<cite> <?= $t->get_name();  ?></cite>
-										<cite> <?= $t->get_title();  ?></cite>
-										<cite> <?= $t->get_company();  ?></cite>										
-										<cite class="testimonial-card__logo-wrapper"> <?= $t->get_company_logo_image();   ?></cite>										
-
-									</div>
-									<div class="testimonials-card__image-wrapper">
-										<?php if ($t->get_has_video() && $video_url = $t->get_video_url()) {
-											// wrap image in play button 
-											// and create popover to play video
-											echo " has video";
-										} ?>
-										<?php if ($vertImage = $t->get_vertical_image())
-											echo wp_get_attachment_image($vertImage['id'], 'medium'); ?>
+										<?php get_template_part('/template-parts/components/testimonial-footer', null, array('testimonial' => $t)); ?>
 									</div>
 								</div>
 							</li>
@@ -77,9 +69,25 @@ $arrowSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" view
 
 					</ul>
 				</div>
+				<?php if ($arrows) : ?>
+                    <!-- Navigation Arrow -->
+                    <div class="splide__arrows splide__arrows--ltr">
+                        <button class="splide__arrow splide__arrow--prev" type="button" aria-label="Previous slide" aria-controls="<?= 'splide0' . esc_attr($slider_id) . '-track'; ?>">
+                            <?= $arrowSVG; ?>
+                        </button>
+                        <button class="splide__arrow splide__arrow--next" type="button" aria-label="Next slide" aria-controls="<?= 'splide0' . esc_attr($slider_id) . '-track'; ?>">
+                            <?= $arrowSVG; ?>
+                        </button>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($pagination) : ?>
+                    <!-- Pagination Dots -->
+                    <ul class="splide__pagination"></ul>
+                <?php endif; ?>
 			</div>
 		</div>
 	</section>
 
-<?php 
+<?php
 endif;

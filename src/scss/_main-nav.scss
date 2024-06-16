@@ -1,11 +1,12 @@
 .primary-bar {
 	display: flex;
 	align-items: flex-end;
-	margin-top: var(--spacer-md);
+	margin-top: var(--spacer-sm);
+	background-color: var(--color-text);
 }
 .main-navigation {
 	margin-left: auto;
-	// margin-right: auto;sli
+	margin-right: auto;
 	.main-nav--menu {
 		list-style-type: none;
 		display: flex;
@@ -13,12 +14,17 @@
 		word-spacing: -0.1em;
 	}
 	.menu-item {
-		font-weight: 400;
-		font-size: var(--font-size--main-nav);
-		color: var(--color-main-nav-link);
-		border-bottom: 1px solid transparent;
-		&.current-menu-item {
-			    border-color: var(--color-link);
+			font-weight: 300;
+			font-size: var(--font-size--main-nav);
+			color: var(--color-main-nav-link);
+			border-bottom: 1px solid transparent;
+			border-top: 1px solid transparent;
+			letter-spacing: 0.5px;
+			margin: 5px 0;
+		&.current-menu-item,
+		&:hover {
+			a {color: var(--color-secondary-800);}
+			    border-bottom-color: var(--color-secondary-600);
 		}
 	}
 }

@@ -38,6 +38,9 @@
             svg {
                 fill: none;
             }
+            &:disabled {
+                display: none;
+            }
         }
     }
 

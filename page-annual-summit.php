@@ -10,6 +10,15 @@ get_header(); ?>
 
 <main class="annual_summit">
 	<section class="hero theme--dark-gradient-1">
+		<div class="secondary-nav__wrapper">
+			<nav class="secondary-nav">
+				<button class="button--text">Speakers</button>
+				<button class="button--text">Agenda</button>
+				<button class="button--text">Sponsors</button>
+				<button class="button--text">Become a Sponsor</button>
+				<button class="button--text">Download Brochure</button>
+			</nav>
+		</div>
 		<div class="container--narrow landing__container">
 			<div class="summit-logo">
 				<?= wp_get_attachment_image(892, 'full'); ?>
@@ -45,15 +54,7 @@ get_header(); ?>
 					</a>
 				</div>
 			</div>
-			<div class="secondary-nav__wrapper">
-				<nav class="secondary-nav">
-					<button class="button--text">Speakers</button>
-					<button class="button--text">Agenda</button>
-					<button class="button--text">Sponsors</button>
-					<button class="button--text">Become a Sponsor</button>
-					<button class="button--text">Download Brochure</button>
-				</nav>
-			</div>
+
 		</div>
 	</section>
 	<section id="key-speakers" class="key-speakers">
@@ -271,28 +272,30 @@ get_header(); ?>
 
 	<section id="sponsorships" class="sponsorships">
 		<div class="container">
-			<?php 
+			<?php
 			$levels = ["Gold", "Silver", "Bronze"];
-			foreach ($levels as $level): 
+			foreach ($levels as $level) :
 				$sps = $spships->get_sponsors_by_level($level);
 			?>
-				<h3 class="h text-center"><?= $level;?> Sponsors</h3>
+				<h3 class="text-center"><?= $level; ?> Sponsors</h3>
 				<div class="flex-row align-center justify--center">
-				<?php foreach ($sps as $p) : ?>
-					<?php $s = new Sponsor($p); ?>
-					<div class="sponsor__logo__wrapper">
-						<a href="<?= $s->get_sponsor_page_link();?>">
-						<?= $s->get_logo_image(); ?>
-						</a>
-						<!-- <?php //print_r($s->get_sponsorship_level()); ?> -->
-					</div>
-				<?php endforeach; ?>
+					<?php foreach ($sps as $p) : ?>
+						<?php $s = new Sponsor($p); ?>
+						<div class="sponsor__logo__wrapper sponsor-level--<?= strtolower($level); ?>"
+						style="background-image:url(<?=$s->get_logo_image_src();?>);">
+							<a class="sponsor__link" href="<?= $s->get_sponsor_page_link(); ?>">
+								<?//= $s->get_logo_image(); ?>
+							</a>
+							<!-- <?php //print_r($s->get_sponsorship_level()); 
+									?> -->
+						</div>
+					<?php endforeach; ?>
 
-			</div>
-			<?php endforeach;?>
+				</div>
+			<?php endforeach; ?>
 		</div>
 	</section>
-	
+
 </main>
 
 

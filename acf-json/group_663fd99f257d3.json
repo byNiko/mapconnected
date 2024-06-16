@@ -17,7 +17,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_663fdb9a8a80a",
@@ -70,7 +71,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_663fdbd28a80b",
@@ -115,7 +117,7 @@
         },
         {
             "key": "field_663fd99f8a7ff",
-            "label": "Meta Info",
+            "label": "Dates",
             "name": "",
             "aria-label": "",
             "type": "tab",
@@ -128,7 +130,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_663fd9dd8a800",
@@ -271,7 +274,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_663fdc858a80e",
@@ -322,7 +326,8 @@
                 "id": ""
             },
             "placement": "top",
-            "endpoint": 0
+            "endpoint": 0,
+            "selected": 0
         },
         {
             "key": "field_663ff4de069eb",
@@ -376,5 +381,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1716349334
+    "modified": 1718481268
 }

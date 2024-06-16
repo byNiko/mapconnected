@@ -7,17 +7,28 @@ html {
 }
 html, body, .site {
 	height: 100%;
+	// 
 	scroll-padding: var(--scroll-padding);
+	color:var(--color-text);
 }
 
 img {
 	max-width: 100%;
+	height: auto;
 	// width: 100%;
 }
 
 ul.menu{
 	padding-left:0;
 	margin-bottom:0;
+}
+ul {
+	&.no-bullets,
+	&.no-bullet {
+		list-style-type: none;
+		padding-left:0;
+		margin-bottom: 0;
+	}
 }
 
 dl{
@@ -43,14 +54,11 @@ blockquote p:last-of-type {
 
 .sponsor-logos__wrapper {
 	.splide__slide {
-		width: 80px;
+
+		height: 80px;
 		align-items:center;
 		display: flex;
 	}
-}
-
-.section-header {
-
 }
 
 .border-radius-1 {
@@ -64,4 +72,55 @@ blockquote p:last-of-type {
 }
 .border-radius-4 {
 	border-radius: var(--radius-4);
+}
+
+.geopin_header {
+	position:fixed;
+	z-index: 0;
+	opacity: .05;
+	transform: rotate(-30deg) translate(-6%, -7%);
+	pointer-events: none;
+}
+.gear_body {
+	position:absolute;
+	z-index: 0;
+	opacity: .5;
+	pointer-events: none;
+}
+
+.splide__slide.who_attends_logos-gallery-slide {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	img {
+		width: auto;
+		height: auto;
+		max-height: 100%;
+	}
+}
+
+.media-text,
+.container--single-column,
+.flex-row.inner-container {
+	position: relative;
+}
+
+
+.single-testimonial,
+.testimonial-slider,
+.who_attends_logos__wrapper {
+	padding-top: var(--section-spacer, var(--spacer-12));
+	padding-bottom: var(--section-spacer, var(--spacer-12));
+}
+
+.sidebar--default-theme {
+	padding: 1rem;
+    background: var(--color-primary-50);
+    align-self: flex-start;
+    border-radius: var(--radius-1);
+}
+
+.last-section {
+	margin-bottom: calc(-1 * var(--footer-margin-top, var(--spacer-12)));
 }

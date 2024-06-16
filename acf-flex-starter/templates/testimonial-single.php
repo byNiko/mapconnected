@@ -1,8 +1,7 @@
 <?php
 // $args are from get_template_part include
 load_class("Testimonial");
-
-// $query = $args['query'];
+$type = get_sub_field('testimonial_type');
 
 $query_args = array(
 	'posts_per_page' => 1,
@@ -14,7 +13,7 @@ $query_args = array(
 		array(
 			'taxonomy' => 'testimonial-type',
 			'field' => 'name',
-			'terms' => "Brand Members",
+			'terms' => $type,
 		)
 	),
 );

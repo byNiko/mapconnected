@@ -10,7 +10,7 @@ class Testimonial {
 	private $company_logo;
 	private $vertical_image;
 	private $name;
-	public function __construct($post){
+	public function __construct($post) {
 		$this->name = $post->post_title;
 		$this->has_video = get_field('has_video', $post);
 		$this->video_url = get_field('video_url', $post);
@@ -22,36 +22,44 @@ class Testimonial {
 		$this->vertical_image = get_field('vertical_image', $post);
 	}
 
-	public function get_name(){
-		return $this->name;
+	public function get_name() {
+		$hide = get_field('hide_names_group_hide_testimonial_names', 'option');
+		return  $hide? false: $this->name;
 	}
-	public function get_has_video(){
+	public function get_has_video() {
 		return $this->has_video;
 	}
-	public function get_video_url(){
-		return $this->video_url;
+	/**
+	 * The function "get_video_url" returns the video URL if the object has a video and the URL is set.
+	 * 
+	 * @return The video URL is being returned if the conditions are met (i.e., if the object has a video
+	 * and the video URL is set). If the conditions are not met, nothing will be returned explicitly (as
+	 * there is no return statement outside the if block).
+	 */
+	public function get_video_url() {
+		if ($this->has_video && $this->video_url)
+			return $this->video_url;
 	}
-	public function get_short_quote(){
+	public function get_short_quote() {
 		return $this->short_quote;
 	}
-	public function get_testimonial_type(){
+	public function get_testimonial_type() {
 		return $this->testimonial_type;
 	}
-	public function get_title(){
+	public function get_title() {
 		return $this->title;
 	}
-	public function get_company(){
+	public function get_company() {
 		return $this->company;
 	}
-	public function get_company_logo(){
+	public function get_company_logo() {
 		return $this->company_logo;
 	}
-	public function get_company_logo_image(){
-		if($this->get_company_logo()['id'])
-		return wp_get_attachment_image($this->get_company_logo()['id'], 'medium');
+	public function get_company_logo_image() {
+		if ($this->get_company_logo()['id'])
+			return wp_get_attachment_image($this->get_company_logo()['id'], 'medium');
 	}
-	public function get_vertical_image(){
+	public function get_vertical_image() {
 		return $this->vertical_image;
 	}
-
 }

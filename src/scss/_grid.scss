@@ -87,13 +87,13 @@ main {
 		
 	}
 	&.__2x > * {
-		flex: calc(50% - var(--spacer-grid));
+		flex: 0 0 calc(50% - var(--spacer-grid));
 	}
 	&.__3x > * {
-		flex: calc(33% - var(--spacer-grid));
+		flex: 0 0 calc(33% - var(--spacer-grid));
 	}
 	&.__4x > * {
-		flex: calc(25% - var(--spacer-grid));
+		flex: 0 0 calc(25% - var(--spacer-grid));
 	}
 }
 

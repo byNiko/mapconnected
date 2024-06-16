@@ -168,7 +168,7 @@
 			}
 		},
 		"color": {
-			"text": "var(--color-text)",
+			
 			"background": "var(--body-bg)"
 		},
 		"typography": {
