@@ -65,8 +65,7 @@
             ],
             "taxonomy": "",
             "filters": [
-                "search",
-                "taxonomy"
+                "search"
             ],
             "return_format": "object",
             "min": "",
@@ -99,8 +98,7 @@
             ],
             "taxonomy": "",
             "filters": [
-                "search",
-                "taxonomy"
+                "search"
             ],
             "return_format": "object",
             "min": "",
@@ -125,7 +123,7 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
+            "layout": "row",
             "pagination": 0,
             "min": 0,
             "max": 0,
@@ -232,5 +230,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718938061
+    "modified": 1718982530
 }

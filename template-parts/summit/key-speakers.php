@@ -1,7 +1,8 @@
 <?php
 $summit_post = $args['summit_post'];
 $speakers = get_field('key_speakers', $summit_post);
-
+$slider_id = $summit_post->post_name;
+print_r($slider_id);
 $splideOptions = filter_empty_values([
 	'type' => 'loop', // loop, slide, fade - only for single slides
 	'perPage' => 8,
