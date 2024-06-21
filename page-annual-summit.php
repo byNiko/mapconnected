@@ -250,19 +250,29 @@ get_header(); ?>
 		</div>
 		<div class="container--narrow">
 			<div class="flex-row">
+				<style>
+					.card__image-wrap {
+						background-position: center;
+						background-size: cover;
+						background-repeat: no-repeat;
+					}
+				</style>
 				<div class="image-card flex-column theme--light-1">
 					<div class="card__title text-center h3 fw-semi-bold">Connect</div>
-					<div class="card__image-wrap"><img src="//localhost:3000/wp-content/uploads/jj-ying-8bghKxNU1j0-unsplash-e1716688425606-300x100.jpg " alt=""></div>
+					<?php $src = wp_get_attachment_image_src(1075, 'medium');?>
+					<div class="card__image-wrap" style="background-image: url(<?= $src[0];?>);?>" ></div>
 					<div class="card__content">In-depth discussions across full Warranty Lifecycle filled with Best Practice Presentations & Fireside Chats </div>
 				</div>
 				<div class="image-card flex-column theme--light-1">
 					<div class="card__title text-center h3 fw-semi-bold">Collaborate</div>
-					<div class="card__image-wrap"><img src="//localhost:3000/wp-content/uploads/hivan-arvizu-soyhivan-MAnhvw0nDDY-unsplash-e1716688362903-300x100.jpg " alt=""></div>
+					<?php $src = wp_get_attachment_image_src(1076, 'medium');?>
+					<div class="card__image-wrap" style="background-image: url(<?= $src[0];?>);" ></div>
 					<div class="card__content">Working together through Roundtables to enhance and streamline warranty and aftercare end-to-end experiences</div>
 				</div>
 				<div class="image-card flex-column theme--light-1">
 					<div class="card__title text-center h3 fw-semi-bold">Benchmark</div>
-					<div class="card__image-wrap"><img src="//localhost:3000/wp-content/uploads/jj-ying-8bghKxNU1j0-unsplash-e1716688425606-300x100.jpg " alt=""></div>
+					<?php $src = wp_get_attachment_image_src(396, 'medium');?>
+					<div class="card__image-wrap" style="background-image: url(<?= $src[0];?>);" ><img src="//localhost:3000/wp-content/uploads/jj-ying-8bghKxNU1j0-unsplash-e1716688425606-300x100.jpg " alt=""></div>
 					<div class="card__content">Exchange latest technology and data usage processes during interactive workshops.</div>
 				</div>
 			</div>
