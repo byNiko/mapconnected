@@ -12,9 +12,9 @@
  *
  * @package byniko
  */
-
+// load_class("Byniko");
+$byniko = new Byniko();
 get_header();
-
 ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css" integrity="sha512-UuQ/zJlbMVAw/UU8vVBhnI4op+/tFOpQZVT+FormmIEhRSCnJWyHiBbEVgM4Uztsht41f3FzVWgLuwzUqOObKw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/regular.min.css" integrity="sha512-KYEnM30Gjf5tMbgsrQJsR0FSpufP9S4EiAYi168MvTjK6E83x3r6PTvLPlXYX350/doBXmTFUEnJr/nCsDovuw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -63,8 +63,8 @@ get_header();
 					innovative warranty and service operations insights.</p>
 			</div>
 			<div class="flex-row __2x justify--center">
-				<div class="d-flex"><a href="" class="button button--primary">Apply to Speak</a></div>
-				<div class="d-flex"><a href="" class="button button--primary">Apply to Sponsor</a></div>
+				<div class="d-flex"><a href="#speaker-form" class="button button--primary">Apply to Speak</a></div>
+				<div class="d-flex"><a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor'));?> " class="button button--primary">Apply to Sponsor</a></div>
 			</div>
 		</div>
 	</section>
@@ -80,7 +80,7 @@ get_header();
 			<header class="h2 text-center">Thought Leadership At It’s Best! </header>
 			<div class="flex-row __4x speakers-list">
 				<?php
-				load_class("Speaker");
+				
 				$speakers = new Speaker();
 				$speakers = $speakers->get_speakers();
 				foreach ($speakers as $sp) :
@@ -95,7 +95,7 @@ get_header();
 	<section id="speaker-form" class="theme--dark-gradient-1 last-section py-4">
 		<div class="container--very-narrow justify--center align-center">
 			<header class="text-center">
-				<h2 class="h2">Become a Speaker </h2>
+				<h2 class="fz-display">Become a Speaker </h2>
 			</header>
 			<?php echo FrmFormsController::get_form_shortcode(array('id' => 4)); ?>
 		</div>

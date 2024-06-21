@@ -7,6 +7,8 @@
 	border: 1px solid;
 	border-radius: var(--radius-4);
 	padding: 2rem 2rem;
+	position: relative;
+	background-color: var(--color-primary-25);
 
 	.sponsor__name {
 		display: none;
@@ -16,5 +18,25 @@
 	.sponsor__description {
 		max-height: 90px;
 		overflow: hidden;;
+	}
+}
+.articles.main {
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: 1fr 1fr 1fr;
+
+	.article {
+		display:flex;
+		flex-direction: column;
+		column-gap: var(--spacer-8);
+		padding: 2rem;
+		// margin: -2rem;
+		border-radius: var(--border-radius);
+		background: var(--color-primary-33);
+		border: 1px solid var(--color-greys-100);
+		position: relative;
+		&:not(first-of-type){
+			// margin-top: var(--spacer-lg);
+		}
 	}
 }

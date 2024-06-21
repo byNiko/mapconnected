@@ -4,6 +4,38 @@
 	flex-direction: column;
 	gap: 2rem;
 
+	.key-speakers,
+	.all-leadership {
+		.speaker__logo-wrapper,
+		.speaker__meta {
+			display: none;
+		}
+	}
+
+	.all-speakers-grid {
+		display: grid;
+		grid-gap: 1rem;
+		grid-template-columns: repeat(7, 1fr);
+		.speaker-card {}
+	}
+
+	.agenda__item-wrap {
+		border: 2px solid var(--color-primary-accent);
+		border-radius: var(--radius-1);
+		padding: calc( .5 * var(--spacer-grid));
+	}
+
+	.agenda__title {
+		font-weight: 700;
+		border-bottom: 1px dotted ;
+		// margin-bottom: 1rem;
+	}
+	.agenda__dates {
+		// font-weight: 700;
+		font-size: var(--font-size--sm);
+		margin-bottom: 1rem;
+	}
+
 	.landing__container {
 		position: relative;
 		display: flex;
@@ -120,9 +152,24 @@
 	&:hover {
 		opacity: 1;
 	}
-	.sponsor__link {
-		display: block;
-		height: 100%;
-		width: 100%;
+
+	&.sponsor-level{
+aspect-ratio: 1/1;
+		&--gold {
+			flex: 0 0 300px;
+		}
+		&--silver {
+			flex: 0 0 150px;
+		}
+		&--bronze {
+			flex: 0 0 75px;
+		}
+		
 	}
+	img {
+		max-width: 100%;
+		max-height: 100%;
+	}
+		
+
 }

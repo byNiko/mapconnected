@@ -156,3 +156,10 @@ border-radius: var(--radius-2);
 .media-text .flex-row {
 	padding: 3rem;
 }
+
+.dashicons-download {
+	&:before {
+		content: "\f316";
+		color: currentColor;
+	}
+}

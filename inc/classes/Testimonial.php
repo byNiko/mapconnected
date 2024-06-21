@@ -1,8 +1,8 @@
 <?php
 class Testimonial {
 
-	private $has_video;
-	private $video_url;
+	public $has_video;
+	public $video_url;
 	private $short_quote;
 	private $testimonial_type;
 	private $title;
@@ -10,21 +10,23 @@ class Testimonial {
 	private $company_logo;
 	private $vertical_image;
 	private $name;
+	public $video_embed;
 	public function __construct($post) {
 		$this->name = $post->post_title;
 		$this->has_video = get_field('has_video', $post);
-		$this->video_url = get_field('video_url', $post);
+		$this->video_url = ($this->has_video && get_field('video_url', $post)) ? get_field('video_url', $post, false) : false;
 		$this->short_quote = get_field('short_quote', $post);
 		$this->testimonial_type = get_field('testimonial_type', $post);
 		$this->title = get_field('title', $post);
 		$this->company = get_field('company', $post);
 		$this->company_logo = get_field('company_logo', $post);
 		$this->vertical_image = get_field('vertical_image', $post);
+		//$this->video_embed = $this->video_url ? apply_filters('the_content', $this->video_url) : false;
 	}
 
 	public function get_name() {
 		$hide = get_field('hide_names_group_hide_testimonial_names', 'option');
-		return  $hide? false: $this->name;
+		return  $hide ? false : $this->name;
 	}
 	public function get_has_video() {
 		return $this->has_video;
@@ -39,6 +41,7 @@ class Testimonial {
 	public function get_video_url() {
 		if ($this->has_video && $this->video_url)
 			return $this->video_url;
+		return false;
 	}
 	public function get_short_quote() {
 		return $this->short_quote;

@@ -7,9 +7,11 @@ html {
 }
 html, body, .site {
 	height: 100%;
-	// 
 	scroll-padding: var(--scroll-padding);
 	color:var(--color-text);
+}
+html * {
+	color: var(--color-text);
 }
 
 img {
@@ -96,7 +98,7 @@ blockquote p:last-of-type {
 	img {
 		width: auto;
 		height: auto;
-		max-height: 100%;
+		max-height: 60px;
 	}
 }
 
@@ -123,4 +125,26 @@ blockquote p:last-of-type {
 
 .last-section {
 	margin-bottom: calc(-1 * var(--footer-margin-top, var(--spacer-12)));
+}
+
+.pagination {
+	margin-top: 1rem;
+	display: flex;
+	gap: .5rem;
+	.page-numbers {
+		border: 1px solid;
+		border-radius: var(--radius-1);
+		padding: 0 .5rem;
+		display: flex;
+		justify-content: center;
+		&:hover ,
+		&.current{
+			background: var(--color-text);
+			color: var(--white);
+		}
+	}
+}
+
+#marketplace_sponsor_logos_wrap {
+	position: relative;
 }

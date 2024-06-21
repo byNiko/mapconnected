@@ -2,7 +2,10 @@
 	--slider-aspect-ratio: 28/9;
 	background-color: var(--black);
 }
-
+.splide__slide > img {
+max-height: 100%;
+max-width: 100%;
+}
 .slider {
 	
 	aspect-ratio: var(--slider-aspect-ratio);

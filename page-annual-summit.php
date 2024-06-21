@@ -1,11 +1,9 @@
 <?php
-load_class("Sponsor");
-load_class("Sponsorships");
+
+$byniko = new Byniko();
 $spships = new Sponsorships();
-
-
-
-// $sp->get_sponsors();
+// forwarding the post object to get_template_parts
+$summit_post = (new Byniko())->get_page_by_title('Summit 2024', 'summit');
 get_header(); ?>
 
 <main class="annual_summit">
@@ -57,26 +55,8 @@ get_header(); ?>
 
 		</div>
 	</section>
-	<section id="key-speakers" class="key-speakers">
-		<div class="container">
-			<div class="row">
-				<h2 class="h2 col">Key Speakers</h2>
-				<div class="col">
-					<h3>How do we want to admin the speakers</h3>
-					<ul>
-						<li>mark each speaker (already in the database) individually as a key-speaker / regular-speaker for the summit</li>
-						<li>Have a summit post type that you'd attach all speakers to
-							<ul>
-								<li>
-									in this case you won't be able to have an archive of who spoke at which summit
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
+	<?php get_template_part('/template-parts/summit/key-speakers', null, ['summit_post' => $summit_post]); ?>
+
 	<section id="summary">
 		<div class="container--narrow">
 			<div class="flex-row __2x inner-container theme--medium-2">
@@ -165,8 +145,8 @@ get_header(); ?>
 
 					</div>
 					<div class="flex-row justify--center">
-						<a href="#" class="button button--secondary">Become a Sponsor</a>
-						<a href="#" class="button button--secondary">Become a Speaker</a>
+						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')); ?>" class="button button--secondary">Become a Sponsor</a>
+						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Speaker')); ?>" class="button button--secondary">Become a Speaker</a>
 					</div>
 				</div>
 			</div>
@@ -201,6 +181,9 @@ get_header(); ?>
 				<button class="button--text fz-lg">Get the Full Agenda</button>
 			</div>
 		</div>
+		<div class="container--narrow">
+			<?php get_template_part('/template-parts/summit/daily-agendas', null, ['summit_post' => $summit_post]); ?>
+		</div>
 	</section>
 
 	<section id="all-leadership" class="all-leadership">
@@ -211,6 +194,22 @@ get_header(); ?>
 					<a href="#" class="button button-secondary button--outline">Learn More About Our Speakers</a>
 				</div>
 			</header>
+		</div>
+		<div class="container">
+		<div class="all-speakers-grid">
+			<?php 
+				$all_speakers = get_field('all_speakers', $summit_post);
+				if($all_speakers):
+					foreach($all_speakers as $speaker):
+						$sp = new Speaker($speaker);
+						echo $sp->get_the_speaker_card();
+					endforeach;
+
+				endif;
+			?>
+			</div>
+		</div>
+			<div class="container--narrow">
 			<div id="who-attends">
 				<div class="flex-row __2x inner-container theme--medium-2">
 					<div class="col">
@@ -281,10 +280,11 @@ get_header(); ?>
 				<div class="flex-row align-center justify--center">
 					<?php foreach ($sps as $p) : ?>
 						<?php $s = new Sponsor($p); ?>
-						<div class="sponsor__logo__wrapper sponsor-level--<?= strtolower($level); ?>"
-						style="background-image:url(<?=$s->get_logo_image_src();?>);">
+						<div class="sponsor__logo__wrapper sponsor-level--<?= strtolower($level); ?>" style="background-image:url(<? //=$s->get_logo_image_src();
+																																	?>);
+						">
 							<a class="sponsor__link" href="<?= $s->get_sponsor_page_link(); ?>">
-								<?//= $s->get_logo_image(); ?>
+								<?= $s->get_logo_image(); ?>
 							</a>
 							<!-- <?php //print_r($s->get_sponsorship_level()); 
 									?> -->
@@ -293,6 +293,11 @@ get_header(); ?>
 
 				</div>
 			<?php endforeach; ?>
+		</div>
+	</section>
+	<section id="timer">
+		<div class="container--single-column">
+			<?php get_template_part('/template-parts/components/countdown-timer');?> 
 		</div>
 	</section>
 

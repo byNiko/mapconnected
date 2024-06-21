@@ -7,8 +7,6 @@
  *
  * @package byniko
  */
-load_class('Speaker');
-load_class('Event');
 $speaker = new Speaker($post);
 ?>
 
@@ -31,10 +29,12 @@ $speaker = new Speaker($post);
 				<div class="speaker__bio">
 					<?= $speaker->get_bio(); ?>
 				</div>
+				<?php if($speaker->get_future_events()): ?>
 				<div class="speaker__events-list">
-					<h4 class="h4">Associated Events</h4>
+					<h4 class="h4">Upcoming Events</h4>
 					<?php $speaker->the_events_list(); ?>
 				</div>
+				<?php endif; ?>
 			</div>
 		</div>
 

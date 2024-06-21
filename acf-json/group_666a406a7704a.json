@@ -20,12 +20,12 @@
             "library": "all",
             "min": "",
             "max": "",
-            "min_width": "",
-            "min_height": "",
+            "min_width": 300,
+            "min_height": 200,
             "min_size": "",
             "max_width": "",
             "max_height": "",
-            "max_size": "",
+            "max_size": 1,
             "mime_types": "",
             "insert": "prepend",
             "preview_size": "medium"
@@ -49,5 +49,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718322150
+    "modified": 1718639215
 }

@@ -35,4 +35,7 @@
 .footer-gallery {
 	border-top: 3px solid green;
 	border-bottom:3px solid green;
+	img {
+		object-fit: cover;
+	}
 }

@@ -21,6 +21,79 @@
             "selected": 0
         },
         {
+            "key": "field_6670628dac965",
+            "label": "Is a Virtual Event",
+            "name": "is_a_virtual_event",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "25",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_667062beac966",
+            "label": "Location",
+            "name": "location",
+            "aria-label": "",
+            "type": "textarea",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_6670628dac965",
+                        "operator": "!=",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "75",
+                "class": "acf-pull-right",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "rows": 3,
+            "placeholder": "",
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_667061bbb1e47",
+            "label": "Tags",
+            "name": "tags",
+            "aria-label": "",
+            "type": "taxonomy",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "inline-choices",
+                "id": ""
+            },
+            "taxonomy": "event-type",
+            "add_term": 0,
+            "save_terms": 1,
+            "load_terms": 1,
+            "return_format": "object",
+            "field_type": "checkbox",
+            "bidirectional": 0,
+            "multiple": 0,
+            "allow_null": 0,
+            "bidirectional_target": []
+        },
+        {
             "key": "field_663fdb9a8a80a",
             "label": "Reservation Link",
             "name": "reservation_link",
@@ -79,7 +152,7 @@
             "label": "Sidebar Buttons",
             "name": "sidebar_buttons",
             "aria-label": "",
-            "type": "repeater",
+            "type": "flexible_content",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -88,32 +161,87 @@
                 "class": "",
                 "id": ""
             },
-            "layout": "table",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "",
-            "button_label": "Add Sidebar Button",
-            "rows_per_page": 20,
-            "sub_fields": [
-                {
-                    "key": "field_663fdbf88a80c",
-                    "label": "Button",
-                    "name": "button",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array",
-                    "parent_repeater": "field_663fdbd28a80b"
+            "layouts": {
+                "layout_6673642f7259b": {
+                    "key": "layout_6673642f7259b",
+                    "name": "link",
+                    "label": "Link",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_663fdbf88a80c",
+                            "label": "Button",
+                            "name": "button",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array"
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
+                },
+                "layout_667364ac24080": {
+                    "key": "layout_667364ac24080",
+                    "name": "download",
+                    "label": "Download",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_66736512b5732",
+                            "label": "Download Label",
+                            "name": "download_label",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": ""
+                        },
+                        {
+                            "key": "field_667364459e289",
+                            "label": "Download File",
+                            "name": "download_file",
+                            "aria-label": "",
+                            "type": "file",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "url",
+                            "library": "all",
+                            "min_size": "",
+                            "max_size": "",
+                            "mime_types": ""
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
-            ]
+            },
+            "min": "",
+            "max": "",
+            "button_label": "Add Button"
         },
         {
             "key": "field_663fd99f8a7ff",
@@ -381,5 +509,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718481268
+    "modified": 1718838597
 }

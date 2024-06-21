@@ -33,8 +33,14 @@ get_header();
 		<header>
 			<h3 class="h3 text-center">Snapshot of Current and Previous Sponsors</h2>
 		</header>
-		<div class="container theme--medium-1">
-			<?php get_template_part('/acf-flex-starter/layouts/sponsor_logos_slider', null, array('sponsorship_levels' => ['gold', 'silver', 'bronze'])); ?>
+		<div class="container theme--medium-1 py-1">
+			<?php
+			get_template_part(
+				'/acf-flex-starter/layouts/sponsor_logos_slider',
+				null,
+				array('sponsorship_levels' => ['gold', 'silver', 'bronze'])
+			);
+			?>
 		</div>
 	</section>
 	<section id="elevate-brand">
@@ -252,17 +258,22 @@ get_header();
 	<section>
 		<div class="container--fluid">
 			<div class="testimonial-slider">
-				<?php get_template_part('/acf-flex-starter/templates/testimonial-slider', null,array()); ?>
+				<?php
+				get_template_part(
+					'/acf-flex-starter/templates/testimonial-slider',
+					null,
+					array()
+				);
+				?>
 			</div>
 		</div>
 	</section>
-	<section id="sponsor-form" class="theme--dark-gradient-1">
+	<section id="sponsor-form" class="theme--dark-gradient-1 last-section py-4">
 		<div class="container--very-narrow justify--center align-center">
 			<header class="text-center">
-				<h2 class="h2">Become a Sponsor	</h2>
-				<div class="subtitle">Get More Info</div>
+				<h2 class="fz-display">Become a Sponsor </h2>
 			</header>
-		<?php echo FrmFormsController::get_form_shortcode( array( 'id' => 2 ) ); ?>
+			<?php echo FrmFormsController::get_form_shortcode(array('id' => 2)); ?>
 		</div>
 	</section>
 

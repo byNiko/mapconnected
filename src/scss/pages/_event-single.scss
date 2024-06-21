@@ -3,5 +3,9 @@
 	.site-content {
 		@extend .container--narrow;
 	}
+
+	.speaker__logo-wrapper {
+		display: none;
+	}
 }
 

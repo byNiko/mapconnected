@@ -9,23 +9,16 @@
 					<div class="footer-branding">
 						<?php
 						$homeUrl = get_home_url();
-						$byniko_description = get_bloginfo('description', 'display');
+						
 						if ($alt_logo_url = get_theme_mod('secondary_logo')) : ?>
 							<a href='<?= $homeUrl; ?>'>
 								<img src='<?= $alt_logo_url; ?>' alt='MAPconnected Logo' class='site-footer-logo'>
 								<p class='site-description'>
-									<?= $byniko_description; ?>
+									<?= get_bloginfo('description', 'display'); ?>
 								</p>
 							</a>
 						<?php endif; ?>
 					</div> <!-- .footer-branding -->
-					<?php
-
-
-					if ($byniko_description) :
-					?>
-
-					<?php endif; ?>
 				</div>
 			</div>
 			<div class="footer-col">
@@ -80,6 +73,7 @@
 		</div><!-- .site-info -->
 	</div>
 </footer><!-- #colophon -->
+
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

@@ -7,18 +7,17 @@
  *
  * @package byniko
  */
-load_class('Speaker');
-load_class('Sponsor');
-load_class('Event');
+
 $event = new Event($post);
 $times = $event->get_time();
 $start_datetime = $times['start'];
 $end_datetime = $times['end'];
 $startDay = $start_datetime ? $start_datetime->format('D') : null;
 $startDate = $start_datetime ? $start_datetime->format('dS') : null;
+$expired_class = $event->is_past()? "event-started" : null; 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class([$expired_class]); ?>>
 	
 <header class="entry-header">
 		<?php
@@ -26,6 +25,9 @@ $startDate = $start_datetime ? $start_datetime->format('dS') : null;
 			yoast_breadcrumb('<div id="breadcrumbs" class="breadcrumbs">', '</div>');
 		}
 		?>
+		<div class="pillbox">
+		<?= $event->get_event_tag_pills();?>
+		</div>
 		<?php the_title('<h1 class="entry-title h1">', '</h1>'); ?>
 	</header><!-- .entry-header -->
 

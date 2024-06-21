@@ -1,7 +1,5 @@
 <?php
-load_class('Testimonial');
-// $args are from get_template_part include
-// print_r($args['template_args']);
+
 $arrows = true;
 $pagination = true;
 $query_args = array(

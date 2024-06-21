@@ -101,11 +101,15 @@ class Speaker {
 			 <div class='speaker__headshot'>
 				%s
 			</div>
-			 <div class='speaker__meta'>
-				<div class='speaker__name'>
+			<div class='speaker__name'>
 					 %s
 				</div>
+			 <div class='speaker__meta'>
+				
 				<div class='speaker__title'>
+				 %s 
+				</div>
+				<div class='speaker__company'>
 				 %s 
 				</div>
 		</div>
@@ -115,6 +119,7 @@ class Speaker {
 		$this->get_headshot1(),
 		$this->get_name(),
 		$this->get_title(),
+		$this->get_company(),
 		$include_anchor? "</a>": null,
 	);					
 							
@@ -137,8 +142,9 @@ class Speaker {
 		return $this->associated_events;
 	}
 
+	
 	public function the_events_list(){
-		$events = $this->get_events();
+		$events = $this->get_future_events();
 		if (!$events) return;
 
 ;		$html = "<ul class='speaker-events-list'>";
@@ -146,12 +152,71 @@ class Speaker {
 			$evt = new Event($e);
 			$format = "
 			<li class='speaker__event'>
-			<a href='%s' class='event__title'>%s</a>
+				<a href='%s' class='event__title'>%s</a>
 			</li>";
 			$html .= sprintf($format, $evt->get_permalink(), $evt->post->post_title);
 		}
 		$html .= "</ul>";
 		echo $html;
 	}
+
+	public function get_future_events(){
+		$events = $this->get_events();
+		$byniko = new Byniko();
+		if(!$events) return false;
+		
+		$future = [];
+		foreach($events as $evt){
+			$expire_at = strtotime($byniko->future_expiration());
+			$evt_date = strtotime(get_field('start_date__time',$evt));
+			if($expire_at > $evt_date){
+				$future[]= $evt;
+			}
+
+		}
+		return $future;
+	}
+
+
+public function pre_get_events($query) {
+
+	if (is_admin()) {
+		return $query;
+	}
+
+	if (isset($query->query_vars['post_type']) && $query->query_vars['post_type'] == 'event' && $query->is_main_query()) {
+		// localized for NY based on time settings
+		$dateNow = byniko_future_expiration();
+
+
+		$query->set('posts_per_page', -1);
+		$query->set('orderby', 'meta_value');
+		$query->set('order', 'ASC');
+		$query->set('meta_query', array(
+			array(
+				'key' => 'start_date__time',
+				'compare' => '>',
+				'value' => $dateNow,
+				'type' => 'DATETIME'
+			)
+		));
+		// $query->set('compare', '>=');
+		// $query->set('value', current_time('timestamp'));
+		// $query->set('meta_type', 'DATETIME');
+
+		// $query->set(
+		// 	'meta_query',
+		// 	array(
+		// 		array(
+		// 			'meta_key'           => 'start_date__time',
+		// 			'compare'       => '>=',
+		// 			'value'         => $dateNow,//current_datetime()->format('Y-m-d H:i:s'), //current_time('timestamp'),
+		// 			'type'          => 'DATETIME',
+		// 		),
+		// 	)
+		// );
+	}
+	return $query;
+}
 
 }

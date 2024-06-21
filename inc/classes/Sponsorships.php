@@ -20,7 +20,7 @@ class Sponsorships{
 			$query_args = [];
 		}
 		
-		$query_args = array_merge($default_query, $query_args) ;
+		$query_args = array_merge($query_args, $default_query) ;
 		$posts = get_posts($query_args);
 		return  $this->sponsors = $posts;
 		

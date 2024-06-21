@@ -1,12 +1,14 @@
 .speaker__meta {
 	line-height: 1.2;
+	font-size: var(--font-size--sm);
 }
 .speaker__title {
-	font-size: var(--font-size--sm);
+	
 }
 
 .speaker__name {
 	font-weight: 500;
+	line-height: 1.2;
 }
 
 .speaker-card {

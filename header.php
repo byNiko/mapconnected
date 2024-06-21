@@ -19,9 +19,12 @@
 				<div class="flex-row top-row">
 					<div class="site-branding">
 						<?php
-
 						if (has_custom_logo()) :
-							the_custom_logo();
+							the_custom_logo();?>
+							<div class='site-description'>
+									<?= get_bloginfo('description', 'display'); ?>
+						</div>
+								<?php
 						else :
 						?>
 							<h1 class="site-title">

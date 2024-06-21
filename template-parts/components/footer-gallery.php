@@ -32,8 +32,8 @@ if ($gallery) :
 					?>
 						<li class="splide__slide footer-gallery-slide" >
 							<?php 
-							$url = wp_get_attachment_image_url($imageID, 'small');
-							$alt = get_post_meta($imageID, '_wp_attachment_image_alt', true)?: "test" ;
+							$url = wp_get_attachment_image_url($imageID, 'footer-gallery');
+							$alt = get_post_meta($imageID, '_wp_attachment_image_alt', true)?: "Footer Gallery Image" ;
 							echo "<img src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' data-splide-lazy='$url' alt='$alt'/>"
 							?>
 						</li>

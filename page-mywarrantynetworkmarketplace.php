@@ -14,9 +14,7 @@
  */
 
 get_header();
-load_class("Sponsor");
-load_class("Sponsorships");
-load_class("Event");
+
 ?>
 <main id="primary" class="site-main">
 	<header class="container--narrow">
@@ -31,9 +29,18 @@ load_class("Event");
 	<section id="marketplace_sponsor_logos_wrap">
 		<div class="container--very-narrow theme--medium-1">
 			<h4 class="text-center">Marketplace Sponsors </h4>
-			<?php get_template_part('/acf-flex-starter/layouts/sponsor_logos_slider', null, array('sponsorship_levels' => 'gold')); ?>
+			<?php
+			get_template_part(
+				'/acf-flex-starter/layouts/sponsor_logos_slider',
+				null,
+				array(
+					'sponsorship_levels' => array('gold', 'silver', 'bronze'),
+					'slider_options' => ['perPage' => "12"]
+				)
+			);
+			?>
 			<div class="flex-row justify--center">
-				<a href="#" class="text-link fw-semi-bold">Show me the marketplace</a>
+				<a href="#marketplace" class="text-link fw-semi-bold">Show me the marketplace</a>
 			</div>
 		</div>
 	</section>
@@ -65,7 +72,6 @@ load_class("Event");
 	if ($q->have_posts()) :
 	?>
 		<style>
-			
 			.main.articles {
 				grid-area: main;
 			}
@@ -81,46 +87,50 @@ load_class("Event");
 					"main sidebar"
 			}
 		</style>
-		<section class="blog_and_news__wrapper ">
-			<div class="container--narrow grid-sidebar">
+		<section class="blog_and_news__wrapper theme--medium-1 py-4">
+			<header class="text-center">
+				<h2 class="fz-display">News and Events</h2>
+			</header>
+			<div class="container-fluid">
 				<div class="articles main">
+
 					<?php while ($q->have_posts()) : $q->the_post(); ?>
 						<?php $event = new Event($post); ?>
 						<div class="article">
 							<h3 class="h3 event--title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-							<div class="event--description"><?= wp_trim_words($event->get_description(), 55); ?> </div>
+							<div class="event--description"><?= wp_trim_words($event->get_description(), 15); ?> </div>
 						</div>
 					<?php endwhile;
 					wp_reset_query(); ?>
 				</div>
-				<aside class="main-sidebar">
-					sidebar here
-				</aside>
 			</div>
+			<footer class="text-center">
+			<a href="/blog" class="button button--text">View all News</a>
+			</footer>
 		</section>
 		<?php
 		$spships = new Sponsorships();
 		$all_sponsors = $spships->get_sponsors_by_level();
 		if ($all_sponsors) :
 		?>
-			<section>
+			<section id="marketplace">
 				<div class="container--narrow">
 					<div class="grid __2x justify--center">
 						<?php foreach ($all_sponsors as $sp) : ?>
 							<?php $sponsor = new Sponsor($sp); ?>
-							<div class="sponsor-item" id="<?= $sponsor->get_slug();?>">
+							<div class="sponsor-item" id="<?= $sponsor->get_slug(); ?>">
 								<div class="sponsor__logo">
 									<?php echo $sponsor->get_logo_image(); ?>
 								</div>
 								<div class="sponsor__name">
 									<?php the_title(); 	?>
 								</div>
-								<div class="sponsor__description collapse-panel"  id="<?= $sponsor->get_slug(). '__collapse';?>" aria-expanded="false">
-									<div class="collapsed" >
-									<?php echo $sponsor->get_description(); 	?>
+								<div class="sponsor__description collapse-panel" id="<?= $sponsor->get_slug() . '__collapse'; ?>" aria-expanded="false">
+									<div class="collapsed">
+										<?php echo $sponsor->get_description(); 	?>
 									</div>
 								</div>
-								<button class="show-more button--text fz-sm" data-toggle-text="Show Less" data-toggle="collapse" data-target="#<?= $sponsor->get_slug(). '__collapse';?>">
+								<button class="show-more button--text fz-sm" data-toggle-text="Show Less" data-toggle="collapse" data-target="#<?= $sponsor->get_slug() . '__collapse'; ?>">
 									Show More ...
 								</button>
 								<a href="<?= $sponsor->get_company_url(); ?>" class="button button--primary">Website</a>

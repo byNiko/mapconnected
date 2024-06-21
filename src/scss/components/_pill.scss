@@ -5,3 +5,8 @@
 	border-radius: 1rem;
 	border: 1px dotted var(--color-secondary-400);
 }
+
+.pillbox {
+	display: flex;
+	column-gap: 10px;
+}

@@ -1,16 +1,22 @@
 .frm_primary_label {
 	color: var(--color-text)!important;
 }
+
+
+
 .theme--light-1 {
+	--color-text: var(--color-primary-900);
 	// color: var(--color-text);
 	background-color: var(--color-secondary-100);
 }
 
 .theme--light-2 {
+	--color-text: var(--color-primary-900);
 	// color: var(--color-text);
 	background-color: var(--color-primary-33);
 }
 .theme--light-3 {
+	--color-text: var(--color-primary-900);
 	// color: var(--color-text);
 	background-color: var(--color-secondary-300);
 }
@@ -35,6 +41,5 @@ section{
 
 .theme--dark-gradient-1{
 	--color-text: var(--color-primary-25);
-	// color: var(--color-primary-25);
 	background-image: var(--dark-gradient-1)
 }

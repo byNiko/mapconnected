@@ -127,3 +127,16 @@
 	border: none;
 
 }
+
+.disabled {
+	cursor: not-allowed;
+}
+.button.disabled,
+.button[disabled]{
+	pointer-events: none;
+	background: #ccc;
+	opacity: .4;
+	position: relative;
+	z-index: 0;
+
+}
