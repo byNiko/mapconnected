@@ -5,27 +5,39 @@
 //   lg : var(--font-size--lg),
 //   xl : 
 // );
-@mixin button($backgroundColor: transparent, $color: var(--color-primary-400), $hoverBackground: transparent, $hoverColor: var(--color--accent), $size: "sm", $weight: 500) {
-	// @if map-has-key($sizes, $size) {
-	// 	//$size: map-get($sizes, $size);
-	//   } 
+@mixin button($backgroundColor: var(--color-primary-400), $color: var(--color-white), $size: "sm", $weight: 500) {
+	--background: #{$backgroundColor};
+	--text-color: $color;
+	--hoverBackground: var(--text-color, $color);
+	--hoverTextColor: var(--background, $background);
+	display: inline-block;
+	justify-content: center;
+	align-items: center;
 	font-size: $size;
 	font-size: var(--font-size--#{$size});
-	background-color: #{$backgroundColor};
-	color: $color;
+	background-color: var(--background);
+	color: var(--text-color);
 	font-weight: $weight;
-	border: 1px solid;
+	border: 1px solid currentColor;
 	padding: calc(.75 * var(--spacer)) calc(1.5 * var(--spacer));
 	padding: var(--spacer-3) var(--spacer-5);
 	border-radius: var(--radius-btn);
 	line-height: 1;
 	text-align: center;
-	margin-bottom: var(--spacer-2);
 	transition: background-color .2s, color .2s;
+	position: relative;
 
 	&:hover {
-		background-color: #{$hoverBackground};
-		color: #{$hoverColor};
+		background-color: var(--hoverBackground);
+		color: var(--hoverTextColor);
+	}
+}
+
+.theme--medium-1,
+.theme--medium-2 {
+	.button {
+	--background: var(--color-primary-33);
+	--text-color: var(--black);
 	}
 }
 
@@ -38,11 +50,12 @@
 }
 
 .button--sm {
-	@include button($size: "xs");
+	font-size: var(--font-size--sm);
 }
 
 .button--accent {
-	@include button();
+	--background: var(--color--primary-accent);
+
 }
 
 .button--secondary {
@@ -110,8 +123,8 @@
 	font-size: var(--font-size--md);
 }
 
+
 .button--full-width {
-	display: inline-block;
 	width: 100%;
 }
 
@@ -119,13 +132,16 @@
 	font-size: var(--font-size--lg);
 }
 
-
+.button--inline-submit {
+	padding: 0.4rem 1rem;
+    margin-bottom: 0;
+}
 .button--text {
-
+	display: inline-block;
+	padding:0;
 	background: none;
 	color: var(--color-link);
 	border: none;
-
 }
 
 .disabled {
@@ -140,3 +156,54 @@
 	z-index: 0;
 
 }
+
+
+.button--play {
+	--dim : 40px;
+	position: relative;
+	cursor: pointer;
+	display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .5rem 1rem;
+    /* background: var(--color-primary-accent); */
+    border-radius: var(--radius-1);
+    border: 1px solid var(--color-primary-400);
+	&:hover {
+		box-shadow: 0 0 5px #ccc;
+	}
+	.circle {
+		
+	  width:var(--dim);
+	  height:var(--dim);
+	  border-radius: 50%;
+	  background-color: green;
+	  transition: filter 0.2s;
+	}
+  
+	svg {
+	  fill: white;
+	  stroke: white;
+	  stroke-width: 2;
+	  transition: all 0.3s;
+	}
+	&:hover {
+	  .circle {
+		filter: brightness(110%);
+	  }
+	  svg {
+		transform: scale(1.2, 1.2);
+	  }
+	}
+  }
+  
+  @keyframes pulse {
+	0% {
+	  transform: scale(1, 1);
+	}
+  
+	100% {
+	  transform: scale(1.2, 1.2);
+	}
+  }
+  

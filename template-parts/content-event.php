@@ -20,11 +20,6 @@ $expired_class = $event->is_past()? "event-started" : null;
 <article id="post-<?php the_ID(); ?>" <?php post_class([$expired_class]); ?>>
 	
 <header class="entry-header">
-		<?php
-		if (function_exists('yoast_breadcrumb')) {
-			yoast_breadcrumb('<div id="breadcrumbs" class="breadcrumbs">', '</div>');
-		}
-		?>
 		<div class="pillbox">
 		<?= $event->get_event_tag_pills();?>
 		</div>
@@ -33,9 +28,8 @@ $expired_class = $event->is_past()? "event-started" : null;
 
 
 	<div class="entry-content">
-	<?php byniko_post_thumbnail(); ?>
 		<div class="event--description">
-			<div class="fz-md">
+			<div class="fz-sm">
 			<?= $event->get_description(); ?>
 			</div>
 			

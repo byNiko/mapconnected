@@ -1,19 +1,31 @@
 .speaker__meta {
 	line-height: 1.2;
 	font-size: var(--font-size--sm);
+	font-weight: 500;
+	font-size: 1rem;
+	// font-size: clamp(.8rem, 7cqi, 1.2rem)
 }
 .speaker__title {
+	font-size: 1em;;
+}
+.speaker__company {
+	font-style: italic;
+	font-weight: 400;
+	font-size: .7rem;
+	font-size: .8em;
 	
 }
-
 .speaker__name {
-	font-weight: 500;
 	line-height: 1.2;
+	font-size: 1rem;
+	font-size: .9em;
 }
 
 .speaker-card {
 	display: flex;
 	flex-direction: column;
+	container-type: inline-size;
+	font-size: clamp(.8rem, 7cqi, 1rem)
 }
 
 
@@ -25,6 +37,7 @@ row-gap: var(--spacer-8);
 	position: relative;
 	border-radius: var(--radius-1);
 	overflow: hidden;
+	margin-bottom: var(--spacer-2);
 }
 
 .speaker__logo-wrapper {
@@ -35,6 +48,7 @@ row-gap: var(--spacer-8);
 
 .speaker__logo-content {
 	max-width: 150px;
+	max-width: 50%;
 	height: 40px;
 	display: flex;
 	align-items: flex-end;

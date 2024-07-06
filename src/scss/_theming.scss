@@ -20,6 +20,11 @@
 	// color: var(--color-text);
 	background-color: var(--color-secondary-300);
 }
+.theme--bright-1 {
+	--color-text: var(--color-primary-900);
+	// color: var(--color-text);
+	background-color: var(--color-secondary-600);
+}
 section{
 &.theme--dark-1,
 &.theme--dark-gradient-1,

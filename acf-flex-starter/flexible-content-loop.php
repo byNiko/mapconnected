@@ -20,28 +20,28 @@ if (have_rows('content_container')) :
 
     // Loop through the rows of data
     while (have_rows('content_container')) : the_row();
-    $theme_style = get_sub_field('theme');
+        $theme_style = get_sub_field('theme');
 
 ?>
-        <section class="theme--<?= $theme_style;?>">
-        <?php
-        // nested flexible content
-        if (have_rows('layouts')) :  while (have_rows('layouts')) : the_row();
-                $layout = get_row_layout();
-                // Increment the counter for each slider
-                if ($layout == 'slider' || $layout == 'testimonials') {
-                    $slider_counter++;
-                    set_query_var('slider_id', 'slider-' . $slider_counter);
-                }
+        <section class="theme--<?= $theme_style; ?>">
+            <?php
+            // nested flexible content
+            if (have_rows('layouts')) :  while (have_rows('layouts')) : the_row();
+                    $layout = get_row_layout();
+                    // Increment the counter for each slider
+                    if ($layout == 'slider' || $layout == 'testimonials') {
+                        $slider_counter++;
+                        set_query_var('slider_id', 'slider-' . $slider_counter);
+                    }
 
-                // Include the layout file
-                get_template_part('acf-flex-starter/layouts/' . $layout);
+                    // Include the layout file
+                    get_template_part('acf-flex-starter/layouts/' . $layout);
 
-            endwhile;
+                endwhile;
 
-        endif;
-    endwhile;
-        ?>
+            endif;
+            ?>
         </section>
-    <?php
+<?php
+    endwhile;
 endif;

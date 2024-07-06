@@ -16,9 +16,45 @@ class VideoModal {
 	}
 	public function get_vimeo_id() {
 	}
-	public function get_video_modal_trigger($trigger_text = "Play Video", $class="button button--play") {
-		return $this->video_url? "<button class='$class' data-micromodal-trigger='$this->id'>$trigger_text ►</button>" : '';
+	public function get_video_modal_trigger($trigger_text = "", $class = "button button--play") {
+		return $this->video_url ? $this->get_play_button($trigger_text) : '';
 	}
+	public function get_video_modal_trigger_old($trigger_text = "", $class = "button button--play") {
+		return $this->video_url ? "<div>" . $this->get_play_button($this->id, $trigger_text). " </div>" : '';
+	}
+
+	public function get_play_button_old($trigger_id, $trigger_text="") {
+			return sprintf(
+				'
+			<div class="button--play" data-micromodal-trigger=\'%s\'>
+	<div class="circle">
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+		<polygon points="40,30 65,50 40,70"></polygon>
+		</svg>
+	</div>
+	<div class="trigger_text">%s</div>
+	</div>
+			',
+				$trigger_id,
+				$trigger_text
+			);
+		}
+	public function get_play_button( $trigger_text="") {
+			return sprintf(
+				"
+			<div class='button--play' data-micromodal-trigger='video-modal' data-video-url='%s'>
+	<div class='circle'>
+		<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+		<polygon points='40,30 65,50 40,70'></polygon>
+		</svg>
+	</div>
+	<div class='trigger_text'>%s</div>
+	</div>
+			",
+			$this->video_url,
+				$trigger_text
+			);
+		}
 
 	public function get_video_modal_html() {
 		return sprintf(

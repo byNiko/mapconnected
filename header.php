@@ -12,19 +12,23 @@
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
 	<div id="page" class="site">
+
 		<?php echo byniko_get_theme_image('GeoPin_Outline.svg', array('class' => 'geopin_header')); ?>
-		<?php //echo byniko_get_theme_image('Wheel-stroke.svg', array('class' => 'gear_body')); ?>
+		<?php get_template_part('/template-parts/components/notification-bar');?>
 		<header id="masthead" class="site-header ">
+			<div class="notification-bar">
+				<div class="h2"></div>
+			</div>
 			<div class="container container--wide">
 				<div class="flex-row top-row">
 					<div class="site-branding">
 						<?php
 						if (has_custom_logo()) :
-							the_custom_logo();?>
+							the_custom_logo(); ?>
 							<div class='site-description'>
-									<?= get_bloginfo('description', 'display'); ?>
-						</div>
-								<?php
+								<?= get_bloginfo('description', 'display'); ?>
+							</div>
+						<?php
 						else :
 						?>
 							<h1 class="site-title">

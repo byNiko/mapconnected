@@ -5,19 +5,17 @@ $mobile_order = get_sub_field('mobile_order');
 $background_color = get_sub_field('background_color');
 $columns = get_sub_field('columns');
 $theme = get_sub_field('theme_group');
-$theme_class = $theme && $theme['theme']==='false'?  false : 'theme--'. $theme['theme'];
-$padding_class= $theme_class ? 'has_background' : false;
+$theme_class = $theme && $theme['theme'] === 'false' ?  false : 'theme--' . $theme['theme'];
+$padding_class = $theme_class ? 'has_background' : false;
 $is_single_col = count($columns) === 1;
-$container_class = $is_single_col?  'container--single-column' :'container--narrow';
+$container_class = $is_single_col ?  'container--single-column' : 'container--narrow';
+if (have_rows('columns')) :
 ?>
 
-<section class="media-text">
-    <!-- Replace '=container--narrow' with your own container class -->
-    <div class="<?= get_css_classes($container_class, $alignment_class, $theme_class, $padding_class); ?>" >
-
-
-        <?php if (have_rows('columns')) : ?>
-            <div class="flex-row" >
+    <div class="media-text">
+        <!-- Replace '=container--narrow' with your own container class -->
+        <div class="<?= get_css_classes($container_class, $alignment_class, $theme_class, $padding_class); ?>">
+            <div class="flex-row">
                 <?php
                 while (have_rows('columns')) : the_row();
                     // Get image or text content type
@@ -62,13 +60,13 @@ $container_class = $is_single_col?  'container--single-column' :'container--narr
                         $text = get_sub_field('text');
                         $link = get_sub_field('link');
                         $text_font_size = get_sub_field('text_font_size');
-                        $textAlign = $is_single_col? "text-center" : false;
+                        $textAlign = $is_single_col ? "text-center" : false;
                         ?>
 
                         <div class="<?= get_css_classes('media-text__block media-text__block--text', $mobile_order_class); ?>">
                             <?php if (!empty($heading)) : ?>
-                                <header class="<?= $textAlign;?> " >
-                                <h3 class="h3"><?= esc_html($heading); ?></h3>
+                                <header class="<?= $textAlign; ?> ">
+                                    <h3 class="h3"><?= esc_html($heading); ?></h3>
                                 </header>
                             <?php endif; ?>
 
@@ -87,6 +85,6 @@ $container_class = $is_single_col?  'container--single-column' :'container--narr
                 endwhile;
                 ?>
             </div>
-        <?php endif; ?>
+        </div>
     </div>
-</section>
+<?php endif;

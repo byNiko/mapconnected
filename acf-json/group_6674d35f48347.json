@@ -4,10 +4,10 @@
     "fields": [
         {
             "key": "field_6674d454f2f9f",
-            "label": "Registration Link",
-            "name": "registration_link",
+            "label": "Registration Links",
+            "name": "registration_links",
             "aria-label": "",
-            "type": "link",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,7 +16,41 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array"
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_667a0abf2b6e3",
+                    "label": "OEM | OES Registration Link",
+                    "name": "oem__oes_registration_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_667a0ade2b6e4",
+                    "label": "Tech Advisory Registration Link",
+                    "name": "tech_advisory_registration_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                }
+            ]
         },
         {
             "key": "field_6674d429f2f9e",
@@ -32,7 +66,7 @@
                 "class": "",
                 "id": ""
             },
-            "return_format": "array",
+            "return_format": "id",
             "library": "all",
             "min_width": "",
             "min_height": "",
@@ -44,11 +78,11 @@
             "preview_size": "medium"
         },
         {
-            "key": "field_6674d35ff4857",
-            "label": "Key Speakers",
-            "name": "key_speakers",
+            "key": "field_667b39f2594b2",
+            "label": "Agenda Group",
+            "name": "agenda_group",
             "aria-label": "",
-            "type": "relationship",
+            "type": "group",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -57,84 +91,137 @@
                 "class": "",
                 "id": ""
             },
-            "post_type": [
-                "speaker"
-            ],
-            "post_status": [
-                "publish"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "return_format": "object",
-            "min": "",
-            "max": "",
-            "elements": [
-                "featured_image"
-            ],
-            "bidirectional": 0,
-            "bidirectional_target": []
-        },
-        {
-            "key": "field_6674d3f2e0cd1",
-            "label": "All Speakers",
-            "name": "all_speakers",
-            "aria-label": "",
-            "type": "relationship",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "post_type": [
-                "speaker"
-            ],
-            "post_status": [
-                "publish"
-            ],
-            "taxonomy": "",
-            "filters": [
-                "search"
-            ],
-            "return_format": "object",
-            "min": "",
-            "max": "",
-            "elements": [
-                "featured_image"
-            ],
-            "bidirectional": 0,
-            "bidirectional_target": []
-        },
-        {
-            "key": "field_6674e7fd0e521",
-            "label": "Daily Agendas",
-            "name": "daily_agendas",
-            "aria-label": "",
-            "type": "repeater",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "row",
-            "pagination": 0,
-            "min": 0,
-            "max": 0,
-            "collapsed": "field_6674e80e0e522",
-            "button_label": "Add Day's Agenda",
-            "rows_per_page": 20,
+            "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_6674e80e0e522",
-                    "label": "Title",
-                    "name": "title",
+                    "key": "field_667b3b8417bc3",
+                    "label": "Agenda Download",
+                    "name": "agenda_download",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_6674e7fd0e521",
+                    "label": "Daily Agendas",
+                    "name": "daily_agendas",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "row",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "field_6674e80e0e522",
+                    "button_label": "Add Day's Agenda",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_6674e80e0e522",
+                            "label": "Title",
+                            "name": "title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_6674e7fd0e521"
+                        },
+                        {
+                            "key": "field_6674e81c0e523",
+                            "label": "Date(s)",
+                            "name": "dates",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_6674e7fd0e521"
+                        },
+                        {
+                            "key": "field_6674e8320e524",
+                            "label": "Content",
+                            "name": "content",
+                            "aria-label": "",
+                            "type": "wysiwyg",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "tabs": "all",
+                            "toolbar": "full",
+                            "media_upload": 1,
+                            "delay": 0,
+                            "parent_repeater": "field_6674e7fd0e521"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_667b6bc0dea89",
+            "label": "Speakers Group",
+            "name": "speakers_group",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_6685e20c4e438",
+                    "label": "Key Speakers Title",
+                    "name": "key_speakers_title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -149,13 +236,163 @@
                     "maxlength": "",
                     "placeholder": "",
                     "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_6674e7fd0e521"
+                    "append": ""
                 },
                 {
-                    "key": "field_6674e81c0e523",
-                    "label": "Date(s)",
-                    "name": "dates",
+                    "key": "field_6674d35ff4857",
+                    "label": "Key Speakers",
+                    "name": "key_speakers",
+                    "aria-label": "",
+                    "type": "relationship",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "post_type": [
+                        "speaker"
+                    ],
+                    "post_status": [
+                        "publish"
+                    ],
+                    "taxonomy": "",
+                    "filters": [
+                        "search"
+                    ],
+                    "return_format": "object",
+                    "min": "",
+                    "max": "",
+                    "elements": [
+                        "featured_image"
+                    ],
+                    "bidirectional": 0,
+                    "bidirectional_target": []
+                },
+                {
+                    "key": "field_667f44a60b204",
+                    "label": "Speakers Repeater",
+                    "name": "speakers_repeater",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "",
+                    "button_label": "Add Row",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_667f46107f425",
+                            "label": "Hide Group",
+                            "name": "hide_group",
+                            "aria-label": "",
+                            "type": "true_false",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "message": "",
+                            "default_value": 0,
+                            "ui_on_text": "",
+                            "ui_off_text": "",
+                            "ui": 1,
+                            "parent_repeater": "field_667f44a60b204"
+                        },
+                        {
+                            "key": "field_667b6bd3dea8a",
+                            "label": "Summit Speakers Title",
+                            "name": "summit_speakers_title",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_667f44a60b204"
+                        },
+                        {
+                            "key": "field_6674d3f2e0cd1",
+                            "label": "All Speakers",
+                            "name": "all_speakers",
+                            "aria-label": "",
+                            "type": "relationship",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "speaker"
+                            ],
+                            "post_status": [
+                                "publish"
+                            ],
+                            "taxonomy": "",
+                            "filters": [
+                                "search"
+                            ],
+                            "return_format": "object",
+                            "min": "",
+                            "max": "",
+                            "elements": [
+                                "featured_image"
+                            ],
+                            "bidirectional": 0,
+                            "bidirectional_target": [],
+                            "parent_repeater": "field_667f44a60b204"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_66847210dda0b",
+            "label": "Sponsorship Group",
+            "name": "sponsorship_group",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_66847222dda0c",
+                    "label": "Section Title",
+                    "name": "section_title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -170,13 +407,210 @@
                     "maxlength": "",
                     "placeholder": "",
                     "prepend": "",
-                    "append": "",
-                    "parent_repeater": "field_6674e7fd0e521"
+                    "append": ""
                 },
                 {
-                    "key": "field_6674e8320e524",
-                    "label": "Content",
-                    "name": "content",
+                    "key": "field_6675b9215d95c",
+                    "label": "Sponsorships",
+                    "name": "sponsorships",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "row",
+                    "pagination": 0,
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "field_6675b9405d95d",
+                    "button_label": "Add Sponsor Level",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_6675b9405d95d",
+                            "label": "Sponsor Level",
+                            "name": "sponsor_level",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "placeholder": "Gold",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_6675b9215d95c"
+                        },
+                        {
+                            "key": "field_6675b9755d95e",
+                            "label": "Sponsors",
+                            "name": "sponsors",
+                            "aria-label": "",
+                            "type": "relationship",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "post_type": [
+                                "sponsor"
+                            ],
+                            "post_status": [
+                                "publish"
+                            ],
+                            "taxonomy": "",
+                            "filters": [
+                                "search"
+                            ],
+                            "return_format": "object",
+                            "min": "",
+                            "max": "",
+                            "elements": "",
+                            "bidirectional": 0,
+                            "bidirectional_target": [],
+                            "parent_repeater": "field_6675b9215d95c"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_667a23b9555f5",
+            "label": "Brochure Group",
+            "name": "brochure_group",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_667a23ce555f6",
+                    "label": "Download Brochure Label",
+                    "name": "download_brochure_label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Get the Summit Brochure",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_667a2396555f4",
+                    "label": "Brochure Download",
+                    "name": "brochure_download",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_667a25513bac2",
+                    "label": "Brochure Thumbnail Image",
+                    "name": "image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
+                }
+            ]
+        },
+        {
+            "key": "field_667f380e3e051",
+            "label": "Travel Group",
+            "name": "travel_group",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "sub_fields": [
+                {
+                    "key": "field_667f38173e052",
+                    "label": "Travel Headline",
+                    "name": "travel_headline",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_667f382b3e053",
+                    "label": "Travel Text",
+                    "name": "travel_text",
                     "aria-label": "",
                     "type": "wysiwyg",
                     "instructions": "",
@@ -191,8 +625,48 @@
                     "tabs": "all",
                     "toolbar": "full",
                     "media_upload": 1,
-                    "delay": 0,
-                    "parent_repeater": "field_6674e7fd0e521"
+                    "delay": 0
+                },
+                {
+                    "key": "field_667f38383e054",
+                    "label": "Travel Link",
+                    "name": "travel_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_667f38483e055",
+                    "label": "Travel Image",
+                    "name": "travel_image",
+                    "aria-label": "",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "preview_size": "medium"
                 }
             ]
         }
@@ -230,5 +704,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718982530
+    "modified": 1720050211
 }

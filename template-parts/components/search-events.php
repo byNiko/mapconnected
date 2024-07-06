@@ -1,8 +1,7 @@
-<form action="">
-	<input type="text" placeholder="Search Events" name="s" value="">
-	<input type="text" hidden="hidden" name="post_type" value="event">
-	<button class="button button--primary">submit</button>
-	<?php
+<form role="search" method="get">
+	<input type="search" placeholder="Search Events" name="s" value="">
+	<input type="hidden" name="post_type" value="event">
+	<?php //wp_nonce_field( 'name_of_my_action', 'name_of_nonce_field' ); ?>
+	<button class="button button--primary button--inline-submit">submit</button>
 
-	?>
 </form>

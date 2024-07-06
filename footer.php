@@ -75,7 +75,8 @@
 </footer><!-- #colophon -->
 
 </div><!-- #page -->
-
+<?php //get_template_part('/template-parts/components/modal-form__contact'); ?>
+<?php echo (new Byniko())->get_video_modal_html(); ?>
 <?php wp_footer(); ?>
 
 </body>

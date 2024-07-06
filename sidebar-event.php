@@ -39,6 +39,13 @@ function byniko_get_event_time_list_item($value, $label, $time = true) {
 		<?= byniko_get_event_time_list_item($times['registration_ends'], "Registration Ends", false); ?>
 		<?= byniko_get_event_time_list_item($times['early_registration_cutoff'], "Early Registration Cutoff", false); ?>
 		<?= byniko_get_event_time_list_item($times['late_registration_begins'], "Late Registration Begins", false); ?>
+		<?php
+		if (have_rows('datetime_repeater')) : while (have_rows('datetime_repeater')) : the_row();
+				if ($dateTime = get_sub_field('custom_date_time'))
+					echo byniko_get_event_time_list_item(new DateTime($dateTime), get_sub_field('label'), true);
+			endwhile;
+		endif;
+		?>
 	</div>
 	<div class="event__buttons-list no-bullets flex-column  event-sidebar mt-1">
 		<?php
@@ -50,7 +57,8 @@ function byniko_get_event_time_list_item($value, $label, $time = true) {
 				}
 				if ($layout == 'download') {
 					$file_url = get_sub_field('download_file');
-					$label = get_sub_field('download_label')?: "Download";
+					$label = get_sub_field('download_label') ?: "Download";
+					if($file_url && $label)
 					echo "<a href='$file_url' class='button button--tertiary button--outline' download>$label <span class='dashicons dashicons-download'></span></a>";
 				}
 			endwhile;

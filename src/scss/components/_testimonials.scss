@@ -1,8 +1,38 @@
 .testimonial-slider {
+	padding-top: var(--spacer-12);
+	padding-bottom: var(--spacer-12);
 	.is-visible .testimonial-slider--item:hover {
 		box-shadow: 0 4px 8px #999;
-		// transform: scale(1.1);
 		transition: box-shadow .2s;
+	}
+	.testimonial-card {
+		height: 100%;
+	}
+
+	.testimonial-card__quote-wrapper{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		q {margin-top: auto;}
+	}
+	
+	.testimonial-card__footer {
+		margin-top: auto;
+		.testimonial-card__logo-wrapper {
+			order:10;
+		}
+		.testimonial__name {
+			order: 4;
+			font-weight: 300;
+			font-size: var(--font-size--sm);
+		}
+	
+		.testimonial-card__title {
+			font-weight: 500;
+		}
+		.button--play {
+			order: 20;
+		}
 	}
 }
 
@@ -15,9 +45,6 @@
 	text-align: left;
 	background-color: var(--color-secondary-200);
 	font-size: var(--font-size--sm);
-
-	q {}
-
 	img {
 		border-radius: var(--radius-1);
 	}
@@ -27,8 +54,6 @@
 		content: '"';
 		line-height: 1;
 	}
-
-	cite {}
 }
 
 .testimonial-card__footer {
@@ -36,6 +61,7 @@
 	display: flex;
 	text-align: right;
 	font-size: var(--font-size--sm);
+	align-items: flex-end;
 
 	.testimonial__name {
 		font-size: var(--font-size--md);
@@ -43,6 +69,10 @@
 
 	.testimonials-card__image-wrapper {
 		width: 20%;
+	}
+	.button--play {
+		margin-left: auto;;
+		margin-top: var(--spacer-2);
 	}
 }
 
@@ -61,8 +91,9 @@
 		max-width: 960px;
 		margin-left: auto;
 		margin-right: auto;
-		padding-left: var(--spacer-grid);
-		padding-right: var(--spacer-grid);
+		background: var(--color-secondary-200);
+		padding: calc(2 * var(--spacer-grid));
+		border-radius: var(--border-radius);
 	}
 
 	blockquote {
@@ -102,6 +133,8 @@
 	display: flex;
 	justify-content: flex-end;
 	align-items: flex-end;
+	gap: 1rem;
+	
 
 	.testimonial__company-logo {
 		width: 100%;
@@ -110,25 +143,5 @@
 			width: 100%;
 			max-width: 100px;
 		}
-	}
-}
-
-.testimonial_has_video {
-	position: relative;
-
-	&:hover::before {
-		content: "Play";
-		cursor: pointer;
-		position: absolute;
-		left: 0;
-		right: 0;
-		top: 0;
-		bottom: 0;
-		opacity: .3;
-		background-color: var(--color-primary-900);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		display: none;
 	}
 }

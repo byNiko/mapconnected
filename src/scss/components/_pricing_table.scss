@@ -1,0 +1,81 @@
+.benefits__wrap {
+	padding:0;
+	display: grid;
+	gap: 1rem;
+	list-style-type: none;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+	justify-content: center;
+}
+.benefit__column-header {
+	flex: auto;
+	margin-bottom: auto;
+	background: var(--color-text);
+	width: 100%;
+	border-radius: var(--border-radius);
+	padding: var(--spacer-2);
+
+	.benefit__header-item {
+		color: white;
+	}
+}
+
+.benefit-column-grid {
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+
+	&.benefit__labels {
+		display: none;
+		max-width: 250px;
+		line-height: 1.2;
+		padding-right: 1em;
+	}
+
+	&.benefits__list {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border: 1px solid;
+		border-radius: var(--radius-2);
+		text-align: center;
+		background: var(--color-secondary-200);
+		position: relative;
+	}
+
+	.benefit__label {
+		font-weight: 400;
+		font-size: var(--font-size--xs);
+	}
+
+	.benefit__link {
+		box-shadow: 0 0 3px -1px #333;
+		margin: .5rem;
+		flex: 1;
+
+		&:empty {
+			display: none;
+		}
+	}
+
+	.benefit__value {}
+
+	& > .benefit__item {
+		width: 100%;
+		padding-top: .5rem;
+		border-top: 1px solid #ccc;
+		min-height: 1em;
+		margin-top: .5em;
+		line-height: 1.2;
+	}
+
+	
+}
+
+.pricing-table__header {
+	.active {
+		background: var(--color-primary-900);
+		color: white;
+		box-shadow: 0 2px 5px #333;
+	}
+}

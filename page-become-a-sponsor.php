@@ -20,32 +20,55 @@ get_header();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/regular.min.css" integrity="sha512-KYEnM30Gjf5tMbgsrQJsR0FSpufP9S4EiAYi168MvTjK6E83x3r6PTvLPlXYX350/doBXmTFUEnJr/nCsDovuw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css" integrity="sha512-Hp+WwK4QdKZk9/W0ViDvLunYjFrGJmNDt6sCflZNkjgvNq9mY+0tMbd6tWMiAlcf1OQyqL4gn2rYp7UsfssZPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <main id="primary" class="site-main">
-	<section class="container--very-narrow">
+	<section class="theme--false container--very-narrow">
 		<header class="text-center">
 			<h1 class="fz-display">Become a Sponsor!</h1>
 			<h2 class="h2 subtitle">Expand Your Professional Brand Through Our Network of Motor Vehicle Warranty Professionals</h2>
 		</header>
 		<div class="content">
-			<p class="fz-md">Mapconnected Offers A Year-Round Unique Platform To Expand Your Professional Brand Along The Motor Vehicle Warranty And Aftercare Services Chain.</p>
+			<p class="fz-md">MAPconnected Offers A Year-Round Unique Platform To Expand Your Professional Brand Along The Motor Vehicle Warranty And Aftercare Services Chain.</p>
 		</div>
 	</section>
-	<section id="curent_prev_sponsors">
-		<header>
-			<h3 class="h3 text-center">Snapshot of Current and Previous Sponsors</h2>
-		</header>
-		<div class="container theme--medium-1 py-1">
-			<?php
-			get_template_part(
-				'/acf-flex-starter/layouts/sponsor_logos_slider',
-				null,
-				array('sponsorship_levels' => ['gold', 'silver', 'bronze'])
-			);
-			?>
-		</div>
-	</section>
-	<section id="elevate-brand">
-		<div class="container--narrow">
-			<h2 class="h2 text-center">Elevate Your Brand.</h2>
+	<?php
+	$sponsors = get_field('sponsors_group');
+	$count = count($sponsors);
+	$group1 = array_slice($sponsors, 0, $count / 2 );
+	$group2 = array_slice($sponsors, $count / 2 );
+	if ($sponsors) :
+	?>
+		<section id="curent_prev_sponsors">
+			<header>
+				<h3 class="h3 text-center">Snapshot of Current and Previous Sponsors</h2>
+			</header>
+			<div class="container theme--medium-1 py-1">
+				<?php
+				get_template_part(
+					'/acf-flex-starter/layouts/sponsor_logos_slider',
+					null,
+					array(
+						'sponsors' => $group1,
+						'slider_options' => ['perPage' => "8"]
+					)
+				);
+				?>
+			</div>
+			<div class="container theme--medium-1 py-1">
+				<?php
+				get_template_part(
+					'/acf-flex-starter/layouts/sponsor_logos_slider',
+					null,
+					array(
+						'sponsors' => $group2,
+						'slider_options' => ['perPage' => "8", 'direction'=>'rtl']
+					)
+				);
+				?>
+			</div>
+		</section>
+	<?php endif; ?>
+	<section id="elevate-brand" class="theme--false">
+		<div class="container--very-narrow">
+			<h2 class="h2 text-center">Elevate Your Brand</h2>
 			<div class="flex-row __2x">
 				<dl class="col">
 					<dt>Direct Access</dt>
@@ -72,25 +95,29 @@ get_header();
 		</div>
 
 	</section>
-	<section id="sponsorship-opportunities" class="theme--medium-1">
+	<section id="sponsorship-opportunities" class="theme--medium-1 py-1">
+		
 		<div class="container--narrow">
-			<div class="flex-row justify--center __2x">
-				<div class="col-0"><button class="button button--icon">Annual Summit</button></div>
-				<div class="col-0"><button class="button button--icon">MyWarrantyNetwork Hub</button></div>
+		<header>
+			<h2 class="h2 text-center">Two Ways to Sponsor!</h2>
+		</header>
+			<div class="flex-row justify--center">
+				<a href="#summit" class="button button--icon button--lg">Annual Summit</a>
+				<a href="#mywarrantynetworkhub" class="button button--icon button--lg">MyWarrantyNetwork Hub</a>
 			</div>
 		</div>
 	</section>
-	<section>
+	<section id="summit" class="theme--false">
 		<div class="container--very-narrow">
 			<header class="text-center">
 				<?php echo wp_get_attachment_image(982, 'full'); ?>
-				<h2 class="h2"> Sponsorship Options</h2>
+				<h2 class="h2">Benefits</h2>
 			</header>
 			<div class="content">
-				<p>MAPconnected’s Summit unites the Warranty & Aftercare Value Chain and is designed as an annual platform to exchange ideas to optimize costs, enhance customer satisfaction and ensure continuous improvement</p>
+				<p>MAPconnected’s Summit unites the Warranty & Aftercare Value Chain and is designed as an annual platform to exchange ideas to optimize costs, enhance customer satisfaction and ensure continuous improvement.</p>
 			</div>
 		</div>
-		<div class="container--narrow">
+		<div class="container--narrow d-none">
 			<div class="theme--light-2">
 				<h4 class="h4 text-center">Stand Out Amongst Our:</h4>
 				<div class="flex-row">
@@ -102,76 +129,63 @@ get_header();
 			</div>
 		</div>
 	</section>
-	<section class="icon-grid__wrapper">
-		<div class="container--very-narrow">
+	<section class="icon-grid__wrapper  ">
+		<div class="container--very-narrow theme--medium-1 py-1">
 			<div class="icon-grid grid __3x justify--center">
-				<div class="icon-card flex-column">
+				<div class="icon-card icon-top">
 					<div class="card__icon"><i class="fa-classic fa-regular fa-thumbs-up" aria-hidden="true"></i></div>
 					<div class="flex-column">
-						<div class="card__title">Speaking Opportunities with Clients</div>
+						<div class="card__title">Case Studies with Clients</div>
 						<div class="card__content"></div>
 					</div>
 				</div>
-				<div class="icon-card flex-column">
+				<div class="icon-card icon-top">
 					<div class="card__icon"><i class="fa-classic fa-solid fa-filter-circle-dollar" aria-hidden="true"></i></div>
 					<div class="flex-column">
 						<div class="card__title">Tech Expo and Booths</div>
 						<div class="card__content"></div>
 					</div>
 				</div>
-				<div class="icon-card flex-column">
+				<div class="icon-card icon-top">
 					<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
 					<div class="flex-column">
 						<div class="card__title">Host Roundtables</div>
 						<div class="card__content"></div>
 					</div>
 				</div>
-				<div class="icon-card flex-column">
-					<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
+				<div class="icon-card icon-top">
+					<div class="card__icon"><i class="fa-solid fa-utensils"></i></div>
 					<div class="flex-column">
 						<div class="card__title">Meal Sponsorship</div>
 						<div class="card__content"></div>
 					</div>
 				</div>
-				<div class="icon-card flex-column">
-					<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
+				<div class="icon-card icon-top">
+					<div class="card__icon"><i class="fa-solid fa-people-arrows"></i></div>
 					<div class="flex-column">
 						<div class="card__title">Roundtable Discussion Leaders or Chairmanship</div>
 						<div class="card__content"></div>
 					</div>
 				</div>
-				<div class="icon-card flex-column">
-					<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
+				<div class="icon-card icon-top">
+					<div class="card__icon"><i class="fa-solid fa-chalkboard-user"></i></div>
 					<div class="flex-column">
 						<div class="card__title">Workshop Learning Lab Leaders</div>
 						<div class="card__content"></div>
 					</div>
 				</div>
-				<div class="icon-card flex-column">
-					<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
-					<div class="flex-column">
-						<div class="card__title">Network Hosted Webinars</div>
-						<div class="card__content"></div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>
-	<section id="brochure-cta" class="brochure-cta">
+	<section id="brochure-cta" class="brochure-cta mt-1 theme--false py-1">
 		<div class="container--single-column">
 			<div class="flex-row justify--center">
-				<div class="brochure-cta__wrapper">
-					<div class="inner-container text-center theme--medium-2 border-radius-2">
-						<p>Need More Information to Make Your Decision?</p>
-						<p>Ask me for our brochure and customized packages.</p>
-						<?= wp_get_attachment_image(983, 'medium'); ?>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</section>
-	<section>
-		<div class="container--narrow">
+	<section class="theme--false py-1">
+		<div class="container--narrow mt-1">
 			<div class="flex-row __2x">
 				<div class="col d-flex">
 					<?= wp_get_attachment_image(425, 'full'); ?>
@@ -179,7 +193,7 @@ get_header();
 				<div class="col flex-column justify--center">
 					<?= wp_get_attachment_image(982, 'medium'); ?>
 					<p>Get More Info about becoming a Sponsor</p>
-					<a href="" class="button button--primary">Request Sponsor Packages</a>
+					<a href="#sponsor-form" class="button button--primary">Request Sponsor Packages</a>
 				</div>
 			</div>
 		</div>
@@ -187,75 +201,93 @@ get_header();
 	<section id="mywarrantynetworkhub" class="theme--medium-2">
 		<header class="container--very-narrow">
 			<h2 class="h2 text-center flex-column">
-				<?= wp_get_attachment_image(838, 'medium'); ?>
+				<?= wp_get_attachment_image(838, 'full'); ?>
 				Thrive in our MyWarrantyNetwork Hub
 			</h2>
 		</header>
 		<div class="container--very-narrow">
+		
 			<div class="content">
 				<p>The Hub is where Warranty Lifecycle Professionals go to gain insights and seek the best technology partners to reshape their warranty and aftercare end-to-end experiences. </p>
-				<p>The publicly accessible Marketplace Directory handles project area needs such as: Warranty Administration | Purchasing & Supplier Recovery | Parts Return & Quality Analysis </p>
+				<p>The Publicly Accessible Marketplace Directory Gives You Heightened Exposure And Access To Project Requests For Surveys, Audits, Consulting In Warranty, Service & Aftercare Areas Such As:  Administration | Purchasing & Supplier Chain | Parts Return & Quality Analysis.</p>
 			</div>
-			<div class="content">
-				<h3 class="h3">Benefits</h3>
-			</div>
-			<section class="icon-grid__wrapper">
-				<div class="container--very-narrow">
-					<div class="icon-grid grid __3x justify--center">
-						<div class="icon-card flex-column">
-							<div class="card__icon"><i class="fa-classic fa-regular fa-thumbs-up" aria-hidden="true"></i></div>
+			<header class="text-center">
+					<h2 class="h2">Benefits</h2>
+				</header>
+				<section class="icon-grid__wrapper  ">
+		<div class="container--very-narrow theme--light-1 py-1">
+			<div class="icon-grid grid __3x justify--center">
+						<div class="icon-card icon-top">
+							<div class="card__icon"><i class="fa-solid fa-network-wired"></i></div>
 							<div class="flex-column">
 								<div class="card__title">Speaking Opportunities with Clients</div>
 								<div class="card__content"></div>
 							</div>
 						</div>
-						<div class="icon-card flex-column">
-							<div class="card__icon"><i class="fa-classic fa-solid fa-filter-circle-dollar" aria-hidden="true"></i></div>
+						<div class="icon-card icon-top">
+							<div class="card__icon"><i class="fa-solid fa-address-book"></i></div>
 							<div class="flex-column">
-								<div class="card__title">Tech Expo and Booths</div>
+								<div class="card__title">Marketplace Directory Listing </div>
 								<div class="card__content"></div>
 							</div>
 						</div>
-						<div class="icon-card flex-column">
-							<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
+						<div class="icon-card icon-top">
+							<div class="card__icon"><i class="fa-solid fa-handshake"></i></div>
 							<div class="flex-column">
-								<div class="card__title">Host Roundtables</div>
+								<div class="card__title">Co Promote Webinars</div>
 								<div class="card__content"></div>
 							</div>
 						</div>
-						<div class="icon-card flex-column">
-							<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
+						<div class="icon-card icon-top">
+							<div class="card__icon"><i class="fa-solid fa-comments"></i></div>
 							<div class="flex-column">
-								<div class="card__title">Meal Sponsorship</div>
+								<div class="card__title">Messaging Forum 24/7</div>
 								<div class="card__content"></div>
 							</div>
 						</div>
-						<div class="icon-card flex-column">
-							<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
+						<div class="icon-card icon-top">
+							<div class="card__icon"><i class="fa-solid fa-circle-nodes"></i></div>
 							<div class="flex-column">
-								<div class="card__title">Roundtable Discussion Leaders or Chairmanship</div>
+								<div class="card__title">Sponsor Surveys & Promote Tech Blog</div>
 								<div class="card__content"></div>
 							</div>
 						</div>
-						<div class="icon-card flex-column">
-							<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
+						<div class="icon-card icon-top">
+							<div class="card__icon"><i class="fa-solid fa-ticket"></i></div>
 							<div class="flex-column">
-								<div class="card__title">Workshop Learning Lab Leaders</div>
+								<div class="card__title">Summit Ticket Discounts</div>
 								<div class="card__content"></div>
 							</div>
 						</div>
-						<div class="icon-card flex-column">
-							<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
+						<div class="icon-card icon-top">
+							<div class="card__icon"><i class="fa-solid fa-rectangle-ad"></i></div>
 							<div class="flex-column">
-								<div class="card__title">Network Hosted Webinars</div>
+								<div class="card__title">Website & Email Advertising </div>
+								<div class="card__content"></div>
+							</div>
+						</div>
+						<div class="icon-card icon-top">
+							<div class="card__icon"><i class="fa-solid fa-clipboard-user"></i></div>
+							<div class="flex-column">
+								<div class="card__title">Host Club Study </div>
+								<div class="card__content"></div>
+							</div>
+						</div>
+						<div class="icon-card icon-top">
+							<div class="card__icon"><i class="fa-solid fa-filter-circle-dollar"></i></div>
+							<div class="flex-column">
+								<div class="card__title">Project Request Leads </div>
 								<div class="card__content"></div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</section>
+			<footer class="mt-1 text-center">
+					<a href="/packages/?tab_id=mywarrantynetwork-sponsorships" class="button button--accent kbutton--outline">Check out the Sponsor Packages!</a>	
+				</footer>
 	</section>
-	<section>
+	<section class="theme-- d-none">
 		<div class="container--fluid">
 			<div class="testimonial-slider">
 				<?php
@@ -269,11 +301,22 @@ get_header();
 		</div>
 	</section>
 	<section id="sponsor-form" class="theme--dark-gradient-1 last-section py-4">
-		<div class="container--very-narrow justify--center align-center">
+		<div class="container--narrow justify--center align-center">
 			<header class="text-center">
 				<h2 class="fz-display">Become a Sponsor </h2>
 			</header>
+				<div class="flex-row">
+					<div class="col col-66">
 			<?php echo FrmFormsController::get_form_shortcode(array('id' => 2)); ?>
+			</div>
+			<div class="brochure-cta__wrapper col">
+					<div class="py-1 px-1 text-center theme--medium-2 border-radius-2">
+						<p>Need More Information to Make Your Decision?</p>
+						<p>Ask me for our brochure and customized packages.</p>
+						<?= wp_get_attachment_image(983, 'medium'); ?>
+					</div>
+				</div>
+				</div>
 		</div>
 	</section>
 
@@ -292,6 +335,4 @@ get_header();
 	?>
 
 </main><!-- #main -->
-<?php //get_sidebar('sidebar'); 
-?>
-<?php get_footer(); ?>
+<?php get_footer();

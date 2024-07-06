@@ -9,7 +9,7 @@ class Sponsorships{
 		// $this -> all_sponsors = $all_sponsors;
 	}
 
-	private function set_sponsors($query_args = []) {
+	public function get_sponsors($query_args = []) {
 		$default_query = array(
 			'numberposts' 	=> -1,
 			'post_type' 	=> 'sponsor',
@@ -36,7 +36,7 @@ class Sponsorships{
 				)
 			),
 		);
-		$this->set_sponsors($query_args);	
+		$this->get_sponsors($query_args);	
 		return $this->sponsors;
 	}
 }

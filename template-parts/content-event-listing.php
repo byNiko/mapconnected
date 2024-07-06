@@ -5,7 +5,7 @@ $times = $event->get_time();
 $start_datetime = $times['start'];
 $end_datetime = $times['end'];
 $startDay = $start_datetime ? $start_datetime->format('D') : null;
-$startDate = $start_datetime ? $start_datetime->format('dS') : null;
+$startDate = $start_datetime ? $start_datetime->format('jS') : null;
 ?>
 <div class="event-archive-item event d-flex">
 	<div class="event-archive-item--meta-date text-center">
@@ -20,7 +20,7 @@ $startDate = $start_datetime ? $start_datetime->format('dS') : null;
 				$format = $event->is_this_year ? 'F d, Y | g:iA' : 'F d | g:iA';
 				echo !empty($start_datetime) ? $start_datetime->format($format) : "";
 				echo !empty($end_datetime) ? $end_datetime->format(' - g:iA') : '';
-				echo " ET" // timezone hardcoded. WP and ACF have complicated Timezone issues.
+				echo !empty($start_datetime)? " ET": ''; // timezone hardcoded. WP and ACF have complicated Timezone issues.
 				?>
 			</div>
 			<div class="event--categories pillbox">
@@ -28,7 +28,13 @@ $startDate = $start_datetime ? $start_datetime->format('dS') : null;
 			</div>
 		</header>
 		<h3 class="h3 event--title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-		<div class="event--description"><?= wp_trim_words($event->get_description(), 55); ?> </div>
+		<div class="event--description">
+			<?
+			if($desc = $event->get_description()){
+				echo wp_trim_words($desc, 55); 
+			} else the_excerpt();
+				?> 
+		</div>
 	</div>
 	<aside class="event-archive-item--sidebar">
 		<div class="event-archive-item--buttons d-flex flex-column align--center">

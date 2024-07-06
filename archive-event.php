@@ -9,16 +9,33 @@
  */
 get_header();
 ?>
+<div class="container--narrow">
 <main id="primary" class="site-main">
 	<?php if (have_posts()) : ?>
 		<header class="page-header">
-			<div class="filter__prev-next-wrapper d-flex">
-				<a href="?event-range=past"> &larr;Past </a>
-			</div>
+			
 		</header><!-- .page-header -->
-		<section class="EventFilter">
+		<section class="EventFilter mt-1">
 
-			<div class="filter-wrap d-flex justify--space-between align-center">
+		<div class="filter-wrap d-flex justify--space-between align-center">
+			<div class="filter__prev-next-wrapper d-flex">
+				<div class="pagination">
+					<?php
+					// $archive_page_count =  (new Byniko())->get_total_number_archive_pages();
+					$arr_params = array(
+						'event-range' => 'past',
+						// 'paged' => $archive_page_count
+					);
+					$params = esc_url(add_query_arg($arr_params));
+					$past = get_query_var('event-range') === "past";
+					?>
+					<?php if(!$past): ?>
+					<a href="<?= $params; ?>"> &larr;Past </a>
+					<?php else: ?>
+					<?php 	echo (new Byniko())->reverse_pagination(); ?>
+					<?php endif; ?>
+				</div>
+			</div>
 				<div class="filter__input-wrapper">
 					<?php get_template_part('/template-parts/components/search-events'); ?>
 				</div>
@@ -30,8 +47,8 @@ get_header();
 					));
 					if ($terms) :
 						foreach ($terms as $term) :
-							$arr_params = array( 'event-type' => $term->slug );	
-							$params = esc_url( add_query_arg( $arr_params ) );
+							$arr_params = array('event-type' => $term->slug);
+							$params = esc_url(add_query_arg($arr_params));
 							echo "<a class='pill' href='$params'>$term->name</a>";
 						endforeach;
 					endif;
@@ -42,14 +59,20 @@ get_header();
 		</section>
 		<div class="event-archive--list">
 			<?php
-			while (have_posts()) : the_post();
+			$posts = $wp_query->posts;
+			// reverse posts if we're looking at past events
+			$past = get_query_var('event-range') === "past";
+		
+			if($past)
+			$posts = array_reverse($wp_query->posts);
+
+			while (have_posts($posts)) : the_post($posts);
 				get_template_part('/template-parts/content', 'event-listing');
 			endwhile;
 			?>
 		</div>
-		<div class="pagination">
+		<div class="pagination mt-1">
 			<?php
-
 			(new Byniko())->reverse_pagination();
 			?>
 		</div>
@@ -60,11 +83,6 @@ get_header();
 	?>
 
 </main><!-- #main -->
-
+</div>
 <?php
-if (byniko_has_sidebar()) {
-	get_sidebar();
-};
-
-
 get_footer();

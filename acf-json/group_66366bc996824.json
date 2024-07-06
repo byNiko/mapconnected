@@ -178,58 +178,6 @@
             "selected": 0
         },
         {
-            "key": "field_66367655bee8a",
-            "label": "Sponsorship Level",
-            "name": "sponsorship_level",
-            "aria-label": "",
-            "type": "taxonomy",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "50",
-                "class": "",
-                "id": ""
-            },
-            "taxonomy": "sponsorship-level",
-            "add_term": 0,
-            "save_terms": 1,
-            "load_terms": 1,
-            "return_format": "object",
-            "field_type": "radio",
-            "allow_null": 1,
-            "bidirectional": 0,
-            "multiple": 0,
-            "bidirectional_target": []
-        },
-        {
-            "key": "field_6636718fce264",
-            "label": "Show On",
-            "name": "show_on",
-            "aria-label": "",
-            "type": "checkbox",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "choices": {
-                "mnp": "Marketplace Network Page",
-                "bsr": "Blog Sidebar",
-                "fpl": "Full Page Logos"
-            },
-            "default_value": [],
-            "return_format": "array",
-            "allow_custom": 0,
-            "layout": "vertical",
-            "toggle": 0,
-            "save_custom": 0,
-            "custom_choice_button_text": "Add new choice"
-        },
-        {
             "key": "field_663ff7279cb45",
             "label": "Events",
             "name": "events",
@@ -283,5 +231,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1717390114
+    "modified": 1719017780
 }

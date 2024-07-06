@@ -47,13 +47,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var micromodal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! micromodal */ "./node_modules/micromodal/dist/micromodal.es.js");
 
 micromodal__WEBPACK_IMPORTED_MODULE_0__["default"].init({
-  onShow: async modal => {
-    autoIframeVimeo(modal);
+  onShow: async (modal, el, triggerEv) => {
+    autoIframeVimeo(modal, el, triggerEv);
+    autoIframeModal(modal, el, triggerEv);
   },
   // [1]
   onClose: modal => {
     // modal.querySelector( '.modal__container' ).classList.remove( 'is-ready' );
-    modal.querySelector('iframe').remove();
+    const iframe = modal.querySelector('iframe');
+    if (iframe) {
+      iframe.remove();
+    }
   },
   // [2]
   // openTrigger: 'data-custom-open', // [3]
@@ -70,11 +74,14 @@ micromodal__WEBPACK_IMPORTED_MODULE_0__["default"].init({
   // [9]
   debugMode: true // [10]
 });
-async function autoIframeVimeo(modal) {
-  const videoUrl = modal.getAttribute('data-video-url');
+async function autoIframeVimeo(modal, el, triggerEv) {
+  const videoTrigger = triggerEv.target.closest('[data-video-url]');
+  let videoUrl = videoTrigger && videoTrigger.getAttribute('data-video-url');
+  videoUrl = is_valid_canva_video(videoUrl);
   if (videoUrl.length) {
-    const resp = await fetch(`https://vimeo.com/api/oembed.json?url=${videoUrl}`);
-    const video = resp.ok && (await resp.json());
+    // const resp = await fetch( `https://vimeo.com/api/oembed.json?url=${ videoUrl }` );
+    // const video = resp.ok && await resp.json();
+    const video = false; // unused - but might be if we use Vimeo (above)
     const iframe = document.createElement('iframe');
     const container = modal.querySelector('.modal__container');
     const main = modal.querySelector('main');
@@ -84,12 +91,36 @@ async function autoIframeVimeo(modal) {
     iframe.setAttribute('allow', 'autoplay');
     iframe.classList.add('responsive_embed');
     iframe.setAttribute('style', `width: 100%; aspect-ratio:${video.width || 16}/${video.height || 9}`);
-    iframe.src = `https://player.vimeo.com/video/${video.video_id}?app_id=122963&badge=0&vimeo_logo=false&title=false&autoplay=1&byline=false&responsive=true`;
-    iframe.src = `https://www.canva.com/design/DAGIoM35H1w/fumRJ552w3BTDbIdlSle9w/watch?embed`;
-    iframe.src = `https://www.canva.com/design/DAGIPuaZxqg/FHEixGSbK7vev6ZjdNBI0Q/watch?embed`;
+    iframe.src = videoUrl;
+    // iframe.src = `https://player.vimeo.com/video/${ video.video_id }?app_id=122963&badge=0&vimeo_logo=false&title=false&autoplay=1&byline=false&responsive=true`;
+    // iframe.src = `https://www.canva.com/design/DAGIoM35H1w/fumRJ552w3BTDbIdlSle9w/watch?embed`;
+    // iframe.src = `https://www.canva.com/design/DAGIPuaZxqg/FHEixGSbK7vev6ZjdNBI0Q/watch?embed`;
     main.append(iframe);
     container.classList.add('is-ready');
   }
+}
+async function autoIframeModal(modal) {
+  const iframeUrl = modal.getAttribute('data-iframe-url');
+  if (iframeUrl && iframeUrl.length) {
+    const iframe = document.createElement('iframe');
+    const container = modal.querySelector('.modal__container');
+    const content = modal.querySelector('.modal__content');
+    iframe.onload = function () {
+      // container.classList.add( 'is-ready' );
+    };
+    iframe.setAttribute('style', `width:100%;height:100%;border:hidden;`);
+    iframe.src = iframeUrl;
+    content.append(iframe);
+    container.classList.add('is-ready');
+  }
+}
+function is_valid_canva_video(url) {
+  const isCanva = url.match(/canva/) !== null;
+  const isCanvaURL = isCanva && new URL(url);
+  isCanvaURL.searchParams.set('embed', '');
+
+  // add the embed parameter to canva urls
+  return isCanva ? isCanvaURL.href : false;
 }
 
 /***/ }),
@@ -128,7 +159,7 @@ const target = document.querySelector('.secondary-nav__wrapper');
 if (target) {
   const st = _vendor_gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__["default"].create({
     onToggle: self => {
-      self.pin.classList.toggle('is-pinned');
+      // self.pin.classList.toggle( 'is-pinned' );
     },
     toggleClass: 'is-pinned',
     trigger: target,
@@ -136,10 +167,68 @@ if (target) {
     start: 'top top',
     endTrigger: '.site-footer',
     end: 'top center',
-    pinSpacing: false,
-    markers: true
+    pinSpacing: false
+    // markers: true,
   });
 }
+
+/***/ }),
+
+/***/ "./src/scripts/tabs.js":
+/*!*****************************!*\
+  !*** ./src/scripts/tabs.js ***!
+  \*****************************/
+/***/ (() => {
+
+const createTabs = tabContainers => {
+  const tabId = new URLSearchParams(window.location.search).get('tab_id');
+
+  // Selecting header and content containers
+  const headerContainer = document.querySelector('.tabs-header');
+  const contentContainer = document.querySelector('.tabs-content');
+
+  // Converting HTML collections to arrays
+  const tabHeaders = [...headerContainer.children];
+  const tabContents = [...contentContainer.children];
+
+  // Hide all tab contents
+  tabContents.forEach(content => content.style.display = 'none');
+  let currentTabIndex = -1;
+  const setTab = index => {
+    // Remove active class and hide previous tab content
+    if (currentTabIndex > -1) {
+      tabHeaders[currentTabIndex].classList.remove('active');
+      tabContents[currentTabIndex].style.display = 'none';
+    }
+
+    // Add active class and display selected tab content
+    tabHeaders[index].classList.add('active');
+    tabContents[index].style.display = 'block';
+
+    // Update currentTabIndex
+    currentTabIndex = index;
+  };
+
+  // Determine default tab index
+  let defaultTabIndex = tabHeaders.findIndex(header => {
+    return tabId ? header.id === tabId : header.classList.contains('default-tab');
+  });
+  defaultTabIndex = defaultTabIndex === -1 ? 0 : defaultTabIndex;
+
+  // Set default tab
+  setTab(defaultTabIndex);
+
+  // Add click event listeners to tab headers
+  tabHeaders.forEach((header, index) => {
+    header.addEventListener('click', () => {
+      setTab(index);
+    });
+  });
+};
+
+// Select all tab containers and apply createTabs function
+const tabContainers = [...document.querySelectorAll('.tabs')];
+tabContainers.forEach(createTabs);
 
 /***/ }),
 
@@ -8548,7 +8637,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_navStickObserve__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_scripts_navStickObserve__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _scripts_pin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./scripts/pin */ "./src/scripts/pin.js");
 /* harmony import */ var _scripts_micromodal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scripts/micromodal */ "./src/scripts/micromodal.js");
+/* harmony import */ var _scripts_tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scripts/tabs */ "./src/scripts/tabs.js");
+/* harmony import */ var _scripts_tabs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_scripts_tabs__WEBPACK_IMPORTED_MODULE_5__);
 // import main stylesheet
+
 
 
 

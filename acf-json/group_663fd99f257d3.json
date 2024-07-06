@@ -66,7 +66,7 @@
             "maxlength": "",
             "rows": 3,
             "placeholder": "",
-            "new_lines": "wpautop"
+            "new_lines": "br"
         },
         {
             "key": "field_667061bbb1e47",
@@ -388,6 +388,70 @@
             "first_day": 1
         },
         {
+            "key": "field_66771b270b9ae",
+            "label": "Date\/Time Repeater",
+            "name": "datetime_repeater",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_66771b750b9af",
+            "button_label": "Add Custom Date \/ Time",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66771b750b9af",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66771b270b9ae"
+                },
+                {
+                    "key": "field_66771bab0b9b1",
+                    "label": "Custom Date Time",
+                    "name": "custom_date_time",
+                    "aria-label": "",
+                    "type": "date_time_picker",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "display_format": "F j, Y g:i a",
+                    "return_format": "F j, Y g:i a",
+                    "first_day": 1,
+                    "parent_repeater": "field_66771b270b9ae"
+                }
+            ]
+        },
+        {
             "key": "field_663fdc568a80d",
             "label": "Sponsors",
             "name": "",
@@ -509,5 +573,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1718838597
+    "modified": 1719082344
 }

@@ -1,41 +1,45 @@
-input,
-textarea {
-	--bg-color: var(--color-primary-900) !important;
-	border: 1px dotted var(--color-secondary-400);
-	--border-color: var(--color-primary-1000) !important;
-	--text-color: var(--color-text) !important;
-	// background: var(--color-primary--1000)!important;
-	border-radius: var(--radius-input);
-	--field-height: 39px !important;
+body:not(.wp-admin) {
 
-	&:focus {
-		--text-color: white !important;
-		background-color: var(--color-primary-cta) !important;
+	input:not([type=search]),
+	textarea {
+		--bg-color: var(--color-primary-900) !important;
+		border: 1px dotted var(--color-secondary-400);
+		--border-color: var(--color-primary-1000) !important;
+		--text-color: var(--color-text) !important;
+		// background: var(--color-primary--1000)!important;
+		border-radius: var(--radius-input);
+		--field-height: 39px !important;
+
+		&:focus {
+			--text-color: white !important;
+			background-color: var(--color-primary-cta) !important;
+		}
 	}
-}
 
-input {
+	input {
 
-	// padding-left: var(--spacer);
-}
-
-.frm_style_formidable-style.with_frm_style div.frm_description {
-	color: var(--text-color) !important;
-	opacity: .7
-}
-
-.frm_style_formidable-style.with_frm_style {
-	--section-color: var(--color-text);
-	--section-font-size: 1.25rem;
-
-	.frm_submit button {
-		background: var(--color-primary-accent) !important;
-		border: 1px solid var(--color-primary-800) !important;
-		box-shadow: none !important;
+		// padding-left: var(--spacer);
 	}
-}
 
-.with_frm_style .frm_required {
-	color: var(--color-primary-accent) !important;
-	color: var(--color-text) !important;
+	.frm_style_formidable-style.with_frm_style div.frm_description,
+	.frm_style_formidable-style.with_frm_style p.description, .frm_style_formidable-style.with_frm_style div.description, .frm_style_formidable-style.with_frm_style div.frm_description, .frm_style_formidable-style.with_frm_style .frm-show-form > div.frm_description, .frm_style_formidable-style.with_frm_style .frm_error, .frm_style_formidable-style.with_frm_style .frm_pro_max_limit_desc {
+		color: var(--color-text) !important;
+		opacity: .7
+	}
+
+	.frm_style_formidable-style.with_frm_style {
+		--section-color: var(--color-text);
+		--section-font-size: 1.25rem;
+
+		.frm_submit button {
+			background: var(--color-primary-accent) !important;
+			border: 1px solid var(--color-primary-800) !important;
+			box-shadow: none !important;
+		}
+	}
+
+	.with_frm_style .frm_required {
+		color: var(--color-primary-accent) !important;
+		color: var(--color-text) !important;
+	}
 }

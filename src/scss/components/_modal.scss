@@ -1,0 +1,28 @@
+@use '../theming';
+
+.modal {
+	&.contact-form-modal {
+		.modal__header {
+			justify-content: center;
+			font-family: var(--ff-display);
+		}
+		.modal__title {
+			text-align: center;
+			color: var(--color-white);
+			font-size: var(--font-size--lg);
+		}
+		.modal__container {
+		@extend .theme--dark-gradient-1;
+		max-width: 680px;
+		width: 80%;
+		margin-left:auto;
+		margin-right: auto;
+		box-shadow: 0 2px 10px #333
+	}
+	.modal__close {
+		position: absolute;
+		right: 0;
+		top:0;
+	}
+}
+}

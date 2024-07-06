@@ -1,0 +1,22 @@
+.page-become-a-speaker {
+	.speakers-list {
+		.speaker__meta {
+			margin-top: 10px;
+			display: flex;
+			flex-direction: column;
+		}
+		.speaker__company{
+			font-size: 1em;
+			font-weight: 800;
+			order:-1;
+			line-height: 1;
+		}
+		.speaker__title {
+			font-size: .8em;
+			font-weight: 400;
+		}
+		.speaker__name {
+			order: 10;
+		}
+	}
+}

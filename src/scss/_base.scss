@@ -24,28 +24,6 @@ ul.menu{
 	padding-left:0;
 	margin-bottom:0;
 }
-ul {
-	&.no-bullets,
-	&.no-bullet {
-		list-style-type: none;
-		padding-left:0;
-		margin-bottom: 0;
-	}
-}
-
-dl{
-
-}
-dt{
-	&:before {
-	}
-	&:after {
-	}
-}
-dd {
-	margin-left: 1rem;
-	font-size: var(--font-size--sm);
-}
 
 blockquote p:last-of-type {
 	margin-bottom:0;
@@ -57,7 +35,7 @@ blockquote p:last-of-type {
 .sponsor-logos__wrapper {
 	.splide__slide {
 
-		height: 80px;
+		// height: 80px;
 		align-items:center;
 		display: flex;
 	}
@@ -91,14 +69,14 @@ blockquote p:last-of-type {
 }
 
 .splide__slide.who_attends_logos-gallery-slide {
-    height: 60px;
+    // height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
 	img {
 		width: auto;
 		height: auto;
-		max-height: 60px;
+		// max-height: 60px;
 	}
 }
 
@@ -109,12 +87,12 @@ blockquote p:last-of-type {
 }
 
 
-.single-testimonial,
-.testimonial-slider,
-.who_attends_logos__wrapper {
-	padding-top: var(--section-spacer, var(--spacer-12));
-	padding-bottom: var(--section-spacer, var(--spacer-12));
-}
+// .single-testimonial,
+// .testimonial-slider,
+// .who_attends_logos__wrapper {
+// 	padding-top: var(--section-spacer, var(--spacer-12));
+// 	padding-bottom: var(--section-spacer, var(--spacer-12));
+// }
 
 .sidebar--default-theme {
 	padding: 1rem;
@@ -128,7 +106,6 @@ blockquote p:last-of-type {
 }
 
 .pagination {
-	margin-top: 1rem;
 	display: flex;
 	gap: .5rem;
 	.page-numbers {
@@ -148,3 +125,22 @@ blockquote p:last-of-type {
 #marketplace_sponsor_logos_wrap {
 	position: relative;
 }
+
+
+.wp-block-gallery.wp-block-gallery-1 {
+    gap: 10px !important;
+}
+
+.is-layout-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.page-become-a-sponsor {
+
+	.icon-grid__wrapper {
+		border-radius: var(--border-radius);
+	}
+}
+
+

@@ -50,12 +50,11 @@ $splideOptions = filter_empty_values([
 $background_img_url = get_template_directory_uri() . "/src/images/background-dark-gears.jpg";
 // SVG arrow icon
 $arrowSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+if (have_rows('slides')) :
 ?>
-
-<section id="<?=sanitize_title($admin_label);?>" class="slider <?=sanitize_title($admin_label);?>" >
-    <?php if (have_rows('slides')) : ?>
-        <!-- Replace "=container--narrow" with your own container class if needed -->
-        <div class="">
+    <div class="flexible-content-wrap">
+        <div id="<?= sanitize_title($admin_label); ?>" class="slider <?= sanitize_title($admin_label); ?>">
+            <!-- Replace "=container--narrow" with your own container class if needed -->
             <div class="splide <?= $adaptive_height ? 'splide--adaptiveHeight' : ''; ?>" data-splide='<?= wp_json_encode($splideOptions); ?>'>
                 <div class="splide__track">
                     <ul class="splide__list">
@@ -79,7 +78,7 @@ $arrowSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" view
                                         <?php endif; ?>
 
                                         <?php if (!empty($link)) : ?>
-                                            <?= get_acf_link($link, 'button'); ?>
+                                            <?= get_acf_link($link, 'button button--accent'); ?>
                                         <?php endif; ?>
                                     </div>
                                 </div>
@@ -106,5 +105,5 @@ $arrowSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" view
                 <?php endif; ?>
             </div>
         </div>
-    <?php endif; ?>
-</section>
+    </div>
+<?php endif;

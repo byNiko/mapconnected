@@ -9,12 +9,25 @@
 
 ?>
 
-<section class="no-results not-found">
+<section class="no-results not-found py-4">
 	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'byniko' ); ?></h1>
+		<h1 class="page-title"><?php esc_html_e( 'No Future Events :(', 'byniko' ); ?></h1>
+		That page wasn't helpful, so here are some links to keep you in the loop:
 	</header><!-- .page-header -->
 
 	<div class="page-content">
-			No Events ... YET!
+			
+			<ul>
+				<li>
+				Stay up to date with our <a class="button button--text" href="/annual-summit">Annual Summit</a>.
+				</li>
+				<li>
+				Learn More about becoming a member at the <a class="button button--text" href="/members-network">Members Network</a>.
+				</li>
+				<li>
+				Check out some of our sponsors - even think about sponsoring yourself on our  <a class="button button--text" href="/mywarrantynetworkmarketplace">MyWarrantyNetwork Hub</a>.
+				</li>
+			</ul>
+			
 	</div><!-- .page-content -->
 </section><!-- .no-results -->

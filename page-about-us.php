@@ -6,7 +6,7 @@ get_header();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/regular.min.css" integrity="sha512-KYEnM30Gjf5tMbgsrQJsR0FSpufP9S4EiAYi168MvTjK6E83x3r6PTvLPlXYX350/doBXmTFUEnJr/nCsDovuw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css" integrity="sha512-Hp+WwK4QdKZk9/W0ViDvLunYjFrGJmNDt6sCflZNkjgvNq9mY+0tMbd6tWMiAlcf1OQyqL4gn2rYp7UsfssZPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <main id="primary" class="site-main">
-	<section class="container--very-narrow">
+	<section class="container--very-narrow my-1 py-1">
 		<header class="text-center">
 			<h1 class="fz-display">Warranty Shouldn’t Be So Hard.</h1>
 		</header>
@@ -16,11 +16,11 @@ get_header();
 				<p>That’s our goal. We connect warranty and aftercare companies of all sizes to share real-world experiences, jointly tackling issues and discovering smarter ways to work. </p>
 			</div>
 			<div class="flex-row justify--center">
-				<a href="#" class="button button--primary button--md">Join Now!</a>
-				<a href="#" class="button button--secondary button--outline button--md">Contact Us!</a>
+				<a href="/members-network" class="button button--primary button--md">Join Now!</a>
+				<a href="#contact-form" class="button button--secondary button--outline button--md">Contact Us!</a>
 			</div>
 		</div>
-		<div class="content">
+		<div class="content my-1">
 			<header class="text-center">
 				<h2 class="h2">Our Mission</h2>
 			</header>
@@ -94,18 +94,18 @@ get_header();
 			</div>
 		</div>
 	</section>
-	<section class="theme--light-1">
+	<section class="theme--light-1 mt-1">
 		<div class="container--very-narrow">
 			<div class="flex-column">
 				<h2 class="h2 text-center">Join to leverage these benefits and drive your business forward. </h2>
-				<div class="flex-row justify--center">
-					<a href="" class="button button--primary">Members Network</a>
-					<a href="" class="button button--primary button--outline">Annual Summit</a>
-					<a href="" class="button button--secondary">MyWarrantyNetwork Hub</a>
+				<div class="flex-row justify--center mt-1">
+					<a href="/members-network" class="button button--primary">Members Network</a>
+					<a href="/annual-summit" class="button button--primary button--outline">Annual Summit</a>
+					<a href="/mywarrantynetworkmarketplace" class="button button--secondary">MyWarrantyNetwork Hub</a>
 				</div>
 			</div>
 		</div>
-		<div class="container--very-narrow">
+		<div class="container--very-narrow mt-1">
 			<div class="flex-column">
 				<h2 class="h2 text-center">Our Guiding Principals</h2>
 				<ul class="bullet-list fz-md">
@@ -180,6 +180,14 @@ get_header();
 
 	endwhile; // End of the loop.
 	?>
+	<section id="contact-form" class="theme--dark-gradient-1 last-section py-4">
+		<div class="container--very-narrow justify--center align-center">
+			<header class="text-center">
+				<h2 class="fz-display">Contact Us </h2>
+			</header>
+			<?php echo FrmFormsController::get_form_shortcode(array('id' => 7)); ?>
+		</div>
+	</section>
 
 </main><!-- #main -->
 <?php //get_sidebar('sidebar'); 

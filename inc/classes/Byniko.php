@@ -1,11 +1,24 @@
 <?php
 
 class Byniko {
+	private $archive_posts_per_page = 8;
 	public function __construct() {
-		
 	}
 
+	public function url_match($compareString) {
+		// Function to get the current URL
+		function getCurrentUrl() {
+			$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+			$currentUrl = $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+			return $currentUrl;
+		}
 
+		// Get the current URL
+		$currentUrl = getCurrentUrl();
+
+		// Compare the current URL with the string
+		return $currentUrl === $compareString;
+	}
 	public function get_page_by_title($title, $post_type = "page") {
 		$posts = get_posts(
 			array(
@@ -42,9 +55,25 @@ class Byniko {
 		return date('Y-m-d H:i:s', strtotime($dateNow) - 43000);
 	}
 
+	public function archive_query() {
+	}
+	public function get_total_number_archive_pages() {
+		$args = array(
+			'post_type' => 'event',
+			'status' => "publish",
+			'orderby' => 'meta_value',
+			'meta_key' => 'start_date__time',
+			'posts_per_page' => $this->archive_posts_per_page
+		);
+		$q = new WP_Query($args);
+		return $q->max_num_pages;
+	}
 	public function pre_get_events() {
 		global $wp_query;
 		if (is_admin()) {
+			return $wp_query;
+		}
+		if ($wp_query->is_search) {
 			return $wp_query;
 		}
 
@@ -56,33 +85,42 @@ class Byniko {
 		) {
 			// localized for NY based on time settings
 			$dateNow = $this->future_expiration();
-			$past = get_query_var( 'event-range' )==="past";
-			$paged = get_query_var( 'paged' );
-			$wp_query->set('order', 'DSC');
-			$wp_query->set('orderby', 'meta_value');
-			if ($past) {
-				$wp_query->set('posts_per_page', 3);
-				$wp_query->set('meta_query', array(
-					array(
-						'key' => 'start_date__time',
-						'compare' => '<',
-						'value' => $dateNow,
-						'type' => 'DATETIME'
-					)
-				));
-				
-			} else {
-				$wp_query->set('posts_per_page', -1);
-				// $wp_query->set('orderby', 'meta_value');
-				$wp_query->set('order', 'ASC');
-				$wp_query->set('meta_query', array(
-					array(
-						'key' => 'start_date__time',
-						'compare' => '>',
-						'value' => $dateNow,
-						'type' => 'DATETIME'
-					)
-				));
+			$event_range = get_query_var('event-range');
+			$paged = get_query_var('paged');
+
+			switch ($event_range) {
+				case "past":
+					$wp_query->set('order', 'DSC');
+					$wp_query->set('orderby', 'meta_value');
+					$wp_query->set('meta_key', 'start_date__time');
+					$wp_query->set('posts_per_page', $this->archive_posts_per_page);
+					// $wp_query->set('paged', $paged?: $wp_query->max_num_pages);
+					$wp_query->set('meta_query', array(
+						array(
+							'key' => 'start_date__time',
+							'compare' => '<',
+							'value' => $dateNow,
+							'type' => 'DATETIME',
+						)
+					));
+					break;
+				case "all":
+					$wp_query->set('posts_per_page', -1);
+					$wp_query->set('orderby', 'meta_value');
+					$wp_query->set('order', 'ASC');
+					break;
+				default:
+					$wp_query->set('posts_per_page', -1);
+					$wp_query->set('orderby', 'meta_value');
+					$wp_query->set('order', 'ASC');
+					$wp_query->set('meta_query', array(
+						array(
+							'key' => 'start_date__time',
+							'compare' => '>',
+							'value' => $dateNow,
+							'type' => 'DATETIME'
+						)
+					));
 			}
 		}
 		return $wp_query;
@@ -111,7 +149,7 @@ class Byniko {
 		return in_array($current_post_type, $custom_types);
 	}
 
-	public function reverse_pagination(){
+	public function reverse_pagination() {
 		$paginate = array(
 			// 'mid_size'  => 0,
 			'prev_text' => 'Next &rarr;',
@@ -131,4 +169,36 @@ class Byniko {
 			endforeach;
 		endif;
 	}
+
+	public function get_video_modal_html() {
+		return sprintf(
+			'
+		<div class="modal micromodal-slide video-modal" id="video-modal" aria-hidden="true" data-video-url="">
+    <div class="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="%1$s-title">
+        <header class="modal__header">
+          <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
+        </header>
+        <main class="modal__content" id="video-modal-video-content">
+        </main>
+      </div>
+    </div>
+  </div>',
+  null
+		);
+	}
 }
+
+
+// /**
+//  * INCLUDE CUSTOM POST TYPES IN SEARCH RESULTS
+//  */
+// function wpdocs_cpt_in_search( $query ) {
+//     if ( ! is_admin() && $query->is_main_query() ) {
+//         if ( $query->is_search ) {
+//             $query->set( 'post_type', array( 'event' ) );
+//         }
+//     }
+// }
+
+// add_action( 'pre_get_posts', 'wpdocs_cpt_in_search' );

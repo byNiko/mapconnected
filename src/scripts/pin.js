@@ -7,7 +7,7 @@ const target = document.querySelector( '.secondary-nav__wrapper' );
 if ( target ) {
 	const st = ScrollTrigger.create( {
 		onToggle: ( self ) => {
-			self.pin.classList.toggle( 'is-pinned' );
+			// self.pin.classList.toggle( 'is-pinned' );
 		},
 		toggleClass: 'is-pinned',
 		trigger: target,
@@ -16,6 +16,6 @@ if ( target ) {
 		endTrigger: '.site-footer',
 		end: 'top center',
 		pinSpacing: false,
-		markers: true,
+		// markers: true,
 	} );
 }

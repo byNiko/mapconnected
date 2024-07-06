@@ -1,5 +1,5 @@
 <?php
-$icon_position = get_sub_field('icon_position') === "left"? "flex-row" : "flex-column";
+$icon_position = get_sub_field('icon_position') === "left"? "icon-left" : "icon-top";
 
 if ($theme_group = 	get_sub_field('theme_group')) :
 	$container_width = 'container--' . $theme_group['container_width'];
@@ -7,7 +7,8 @@ if ($theme_group = 	get_sub_field('theme_group')) :
 endif;
 if (have_rows('icon_grid')) :
 ?>
-	<section class="icon-grid__wrapper">
+<div class="flexible-content-wrap">
+	<div class="icon-grid__wrapper">
 		<div class="<?= $container_width . '  ' . $theme;?>">
 			<div class="icon-grid grid __3x justify--center">
 				<?php
@@ -29,6 +30,7 @@ if (have_rows('icon_grid')) :
 				endwhile; ?>
 			</div>
 		</div>
-	</section>
+	</div>
+</div>
 <?php
 endif;

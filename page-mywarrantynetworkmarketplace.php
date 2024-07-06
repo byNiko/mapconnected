@@ -17,34 +17,43 @@ get_header();
 
 ?>
 <main id="primary" class="site-main">
-	<header class="container--narrow">
-		<h1 class="h1 text-center">
-			<div>Welcome to</div>
-			<?= wp_get_attachment_image(838, 'full'); ?>
-		</h1>
-		<h3 class="h4 subtitle text-center">
-			At MAPconnected, we're deeply grateful for the incredible support of our sponsors.
-		</h3>
-	</header>
-	<section id="marketplace_sponsor_logos_wrap">
-		<div class="container--very-narrow theme--medium-1">
-			<h4 class="text-center">Marketplace Sponsors </h4>
-			<?php
-			get_template_part(
-				'/acf-flex-starter/layouts/sponsor_logos_slider',
-				null,
-				array(
-					'sponsorship_levels' => array('gold', 'silver', 'bronze'),
-					'slider_options' => ['perPage' => "12"]
-				)
-			);
-			?>
-			<div class="flex-row justify--center">
-				<a href="#marketplace" class="text-link fw-semi-bold">Show me the marketplace</a>
-			</div>
-		</div>
-	</section>
-	<section class="leader-content">
+	<section class="hero py-4">
+		<header class="container--narrow">
+			<h1 class="h1 text-center ">
+				<div>Welcome to</div>
+				<?= wp_get_attachment_image(838, 'full'); ?>
+			</h1>
+			<h3 class="h4 subtitle text-center py-1">
+				At MAPconnected, we're deeply grateful for the incredible support of our sponsors.
+			</h3>
+		</header>
+		<?php
+		$marketplace_sponsors = get_field('sponsor_slider');
+		if ($marketplace_sponsors && $marketplace_sponsors['sponsors_group']) :
+		?>
+			<section id="marketplace_sponsor_logos_wrap py-1">
+				<div class="container--very-narrow theme--medium-1">
+					<h4 class="text-center">Marketplace Sponsors </h4>
+					<?php
+
+					get_template_part(
+						'/acf-flex-starter/layouts/sponsor_logos_slider',
+						null,
+						array(
+							'sponsors' => $marketplace_sponsors['sponsors_group'],
+							'slider_options' => ['perPage' => "12"]
+						)
+					);
+					?>
+					<div class="flex-row justify--center">
+						<a href="#marketplace" class="text-link fw-semi-bold">Show me the marketplace</a>
+					</div>
+				</div>
+			</section>
+		<?php
+		endif;
+		?>
+	<div class="leader-content py-1">
 		<div class="container--single-column fz-md">
 			<p>They share our commitment to fostering a thriving community of professionals and driving innovation in the motor vehicle warranty and aftercare industry.</p>
 			<p>This page connects you with these valuable partners. We encourage you to explore their websites and learn more about the exceptional products and services they can offer you to strengthen your warranty and aftercare services lifecycles. </p>
@@ -52,21 +61,23 @@ get_header();
 				<div class="flex-row  justify--center">
 					<div class="flex-column">
 						<span class="fz-sm fw-semi-bold">Have a Project or Training need</span>
-						<a href="#" class="button button--primary has-shadow-1 ">Contact Us</a>
+						<a href="/about-us#contact-form" class="button button--primary has-shadow-1 ">Contact Us</a>
 					</div>
 					<div class="flex-column">
 						<span class="fz-sm fw-semi-bold">Become a Marketplace Sposnor</span>
-						<a href="#" class="button button--primary button--outline has-shadow-1">Sign Me Up!</a>
+						<a href="/become-a-sponsor#sponsor-form" class="button button--primary button--outline has-shadow-1">Sign Me Up!</a>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</section>
 
 	<?php
 
 	$args = array(
-		'post_type' => 'event'
+		'post_type' => ['event', 'post'],
+		'status' => 'publish'
 	);
 	$q = new WP_Query($args);
 	if ($q->have_posts()) :
@@ -105,18 +116,17 @@ get_header();
 				</div>
 			</div>
 			<footer class="text-center">
-			<a href="/blog" class="button button--text">View all News</a>
+				<a href="/news" class="button button--text">View all News</a>
 			</footer>
 		</section>
 		<?php
-		$spships = new Sponsorships();
-		$all_sponsors = $spships->get_sponsors_by_level();
-		if ($all_sponsors) :
+
+		if ($marketplace_sponsors && $marketplace_sponsors['sponsors_group']) :
 		?>
-			<section id="marketplace">
+			<section id="marketplace" class="py-4">
 				<div class="container--narrow">
 					<div class="grid __2x justify--center">
-						<?php foreach ($all_sponsors as $sp) : ?>
+						<?php foreach ($marketplace_sponsors['sponsors_group'] as $sp) : ?>
 							<?php $sponsor = new Sponsor($sp); ?>
 							<div class="sponsor-item" id="<?= $sponsor->get_slug(); ?>">
 								<div class="sponsor__logo">

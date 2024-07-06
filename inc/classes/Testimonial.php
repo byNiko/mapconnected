@@ -65,4 +65,32 @@ class Testimonial {
 	public function get_vertical_image() {
 		return $this->vertical_image;
 	}
+
+	public function get_single_testimonial_html() {
+		$vm = $this->video_url ? new VideoModal($this->video_url, $this->get_name()) : null;
+		$has_video = $vm ?  "testimonial_has_video" : '';
+
+		$footer = byniko_load_template_part('/template-parts/components/testimonial-footer', null, array('testimonial' => $this));
+		$video_modal = $vm ? $vm->get_video_modal_html() : '';
+		$format = '
+		<div class="single-testimonial %1$s theme--false">
+			<div class="single-testimonial__wrap">
+				<div>
+					<blockquote>
+						%2$s
+					</blockquote>
+					%3$s
+				</div>
+					%4$s
+			</div>
+	
+		</div>';
+		return sprintf(
+			$format,
+			$has_video,
+			$this->get_short_quote(),
+			$footer,
+			$video_modal
+		);
+	}
 }

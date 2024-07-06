@@ -1,9 +1,4 @@
 <?php
-// Get ACF values
-//$video_url = get_field('has_video')? get_field('video_url') : null;
-
-// var_dump($testionial_type);
-
 $template_args = array(
 	'testimonial_type' => get_sub_field('testimonial_type'),
 	'style' => get_sub_field('style'),

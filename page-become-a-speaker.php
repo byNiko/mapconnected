@@ -19,7 +19,7 @@ get_header();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css" integrity="sha512-UuQ/zJlbMVAw/UU8vVBhnI4op+/tFOpQZVT+FormmIEhRSCnJWyHiBbEVgM4Uztsht41f3FzVWgLuwzUqOObKw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/regular.min.css" integrity="sha512-KYEnM30Gjf5tMbgsrQJsR0FSpufP9S4EiAYi168MvTjK6E83x3r6PTvLPlXYX350/doBXmTFUEnJr/nCsDovuw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css" integrity="sha512-Hp+WwK4QdKZk9/W0ViDvLunYjFrGJmNDt6sCflZNkjgvNq9mY+0tMbd6tWMiAlcf1OQyqL4gn2rYp7UsfssZPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<main id="primary" class="site-main">
+<main id="primary" class="site-main py-4">
 	<section class="container--very-narrow">
 		<header class="text-center">
 			<h1 class="fz-display">Become a Speaker!</h1>
@@ -34,21 +34,21 @@ get_header();
 	<section>
 		<div class="container--very-narrow ">
 			<div class="icon-grid grid __3x justify--center align-center theme--medium-1 border-radius-4">
-				<div class="icon-card flex-column">
+				<div class="icon-card icon-top">
 					<div class="card__icon"><i class="fa-classic fa-regular fa-thumbs-up" aria-hidden="true"></i></div>
 					<div class="flex-column">
 						<div class="card__title">Virtual Event<br>Round Robin Host</div>
 						<div class="card__content"></div>
 					</div>
 				</div>
-				<div class="icon-card flex-column">
+				<div class="icon-card icon-top">
 					<div class="card__icon"><i class="fa-classic fa-solid fa-filter-circle-dollar" aria-hidden="true"></i></div>
 					<div class="flex-column">
 						<div class="card__title">Annual Summit</div>
 						<div class="card__content"></div>
 					</div>
 				</div>
-				<div class="icon-card flex-column">
+				<div class="icon-card icon-top">
 					<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
 					<div class="flex-column">
 						<div class="card__title">Webinars</div>
@@ -63,8 +63,8 @@ get_header();
 					innovative warranty and service operations insights.</p>
 			</div>
 			<div class="flex-row __2x justify--center">
-				<div class="d-flex"><a href="#speaker-form" class="button button--primary">Apply to Speak</a></div>
-				<div class="d-flex"><a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor'));?> " class="button button--primary">Apply to Sponsor</a></div>
+				<a href="#speaker-form" class="button button--primary">Apply to Speak</a>
+				<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor'));?> " class="button button--primary">Apply to Sponsor</a>
 			</div>
 		</div>
 	</section>
@@ -78,16 +78,17 @@ get_header();
 	<section class="theme--medium-1">
 		<div class="container--narrow">
 			<header class="h2 text-center">Thought Leadership At It’s Best! </header>
-			<div class="flex-row __4x speakers-list">
+			<div class="flex-row __5x speakers-list">
 				<?php
 				
-				$speakers = new Speaker();
-				$speakers = $speakers->get_speakers();
+				$speakers = get_field('speakers_group');
+				if($speakers):
 				foreach ($speakers as $sp) :
 					$s = new Speaker($sp);
 					$s->the_speaker_card();
 
 				endforeach;
+			endif;
 				?>
 			</div>
 		</div>

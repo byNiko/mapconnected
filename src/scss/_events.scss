@@ -1,6 +1,11 @@
 
-.event-archive-item-sidebar {}
-.single-event {
+.event-archive-item-sidebar {
+	
+}
+.event__buttons-list{
+	gap: var(--spacer-3);
+}
+.single-event,.single-post {
 	.h1 {
 		font-size: var(--font-size--xl);
 		font-weight: 500;
@@ -21,6 +26,9 @@
 			margin-bottom: 0;;
 		}
 	}
+	.event-sidebar {
+		margin-top: 1rem;
+	}
 }
 
 .event--sponsors-wrap {
@@ -39,7 +47,7 @@
 .event__time {
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-end;
+	align-items: start;
 	line-height: 1.2;
 	font-size: var(--font-size--sm);
 
@@ -51,6 +59,7 @@
 }
 .event__time-value {
 	margin:0;
+	text-align: right;
 }
 
 .event--header {

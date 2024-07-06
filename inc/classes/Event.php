@@ -19,6 +19,7 @@ class Event {
 		$this->reservationLink                      = get_field('reservation_link', $post);
 		$this->permalink                            = get_permalink($post);
 		$this->description                          = get_field('description', $post);
+		$this->time['start_date']                   = get_field('start_date__time', $post);
 		$this->time['start']                        = get_field('start_date__time', $post) ? new DateTime(get_field('start_date__time', $post)) : false;
 		$this->time['end']                          = get_field('end_date__time', $post) ? new DateTime(get_field('end_date__time', $post)) : false;
 		$this->time['registration_open']            = get_field('registration_opens', $post) ? new DateTime(get_field('registration_opens', $post)) : false;
@@ -32,9 +33,11 @@ class Event {
 		$this->location								= get_field('location', $post);
 		$this->is_past								= $this->is_past();
 		$this->tags									= wp_get_post_terms($post->ID, 'event-type');
-		$this->is_this_year							= false;//(($this->time['start'])? $this->time['start']->format('Y') !== date("Y"));
+		$this->is_this_year							= $this->time['start'] && $this->time['start']->format('Y') !== date("Y");
 	}
-
+	public function get_title(){
+		return $this->post->post_title;
+	}
 	public function get_reservation_link() {
 		return $this->reservationLink;
 	}
@@ -62,10 +65,11 @@ class Event {
 		return $this->speakers;
 	}
 	public function is_past() {
-		return false;
-		// $start = get_field('start_date__time', $this->post) ;
-		// $b = new Byniko();
-		// return strtotime($b->future_expiration()) > $start;
+		$start = get_field('start_date__time', $this->post) ;
+		$b = new Byniko();
+		$future = $b->future_expiration();
+		// return true;
+		return strtotime("$future") > strtotime("$start");
 	}
 	public function get_event_tag_pills() {
 		$tags = $this->tags;

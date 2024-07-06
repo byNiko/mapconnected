@@ -1,11 +1,13 @@
 <?php
 $summit_post = $args['summit_post'];
-$speakers = get_field('key_speakers', $summit_post);
+$speakers_group = get_field('speakers_group', $summit_post);
+// $speakers = get_field('key_speakers', $summit_post);
+$speakers = $speakers_group['key_speakers'];
 $slider_id = $summit_post->post_name;
-print_r($slider_id);
+
 $splideOptions = filter_empty_values([
-	'type' => 'loop', // loop, slide, fade - only for single slides
-	'perPage' => 8,
+	'type' => 'slide', // loop, slide, fade - only for single slides
+	'perPage' => 5,
 	'perMove' => 1,
 	'pagination' => false,
 	'arrows' => true,
@@ -17,6 +19,7 @@ $splideOptions = filter_empty_values([
 	'gap' => "1rem",
 	'omitEnd' => false,
 	'updateOnMove' => true,
+	// 'clones' => 0,
 	// 'breakpoints' => $breakpoints,
 	//'adaptiveHeight' => true, // custom option to auto adjust height per slide
 	// More Splide.js options can be added here
@@ -27,33 +30,28 @@ $arrowSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" view
 if ($speakers) :
 ?>
 
-	<section id="key-speakers" class="key-speakers">
-		<div class="container--narrow">
-			<h2 class="h2 fz-xxl">Key Speakers</h2>
-			<div class="splide" data-splide='<?= wp_json_encode($splideOptions); ?>'>
-				<div class="splide__track">
-					<ul class="splide__list">
-						<?php
-						foreach ($speakers as $speaker) :
-							$s = new Speaker($speaker);
-							$html = $s->get_the_speaker_card();
-							echo "<li class='splide__slide'>$html</li>";
-						endforeach;
-						?>
-					</ul>
-				</div>
-				<!-- Navigation Arrow -->
-				<div class="splide__arrows splide__arrows--ltr">
-					<button class="splide__arrow splide__arrow--prev" type="button" aria-label="Previous slide" aria-controls="<?= 'splide0' . esc_attr($slider_id) . '-track'; ?>">
-						<?= $arrowSVG; ?>
-					</button>
-					<button class="splide__arrow splide__arrow--next" type="button" aria-label="Next slide" aria-controls="<?= 'splide0' . esc_attr($slider_id) . '-track'; ?>">
-						<?= $arrowSVG; ?>
-					</button>
-				</div>
-			</div>
+	<div class="splide" data-splide='<?= wp_json_encode($splideOptions); ?>'>
+		<div class="splide__track">
+			<ul class="splide__list">
+				<?php
+				foreach ($speakers as $speaker) :
+					$s = new Speaker($speaker);
+					$html = $s->get_the_speaker_card();
+					echo "<li class='splide__slide'>$html</li>";
+				endforeach;
+				?>
+			</ul>
 		</div>
-	</section>
+		<!-- Navigation Arrow -->
+		<div class="splide__arrows splide__arrows--ltr">
+			<button class="splide__arrow splide__arrow--prev" type="button" aria-label="Previous slide" aria-controls="<?= 'splide0' . esc_attr($slider_id) . '-track'; ?>">
+				<?= $arrowSVG; ?>
+			</button>
+			<button class="splide__arrow splide__arrow--next" type="button" aria-label="Next slide" aria-controls="<?= 'splide0' . esc_attr($slider_id) . '-track'; ?>">
+				<?= $arrowSVG; ?>
+			</button>
+		</div>
+	</div>
 <?php
 
 endif;

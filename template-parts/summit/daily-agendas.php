@@ -1,19 +1,19 @@
 <?php
 
 $summit_post = $args['summit_post'];
-$agendas = get_field('daily_agendas', $summit_post);
+if(have_rows('agenda_group', $summit_post)): while(have_rows('agenda_group', $summit_post)): the_row();
 
-if (have_rows('daily_agendas', $summit_post)) :
+
 ?>
 	<div class="grid __3x">
-		<?php while (have_rows('daily_agendas', $summit_post)) : the_row('daily_agendas', $summit_post); ?>
+		<?php if(have_rows('daily_agendas')):while(have_rows('daily_agendas')): the_row();?>
 			<div class="agenda__item-wrap">
 				<div class="agenda__title"><?php the_sub_field('title'); ?></div>
 				<div class="agenda__dates"><?php the_sub_field('dates'); ?></div>
 				<div class="agenda__contents"><?php the_sub_field('content'); ?></div>
 			</div>
-		<?php endwhile; ?>
+		<?php  endwhile; endif; ?>
 	</div>
 
 <?php
-endif;
+endwhile; endif;

@@ -1,0 +1,22 @@
+ul {
+	&.no-bullets,
+	&.no-bullet {
+		list-style-type: none;
+		padding-left:0;
+		margin-bottom: 0;
+	}
+}
+
+dl{
+
+}
+dt{
+	&:before {
+	}
+	&:after {
+	}
+}
+dd {
+	margin-left: 1rem;
+	font-size: var(--font-size--sm);
+}
