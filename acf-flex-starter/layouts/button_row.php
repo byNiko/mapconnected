@@ -4,7 +4,7 @@ $buttons = get_sub_field('button_repeater');
 if (!empty($buttons)) : ?>
 	<div class="">
 		<div class="button-row--wrapper container--very-narrow">
-			<div class="button_row flex-row justify--center">
+			<div class="button_row ">
 				<?php
 				foreach ($buttons as $button) : ?>
 					<div class="button-row--col d-flex">

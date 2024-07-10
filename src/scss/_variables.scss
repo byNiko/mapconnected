@@ -1,3 +1,4 @@
+@use "./mixins" as *;
 // Font 
 	// https://www.fluid-type-scale.com/calculate?minFontSize=16&minWidth=400&minRatio=1.25&maxFontSize=19&maxWidth=1280&maxRatio=1.333&steps=xxs%2C+xs%2Csm%2Cmd%2Clg%2Cxl%2Cxxl%2Cxxxl%2Cxxxxl&baseStep=md&prefix=font-size-&decimals=2&includeFallbacks=on&useRems=on&remValue=16&previewFont=Inter&previewText=Almost+before+we+knew+it%2C+we+had+left+the+ground
 	/* For browsers that support clamp  */
@@ -152,7 +153,9 @@
 	--sidebar-width: 300px;
 
 	// font sizes
-	--font-size--main-nav: var(--font-size--md);
+	--font-size--main-nav: var(--font-size--xl);
+	@include bp(md){
+	--font-size--main-nav: var(--font-size--md);}
 
 	// SEMANTIC PADDING
 	--spacer-xs : var(--spacer-2);
@@ -160,9 +163,14 @@
 	--spacer-md : var(--spacer-6);
 	--spacer-lg : var(--spacer-9);
 	--spacer-xl : var(--spacer-12);
-	--spacer: var(--spacer-4); // 1rem (16px)
+	--spacer: var(--spacer-4); 
+	--spacer-grid: 1rem;
+	--gap : var(--spacer-grid);
+	@include bp(md){
 	--spacer-grid: 2rem;
+	}
 	--spacer-inner-container: var(--spacer-10) var(--spacer-12);
 	--scroll-padding  : 1rem;
 	--spacer-body-top-margin: 3rem;
+	--max-card-width: 400px;
 }

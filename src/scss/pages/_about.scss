@@ -1,5 +1,6 @@
+@use "../mixins" as *;
 .mapconnected-network {
-	
+
 	position: relative;
 
 	.inner-container {
@@ -15,14 +16,44 @@
 		top: 0;
 		bottom: 0;
 	}
-&:before {
-	background-color:var(--color-primary-50);
-	opacity: .85;
-}
+
+	&:before {
+		background-color: var(--color-primary-50);
+		opacity: .85;
+	}
+
 	&:after {
 		background-image: url('/src/images/mapconnected-network.jpg');
 		background-size: cover;
 		filter: blur(4px);
 		z-index: -1;
+	}
+}
+
+
+.give_take {
+	position: relative;
+	overflow: hidden;
+
+	.bg_ampersand {
+		position: absolute;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 211vw;
+		@include bp(md){
+		font-size: 21vw;
+		opacity: .5;
+		
+		}
+		line-height: 1;
+		font-weight: 800;
+		top: 50%;
+		opacity: .25;
+	}
+
+	.content {
+		text-align: center;
+		max-width: 300px;
+		padding: 1rem;
 	}
 }

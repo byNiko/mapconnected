@@ -1,6 +1,31 @@
 @use '../theming';
+@use '../mixins' as *;
 
-.icon-grid {}
+.card-item {
+	background-color: var(--color-secondary-100);
+    padding: 1rem;
+    border-radius: var(--radius-2);
+    border: 1px solid #ccc;
+    box-shadow: 0 3px 5px -3px #333;
+    position: relative;
+}
+
+.icon-grid {
+	--min: 300px;
+	// display: grid;
+	// grid-template-columns: repeat(auto-fill, minmax(var(--min), 1fr));
+	justify-content: center;
+	gap: var(--gap);
+	display: flex;
+	flex-wrap: wrap;
+	& > .icon-card {
+		flex: 1 1 var(--min);
+	}
+	.container--very-narrow & > .icon-card {
+		--min: 130px;
+	}
+
+}
 
 .icon-card {
 	position: relative;
@@ -62,6 +87,13 @@
 	box-shadow: var(--box-shadow);
 	border-radius: var(--border-radius, 8px);
 	color: var(--color-text);
+	max-width:var(--max-card-width);
+	margin-left:auto;
+	margin-right: auto;
+	@include bp(md){
+		margin-left:initial;
+	margin-right: initial;
+	}
 }
 
 .card__image-wrap {
@@ -86,10 +118,12 @@
 .event-card__wrapper {
 	position: relative;
 	flex: 1;
-	max-width: 400px;
+	max-width: var(--max-card-width);
 	height: auto;
 	display: flex;
 	flex-direction: column;
+	width: 100%;
+    margin: auto;
 
 	&:nth-of-type(2) {
 		.event-card {
@@ -117,7 +151,10 @@
 }
 
 .event__top-bar {
-	padding: 0 var(--spacer-2)
+	padding: 0 var(--spacer-2);
+	display:flex;
+	flex-wrap: wrap;
+
 }
 
 .event-card__link {

@@ -4,20 +4,25 @@ $arrows = false;
 $splideOptions = filter_empty_values([
 	'type' => 'loop',
 	'perPage' => 8,
-	'perMove' => 2,
+	// 'perMove' => 2,
 	'pagination' => false,
 	'arrows' => $arrows,
-	'autoplay' => true,
-	'interval' => 6000,
+	'autoplay' => false,
+	// 'interval' => 6000,
 	'pauseOnHover' => false,
 	'gap' => "1rem",
+	'autoScroll'=>['speed'=> ".5"],
 	// 'clones'=> 0,
 	'cover' => false,
 	'autoWidth' => false,
 	'gap' => "1rem",
 	'fixedHeight' => "40px",
-	// "lazyLoad" => 'nearby',
-	// 'breakpoints' => $breakpoints,
+	"lazyLoad" => 'nearby',
+	'breakpoints' => [
+		"800" => [
+			"perPage" => 3
+		]
+	],
 	// 'adaptiveHeight' => $adaptive_height, // custom option to auto adjust height per slide
 	// More Splide.js options can be added here
 ], ['pagination', 'arrows', 'pauseOnHover']); // Retain false values for these keys
@@ -41,8 +46,8 @@ if ($gallery) : ?>
 						?>
 							<div class="splide__slide who_attends_logos-gallery-slide" style="width: 200px">
 								<?php
-								// echo "<img  src='data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=' data-splide-lazy='$url' alt='$alt'/>"
-								echo "<img src='$url'  alt='$alt'/>"
+								echo "<img  src='". get_transparent_img_src()."' data-splide-lazy='$url' alt='$alt'/>"
+								// echo "<img src='$url'  alt='$alt'/>"
 								?>
 							</div>
 						<?php endforeach; ?>

@@ -1,15 +1,25 @@
 .d-none {
-	display: none;
+	display: none!important;
 }
 
 .d-flex {
 	display:flex;
+}
+.flex-wrap {
+	flex-wrap: wrap;
+}
+.flex-no-wrap {
+	flex-wrap: no-wrap;
 }
 .d-ib {
 	display: inline-block;
 }
 .flex-column {
 	flex-direction:column;
+}
+
+.p-relative {
+	position: relative;
 }
 
 .justify--space-between {

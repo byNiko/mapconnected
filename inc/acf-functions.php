@@ -5,8 +5,9 @@ function byniko_enqueue_acf_starter_scripts() {
 
 	// should we only load splide assets if needed?
 	// currently the testimonial slider exists as well. 
-	wp_enqueue_style('splide-style', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', array(), '4.1.4');
-	wp_enqueue_script('splide-main', 'https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), '4.1.4', true);
+	wp_enqueue_style('splide-style', '//cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css', array(), '4.1.4');
+	wp_enqueue_script('splide-main', '//cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js', array(), '4.1.4', true);
+	wp_enqueue_script('splide-auto-scroll', '//cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js', array('splide-main'), '4.1.4', true);
 }
 
 add_action('wp_enqueue_scripts', 'byniko_enqueue_acf_starter_scripts');

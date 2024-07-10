@@ -15,7 +15,11 @@ if ($gallery) :
 		'cover' => false, 
 		'fixedHeight' => "110px",
 		"lazyLoad" => 'nearby',
-		'breakpoints' => [],
+		'breakpoints' => [
+			"800" => [
+				'perPage'=> 2
+			]
+		],
 		// More Splide.js options can be added here
 	], ['arrows', 'pagination', 'pauseOnHover']); // Retain false values for these keys
 	// SVG arrow icon

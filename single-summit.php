@@ -26,7 +26,7 @@ get_header(); ?>
 				Fuel For A Customer-First Connected World
 			</div>
 			<div class="glass">
-				<div class=" flex-row justify--center text-center ">
+				<div class=" stats-list">
 					<div class="bold-stat">
 						<div class="bold-stat__number">200<sup>+</sup></div>
 						<div class="bold-stat__title">Attendees</div>
@@ -70,17 +70,88 @@ get_header(); ?>
 	</section>
 	<?php
 	if ($key_speakers = get_field('speakers_group')) :
-		$title = $key_speakers['key_speakers_title']?: "Key Speakers"
+		if (!$key_speakers['hide_key_speakers']) :
+			$title = $key_speakers['key_speakers_title'] ?: "Key Speakers";
 	?>
-		<section id="key-speakers" class="key-speakers">
-			<div class="container--narrow">
-				<header class="text-center">
-					<h2 class="h2 fz-xxl"><?= $title; ?></h2>
-				</header>
-				<?php get_template_part('/template-parts/summit/key-speakers', null, ['summit_post' => $post]); ?>
+			<section id="key-speakers" class="key-speakers">
+				<div class="container--narrow">
+					<header class="text-center">
+						<h2 class="h2 fz-xxl"><?= $title; ?></h2>
+					</header>
+					<?php get_template_part('/template-parts/summit/key-speakers', null, ['summit_post' => $post]); ?>
+				</div>
+			</section>
+	<?php endif;
+	endif; ?>
+
+<section id="title-section" class="title-section">
+		<header class="text-center">
+			<div class="fz-xxxl fw-extra-bold summit-title">The Future is Now.</div>
+			<div class="summit-subtitle">Data Driven Decisions</div>
+		</header>
+		<div class="container--narrow">
+			<div class="flex-row __2x">
+				<div class="col">
+					<div class="text-block">
+						<p>Learn how to get the most out of your data!</p>
+						<p>The 2024 Summit will explore powerful strategies for collecting, understanding, and using data to make better decisions, using the latest tools and proven methods.</p>
+						<p>Gain valuable insights from industry experts on the latest technology and techniques.</p>
+					</div>
+					<div class="text-center fw-bold">
+						Register Now!
+					</div>
+					<div class="flex-row __2x align-center mt-1">
+						<?php
+						$regLinks = get_field('registration_links');
+						if ($regLinks) :
+							foreach ($regLinks as $link) :
+								$title = ($link['title']);
+								$url = ($link['url']);
+								$modal = new ModalIframe($url, $title);
+								if ($modal)
+									echo $modal->get_trigger($title, 'button button--accent');
+							endforeach;
+						endif;
+						?>
+					</div>
+				</div>
+				<div class="col flex-column gap-1">
+					<div class="video-container">
+						<?php //$content =  wp_get_attachment_url(480); 
+						?>
+						<?php
+						// Attributes of the shortcode.
+						$attr = array(
+							// 'src'        =>  wp_get_attachment_url(480),
+							'src'        =>  "https://vimeo.com/968031596?share=copy",
+							'height'     => 360,
+							'width'      => 640,
+							'poster'     => '',
+							'loop'       => '',
+							'autoplay'   => '',
+							'muted'      => 'false',
+							'preload'    => 'metadata',
+							'class'      => 'wp-video-shortcode',
+						);
+
+						echo wp_video_shortcode($attr);
+						?>
+
+					</div>
+					<div class="flex-row justify--center">
+						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')); ?>" class="button button--secondary">Become a Sponsor</a>
+						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Speaker')); ?>" class="button button--secondary">Become a Speaker</a>
+					</div>
+				</div>
 			</div>
-		</section>
-	<?php endif; ?>
+		</div>
+	</section>
+	<?php
+	if (get_field('attending_companies_group')) :
+		// if ($logos = get_field('attending_company_logos')) :
+		get_template_part('/template-parts/summit/participating-logos');
+	endif;
+	?>
 	<section id="summary">
 		<div class="container--narrow">
 			<div class="flex-row __2x inner-container theme--medium-2">
@@ -133,68 +204,6 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>
-	<section id="title-section" class="title-section">
-		<header class="text-center">
-			<div class="fz-xxxl fw-extra-bold summit-title">The Future is Now.</div>
-			<div class="summit-subtitle">Data Driven Decisions</div>
-		</header>
-		<div class="container--narrow">
-			<div class="flex-row __2x">
-				<div class="col">
-					<div class="text-block">
-						<p>Learn how to get the most out of your data!</p>
-						<p>The 2024 Summit will explore powerful strategies for collecting, understanding, and using data to make better decisions, using the latest tools and proven methods.</p>
-						<p>Gain valuable insights from industry experts on the latest technology and techniques.</p>
-					</div>
-					<div class="text-center fw-bold">
-						Register Now!
-					</div>
-					<div class="flex-row __2x align-center">
-						<?php
-						$regLinks = get_field('registration_links');
-						if ($regLinks) :
-							foreach ($regLinks as $link) :
-								$title = ($link['title']);
-								$url = ($link['url']);
-								$modal = new ModalIframe($url, $title);
-								if ($modal)
-									echo $modal->get_trigger($title, 'button button--accent');
-							endforeach;
-						endif;
-						?>
-					</div>
-				</div>
-				<div class="col flex-column gap-1">
-					<div class="video-container">
-						<?php //$content =  wp_get_attachment_url(480); 
-						?>
-						<?php
-						// Attributes of the shortcode.
-						$attr = array(
-							// 'src'        =>  wp_get_attachment_url(480),
-							'src'        =>  "https://vimeo.com/968031596?share=copy",
-							'height'     => 360,
-							'width'      => 640,
-							'poster'     => '',
-							'loop'       => '',
-							'autoplay'   => '',
-							'muted'      => 'false',
-							'preload'    => 'metadata',
-							'class'      => 'wp-video-shortcode',
-						);
-
-						echo wp_video_shortcode($attr);
-						?>
-
-					</div>
-					<div class="flex-row justify--center">
-						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')); ?>" class="button button--secondary">Become a Sponsor</a>
-						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Speaker')); ?>" class="button button--secondary">Become a Speaker</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 	<?php
 	$args = array(
 		'posts_per_page' => 1,
@@ -226,16 +235,12 @@ get_header(); ?>
 					<p>As the Summit expands, MAPconnected stays devoted to crafting and introducing novel thematic tracks and interactive formats, guided by the needs of our industry members and participants. </p>
 				</div>
 			</div>
-			<div class="flex-row justify--center mb-1">
+			<div class="flex-row justify--center mb-1 mt-1">
 				<a href="/about-us#contact-form" class="d-none button button--primary">Get Summit Updates</a>
-				<?php
-				if ($download_url = get_field('agenda_group')['agenda_download']) :
-				?>
-					<a href="<?= $download_url; ?> " download class="button button--outline fz-lg">Get the Full Agenda</a>
-				<?php endif; ?>
+					<button  data-micromodal-trigger="modal-summit-brochure" class="button button--outline fz-lg">Get the Full Agenda</a>
 			</div>
 		</div>
-		<div class="container">
+		<div class="container mt-1">
 			<?php get_template_part('/template-parts/summit/daily-agendas', null, ['summit_post' => $post]); ?>
 		</div>
 	</section>
@@ -277,7 +282,7 @@ get_header(); ?>
 	endif;
 	?>
 
-	<div class="container--narrow">
+	<div class="container--narrow mt-1">
 		<div id="who-attends">
 			<div class="flex-row __2x inner-container theme--medium-2">
 				<div class="col">
@@ -349,17 +354,16 @@ get_header(); ?>
 	</section>
 	<?php
 	$brochure = get_field('brochure_group');
-	if ($brochure['brochure_download']) :
+	if ($brochure['download_brochure_label']) :
 
 	?>
 		<section id="brochure-download">
-			<div class="container--single-column ">
-				<div class="text-center theme--medium-1 py1 px1 radius-1 ">
-					<a href="<?= $brochure['brochure_download']; ?>" class="brochure_download_wrapper d-ib" download>
+			<div class="d-flex justify--center ">
+				<div class="text-center theme--medium-1 py-4 px-4 border-radius-2 ">
+					<button class="button button--secondary " data-micromodal-trigger="modal-summit-brochure">
 						<div class="h4"><?= $brochure['download_brochure_label']; ?></div>
-						<?php echo $brochure['image'] ? wp_get_attachment_image($brochure['image']) : ''; ?>
-					</a>
-
+						<?php echo get_summit_brochure_thumb(); ?>
+					</button>
 				</div>
 			</div>
 		</section>
@@ -369,16 +373,21 @@ get_header(); ?>
 	if (have_rows('sponsorship_group')) :
 		while (have_rows('sponsorship_group')) :
 			the_row();
+			if (have_rows('sponsorship_repeater')) : while (have_rows('sponsorship_repeater')) : the_row();
+					if (!get_sub_field('hide')) :;
 	?>
-			<section id="sponsorships" class="sponsorship-levels">
-				<header class="text-center">
-					<h2 class="h2"><?php the_sub_field('section_title'); ?></h2>
-				</header>
-				<div class="container">
-					<?php get_template_part('/template-parts/summit/sponsorship-levels'); ?>
-				</div>
-			</section>
+						<section id="sponsorships" class="sponsorship-levels">
+							<header class="text-center">
+								<h2 class="h2"><?php the_sub_field('section_title'); ?></h2>
+							</header>
+							<div class="container">
+								<?php get_template_part('/template-parts/summit/sponsorship-levels'); ?>
+							</div>
+						</section>
 	<?php
+					endif;
+				endwhile;
+			endif;
 		endwhile;
 	endif;
 

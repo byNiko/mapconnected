@@ -44,6 +44,7 @@ $splideOptions = filter_empty_values([
     'pauseOnHover' => $pause_on_hover,
     'gap' => $gap,
     'breakpoints' => $breakpoints,
+    'autoHeight' => true,
     'adaptiveHeight' => $adaptive_height, // custom option to auto adjust height per slide
     // More Splide.js options can be added here
 ], ['pagination', 'arrows', 'pauseOnHover']); // Retain false values for these keys
@@ -55,7 +56,7 @@ if (have_rows('slides')) :
     <div class="flexible-content-wrap">
         <div id="<?= sanitize_title($admin_label); ?>" class="slider <?= sanitize_title($admin_label); ?>">
             <!-- Replace "=container--narrow" with your own container class if needed -->
-            <div class="splide <?= $adaptive_height ? 'splide--adaptiveHeight' : ''; ?>" data-splide='<?= wp_json_encode($splideOptions); ?>'>
+            <div class="splide <? $adaptive_height ? 'splide--adaptiveHeight' : ''; ?>" data-splide='<?= wp_json_encode($splideOptions); ?>'>
                 <div class="splide__track">
                     <ul class="splide__list">
                         <?php
@@ -68,6 +69,10 @@ if (have_rows('slides')) :
                             $backgroundUrl = ($image) ? wp_get_attachment_url($image['ID'], 'home-slider') : false;
                         ?>
                             <li class="splide__slide" style="background-image: url(<?= $backgroundUrl; ?>);">
+                            <!-- <li class="splide__slide"> -->
+                            <!-- <div class="splide__slide__container">
+                                <img src="<? //=  $backgroundUrl;?>" alt="">
+                            </div> -->
                                 <div class="slide__overlay">
                                     <div class="inner-slide">
                                         <?php if ($title) : ?>

@@ -1,0 +1,11 @@
+
+@use "../../../node_modules/hamburgers/_sass/hamburgers/hamburgers" with (
+	$hamburger-layer-color: var(--hamburger-color)
+);
+
+.hamburger {
+	--hamburger-color: var(--color-link);
+	&.is-active {
+		--hamburger-color: var(--color-secondary-100);
+	}
+}

@@ -9,12 +9,10 @@ if ($notification = get_field('notification_bar', 'options')) :
 ?>
 		<div class="top-notification-bar theme--bright-1">
 			<div class="container text-center">
-				<div >
-					<a href="<?= $link['url']; ?>" class="flex-row justify--center align-center">
-						<div class="text-center fw-bold text-uppercase"><?= $cta; ?></div>
-						<button class="button button--accent button--outline"><?= $link['title']; ?> </button>
-					</a>
-				</div>
+				<a href="<?= $link['url']; ?>" class="flex-row justify--center align-center">
+					<div class="text-center fw-bold text-uppercase"><?= $cta; ?></div>
+					<button class="button button--accent "><?= $link['title']; ?> </button>
+				</a>
 			</div>
 		</div>
 <?php

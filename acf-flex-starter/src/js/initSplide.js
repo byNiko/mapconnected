@@ -17,7 +17,8 @@ export function initSplide() {
 			const options = el.dataset.splide ? JSON.parse( el.dataset.splide ) : {};
 			const slider = new Splide( el, options );
 			// Initialize slider with the options
-			slider.mount();
+			const extensions = options.autoScroll 	? window.splide.Extensions : null;
+			slider.mount( extensions );
 			if ( options.adaptiveHeight ) {
 				slider.on( 'resized move ', () => {
 					updateHeight( slider );

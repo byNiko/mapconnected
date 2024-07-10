@@ -1,12 +1,7 @@
-// @use "sass:map";
-// $sizes: (
-//   sm : var(--font-size--sm),
-//   md: var(--font-size--md),
-//   lg : var(--font-size--lg),
-//   xl : 
-// );
+@use '../mixins' as *;
+
 @mixin button($backgroundColor: var(--color-primary-400), $color: var(--color-white), $size: "sm", $weight: 500) {
-	--background: #{$backgroundColor};
+	--background: $backgroundColor;
 	--text-color: $color;
 	--hoverBackground: var(--text-color, $color);
 	--hoverTextColor: var(--background, $background);
@@ -30,14 +25,15 @@
 	&:hover {
 		background-color: var(--hoverBackground);
 		color: var(--hoverTextColor);
+		background-color: var(--hoverBackground);
+		// color: var(--hoverTextColor);
 	}
 }
 
 .theme--medium-1,
 .theme--medium-2 {
-	.button {
-	--background: var(--color-primary-33);
-	--text-color: var(--black);
+	.button--primary {
+		// stays the same
 	}
 }
 
@@ -54,6 +50,7 @@
 }
 
 .button--accent {
+	--text-color: var(--white);
 	--background: var(--color--primary-accent);
 
 }
@@ -81,28 +78,42 @@
 
 
 .button--primary {
-	--color: var(--color-primary-cta);
-	background: var(--color);
-	color: var(--white);
-	border-color: var(--color);
+	--text-color: var(--white);
+	--background: var(--color-primary-cta);
+	// color: var(--white);
+	border-color: var(--color-primary-accent);
 
 	&.button--outline {
 		border-color: var(--color);
-		color: var(--color);
-		background: transparent;
+		--text-color: var(--color-primary-cta);
+		--background: transparent;
+
+		&:hover {
+			--text-color: var(--white);
+			--background: var(--color-primary-cta);
+		}
 	}
 
 }
 
+.button--md {
+	font-size: var(--font-size--md);
+}
+
+.button--lg {
+	font-size: var(--font-size--lg);
+}
+
 .button--accent {
-	color: var(--white);
+	--color: var(--white);
+	--background: var(--color-primary-accent);
 	font-weight: 400;
 	border-color: var(--color-primary-200);
-	background-color: var(--color-primary-accent);
+	// background-color: var(--color-primary-accent);
 
 	&:hover {
-		background-color: var(--color-primary-accent);
-		color: var(--black);
+		// background-color: var(--color-primary-accent);
+		// color: var(--black);
 	}
 }
 
@@ -119,26 +130,20 @@
 
 }
 
-.button--md {
-	font-size: var(--font-size--md);
-}
-
 
 .button--full-width {
 	width: 100%;
 }
 
-.button--lg {
-	font-size: var(--font-size--lg);
-}
 
 .button--inline-submit {
 	padding: 0.4rem 1rem;
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
+
 .button--text {
 	display: inline-block;
-	padding:0;
+	padding: 0;
 	background: none;
 	color: var(--color-link);
 	border: none;
@@ -147,8 +152,9 @@
 .disabled {
 	cursor: not-allowed;
 }
+
 .button.disabled,
-.button[disabled]{
+.button[disabled] {
 	pointer-events: none;
 	background: #ccc;
 	opacity: .4;
@@ -159,51 +165,71 @@
 
 
 .button--play {
-	--dim : 40px;
+	--dim: 40px;
 	position: relative;
 	cursor: pointer;
 	display: flex;
-    align-items: center;
-    gap: .5rem;
-    padding: .5rem 1rem;
-    /* background: var(--color-primary-accent); */
-    border-radius: var(--radius-1);
-    border: 1px solid var(--color-primary-400);
+	align-items: center;
+	gap: .5rem;
+	padding: .5rem 1rem;
+	/* background: var(--color-primary-accent); */
+	border-radius: var(--radius-1);
+	border: 1px solid var(--color-primary-400);
+
 	&:hover {
 		box-shadow: 0 0 5px #ccc;
 	}
+
 	.circle {
-		
-	  width:var(--dim);
-	  height:var(--dim);
-	  border-radius: 50%;
-	  background-color: green;
-	  transition: filter 0.2s;
+
+		width: var(--dim);
+		height: var(--dim);
+		flex: 0 0 var(--dim);
+		border-radius: 50%;
+		background-color: green;
+		transition: filter 0.2s;
 	}
-  
+
 	svg {
-	  fill: white;
-	  stroke: white;
-	  stroke-width: 2;
-	  transition: all 0.3s;
+		fill: white;
+		stroke: white;
+		stroke-width: 2;
+		transition: all 0.3s;
 	}
+
 	&:hover {
-	  .circle {
-		filter: brightness(110%);
-	  }
-	  svg {
-		transform: scale(1.2, 1.2);
-	  }
+		.circle {
+			filter: brightness(110%);
+		}
+
+		svg {
+			transform: scale(1.2, 1.2);
+		}
 	}
-  }
-  
-  @keyframes pulse {
+}
+
+@keyframes pulse {
 	0% {
-	  transform: scale(1, 1);
+		transform: scale(1, 1);
 	}
-  
+
 	100% {
-	  transform: scale(1.2, 1.2);
+		transform: scale(1.2, 1.2);
 	}
-  }
-  
+}
+
+
+.button_row {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	gap: 10px;
+
+	@include bp(md) {
+		flex-direction: row;
+		gap: 1rem;
+	}
+}

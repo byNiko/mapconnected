@@ -32,6 +32,8 @@ h1,h2,h3,h4,h5,h6 {
 	color: var(--color-text);
 	& + .subtitle {
 		margin-top: -.6rem;
+		font-size: var(--font-size--lg);
+		font-weight: 400;
 	}
 }
 
@@ -41,42 +43,42 @@ p {
 
 // SIZES
 .fz-xs{
-	font-size: var(--font-size--xs);
+	font-size: var(--font-size--xs)!important;
 }
 .fz-sm{
-	font-size: var(--font-size--sm);
+	font-size: var(--font-size--sm)!important;
 }
 .fz-md{
-	font-size: var(--font-size--md);
+	font-size: var(--font-size--md)!important;
 }
 .fz-lg{
-	font-size: var(--font-size--lg);
+	font-size: var(--font-size--lg)!important;
 }
 .fz-xl{
-	font-size: var(--font-size--xl);
+	font-size: var(--font-size--xl)!important;
 }
 .fz-xxl{
-	font-size: var(--font-size--xxl);
+	font-size: var(--font-size--xxl)!important;
 }
 .fz-xxxl{
-	font-size: var(--font-size--xxxl);
+	font-size: var(--font-size--xxxl)!important;
 }
 .fz-xxxxl{
-	font-size: var(--font-size--xxxxl);
+	font-size: var(--font-size--xxxxl)!important;
 }
 
 .fw-semi-bold {
-	font-weight: 500;
+	font-weight: 500!important;
 }
 .fw-bold {
-	font-weight: 800;
+	font-weight: 800!important;
 }
 .fw-extra-bold {
-	font-weight: 900;
+	font-weight: 900!important;
 	
 }
 .ff-display {
-	font-family: var(--font-family--display);
+	font-family: var(--font-family--display)!important;
 }
 
 // DISPLAY

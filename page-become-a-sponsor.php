@@ -32,11 +32,11 @@ get_header();
 	<?php
 	$sponsors = get_field('sponsors_group');
 	$count = count($sponsors);
-	$group1 = array_slice($sponsors, 0, $count / 2 );
-	$group2 = array_slice($sponsors, $count / 2 );
+	$group1 = array_slice($sponsors, 0, intval(ceil($count / 2)) );
+	$group2 = array_slice($sponsors, intval(floor($count / 2) ));
 	if ($sponsors) :
 	?>
-		<section id="curent_prev_sponsors">
+		<section id="curent_prev_sponsors" class="p-relative">
 			<header>
 				<h3 class="h3 text-center">Snapshot of Current and Previous Sponsors</h2>
 			</header>
@@ -129,9 +129,9 @@ get_header();
 			</div>
 		</div>
 	</section>
-	<section class="icon-grid__wrapper  ">
+	<section class="icon-grid__wrapper ">
 		<div class="container--very-narrow theme--medium-1 py-1">
-			<div class="icon-grid grid __3x justify--center">
+			<div class="icon-grid grid __3x justify--center p-relative">
 				<div class="icon-card icon-top">
 					<div class="card__icon"><i class="fa-classic fa-regular fa-thumbs-up" aria-hidden="true"></i></div>
 					<div class="flex-column">
@@ -313,7 +313,7 @@ get_header();
 					<div class="py-1 px-1 text-center theme--medium-2 border-radius-2">
 						<p>Need More Information to Make Your Decision?</p>
 						<p>Ask me for our brochure and customized packages.</p>
-						<?= wp_get_attachment_image(983, 'medium'); ?>
+						<?= get_summit_brochure_thumb(); ?>
 					</div>
 				</div>
 				</div>

@@ -3,12 +3,12 @@
     "title": "Page: MyWarratyNetwork Hub",
     "fields": [
         {
-            "key": "field_6677232b1d3fc",
-            "label": "Sponsor Slider",
-            "name": "sponsor_slider",
+            "key": "field_6689aacc96c46",
+            "label": "Partner Group",
+            "name": "partner_group",
             "aria-label": "",
-            "type": "clone",
-            "instructions": "",
+            "type": "repeater",
+            "instructions": "The first list will show in the slider at the top of the page",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -16,13 +16,59 @@
                 "class": "",
                 "id": ""
             },
-            "clone": [
-                "field_667722f47c639"
-            ],
-            "display": "seamless",
-            "layout": "block",
-            "prefix_label": 0,
-            "prefix_name": 0
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_6689aadc96c47",
+            "button_label": "Add Partner Group",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_6689aadc96c47",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "Featured Partners",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_6689aacc96c46"
+                },
+                {
+                    "key": "field_6689aaef96c48",
+                    "label": "Partners List",
+                    "name": "partners_list",
+                    "aria-label": "",
+                    "type": "clone",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "clone": [
+                        "field_667722f47c639"
+                    ],
+                    "display": "seamless",
+                    "layout": "block",
+                    "prefix_label": 0,
+                    "prefix_name": 0,
+                    "parent_repeater": "field_6689aacc96c46"
+                }
+            ]
         }
     ],
     "location": [
@@ -43,5 +89,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719083893
+    "modified": 1720298395
 }

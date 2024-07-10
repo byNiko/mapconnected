@@ -20,36 +20,13 @@ get_header();
 				<a href="#contact-form" class="button button--secondary button--outline button--md">Contact Us!</a>
 			</div>
 		</div>
-		<div class="content my-1">
+		<div class="content my-1 ">
 			<header class="text-center">
 				<h2 class="h2">Our Mission</h2>
 			</header>
 			Our mission is to nurture a professional network that provides an engaging interactive forum to share best practices across the motor vehicle service and warranty ecosystem with similar-minded industry peers using the <strong>give</strong> and <strong>take</strong> premise.
 		</div>
 	</section>
-	<style>
-		.give_take {
-			position: relative;
-			overflow: hidden;
-		}
-
-		.bg_ampersand {
-			position: absolute;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			font-size: 21vw;
-			line-height: 1;
-			font-weight: 800;
-			top: 50%;
-			opacity: .5;
-		}
-
-		.give_take .content {
-			text-align: center;
-			max-width: 300px;
-			padding: 1rem;
-		}
-	</style>
 	<section class="give_take theme--dark-gradient-1">
 
 		<div class="bg_ampersand">&</div>
@@ -57,17 +34,17 @@ get_header();
 			<div class="flex-row justify--center">
 				<div class="content">
 					<div class="h2 text-uppercase fw-bold">Give</div>
-					<p>You share your expertise and experience, as do your peers</p>
+					<div>You share your expertise and experience, as do your peers</div>
 				</div>
 				<div class="content">
 					<div class="h2 text-uppercase fw-bold">Take</div>
-					<p>You receive valuable insights and expertise from your peers</p>
+					<div>You receive valuable insights and expertise from your peers</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<section id="mapconnected-network" class="mapconnected-network">
-		<div class="inner-container">
+	<section id="mapconnected-network" class="mapconnected-network ">
+		<div class="inner-container py-4">
 			<div class="container--very-narrow ">
 				<h2 class="h2">MAPconnected Network</h2>
 				<p>Our community and live forum connects people to a dynamic, information sharing network - providing unparalleled opportunities to understand relative performance and help make more efficient and informed warranty service lifecycle decisions.</p>
@@ -132,7 +109,7 @@ get_header();
 			</div>
 		</div>
 		<div class="container--very-narrow">
-			<div class="names_and_roles flex-column">
+			<div class="names_and_roles flex-column mt-1">
 				<div class="name_role">
 					<h3 class="h3 name">
 						Pam Walter (Founder) :

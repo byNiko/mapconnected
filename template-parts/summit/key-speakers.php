@@ -20,6 +20,11 @@ $splideOptions = filter_empty_values([
 	'omitEnd' => false,
 	'updateOnMove' => true,
 	// 'clones' => 0,
+	'breakpoints'=> [
+		"800" => [
+			'perPage' => 1
+		]
+	]
 	// 'breakpoints' => $breakpoints,
 	//'adaptiveHeight' => true, // custom option to auto adjust height per slide
 	// More Splide.js options can be added here

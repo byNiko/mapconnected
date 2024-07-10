@@ -1,14 +1,17 @@
 <div class="flexible-content-wrap">
-	<div class="container--single-column">
-		<?php
-		get_template_part('/acf-flex-starter/layouts/headings');
-		$content = get_sub_field('content');
+	<?php
+	get_template_part('/acf-flex-starter/layouts/headings');
+	$content = get_sub_field('content');
+	$text_size = get_sub_field('text_font_size') ?? 'md';
 
-		if ($content) : ?>
-			<div class="content">
+	if ($content) : ?>
+		<div class="container--single-column">
+			<div class="content fz-<?= $text_size; ?>">
 				<?= $content; ?>
 			</div>
 		<?php endif; ?>
-		<?php get_template_part('/acf-flex-starter/layouts/button_row'); ?>
-	</div>
+		</div>
+		<footer>
+			<?php get_template_part('/acf-flex-starter/layouts/button_row'); ?>
+		</footer>
 </div>

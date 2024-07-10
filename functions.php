@@ -173,7 +173,7 @@ function byNiko_add_preconnect_links() {
  * Enqueue  fonts and set recommended preconnect links
  */
 function byniko_enqueue_fonts() {
-	wp_enqueue_style( 'dashicons' );
+	wp_enqueue_style('dashicons');
 	wp_enqueue_style(
 		'byniko-fonts',
 		"//fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap",
@@ -421,43 +421,43 @@ add_filter('pre_get_posts', 'byniko_cpt_custom_search_filter');
 
 
 
-function acf_set_featured_image( $value, $post_id, $field  ){
-    
-    if($value != ''){
-	    //Add the value which is the image ID to the _thumbnail_id meta data for the current post
-	    add_post_meta($post_id, '_thumbnail_id', $value);
-    }
- 
-    return $value;
+function acf_set_featured_image($value, $post_id, $field) {
+
+	if ($value != '') {
+		//Add the value which is the image ID to the _thumbnail_id meta data for the current post
+		add_post_meta($post_id, '_thumbnail_id', $value);
+	}
+
+	return $value;
 }
 
 // acf/update_value/name={$field_name} - filter for a specific field based on it's name
 add_filter('acf/update_value/name=primary_headshot', 'acf_set_featured_image', 10, 3);
 
- 
+
 add_action('acf/init', 'my_acf_form_init');
 function my_acf_form_init() {
 
-    // Check function exists.
-    if( function_exists('acf_register_form') ) {
+	// Check function exists.
+	if (function_exists('acf_register_form')) {
 
-        // Register form.
-        acf_register_form(array(
-            'id'       => 'new-speaker',
-            'post_id'  => 'new_post',
-            'new_post' => array(
+		// Register form.
+		acf_register_form(array(
+			'id'       => 'new-speaker',
+			'post_id'  => 'new_post',
+			'new_post' => array(
 				'post_title' => "Pending Intake",
-                'post_type'   => 'speaker',
-                'post_status' => 'pending',
-            ),
-            'post_title'  => false,
-            'post_content'=> false,
+				'post_type'   => 'speaker',
+				'post_status' => 'pending',
+			),
+			'post_title'  => false,
+			'post_content' => false,
 			// 'return' => home_url(),
-				'submit_value'	=> 'Submit Speaker Info',
-				'updated_message' => __("<h1>Post updated</h1><div>Thanks! We got your info</div>", 'acf'),
-				'uploader' => 'wp', // wp | baseic
-        ));
-    }
+			'submit_value'	=> 'Submit Speaker Info',
+			'updated_message' => __("<h1>Post updated</h1><div>Thanks! We got your info</div>", 'acf'),
+			'uploader' => 'wp', // wp | baseic
+		));
+	}
 }
 
 
@@ -466,19 +466,19 @@ function my_acf_form_init() {
 // todo: take a look at this to figure out the issue we've got
 // https://wordpress.stackexchange.com/questions/105926/rewriting-post-slug-before-post-save
 function byniko_custom_event_post_title_and_slug($post_id) {
-	
+
 	if (get_post_type() == 'speaker') {
 		$my_post = array();
-	$my_post['ID'] = $post_id;
+		$my_post['ID'] = $post_id;
 		$my_post['post_title'] = get_field('name', $post_id);
 		$my_post['post_name'] = sanitize_title($my_post['post_title']);
 
-		remove_action( 'save_post', 'byniko_custom_event_post_title_and_slug', 10, 3 );
+		remove_action('save_post', 'byniko_custom_event_post_title_and_slug', 10, 3);
 		wp_update_post($my_post);
-		add_action( 'save_post', 'byniko_custom_event_post_title_and_slug', 10, 3 );
+		add_action('save_post', 'byniko_custom_event_post_title_and_slug', 10, 3);
 		//do_action('acf/save_post' , $post_id);
-	    // wp_redirect( home_url(), 301);
-	   
+		// wp_redirect( home_url(), 301);
+
 	}
 }
 
@@ -487,14 +487,14 @@ add_action('acf/save_post', 'byniko_custom_event_post_title_and_slug', 20);
 
 
 
-add_shortcode( 'new-speaker-form', 'byniko_new_speaker_front_end_form' );
- 
+add_shortcode('new-speaker-form', 'byniko_new_speaker_front_end_form');
+
 function byniko_new_speaker_front_end_form() {
 	acf_form_head();
-    ob_start(); 
- 
-    acf_form('new-speaker'); 
-    return ob_get_clean(); 
+	ob_start();
+
+	acf_form('new-speaker');
+	return ob_get_clean();
 }
 
 
@@ -508,16 +508,30 @@ function add_slug_body_class($classes) {
 add_filter('body_class', 'add_slug_body_class');
 
 
-add_action('wp_footer', 'byniko_footer_modal'); 
-function byniko_footer_modal() { 
+add_action('wp_footer', 'byniko_footer_modal');
+function byniko_footer_modal() {
 	//get_template_part('/template-parts/components/modal-form__contact');
 }
 
 
-function byniko_load_template_part($template_name, $part_name=null, $args=[]) {
-    ob_start();
-    get_template_part($template_name, $part_name, $args);
-    $var = ob_get_contents();
-    ob_end_clean();
-    return $var;
+function byniko_load_template_part($template_name, $part_name = null, $args = []) {
+	ob_start();
+	get_template_part($template_name, $part_name, $args);
+	$var = ob_get_contents();
+	ob_end_clean();
+	return $var;
+}
+
+function get_transparent_img_src() {
+	return "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+}
+
+function get_summit_brochure_thumb() {
+	$thumb = '';
+	if ($brochure_group = get_field('global_summit_group', 'options')) :
+		if ($img = $brochure_group['summit_brochure_thumbnail']) :
+			$thumb = wp_get_attachment_image($img, 'medium', false, ['loading' => 'lazy', 'class'=>"mt-1"]);
+		endif;
+	endif;
+	return $thumb;
 }

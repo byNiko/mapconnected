@@ -1,7 +1,13 @@
 @use '../theming';
 
 .modal {
-	&.contact-form-modal {
+
+	.modal__content {
+		max-height: 85vh;
+		// max-height: 75%;
+		overflow-y: auto;
+	}
+	&.modal-form  {
 		.modal__header {
 			justify-content: center;
 			font-family: var(--ff-display);
@@ -24,5 +30,17 @@
 		right: 0;
 		top:0;
 	}
+	.with_frm_style .frm_message, .frm_success_style{
+		font-size: var(--font-size--md);
+	}
 }
+}
+
+.modal-form--summit-brochure {
+	.modal__container {
+		padding-right: 0;
+	}
+	.modal__content {
+		padding-right: 1rem;
+	}
 }

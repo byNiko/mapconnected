@@ -1,12 +1,19 @@
+@use "../mixins" as *;
 .homepage-top-slider{
-	--slider-aspect-ratio: 28/9;
+	height:auto;
 	background-color: var(--black);
+	// --slider-aspect-ratio: 2/1;
+	@include bp(md){
+		--slider-aspect-ratio: 28/9;
+	}
 }
 .splide__slide > img {
 max-height: 100%;
 max-width: 100%;
 }
-
+.splide {
+	// height: 100%;
+}
 .splide:not(.is-overflow) .splide__arrows {
 	display: none;
   }
@@ -14,7 +21,7 @@ max-width: 100%;
 	justify-content: center;
   }
 .slider {
-	
+	// height: 100%;
 	aspect-ratio: var(--slider-aspect-ratio);
 	// margin-left: calc(-1 * var(--spacer-8));
 	// margin-right: calc(-1 * var(--spacer-8));
@@ -29,6 +36,7 @@ max-width: 100%;
 	}
 
 	.slide__overlay {
+		@include bp(md){
 		position:absolute;
 		top:0;
 		left:0;
@@ -39,9 +47,11 @@ max-width: 100%;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		}
 	}
 	.inner-slide {
 		max-width: 1080px;
+		width: 95%;
 		margin-left: auto;
 		margin-right: auto;
 		--color-text: var(--color-secondary-100);

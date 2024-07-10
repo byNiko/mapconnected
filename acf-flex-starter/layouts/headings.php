@@ -10,7 +10,7 @@ $container_class = $theme_group['container_width'] !=='false'? "container--".$th
 $theme_color = 'theme--'.$theme_group['theme'];
 
 if ($section_heading || $sub_heading) : ?>
-	<header class="section-header flexible-content-wrap text-center <?=$theme_color;?>">
+	<header class="section-header flexible-content-wrap text-center container--very-narrow <?= $theme_color;?> ">
 		<h2 class="<?= $heading_font_size;?>"><?= $section_heading; ?> </h2>
 		<div class="subtitle h4"><?= $sub_heading; ?></div>
 	</header>

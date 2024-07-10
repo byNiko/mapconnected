@@ -1,30 +1,112 @@
-.primary-bar {
-	display: flex;
-	align-items: flex-end;
-	margin-top: var(--spacer-sm);
-	background-color: var(--color-text);
+@use "./mixins" as *;
+
+.primary-navbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-image: var(--dark-gradient-1);
+	transform: translatex(-100%);
+	transition: transform .2s;
+	z-index: 100;
+
+	.inner-primary-nav {
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&.is-active {
+		transform: translatex(0);
+	}
+
+	@include bp(md) {
+		display: flex;
+		position: relative;
+		align-items: flex-end;
+		margin-top: var(--spacer-sm);
+		background-color: var(--color-text);
+		transform: translatex(0);
+	}
 }
+
 .main-navigation {
 	margin-left: auto;
 	margin-right: auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
 	.main-nav--menu {
 		list-style-type: none;
 		display: flex;
 		column-gap: var(--spacer);
 		word-spacing: -0.1em;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+
+		@include bp(md) {
+			flex-direction: row;
+		}
 	}
+
 	.menu-item {
-			font-weight: 300;
-			font-size: var(--font-size--main-nav);
-			color: var(--color-main-nav-link);
-			border-bottom: 1px solid transparent;
-			border-top: 1px solid transparent;
-			letter-spacing: 0.5px;
-			margin: 5px 0;
+		font-weight: 300;
+		font-size: var(--font-size--main-nav);
+		color: var(--color-main-nav-link);
+		border-bottom: 1px solid transparent;
+		border-top: 1px solid transparent;
+		letter-spacing: 0.5px;
+		margin: 5px 0;
+
 		&.current-menu-item,
 		&:hover {
-			a {color: var(--color-secondary-800);}
-			    border-bottom-color: var(--color-secondary-600);
+			a {
+				color: var(--color-secondary-800);
+			}
+
+			border-bottom-color: var(--color-secondary-600);
 		}
+	}
+}
+
+.menu-toggle {
+	position: relative;
+	z-index: 200;
+
+	@include bp(md) {
+		display: none;
+	}
+
+}
+
+
+.top-nav--container {
+	--color-link: var(--color-secondary-100);
+	
+	order: 10;
+
+	@include bp(md) {
+		--color-link: var(--color-text);
+		--link-size: var(--font-size--xs);
+		order: 0;
+		position: absolute;
+		right: var(--gap);
+		top: 0;
+		transform: translateY(-200%);
+		display: flex;
+		align-items: center;
+	}
+}
+
+.top-nav--menu {
+	@include bp(md, 'max-width') {
+		flex-direction: column;
+		// font-size: var(--font-size--lg);
 	}
 }

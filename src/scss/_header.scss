@@ -1,6 +1,10 @@
 @use './components/buttons';
+@use './mixins' as *;
 .menu-toggle {
-	display:none;
+	display:inline-block;
+	@include bp(md){
+		display: none;
+	}
 }
 .site-description {
 	display: none;
@@ -27,17 +31,19 @@
 }
 
 
-.top-nav--container {
-	display: flex;
-	align-items: center;
-}
 .top-nav--menu {
+	--link-size: var(--font-size--xl);
 	margin-left:auto;
 	list-style-type: none;
 	display:flex;
 	word-spacing: -0.1em;
 	column-gap: var(--spacer-6);
-	font-size: var(--font-size--xs);
+	font-size: var(--link-size);
+	@include bp(md){
+		--link-size: var(--font-size--xs);
+		align-items: end;
+
+	}
 	.menu-item {
 		font-weight: 300;
 		letter-spacing: 1px;

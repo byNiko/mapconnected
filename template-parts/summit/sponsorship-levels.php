@@ -25,7 +25,7 @@ if (have_rows('sponsorships')) :
 
 					foreach ($sponsors as $sponsor) :
 						$s = new Sponsor($sponsor);
-						echo $s->get_sponsor_logo_with_link();
+						echo "<div class='sponsor--link-logo'>".$s->get_sponsor_logo_with_link(). "</div>";
 					endforeach;
 
 					?>

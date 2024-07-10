@@ -19,7 +19,16 @@
     border-bottom: none;
     border-top-right-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius);
+	font-size: var(--font-size--sm);
+	line-height: 1.1;
+	text-align: right;
+	background: transparent;
+	transition: background-color .12s, color .12s;
 
+	.active {
+		font-weight: 800;
+		background-color: var(--color-primary-300);
+	  }
   }
 
   .tabs-content {
@@ -36,10 +45,6 @@
 	flex-direction: column;
   }
 
-  .active {
-	font-weight: 800;
-	background-color: var(--color-primary-300);
-  }
   .pricing-table__tabs-content {
 	background: var(--color-primary-900);
   }

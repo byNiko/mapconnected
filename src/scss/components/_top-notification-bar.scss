@@ -1,7 +1,15 @@
+@use "../mixins" as *;
 .top-notification-bar {
 	padding-top: 10px;
 	padding-bottom: 10px;
 	font-size: var(--font-size--sm);
+	.flex-row {
+		
+		@include bp(md, 'max-width'){
+			gap: 10px;
+		}
+	}
+
 	button {
 		padding-top: 10px;
 		padding-bottom: 10px;

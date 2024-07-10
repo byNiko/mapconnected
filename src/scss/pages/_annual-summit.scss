@@ -1,3 +1,4 @@
+@use "../mixins" as *;
 .annual_summit {
 	:target:before {
 		content: "";
@@ -49,7 +50,7 @@
 	.all-speakers-grid {
 		display: grid;
 		grid-gap: 1rem;
-		grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 
 		.speaker-card {}
 	}
@@ -131,7 +132,10 @@
 			font-size: var(--font-size--sm);
 			white-space: nowrap;
 			font-weight: 400;
-			padding: 1rem 2rem;
+			padding: 1rem .5rem;
+			@include bp(md){
+				padding: 1rem 2rem;
+			}
 			display: flex;
 
 			&:hover {
@@ -198,7 +202,8 @@
 	padding-top: 0rem;
 	padding-bottom: 2rem;
 	--sponsor-link-flex: initial;
-	--sponsor-height: 85px;
+	// --sponsor-height: 85px;
+	--logo-width: 20%; 
 	// padding: 0 0 2rem;
 	display: flex;
 	flex-wrap: wrap;
@@ -237,14 +242,22 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
-			flex: var(--sponsor-link-flex);
-			height: var(--sponsor-height);
-
-			img {
+			// flex: var(--sponsor-link-flex);
+			// width: var(--logo-width);
+			&.uses-background-logo {
+				background-size: contain;
+				background-position: center; 
+				background-repeat:no-repeat;
+				aspect-ratio: 1 / 1;
+				width:var(--logo-width, 20%);
 				height: 100%;
-				width: auto;
-
 			}
+
+			// img {
+			// 	height: 100%;
+			// 	width: 100%;
+
+			// }
 		}
 	}
 
@@ -279,4 +292,21 @@
 	}
 
 
+}
+
+.logo-gallery {
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--gap);
+	justify-content: center;
+	.logo-item {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 10px;
+		flex: 0 1 40%;
+		@include bp(md){
+		flex: 0 1 15%;
+	}
+	}
 }

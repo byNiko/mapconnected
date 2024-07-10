@@ -2,22 +2,23 @@
 @use "./utilities";
 
 // @forward "normalize";
+@use './vendor/micromodal';
 @use "./reboot";
 @use "./base";
 @use "./grid";
 @use "./typography";
 @use "./wp-defaults";
+@use "./components";
 @use "./lists";
 @use "./flexible-content-spacing";
 @use "./theming";
 @use './layouts';
-@use "./components";
 @use "./header";
 @use "./footer";
 @use './main-nav';
 @use './pages';
 @use './events';
+@use './scrollbar';
 
 
-@use './vendor/micromodal';
 @use './animations';

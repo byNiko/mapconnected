@@ -219,6 +219,26 @@
             "layout": "block",
             "sub_fields": [
                 {
+                    "key": "field_6689c9db023f6",
+                    "label": "Hide Key Speakers",
+                    "name": "hide_key_speakers",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Hide the Key Speakers until you're ready to show them.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 1,
+                    "ui_on_text": "Hide",
+                    "ui_off_text": "Show",
+                    "ui": 1
+                },
+                {
                     "key": "field_6685e20c4e438",
                     "label": "Key Speakers Title",
                     "name": "key_speakers_title",
@@ -309,8 +329,8 @@
                             },
                             "message": "",
                             "default_value": 0,
-                            "ui_on_text": "",
-                            "ui_off_text": "",
+                            "ui_on_text": "Hide",
+                            "ui_off_text": "Show",
                             "ui": 1,
                             "parent_repeater": "field_667f44a60b204"
                         },
@@ -374,9 +394,9 @@
             ]
         },
         {
-            "key": "field_66847210dda0b",
-            "label": "Sponsorship Group",
-            "name": "sponsorship_group",
+            "key": "field_668ac7860a9e0",
+            "label": "Participating Companies Group",
+            "name": "attending_companies_group",
             "aria-label": "",
             "type": "group",
             "instructions": "",
@@ -390,9 +410,9 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_66847222dda0c",
-                    "label": "Section Title",
-                    "name": "section_title",
+                    "key": "field_668ac7a10a9e1",
+                    "label": "Title",
+                    "name": "title",
                     "aria-label": "",
                     "type": "text",
                     "instructions": "",
@@ -410,9 +430,71 @@
                     "append": ""
                 },
                 {
-                    "key": "field_6675b9215d95c",
-                    "label": "Sponsorships",
-                    "name": "sponsorships",
+                    "key": "field_668ac7ab0a9e2",
+                    "label": "Page Link",
+                    "name": "page_link",
+                    "aria-label": "",
+                    "type": "link",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array"
+                },
+                {
+                    "key": "field_6689ec79ea889",
+                    "label": "Attending Company Logos",
+                    "name": "attending_company_logos",
+                    "aria-label": "",
+                    "type": "gallery",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "id",
+                    "library": "all",
+                    "min": "",
+                    "max": "",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": "",
+                    "insert": "append",
+                    "preview_size": "medium"
+                }
+            ]
+        },
+        {
+            "key": "field_66847210dda0b",
+            "label": "Sponsorship Group",
+            "name": "sponsorship_group",
+            "aria-label": "",
+            "type": "group",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_668ae20b73a92",
+                    "label": "Sponsorship Repeater",
+                    "name": "sponsorship_repeater",
                     "aria-label": "",
                     "type": "repeater",
                     "instructions": "",
@@ -423,18 +505,18 @@
                         "class": "",
                         "id": ""
                     },
-                    "layout": "row",
+                    "layout": "block",
                     "pagination": 0,
                     "min": 0,
                     "max": 0,
-                    "collapsed": "field_6675b9405d95d",
-                    "button_label": "Add Sponsor Level",
+                    "collapsed": "field_66847222dda0c",
+                    "button_label": "Add Sponsors Group",
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_6675b9405d95d",
-                            "label": "Sponsor Level",
-                            "name": "sponsor_level",
+                            "key": "field_66847222dda0c",
+                            "label": "Section Title",
+                            "name": "section_title",
                             "aria-label": "",
                             "type": "text",
                             "instructions": "",
@@ -447,17 +529,17 @@
                             },
                             "default_value": "",
                             "maxlength": "",
-                            "placeholder": "Gold",
+                            "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_6675b9215d95c"
+                            "parent_repeater": "field_668ae20b73a92"
                         },
                         {
-                            "key": "field_6675b9755d95e",
-                            "label": "Sponsors",
-                            "name": "sponsors",
+                            "key": "field_668ae23173a93",
+                            "label": "Hide",
+                            "name": "hide",
                             "aria-label": "",
-                            "type": "relationship",
+                            "type": "true_false",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -466,23 +548,90 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "post_type": [
-                                "sponsor"
+                            "message": "",
+                            "default_value": 0,
+                            "ui_on_text": "Hide",
+                            "ui_off_text": "Show",
+                            "ui": 1,
+                            "parent_repeater": "field_668ae20b73a92"
+                        },
+                        {
+                            "key": "field_6675b9215d95c",
+                            "label": "Sponsorships",
+                            "name": "sponsorships",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "row",
+                            "pagination": 0,
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "field_6675b9405d95d",
+                            "button_label": "Add Sponsor Level",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_6675b9405d95d",
+                                    "label": "Sponsor Level",
+                                    "name": "sponsor_level",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "placeholder": "(Replace with Sponsor Level)",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_6675b9215d95c"
+                                },
+                                {
+                                    "key": "field_6675b9755d95e",
+                                    "label": "Sponsors",
+                                    "name": "sponsors",
+                                    "aria-label": "",
+                                    "type": "relationship",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "post_type": [
+                                        "sponsor"
+                                    ],
+                                    "post_status": [
+                                        "publish"
+                                    ],
+                                    "taxonomy": "",
+                                    "filters": [
+                                        "search"
+                                    ],
+                                    "return_format": "object",
+                                    "min": "",
+                                    "max": "",
+                                    "elements": "",
+                                    "bidirectional": 0,
+                                    "bidirectional_target": [],
+                                    "parent_repeater": "field_6675b9215d95c"
+                                }
                             ],
-                            "post_status": [
-                                "publish"
-                            ],
-                            "taxonomy": "",
-                            "filters": [
-                                "search"
-                            ],
-                            "return_format": "object",
-                            "min": "",
-                            "max": "",
-                            "elements": "",
-                            "bidirectional": 0,
-                            "bidirectional_target": [],
-                            "parent_repeater": "field_6675b9215d95c"
+                            "parent_repeater": "field_668ae20b73a92"
                         }
                     ]
                 }
@@ -545,11 +694,11 @@
                     "mime_types": ""
                 },
                 {
-                    "key": "field_667a25513bac2",
-                    "label": "Brochure Thumbnail Image",
-                    "name": "image",
+                    "key": "field_668c5a8be42ac",
+                    "label": "Brochure Thumbnail",
+                    "name": "",
                     "aria-label": "",
-                    "type": "image",
+                    "type": "message",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -558,16 +707,9 @@
                         "class": "",
                         "id": ""
                     },
-                    "return_format": "id",
-                    "library": "all",
-                    "min_width": "",
-                    "min_height": "",
-                    "min_size": "",
-                    "max_width": "",
-                    "max_height": "",
-                    "max_size": "",
-                    "mime_types": "",
-                    "preview_size": "medium"
+                    "message": "Update the Brochure thumbnail in the Global Summit Group\r\nwithin <a href=\"\/wp-admin\/admin.php?page=site-settings\">MAPconnected Settings<\/a>.",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
                 }
             ]
         },
@@ -704,5 +846,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720050211
+    "modified": 1720474448
 }

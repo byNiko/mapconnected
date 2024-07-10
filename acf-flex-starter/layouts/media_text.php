@@ -14,8 +14,8 @@ if (have_rows('columns')) :
 
     <div class="media-text">
         <!-- Replace '=container--narrow' with your own container class -->
-        <div class="<?= get_css_classes($container_class, $alignment_class, $theme_class, $padding_class); ?>">
-            <div class="flex-row">
+        <div class="<?= get_css_classes($container_class, $alignment_class, $padding_class); ?>">
+            <div class="flex-row inner-container <?= get_css_classes($theme_class); ?>">
                 <?php
                 while (have_rows('columns')) : the_row();
                     // Get image or text content type
@@ -77,7 +77,7 @@ if (have_rows('columns')) :
                             <?php endif; ?>
 
                             <?php if (!empty($link)) : ?>
-                                <?= get_acf_link($link, 'button'); ?>
+                                <?= get_acf_link($link, 'button button--primary'); ?>
                             <?php endif; ?>
                         </div>
                 <?php

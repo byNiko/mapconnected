@@ -125,6 +125,22 @@ function is_valid_canva_video(url) {
 
 /***/ }),
 
+/***/ "./src/scripts/mobileNav.js":
+/*!**********************************!*\
+  !*** ./src/scripts/mobileNav.js ***!
+  \**********************************/
+/***/ (() => {
+
+const button = document.querySelector('.menu-toggle');
+button.addEventListener('click', toggleNav);
+const primaryNav = document.querySelector('.primary-navbar');
+function toggleNav(e) {
+  e.target.closest('.hamburger').classList.toggle('is-active');
+  primaryNav.classList.toggle('is-active');
+}
+
+/***/ }),
+
 /***/ "./src/scripts/navStickObserve.js":
 /*!****************************************!*\
   !*** ./src/scripts/navStickObserve.js ***!
@@ -182,6 +198,7 @@ if (target) {
 
 const createTabs = tabContainers => {
   const tabId = new URLSearchParams(window.location.search).get('tab_id');
+  // history.replaceState( { tab_id: tabId }, null, null );
 
   // Selecting header and content containers
   const headerContainer = document.querySelector('.tabs-header');
@@ -194,13 +211,35 @@ const createTabs = tabContainers => {
   // Hide all tab contents
   tabContents.forEach(content => content.style.display = 'none');
   let currentTabIndex = -1;
+
+  // function getTabIndex( tab_id ) {
+  // 	let tabIndex;
+  // 	tabHeaders.forEach( ( el, i ) => {
+  // 		if ( el.id === tab_id ) {
+  // 			tabIndex = i;
+  // 			return i;
+  // 		}
+  // 		return false;
+  // 	} );
+  // 	return tabIndex;
+  // }
+
+  // window.addEventListener( 'popstate', ( event ) => {
+  // 	if ( event.state.tab_id ) {
+  // 		const index = getTabIndex( event.state.tab_id );
+  // 		setTab( event.state[ index ] );
+  // 	}
+  // 	if ( event.state.tab_index ) {
+  // 		setTab( event.state.tab_index );
+  // 	}
+  // } );
+
   const setTab = index => {
     // Remove active class and hide previous tab content
     if (currentTabIndex > -1) {
       tabHeaders[currentTabIndex].classList.remove('active');
       tabContents[currentTabIndex].style.display = 'none';
     }
-
     // Add active class and display selected tab content
     tabHeaders[index].classList.add('active');
     tabContents[index].style.display = 'block';
@@ -222,6 +261,12 @@ const createTabs = tabContainers => {
   tabHeaders.forEach((header, index) => {
     header.addEventListener('click', () => {
       setTab(index);
+      const newUrl = new URL(window.location);
+      newUrl.searchParams.set('tab_id', tabHeaders[index].id);
+      history.replaceState({
+        tab_id: `${tabHeaders[index].id}`,
+        tab_index: index
+      }, null, newUrl);
     });
   });
 };
@@ -8639,7 +8684,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_micromodal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./scripts/micromodal */ "./src/scripts/micromodal.js");
 /* harmony import */ var _scripts_tabs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./scripts/tabs */ "./src/scripts/tabs.js");
 /* harmony import */ var _scripts_tabs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_scripts_tabs__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _scripts_mobileNav__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./scripts/mobileNav */ "./src/scripts/mobileNav.js");
+/* harmony import */ var _scripts_mobileNav__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_scripts_mobileNav__WEBPACK_IMPORTED_MODULE_6__);
 // import main stylesheet
+
 
 
 

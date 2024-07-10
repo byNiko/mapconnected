@@ -1,5 +1,6 @@
 @use "./slider";
 @use "./pill";
+@use "./modal";
 @use "./buttons";
 @use "./collapse";
 @use "./forms";
@@ -11,6 +12,6 @@
 @use "./speaker";
 @use "./iframe-modal";
 @use "./top-notification-bar";
-@use "./modal";
 @use "./tabs";
 @use "./pricing_table";
+@use "./hamburger";

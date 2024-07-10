@@ -23,13 +23,13 @@ if ($q->have_posts()) :
 
 ?>
 	<div class="flexible-content-wrap">
-		<div class="container">
+		<div class="container--wide">
 			<header class="text-center">
 				<h2 class="h2">Upcoming Events</h2>
 			</header>
 			<div class="flex-row event-cards__row">
 				<div class="event-card__wrapper">
-					<div class="event__top-bar d-flex justify--space-between fz-sm">
+					<div class="event__top-bar">
 						<div class="event__category">
 							<div class="pill theme--medium-2">Annual Summit</div>
 						</div>
@@ -65,8 +65,10 @@ if ($q->have_posts()) :
 					</div>
 				<?php endwhile; ?>
 			</div>
-			<footer class="text-center">
-				<h3 class="h3"><a class="button button--text button--primary" href="/events">View All Events</a></h2>
+			<footer class="text-center mt-1">
+				<h3 class="h3">
+					<a class="button button--text button--primary fz-lg fw-bold" href="/events">View All Events</a>
+				</h2>
 			</header>
 		</div>
 	</div>

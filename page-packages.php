@@ -2,8 +2,12 @@
 
 get_header();
 ?>
-<div class="container">
+
+
   <main id="primary" class="site-main">
+    <header class="text-center container--very-narrow">
+      <h1 class="h1">Membership & Sponsorship Packages</h1>
+    </header>
     <?php
     // $fields = get_field_objects($post, 'options' );
 
@@ -20,11 +24,11 @@ get_header();
       'netowrk' => 'warranty_network_sponsorships'
     );
     ?>
-
+<div class="container--wide">
     <div id="pricing-table" class="pricing-table">
       <div class="tabs pricing-table__tabs">
         <ul class="tabs-header pricing-table__header">
-    
+
           <?php
           // $fields = get_field_objects('options');
           // print_r($fields);
@@ -43,7 +47,7 @@ get_header();
           ?>
         </ul>
         <ul class="pricing-table__tabs-content tabs-content">
-        
+
           <?php
           foreach ($packages as $package) :
             $label_count = 0;
@@ -52,7 +56,7 @@ get_header();
                 echo "<ul class=' benefits__wrap'>";
 
                 // labels loop
-                if (have_rows('packages','options')) : while (have_rows('packages','options')) : the_row('packages','options');
+                if (have_rows('packages', 'options')) : while (have_rows('packages', 'options')) : the_row('packages', 'options');
                     $label_count++;
                     if ($label_count === 1) {
                       echo "<li class='benefit__labels benefit-column-grid'>";
@@ -78,7 +82,7 @@ get_header();
                 // levels loop
                 if (have_rows('packages')) : while (have_rows('packages')) : the_row('packages');
                     $level = get_sub_field('level_name');
-                   
+
                     $price = '$' . number_format(get_sub_field('price'), 0);
                     $link = get_acf_link(get_sub_field('registration_link'), 'button button--accent ');
                     echo "<li class='benefit-column-grid benefits__list'>";
@@ -95,8 +99,8 @@ get_header();
                     }
                     if (have_rows('benefits', 'options')) : while (have_rows('benefits', 'options')) : the_row('benefits', 'options');
                         foreach ($benefit_keys as $key) {
-                            $label = acf_get_field($key)['label'];
-                            // echo "<small>($field)</small>";
+                          $label = acf_get_field($key)['label'];
+                          // echo "<small>($field)</small>";
                           echo "<div class='benefit__item'>
                           <div class='benefit__label'>$label</div>
                           <div class='benefit__value'>" . get_sub_field($key) . "</div>
@@ -118,7 +122,8 @@ get_header();
         </ul>
       </div>
     </div>
+    </div>
   </main><!-- #main -->
-</div>
+
 
 <?php get_footer(); ?>

@@ -4,22 +4,35 @@
 	border-radius: var(--radius-2);
 	box-shadow: 0  0px 8px -3px var(--color-secondary-400);
 }
+.stats-list {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	text-align: center;
+	gap: var(--gap);
+}
 
 .bold-stat {
 	color: var(--color-secondary-400);
 	font-family: var(--font-family--display);
 	font-family: 'montserrat', var(--font-family--display);
-	padding: 1em;
+	padding: 1rem;
+	flex: 0 1 20%;
+	min-width: 100px;
+	container-type: inline-size;
 	sup {
 		font-size: .5em;
+		font-weight: 400;
 	}
 	&__number {
 		font-size: var(--font-size--display);
 		font-weight: 1000;
 		line-height: 1;
 		letter-spacing: -1.51px;
+		font-size: 50cqi;
 	}
 	&__title {
+		font-size: .8rem;
 		font-weight: 400;
 	}
 }

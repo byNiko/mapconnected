@@ -11,16 +11,18 @@ get_header();
 			get_template_part('template-parts/content', 'page');
 		endwhile; // End of the loop.
 
-		$gallery = get_field('gallery_group');
+		$gallery = get_field('participating_logos');
 		if ($gallery) :
 		?>
 			<div id="masonry-gallery" class="masonry-gallery">
 				<?php
 				foreach ($gallery as $image) :
 				?>
-					<div>
-						<?= wp_get_attachment_image($image, 'medium'); ?>
-					</div>
+					<!-- <a href="<?= wp_get_attachment_url($image, 'large');?>" rel="gallery1"> -->
+            <div>
+						<?= wp_get_attachment_image($image, 'large'); ?>
+            </div>
+					<!-- </a> -->
 				<?php
 				endforeach;
 				?>
@@ -158,10 +160,12 @@ get_header();
 <?php get_footer(); ?>
 <script>
 	$("#masonry-gallery").justifiedGallery({
-		rowHeight: 220,
-		lastRow: 'hide',
-		margins: 10,
+		rowHeight: 50,
+    captions: false,
+    maxRowHeight: 50,
+		// lastRow: 'hide',
+		margins: 50,
 		waitThumbnailsLoad: true,
-		randomize: true
+		randomize: false
 	});
 </script>

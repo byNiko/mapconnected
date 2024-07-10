@@ -136,6 +136,14 @@ blockquote p:last-of-type {
     flex-wrap: wrap;
 }
 
+
+.icon-grid__wrapper {
+	position: relative;
+	[class*=theme--] {
+		// border: 1px solid #ccc;
+		box-shadow: 0 2px 5px -2px #6661;;
+	}
+}
 .page-become-a-sponsor {
 
 	.icon-grid__wrapper {

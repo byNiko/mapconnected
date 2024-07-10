@@ -6,6 +6,7 @@ import './scripts/navStickObserve';
 import './scripts/pin';
 import './scripts/micromodal';
 import './scripts/tabs';
+import './scripts/mobileNav';
 
 // start scripts
 

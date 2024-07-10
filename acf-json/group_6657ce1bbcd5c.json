@@ -536,7 +536,7 @@
                             "required": 0,
                             "conditional_logic": 0,
                             "wrapper": {
-                                "width": "",
+                                "width": "60",
                                 "class": "",
                                 "id": ""
                             },
@@ -545,6 +545,32 @@
                             "toolbar": "full",
                             "media_upload": 1,
                             "delay": 0
+                        },
+                        {
+                            "key": "field_668c188c24b4a",
+                            "label": "Text Font Size",
+                            "name": "text_font_size",
+                            "aria-label": "",
+                            "type": "button_group",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "30",
+                                "class": "",
+                                "id": ""
+                            },
+                            "choices": {
+                                "sm": "Sm",
+                                "md": "Md",
+                                "lg": "L",
+                                "xl": "XL",
+                                "xxl": "XXL"
+                            },
+                            "default_value": "md",
+                            "return_format": "value",
+                            "allow_null": 0,
+                            "layout": "horizontal"
                         },
                         {
                             "key": "field_665cd9ee0099c",
@@ -2229,7 +2255,7 @@
                         "single-column": "Single Column",
                         "very-narrow": "Very Narrow",
                         "narrow": "Narrow",
-                        "false": "Normal",
+                        "wide": "Wide",
                         "fluid": "Full Width"
                     },
                     "default_value": "false",
@@ -2465,6 +2491,24 @@
                     "append": ""
                 },
                 {
+                    "key": "field_6689b75fc1a56",
+                    "label": "Theme",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0
+                },
+                {
                     "key": "field_667ecc03ef684",
                     "label": "Theme",
                     "name": "theme",
@@ -2601,5 +2645,5 @@
     "active": false,
     "description": "This group provides template structures for the other field groups. It is the source of truth for repeated elements liked buttons, layouts, etc.",
     "show_in_rest": 0,
-    "modified": 1719590118
+    "modified": 1720457555
 }

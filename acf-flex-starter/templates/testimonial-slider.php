@@ -20,17 +20,34 @@ $posts = get_posts($query_args);
 // Set slider options
 $splideOptions = filter_empty_values([
 	'type' => 'slide', // loop, slide, fade - only for single slides
-	'perPage' => 3,
+	'perPage' => 4,
 	'perMove' => 1,
 	'pagination' => $pagination,
 	'arrows' => $arrows,
 	'autoplay' => false,
-	'interval' => 3000,
+	'interval' => 5000,
 	'pauseOnHover' => true,
 	'rewind' => false,
 	'gap' => "2rem",
 	'omitEnd' => false,
 	'updateOnMove' => true,
+	'breakpoints'=>[
+		'1600'=> [
+			'perPage' => 3,
+			'autoplay' => true
+			// 'destroy'=> true,
+		],
+		'1180'=> [
+			'perPage' => 2,
+			'autoplay' => true
+			// 'destroy'=> true,
+		],
+		'800'=> [
+			'perPage' => 1,
+			'autoplay' => true
+			// 'destroy'=> true,
+		]
+			]
 	// 'breakpoints' => $breakpoints,
 	//'adaptiveHeight' => true, // custom option to auto adjust height per slide
 	// More Splide.js options can be added here
