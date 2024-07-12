@@ -95,7 +95,7 @@ get_header(); ?>
 					<div class="text-block">
 						<p>Learn how to get the most out of your data!</p>
 						<p>The 2024 Summit will explore powerful strategies for collecting, understanding, and using data to make better decisions, using the latest tools and proven methods.</p>
-						<p>Gain valuable insights from industry experts on the latest technology and techniques.</p>
+						<p> Gain valuable insights from your direct peers and industry experts on best-in-class technology and techniques. </p>
 					</div>
 					<div class="text-center fw-bold">
 						Register Now!

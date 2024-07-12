@@ -74,7 +74,7 @@ get_header();
 						</div>
 						<div class="flex-column">
 							<div class="fz-sm fw-semi-bold text-center">Take me to the MARKETPLACE</div>
-							<a href="#marketplace-1" class="button button--primary button--outline has-shadow-1">MyWarrantyNetwork Sponsors</a>
+							<a href="#marketplace-1" class="button button--secondary has-shadow-1">MyWarrantyNetwork Sponsors</a>
 						</div>
 					</div>
 				</div>

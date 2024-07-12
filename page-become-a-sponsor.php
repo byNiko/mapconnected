@@ -26,7 +26,7 @@ get_header();
 			<h2 class="h2 subtitle">Expand Your Professional Brand Through Our Network of Motor Vehicle Warranty Professionals</h2>
 		</header>
 		<div class="content">
-			<p class="fz-md">MAPconnected Offers A Year-Round Unique Platform To Expand Your Professional Brand Along The Motor Vehicle Warranty And Aftercare Services Chain.</p>
+			<p class="fz-md">MAPconnected offers a year-round unique platform to expand your professional brand along the Motor Vehicle Warranty and Aftercare Services Chain. </p>
 		</div>
 	</section>
 	<?php
@@ -114,7 +114,7 @@ get_header();
 				<h2 class="h2">Benefits</h2>
 			</header>
 			<div class="content">
-				<p>MAPconnected’s Summit unites the Warranty & Aftercare Value Chain and is designed as an annual platform to exchange ideas to optimize costs, enhance customer satisfaction and ensure continuous improvement.</p>
+				<p>MAPconnected’s Summit unites the Warranty & Aftercare Value Chain and is designed as an annual platform to exchange ideas to optimize costs, enhance customer satisfaction and ensure continuous improvement.</p>
 			</div>
 		</div>
 		<div class="container--narrow d-none">
@@ -209,7 +209,7 @@ get_header();
 		
 			<div class="content">
 				<p>The Hub is where Warranty Lifecycle Professionals go to gain insights and seek the best technology partners to reshape their warranty and aftercare end-to-end experiences. </p>
-				<p>The Publicly Accessible Marketplace Directory Gives You Heightened Exposure And Access To Project Requests For Surveys, Audits, Consulting In Warranty, Service & Aftercare Areas Such As:  Administration | Purchasing & Supplier Chain | Parts Return & Quality Analysis.</p>
+				<p>The publicly accessible Marketplace Directory gives you heightened exposure and access to Surveys, Audits, and Consulting project requests in areas such as Warranty Administration | Purchasing & Supply Chain | Parts Return & Quality Analysis | Aftersales & Aftercare Services. </p>
 			</div>
 			<header class="text-center">
 					<h2 class="h2">Benefits</h2>
