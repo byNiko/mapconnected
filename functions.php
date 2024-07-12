@@ -422,10 +422,11 @@ add_filter('pre_get_posts', 'byniko_cpt_custom_search_filter');
 
 
 function acf_set_featured_image($value, $post_id, $field) {
+	print_r($value);
 
 	if ($value != '') {
 		//Add the value which is the image ID to the _thumbnail_id meta data for the current post
-		add_post_meta($post_id, '_thumbnail_id', $value);
+		update_post_meta($post_id, '_thumbnail_id', $value);
 	}
 
 	return $value;
