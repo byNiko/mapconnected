@@ -59,7 +59,7 @@ get_header();
 					null,
 					array(
 						'sponsors' => $group2,
-						'slider_options' => ['perPage' => "8", 'direction'=>'rtl']
+						'slider_options' => ['perPage' => "8", 'autoScroll' => ['speed'=>'-.25']]
 					)
 				);
 				?>

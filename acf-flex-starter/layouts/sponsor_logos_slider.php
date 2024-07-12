@@ -11,7 +11,7 @@ $args_slider_options = $args['slider_options'] ?? [];
 // Set slider options
 $splideOptions = filter_empty_values([
 	'type' => 'loop',
-	'perPage' => $args_slider_options['perPage'],
+	'perPage' => 2, //$args_slider_options['perPage'],
 	// 'perMove' => 2,
 	// 'rewind' => true,
 	'autoWidth' => true,
@@ -33,7 +33,8 @@ $splideOptions = filter_empty_values([
 ], ['pagination', 'arrows', 'pauseOnHover']); // Retain false values for these keys
 // print_r($splideOptions);
 // print_r($args_slider_options);
-$splideOptions = array_merge($splideOptions, $args_slider_options);
+// $splideOptions = array_merge($splideOptions, $args_slider_options);
+$splideOptions = wp_parse_args($args_slider_options,$splideOptions );
 
 $sps = $args['sponsors'] ?? [];
 
