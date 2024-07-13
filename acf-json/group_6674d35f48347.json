@@ -399,7 +399,7 @@
             "name": "attending_companies_group",
             "aria-label": "",
             "type": "group",
-            "instructions": "",
+            "instructions": "This group of logos also populates the full page of logos originally found at \"\/participating-companies\"",
             "required": 0,
             "conditional_logic": 0,
             "wrapper": {
@@ -426,6 +426,28 @@
                     "default_value": "",
                     "maxlength": "",
                     "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_6691bf793db5e",
+                    "label": "Limit",
+                    "name": "limit",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "Number of logos that will show on the summit page.  Since all Participating Logos go here - only the first \"X\" in this gallery will show up on the summit page.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": 12,
+                    "min": "",
+                    "max": "",
+                    "placeholder": "",
+                    "step": 1,
                     "prepend": "",
                     "append": ""
                 },
@@ -846,5 +868,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720474448
+    "modified": 1720828346
 }
