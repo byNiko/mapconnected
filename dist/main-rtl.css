@@ -1172,13 +1172,13 @@ main {
 
 .flex-row {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   gap: var(--spacer-grid);
 }
 @media screen and (min-width: 50rem) {
   .flex-row {
     flex-direction: row;
+    flex-wrap: wrap;
   }
 }
 .flex-row.__2x > *, .flex-row.__3x > *, .flex-row.__4x > *, .flex-row.__5x > * {
