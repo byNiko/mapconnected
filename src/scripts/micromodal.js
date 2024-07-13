@@ -25,8 +25,8 @@ MicroModal.init( {
 async function autoIframeVimeo( modal, el, triggerEv ) {
 	const videoTrigger = triggerEv.target.closest( '[data-video-url]' );
 	let videoUrl = videoTrigger && videoTrigger.getAttribute( 'data-video-url' );
-	videoUrl = is_valid_canva_video( videoUrl );
-	if ( videoUrl.length ) {
+	if ( videoUrl && videoUrl.length ) {
+		videoUrl = isValidCanvaUrl( videoUrl );
 		// const resp = await fetch( `https://vimeo.com/api/oembed.json?url=${ videoUrl }` );
 		// const video = resp.ok && await resp.json();
 		const video = false; // unused - but might be if we use Vimeo (above)
@@ -68,7 +68,7 @@ async function autoIframeModal( modal ) {
 	}
 }
 
-function is_valid_canva_video( url ) {
+function isValidCanvaUrl( url ) {
 	const isCanva = url.match( /canva/ ) !== null;
 
 	const isCanvaURL = isCanva && new URL( url );

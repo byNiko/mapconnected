@@ -10,7 +10,7 @@ if (have_rows('icon_grid')) :
 	<div class="flexible-content-wrap">
 		<div class="<?= $container_width; ?>">
 			<!-- <div class="icon-grid__wrapper"> -->
-				<div class="inner-container <?= $theme; ?>">
+				<div class="<?= $theme; ?> border-radius-2">
 					<div class="icon-grid">
 						<?php
 						// Loop through rows.	

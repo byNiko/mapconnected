@@ -11,7 +11,7 @@ class Modal {
 
 	public function get_modal_trigger($text, $classes, $modalId = null){
 		$modalId = $modalId ?: $this->modalId;
-		$format = '<button class="%3s" data-micromodal-trigger="%1$s">%2$s</button>';
+		$format = '<button class="%3$s" data-micromodal-trigger="%1$s">%2$s</button>';
 		return sprintf($format, 
 		$modalId,
 		$text,

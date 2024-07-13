@@ -20,43 +20,24 @@ get_header();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/regular.min.css" integrity="sha512-KYEnM30Gjf5tMbgsrQJsR0FSpufP9S4EiAYi168MvTjK6E83x3r6PTvLPlXYX350/doBXmTFUEnJr/nCsDovuw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css" integrity="sha512-Hp+WwK4QdKZk9/W0ViDvLunYjFrGJmNDt6sCflZNkjgvNq9mY+0tMbd6tWMiAlcf1OQyqL4gn2rYp7UsfssZPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <main id="primary" class="site-main py-4">
-	<section class="container--very-narrow">
-		<header class="text-center">
-			<h1 class="fz-display">Become a Speaker!</h1>
-			<h2 class="h2 subtitle">Join us and showcase your thought leadership.</h2>
-		</header>
-		<div class="content">
-			<p class="fz-md">Do you have experience and expertise that would benefit the network? If so, why not share
-				them. We have lots of opportunities open: </p>
-		</div>
+	<?php 
+ // nested flexible content
+ if (have_rows('layouts')) :  while (have_rows('layouts')) : the_row();
+		 $layout = get_row_layout();
+		 // Increment the counter for each slider
+		 if ($layout == 'slider' || $layout == 'testimonials') {
+			 $slider_counter++;
+			 set_query_var('slider_id', 'slider-' . $slider_counter);
+		 }
 
-	</section>
+		 // Include the layout file
+		 get_template_part('acf-flex-starter/layouts/' . $layout);
+
+	 endwhile;
+
+ endif;
+	?>
 	<section>
-		<div class="container--very-narrow ">
-			<div class="icon-grid grid __3x justify--center align-center theme--medium-1 border-radius-4">
-				<div class="icon-card icon-top">
-					<div class="card__icon"><i class="fa-classic fa-regular fa-thumbs-up" aria-hidden="true"></i></div>
-					<div class="flex-column">
-						<div class="card__title">Virtual Event<br>Round Robin Host</div>
-						<div class="card__content"></div>
-					</div>
-				</div>
-				<div class="icon-card icon-top">
-					<div class="card__icon"><i class="fa-classic fa-solid fa-filter-circle-dollar" aria-hidden="true"></i></div>
-					<div class="flex-column">
-						<div class="card__title">Annual Summit</div>
-						<div class="card__content"></div>
-					</div>
-				</div>
-				<div class="icon-card icon-top">
-					<div class="card__icon"><i class="fa-classic fa-solid fa-rocket" aria-hidden="true"></i></div>
-					<div class="flex-column">
-						<div class="card__title">Webinars</div>
-						<div class="card__content"></div>
-					</div>
-				</div>
-			</div>
-		</div>
 		<div class="container--very-narrow">
 			<div class="content">
 				<p class="fz-md">We are soliciting your stories that share and validate hard won successes and
@@ -64,10 +45,52 @@ get_header();
 			</div>
 			<div class="flex-row __2x justify--center">
 				<a href="#speaker-form" class="button button--primary">Apply to Speak</a>
-				<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor'));?> " class="button button--primary">Apply to Sponsor</a>
+				<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')); ?> " class="button button--primary">Apply to Sponsor</a>
 			</div>
 		</div>
 	</section>
+	<?php
+	if (have_rows('speakers_reward_details')) : ?>
+		<section id="speaker-reward-pacakage" class="speaker-reward-package__wrapper mt-1">
+			<div class="container--single-column">
+				<div class="inner-container surface theme--medium-1 border-radius-4">
+					<?php
+					if (have_rows('speakers_reward_details')) :
+						while (have_rows('speakers_reward_details')) : the_row();
+							echo "<header class='text-center'>";
+							echo "<h2 class='h2 fw-extra-bold'> " . get_sub_field('title') . "</h3>";
+							echo "<div class='d-ib pill fz-md theme--bright-1 fw-semi-bold'> Valued at " . get_sub_field('valued_at') . "</div>";
+							echo "</header>";
+							if (have_rows('detail_item')) :
+					?>
+								<dl class="dotted mt-1">
+									<?php
+									while (have_rows('detail_item')) :
+										the_row();
+										$name = get_sub_field('name');
+										$value =  get_sub_field('value');
+
+									?>
+										<div class="dotted-connector">
+											<dt> <?= $name ?> </dt>
+											<?php if ($value) : 	?>
+												<div class="dots"></div>
+												<dd> <?= $value ?></dd>
+											<?php endif; ?>
+										</div>
+									<?php
+									endwhile;
+									?>
+								</dl>
+					<?php
+							endif;
+						endwhile;
+					endif;
+					?>
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
 	<section>
 		<div class="container--fluid">
 			<div class="testimonial-slider">
@@ -75,20 +98,21 @@ get_header();
 			</div>
 		</div>
 	</section>
-	<section class="theme--medium-1">
+
+	<section class="theme--medium-1 mt-1">
 		<div class="container--narrow">
-			<header class="h2 text-center">Thought Leadership At It’s Best! </header>
+			<header class="h2 text-center"><?php the_field('speaker_list_title');?></header>
 			<div class="flex-row __5x speakers-list">
 				<?php
-				
-				$speakers = get_field('speakers_group');
-				if($speakers):
-				foreach ($speakers as $sp) :
-					$s = new Speaker($sp);
-					$s->the_speaker_card();
 
-				endforeach;
-			endif;
+				$speakers = get_field('speakers_group');
+				if ($speakers) :
+					foreach ($speakers as $sp) :
+						$s = new Speaker($sp);
+						$s->the_speaker_card();
+
+					endforeach;
+				endif;
 				?>
 			</div>
 		</div>

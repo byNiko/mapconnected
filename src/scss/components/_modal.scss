@@ -1,7 +1,16 @@
 @use '../theming';
 
 .modal {
-
+	.modal__header {
+		display: flex;
+		justify-content: center;
+		
+	}
+	.modal__title {
+		font-family: var(--ff-display);
+		color: var(--color-text);
+		font-size: var(--font-size--xl);
+	}
 	.modal__content {
 		max-height: 85vh;
 		// max-height: 75%;
@@ -43,4 +52,16 @@
 	.modal__content {
 		padding-right: 1rem;
 	}
+}
+
+.full-page-modal{
+	.modal__header {
+		text-align: center;
+	color: var(--color-text);
+	}
+.modal__container {
+	width: 95%;
+	max-width: none;
+	height: 95%;
+}
 }

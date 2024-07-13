@@ -432,22 +432,6 @@
                     "append": ""
                 },
                 {
-                    "key": "field_668ac7ab0a9e2",
-                    "label": "Page Link",
-                    "name": "page_link",
-                    "aria-label": "",
-                    "type": "link",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "array"
-                },
-                {
                     "key": "field_6689ec79ea889",
                     "label": "Attending Company Logos",
                     "name": "attending_company_logos",
@@ -474,6 +458,26 @@
                     "mime_types": "",
                     "insert": "append",
                     "preview_size": "medium"
+                },
+                {
+                    "key": "field_669289c1f883a",
+                    "label": "View All Logos Button Text",
+                    "name": "view_all_logos_button_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "View All Participating Companies",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
@@ -848,5 +852,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720833160
+    "modified": 1720879703
 }

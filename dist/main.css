@@ -1250,7 +1250,7 @@ main {
 }
 
 .inner-container {
-  border-radius: var(--radius-2);
+  padding: var(--spacer-inner-container);
 }
 
 .media-text .flex-row {
@@ -1660,6 +1660,15 @@ p {
   background-image: var(--dark-gradient-1);
 }
 
+.modal .modal__header {
+  display: flex;
+  justify-content: center;
+}
+.modal .modal__title {
+  font-family: var(--ff-display);
+  color: var(--color-text);
+  font-size: var(--font-size--xl);
+}
 .modal .modal__content {
   max-height: 85vh;
   overflow-y: auto;
@@ -1694,6 +1703,16 @@ p {
 }
 .modal-form--summit-brochure .modal__content {
   padding-right: 1rem;
+}
+
+.full-page-modal .modal__header {
+  text-align: center;
+  color: var(--color-text);
+}
+.full-page-modal .modal__container {
+  width: 95%;
+  max-width: none;
+  height: 95%;
 }
 
 .has-shadow-1 {
@@ -2634,6 +2653,61 @@ ul.no-bullets, ul.no-bullet {
   list-style-type: none;
   padding-left: 0;
   margin-bottom: 0;
+}
+
+dl {
+  margin-bottom: 0;
+}
+dl .dotted-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+  text-align: center;
+}
+@media screen and (min-width: 50rem) {
+  dl .dotted-connector {
+    flex-direction: row;
+    align-items: end;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+dl .dotted-connector dt, dl .dotted-connector dd {
+  line-height: 1.2;
+}
+dl .dotted-connector dt {
+  font-weight: 400;
+  flex: 2;
+}
+@media screen and (min-width: 50rem) {
+  dl .dotted-connector dt {
+    flex: 0 1 auto;
+  }
+}
+dl .dotted-connector dd {
+  font-weight: 600;
+  flex: 1;
+  margin: 0;
+  text-align: right;
+  font-size: var(--font-size--md);
+}
+@media screen and (min-width: 50rem) {
+  dl .dotted-connector dd {
+    flex: 0 1 auto;
+    font-size: var(--font-size--sm);
+  }
+}
+dl .dotted-connector .dots {
+  display: none;
+  margin: 0 10px 0;
+  flex: 1 1 auto;
+  border-bottom: 1px dotted;
+}
+@media screen and (min-width: 50rem) {
+  dl .dotted-connector .dots {
+    display: block;
+  }
 }
 
 dd {

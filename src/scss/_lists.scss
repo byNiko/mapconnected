@@ -1,21 +1,72 @@
+@use './mixins' as *;
+
 ul {
+
 	&.no-bullets,
 	&.no-bullet {
 		list-style-type: none;
-		padding-left:0;
+		padding-left: 0;
 		margin-bottom: 0;
 	}
 }
 
-dl{
+dl {
+	margin-bottom: 0;
 
-}
-dt{
-	&:before {
+	.dotted-connector {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin: 10px 0;
+		text-align: center;
+
+		@include bp(md) {
+			flex-direction: row;
+			align-items: end;
+			justify-content: space-between;
+			text-align: left
+		}
+		dt, dd {
+			
+			line-height: 1.2;
+		}
+		dt {
+			font-weight: 400;
+			flex: 2;
+			@include bp(md){
+				flex: 0 1 auto;
+			}
+		}
+		dd{
+			font-weight: 600;
+			flex: 1;
+			margin: 0;
+			text-align: right;
+			font-size: var(--font-size--md);
+			@include bp(md){
+				flex: 0 1 auto;
+				font-size: var(--font-size--sm);
+			}
+		}
+		.dots {
+			display: none;
+			@include bp(md){
+				display: block;
+			}
+			margin: 0 10px 0;
+			flex: 1 1 auto;
+			border-bottom: 1px dotted;
+		}
+		
 	}
-	&:after {
-	}
 }
+
+dt {
+	&:before {}
+
+	&:after {}
+}
+
 dd {
 	margin-left: 1rem;
 	font-size: var(--font-size--sm);
