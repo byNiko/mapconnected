@@ -1182,20 +1182,20 @@ main {
   }
 }
 .flex-row.__2x > *, .flex-row.__3x > *, .flex-row.__4x > *, .flex-row.__5x > * {
-  flex: 1 1 100%;
+  flex: 0 1 100%;
 }
 @media screen and (min-width: 50rem) {
   .flex-row.__2x > * {
-    flex: 1 1 calc(50% - var(--spacer-grid));
+    flex: 0 1 calc(50% - var(--spacer-grid));
   }
   .flex-row.__3x > * {
-    flex: 1 1 calc(33% - var(--spacer-grid));
+    flex: 0 1 calc(33% - var(--spacer-grid));
   }
   .flex-row.__4x > * {
-    flex: 1 1 calc(25% - var(--spacer-grid));
+    flex: 0 1 calc(25% - var(--spacer-grid));
   }
   .flex-row.__5x > * {
-    flex: 1 1 calc(20% - var(--spacer-grid));
+    flex: 0 1 calc(20% - var(--spacer-grid));
   }
 }
 

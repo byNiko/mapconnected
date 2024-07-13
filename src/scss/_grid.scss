@@ -138,25 +138,25 @@ main {
 	&.__5x {
 
 		& > * {
-			flex: 1 1 100%;
+			flex: 0 1 100%;
 		}
 	}
 
 	@include bp(md) {
 		&.__2x > * {
-			flex: 1 1 calc(50% - var(--spacer-grid));
+			flex: 0 1 calc(50% - var(--spacer-grid));
 		}
 
 		&.__3x > * {
-			flex: 1 1 calc(33% - var(--spacer-grid));
+			flex: 0 1 calc(33% - var(--spacer-grid));
 		}
 
 		&.__4x > * {
-			flex: 1 1 calc(25% - var(--spacer-grid));
+			flex: 0 1 calc(25% - var(--spacer-grid));
 		}
 
 		&.__5x > * {
-			flex: 1 1 calc(20% - var(--spacer-grid));
+			flex: 0 1 calc(20% - var(--spacer-grid));
 		}
 	}
 }
