@@ -77,7 +77,7 @@ get_header();
 				<h2 class="h2 text-center">Join to leverage these benefits and drive your business forward. </h2>
 				<div class="flex-row justify--center mt-1">
 					<a href="/members-network" class="button button--primary">Members Network</a>
-					<a href="/annual-summit" class="button button--primary button--outline">Annual Summit</a>
+					<a href="/vehicle-service-and-warranty-lifecycle-summit" class="button button--primary button--outline">Annual Summit</a>
 					<a href="/mywarrantynetworkmarketplace" class="button button--secondary">MyWarrantyNetwork Hub</a>
 				</div>
 			</div>
