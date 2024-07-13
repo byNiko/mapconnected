@@ -94,26 +94,6 @@
             "layout": "block",
             "sub_fields": [
                 {
-                    "key": "field_667b3b8417bc3",
-                    "label": "Agenda Download",
-                    "name": "agenda_download",
-                    "aria-label": "",
-                    "type": "file",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "return_format": "url",
-                    "library": "all",
-                    "min_size": "",
-                    "max_size": "",
-                    "mime_types": ""
-                },
-                {
                     "key": "field_6674e7fd0e521",
                     "label": "Daily Agendas",
                     "name": "daily_agendas",
@@ -868,5 +848,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1720828346
+    "modified": 1720833160
 }
