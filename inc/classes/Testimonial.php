@@ -59,8 +59,8 @@ class Testimonial {
 		return $this->company_logo;
 	}
 	public function get_company_logo_image() {
-		if ($this->get_company_logo()['id'])
-			return wp_get_attachment_image($this->get_company_logo()['id'], 'medium');
+		if ($logo = $this->get_company_logo())
+			return wp_get_attachment_image($logo['id'], 'medium');
 	}
 	public function get_vertical_image() {
 		return $this->vertical_image;
