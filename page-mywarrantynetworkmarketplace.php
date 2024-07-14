@@ -17,7 +17,7 @@ get_header();
 
 ?>
 <main id="primary" class="site-main">
-	<section class="hero py-4">
+	<section class="hero-section mb-4">
 		<header class="container--narrow">
 			<h1 class="h1 text-center ">
 				<div>Welcome to</div>

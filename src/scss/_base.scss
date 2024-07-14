@@ -29,7 +29,8 @@ blockquote p:last-of-type {
 	margin-bottom:0;
 }
 
-.site-content {
+body:not(.page-home):not(.single-summit) .site-content {
+	margin-top: var(--spacer-12);
 }
 
 .sponsor-logos__wrapper {
