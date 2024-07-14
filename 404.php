@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying 404 pages (not found)
  *
@@ -9,52 +10,64 @@
 
 get_header();
 ?>
-
+<div class="container--wide">
 	<main id="primary" class="site-main">
 
 		<section class="error-404 not-found">
-			<header class="page-header">
-				<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'byniko' ); ?></h1>
+			<header class="page-header text-center">
+				<h1 class="page-title"><?php esc_html_e('Oops! That page can&rsquo;t be found.', 'byniko'); ?></h1>
+				<p><?php esc_html_e('It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'byniko'); ?></p>
+				<?php
+				get_search_form();
+				?>
 			</header><!-- .page-header -->
 
 			<div class="page-content">
-				<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'byniko' ); ?></p>
-
+				<div class="container--single-column">
+					<div class="inner-container">
 					<?php
-					get_search_form();
+				the_widget('WP_Widget_Recent_Posts');
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
+				?>
+					</div>
+					<div class="inner-container d-none">
+						<div class="404-content-container text-center">
+							<div class="widget widget_categories">
+								<h2 class="widget-title"><?php esc_html_e('Most Used Categories', 'byniko'); ?></h2>
+								<ul class='no-bullet grid flex-wrap'>
+									<?php
+									wp_list_categories(
+										array(
+											'orderby'    => 'count',
+											'order'      => 'DESC',
+											'show_count' => 1,
+											'title_li'   => '',
+											'number'     => 10,
+										)
+									);
+									?>
+								</ul>
+							</div><!-- .widget -->
+						</div>
+					</div>
 
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'byniko' ); ?></h2>
-						<ul>
+					<div class="inner-container d-none">
+						<div class="404-content-container text-center">
 							<?php
-							wp_list_categories(
-								array(
-									'orderby'    => 'count',
-									'order'      => 'DESC',
-									'show_count' => 1,
-									'title_li'   => '',
-									'number'     => 10,
-								)
-							);
+							the_widget('WP_Widget_Tag_Cloud');
 							?>
-						</ul>
-					</div><!-- .widget -->
+						</div>
+					</div>
+				</div>
 
-					<?php
-					/* translators: %1$s: smiley */
-					$byniko_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'byniko' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$byniko_archive_content" );
+				
 
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
+
 
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->
 
 	</main><!-- #main -->
-
+</div>
 <?php
 get_footer();
