@@ -172,6 +172,7 @@
 	/* background: var(--color-primary-accent); */
 	border-radius: var(--radius-1);
 	border: 1px solid var(--color-primary-400);
+	display: none;
 
 	&:hover {
 		box-shadow: 0 0 5px #ccc;
