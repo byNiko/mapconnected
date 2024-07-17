@@ -534,3 +534,4 @@ function get_summit_brochure_thumb() {
 	endif;
 	return $thumb;
 }
+

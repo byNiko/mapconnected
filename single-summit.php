@@ -2,10 +2,11 @@
 
 $byniko = new Byniko();
 $spships = new Sponsorships();
+$s = new Summit($post);
 get_header(); ?>
 
 <main class="annual_summit">
-	<section class="hero theme--dark-gradient-1">
+	<section class="hero theme--dark-gradient-1 pb-4">
 		<div class="secondary-nav__wrapper">
 			<nav class="secondary-nav">
 				<a href="#key-speakers" class="button button--text">Speakers</a>
@@ -15,128 +16,41 @@ get_header(); ?>
 				<a href="#travel" class="button button--text">Hotel</a>
 			</nav>
 		</div>
-		<div class="container--narrow landing__container">
-			<div class="summit-logo">
-				<?=
-				wp_get_attachment_image(get_field('summit_logo'), 'full');
-				?>
-			</div>
-			<div class="landing__text">
-				Analytics, Data, and Service: <br>
-				Fuel For A Customer-First Connected World
-			</div>
-			<div class="glass">
-				<div class=" stats-list">
-					<div class="bold-stat">
-						<div class="bold-stat__number">200<sup>+</sup></div>
-						<div class="bold-stat__title">Attendees</div>
-					</div>
-					<div class="bold-stat">
-						<div class="bold-stat__number">80<sup>+</sup></div>
-						<div class="bold-stat__title">Companies</div>
-					</div>
-					<div class="bold-stat">
-						<div class="bold-stat__number">50<sup>+</sup></div>
-						<div class="bold-stat__title">Speakers</div>
-					</div>
-					<div class="bold-stat">
-						<div class="bold-stat__number">15<sup>+</sup></div>
-						<div class="bold-stat__title">sponsors</div>
-					</div>
-				</div>
-			</div>
-			<div class="landing__ctas">
-				<heading>
-					<h2 class="h2 text-center">Register Now!</h2>
-				</heading>
-				<div class="flex-row __2x align-center">
-					<?php
-					$regLinks = get_field('registration_links');
-					if ($regLinks) :
-						foreach ($regLinks as $link) :
-							$title = $link['title'];
-							$url = ($link['url']);
-							$modal = new ModalIframe($url, $title);
-							if ($modal) :
-								echo $modal->get_trigger($title, 'button button--accent button--register');
-							endif;
-						endforeach;
-					endif;
-					?>
-				</div>
-			</div>
-
-		</div>
+		<?php get_template_part('/template-parts/summit/summit', 'landing-section'); ?>
 	</section>
 	<?php
 	if ($key_speakers = get_field('speakers_group')) :
 		if (!$key_speakers['hide_key_speakers']) :
 			$title = $key_speakers['key_speakers_title'] ?: "Key Speakers";
 	?>
-			<section id="key-speakers" class="key-speakers">
+			<section id="key-speakers" class="key-speakers py-4">
 				<div class="container--narrow">
 					<header class="text-center">
 						<h2 class="h2 fz-xxl"><?= $title; ?></h2>
 					</header>
-					<?php get_template_part('/template-parts/summit/key-speakers', null, ['summit_post' => $post]); ?>
+					<?php get_template_part('/template-parts/summit/summit', 'key-speakers', ['summit_post' => $post]); ?>
 				</div>
 			</section>
 	<?php endif;
 	endif; ?>
 
-<section id="title-section" class="title-section">
+	<section id="title-section" class="title-section py-4">
 		<header class="text-center">
-			<div class="fz-xxxl fw-extra-bold summit-title">The Future is Now.</div>
-			<div class="summit-subtitle">Data Driven Decisions</div>
+			<div class="fz-xxxl fw-extra-bold summit-title"><?= $s->theme_title; ?></div>
+			<div class="summit-subtitle"><?= $s->theme_subtitle; ?></div>
 		</header>
 		<div class="container--narrow">
 			<div class="flex-row __2x">
 				<div class="col">
 					<div class="text-block">
-						<p>Learn how to get the most out of your data!</p>
-						<p>The 2024 Summit will explore powerful strategies for collecting, understanding, and using data to make better decisions, using the latest tools and proven methods.</p>
-						<p> Gain valuable insights from your direct peers and industry experts on best-in-class technology and techniques. </p>
+						<?= $s->theme_summit_text; ?>
 					</div>
-					<div class="text-center fw-bold">
-						Register Now!
-					</div>
-					<div class="flex-row __2x align-center mt-1">
-						<?php
-						$regLinks = get_field('registration_links');
-						if ($regLinks) :
-							foreach ($regLinks as $link) :
-								$title = ($link['title']);
-								$url = ($link['url']);
-								$modal = new ModalIframe($url, $title);
-								if ($modal)
-									echo $modal->get_trigger($title, 'button button--accent');
-							endforeach;
-						endif;
-						?>
-					</div>
+					<?php echo $s->getRegistrationLinksSection();	?>
+
 				</div>
 				<div class="col flex-column gap-1">
 					<div class="video-container">
-						<?php //$content =  wp_get_attachment_url(480); 
-						?>
-						<?php
-						// Attributes of the shortcode.
-						$attr = array(
-							// 'src'        =>  wp_get_attachment_url(480),
-							'src'        =>  "https://vimeo.com/968031596?share=copy",
-							'height'     => 360,
-							'width'      => 640,
-							'poster'     => '',
-							'loop'       => '',
-							'autoplay'   => '',
-							'muted'      => 'false',
-							'preload'    => 'metadata',
-							'class'      => 'wp-video-shortcode',
-						);
-
-						echo wp_video_shortcode($attr);
-						?>
-
+						<?= $s->get_promotional_video(); ?>
 					</div>
 					<div class="flex-row justify--center">
 						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')); ?>" class="button button--secondary">Become a Sponsor</a>
@@ -146,64 +60,34 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>
+
 	<?php
 	if (get_field('attending_companies_group')) :
-		// if ($logos = get_field('attending_company_logos')) :
-		get_template_part('/template-parts/summit/participating-logos');
+		get_template_part('/template-parts/summit/summit-participating-logos');
 	endif;
 	?>
-	<section id="summary">
-		<div class="container--narrow">
-			<div class="flex-row __2x inner-container theme--medium-2">
-				<div class="col">
-					<?php echo wp_get_attachment_image(425, 'full'); ?>
-				</div>
-				<div class="col">
-					<header>
-						<h3 class="h3">Agenda Created By Warranty Chain Executives For Warranty Chain Executives</h3>
-						<div class="content">
-							<p>MAPconnected’s Summit unites the Warranty & Aftercare Services Value Chain and is designed as an annual best practice exchange platform to optimize costs, enhance customer satisfaction and ensure continuous improvement. </p>
-							<p>Dive into key case studies on data integration, analysis and action, leveraging top-tier processes and tech innovations that reduce friction and lead to increased product quality. Connect with over 200 peers, gaining priceless insights and practical strategies to fortify your warranty lifecycle roadmap.</p>
-						</div>
-					</header>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<section id="agenda_highlights">
-		<div class="container--narrow">
-			<div class="flex-column gap-1">
-				<h2 class="h2 text-center">Agenda Highlights</h3>
-					<div class="content flex-row __2x">
-						<div class="col">
-							<dl>
-								<dt>AI & PREDICTIVE ANALYTICS </dt>
-								<dd>Proven Strategies To Unlock Insights, Increase Efficiency & Empower Automation </dd>
-								<dt>ROOT CAUSE ANALYSIS</dt>
-								<dd>Using warranty data for improved administration, QUALITY AND SUPPLIER MANAGEMENT and ROOT CAUSE ANALYSIS</dd>
-								<dt>TELEMATICS</dt>
-								<dd>Best practices on advanced uses of TELEMATICS data</dd>
-								<dt>WARRANTY EDITS</dt>
-								<dd>Advanced WARRANTY EDITS – what works and what doesn’t?</dd>
-							</dl>
+	<?php if ($data = $s->getLongCopySectionData(0)) : ?>
+		<section id="summary" class="py-4">
+			<?php get_template_part('/template-parts/summit/summit', 'long-copy', $data); ?>
+		</section>
+	<?php endif; ?>
+
+	<?php if ($highlights = $s->getAgendaHighlights()) : ?>
+		<section id="agenda_highlights" class="py-4">
+			<div class="container--narrow">
+				<div class="flex-column gap-1">
+					<h2 class="h2 text-center">Agenda Highlights</h3>
+						<div class="content flex-row">
+							<div class="col">
+								<?= $highlights ?>
+							</div>
 						</div>
-						<div class="col">
-							<dl>
-								<dt>LEGAL & REGULATORY</dt>
-								<dd>The LEGAL & REGULATORY world continues to evolve. What’s the latest and next?</dd>
-								<dt>TECHNICIAN: TOOLS AND DIAGNOSTICS</dt>
-								<dd>Training, hiring and retention</dd>
-								<dt>OVER-THE-AIR-UPDATES</dt>
-								<dd>Staying connected with the customer, OVER-THE-AIR-UPDATES, and input from NHTSA related to field service actions</dd>
-								<dt>WARRANTY IMPROVEMENT INITIATIVES</dt>
-								<dd>Informative case studies on successful WARRANTY IMPROVEMENT INITIATIVES</dd>
-							</dl>
-						</div>
-					</div>
+				</div>
 			</div>
-		</div>
-	</section>
+		</section>
+	<?php endif; ?>
+
 	<?php
 	$args = array(
 		'posts_per_page' => 1,
@@ -215,9 +99,8 @@ get_header(); ?>
 	$q = new WP_Query($args);
 	if ($q->have_posts()) : while ($q->have_posts()) : $q->the_post();
 			$t = new Testimonial($post);
-
 	?>
-			<section id="single-testimonial" class="single-testimonial">
+			<section id="single-testimonial" class="single-testimonial py-4">
 				<div class="container--very-narrow">
 					<?= $t->get_single_testimonial_html(); ?>
 				</div>
@@ -227,20 +110,20 @@ get_header(); ?>
 	endif;
 	wp_reset_query();
 	?>
-	<section id="agenda" class="scroll-padding--lg">
+
+	<section id="agenda" class="scroll-padding--lg py-4">
 		<div class="container--very-narrow">
 			<div class="flex-column">
-				<h2 class="h2 text-center">Introducing New 2024 Formats to Address the Needs of the Rapidly Evolving World </h2>
+				<h2 class="h2 text-center"><?= $s->get_agenda_section_data('main_title'); ?></h2>
 				<div class="text-content">
-					<p>As the Summit expands, MAPconnected stays devoted to crafting and introducing novel thematic tracks and interactive formats, guided by the needs of our industry members and participants. </p>
+					<p><?= $s->get_agenda_section_data('subtitle'); ?></p>
 				</div>
-			</div>
-			<div class="flex-row justify--center mb-1 mt-1">
-				<a href="/about-us#contact-form" class="d-none button button--primary">Get Summit Updates</a>
-					<button  data-micromodal-trigger="modal-summit-brochure" class="button button--outline fz-lg">Get the Full Agenda</a>
+				<footer class="text-center mt-1">
+					<button data-micromodal-trigger="modal-summit-brochure" class="button button--outline ">Get the Full Agenda</a>
+				</footer>
 			</div>
 		</div>
-		<div class="container mt-1">
+		<div class="container mt-4">
 			<?php get_template_part('/template-parts/summit/daily-agendas', null, ['summit_post' => $post]); ?>
 		</div>
 	</section>
@@ -253,7 +136,7 @@ get_header(); ?>
 				$all_speakers = $group['all_speakers'];
 				if ($all_speakers && !$hide) :
 	?>
-					<section id="all-leadership" class="all-leadership">
+					<section id="all-leadership" class="all-leadership py-4">
 						<div class="container--narrow">
 							<?php
 							if ($title) : ?>
@@ -282,55 +165,24 @@ get_header(); ?>
 	endif;
 	?>
 
-	<div class="container--narrow mt-1">
+	<div class="container--narrow py-4">
 		<div id="who-attends">
-			<div class="flex-row __2x inner-container theme--medium-2">
-				<div class="col">
-					<?php echo wp_get_attachment_image(426, 'full'); ?>
-					<p class="mt-1 fw-bold">Leading OEMs, Component Manufacturers & Aftermarket Suppliers, and their Network of Retailers, Dealers and Aftercare Services & Technology Providers. </p>
-				</div>
-				<div class="col">
-					<header>
-						<h3 class="h3">Who You’ll Meet There</h3>
-						<div class="content">
-
-							<div class="fw-semi-bold">Key Job Titles</div>
-							<ul>
-								<li><strong>Warranty (Factory & Extended):</strong> Strategy | Ops | Claims | Parts Return   </li>
-								<li><strong>Finance:</strong> Accruals | Audits</li>
-								<li><strong>Purchasing:</strong> Supply Chain | Supplier Cost Sharing</li>
-								<li><strong>Data & Analytics:</strong> Systems | Support | Analysts </li>
-								<li><strong>Technical:</strong> Field Services | Dealer Administration | EV Services | Training </li>
-								<li><strong>Customer:</strong> Recalls | Safety | Campaigns | Customer Service </li>
-								<li><strong>Dealer:</strong> Aftersales | Aftercare Services | Reporting | Publications | Training  </li>
-								<li><strong>Quality:</strong> Manufacturing | Engineering  </li>
-								<li><strong>Marketing:</strong> Customer Experience | Product Design</li>
-								<li><strong>Legal:</strong> Regulatory | Compliance </li>
-								<li><strong>Insurance & Financial Products</strong> </li>
-							</ul>
-						</div>
-					</header>
-				</div>
-			</div>
+			<?php
+			$data = $s->getLongCopySectionData(1);
+			get_template_part('/template-parts/summit/summit', 'long-copy', $data);
+			?>
 		</div>
 	</div>
-	</section>
+
 	<section id="must-attend" class="theme--dark-gradient-1">
-		<div class="container--single-column">
-			<header class="text-center py-1">
+		<div class="container--very-narrow">
+			<header class="text-center ">
 				<h2 class="h2 ">Why is Service and Warranty Lifecycle Summit a Must-Attend?</h2>
 				<div class="subtitle">MAPconnected's interactive engagement and networking opportunities</div>
 			</header>
 		</div>
 		<div class="container--narrow">
-			<div class="flex-row">
-				<style>
-					.card__image-wrap {
-						background-position: center;
-						background-size: cover;
-						background-repeat: no-repeat;
-					}
-				</style>
+			<div class="flex-row  mt-1">
 				<div class="image-card flex-column theme--light-1">
 					<div class="card__title text-center h3 fw-semi-bold">Connect</div>
 					<?php $src = wp_get_attachment_image_src(1075, 'medium'); ?>
@@ -352,12 +204,12 @@ get_header(); ?>
 			</div>
 		</div>
 	</section>
+
 	<?php
 	$brochure = get_field('brochure_group');
 	if ($brochure['download_brochure_label']) :
-
 	?>
-		<section id="brochure-download">
+		<section id="brochure-download" class="py-4">
 			<div class="d-flex justify--center ">
 				<div class="text-center theme--medium-1 py-4 px-4 border-radius-2 ">
 					<button class="button button--secondary " data-micromodal-trigger="modal-summit-brochure">
@@ -373,15 +225,23 @@ get_header(); ?>
 	if (have_rows('sponsorship_group')) :
 		while (have_rows('sponsorship_group')) :
 			the_row();
-			if (have_rows('sponsorship_repeater')) : while (have_rows('sponsorship_repeater')) : the_row();
+			$cta = get_acf_link(get_sub_field('become_a_sponsor_cta'), 'button button--primary button--outline button--wide');
+			if (have_rows('sponsorship_repeater')) :
+				while (have_rows('sponsorship_repeater')) :
+					the_row();
 					if (!get_sub_field('hide')) :;
 	?>
-						<section id="sponsorships" class="sponsorship-levels">
+						<section id="sponsorships" >
 							<header class="text-center">
 								<h2 class="h2"><?php the_sub_field('section_title'); ?></h2>
+								<div class="text-center">
+									<?= $cta; ?>
+								</div>
 							</header>
-							<div class="container">
-								<?php get_template_part('/template-parts/summit/sponsorship-levels'); ?>
+							<div class="theme--light-2 sponsorship-levels py-2 mt-1">
+								<div class="container">
+									<?php get_template_part('/template-parts/summit/sponsorship-levels'); ?>
+								</div>
 							</div>
 						</section>
 	<?php
@@ -390,6 +250,25 @@ get_header(); ?>
 			endif;
 		endwhile;
 	endif;
+	?>
+	<?php
+	if (have_rows('icon_section')) :
+		while (have_rows('icon_section')) :
+			the_row();
+			get_template_part('/template-parts/summit/summit', 'icon-section', $data);
+		endwhile;
+	endif;
+
+	?>
+	<?php
+	if ($s->get_statistics_section_data('show_countdown_timer'))
+		$data = $s->get_statistics_section_data();
+	get_template_part('/template-parts/components/countdown-timer', null, $data);
+	?>
+	<div class="container--narrow py-4">
+		<?php echo $s->getRegistrationLinksSection(); ?>
+	</div>
+	<?php
 
 	if ($travel = get_field('travel_group', $post)) :
 		get_template_part('/template-parts/summit/travel', null,  ['summit_post' => $post]);

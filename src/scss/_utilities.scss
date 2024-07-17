@@ -1,3 +1,4 @@
+@use './mixins' as *;
 .d-none {
 	display: none!important;
 }
@@ -168,4 +169,12 @@
 
 .box-shadow-1 {
 	box-shadow: var(--box-shadow-1);
+}
+.columns__2 {
+	@include bp(md){
+		columns: 2;
+	}
+	.column__no-break {
+		break-inside: avoid;
+	}
 }

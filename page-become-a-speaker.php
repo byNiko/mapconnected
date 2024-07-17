@@ -40,8 +40,6 @@ get_header();
 	<section>
 		<div class="container--very-narrow">
 			<div class="content">
-				<p class="fz-md">We are soliciting your stories that share and validate hard won successes and
-					innovative warranty and service operations insights.</p>
 			</div>
 			<div class="flex-row __2x justify--center">
 				<a href="#speaker-form" class="button button--primary">Apply to Speak</a>

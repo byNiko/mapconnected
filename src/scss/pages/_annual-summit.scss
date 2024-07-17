@@ -8,8 +8,10 @@
 	// font-family: "montserrat", var(--font-family--display);
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
-
+	// gap: 2rem;
+.py-4 + .py-4 {
+	margin-top: -2rem;
+}
 	.travel_troup {
 		padding: var(--spacer-12) 0;
 	}
@@ -196,52 +198,49 @@
 }
 
 .sponsor-level {
-	margin: 2rem 0;
+
 	border-radius: var(--radius-1);
 	// border: 1px solid #ccc;
-	padding-top: 0rem;
-	padding-bottom: 2rem;
-	--sponsor-link-flex: initial;
-	// --sponsor-height: 85px;
-	--logo-width: 20%; 
+	// --sponsor-link-flex: initial;
+	--sponsor-height: 85px;
+	// --logo-width: 20%; 
 	// padding: 0 0 2rem;
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
 	justify-content: center;
 	position: relative;
-	&:after {
-		display: none;
-		content: '';
-		width: 25%;
-		height: 2px;
-	margin:4rem auto 2rem;
-	background: #ccc;
-	}
 	.sponsor-level__title {
-		font-weight: 600;
+		font-weight: 800;
 		letter-spacing: 2px;
 		text-align: center;
-		margin: 0 0 2rem;
-		padding: .51rem;
-		// text-decoration: underline;
-		background-color: #ccc;
-		min-width: 200px;
+		padding: 0.51rem;
+
+		/* background-color: #ccc; */
+		/* min-width: 200px; */
 		width: auto;
 		display: inline-block;
-		color: white;
+		color: var(--color-text);
 		align-items: center;
-		border-radius: var(--radius-1);
+		/* border-radius: var(--radius-1); */
+		// border-bottom: 2px solid;
+		border-bottom: 2px solid var(--color-primary-75);
+		font-size: var(--font-size--body-lg);
+		text-transform: uppercase;
 	}
 	.grid {
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
+		padding: 2rem;
+		
+		// background: var(--color-primary-50);
 
 		.sponsor__link {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			height: 100%;
 			// flex: var(--sponsor-link-flex);
 			// width: var(--logo-width);
 			&.uses-background-logo {
@@ -253,24 +252,28 @@
 				height: 100%;
 			}
 
-			// img {
-			// 	height: 100%;
-			// 	width: 100%;
+			img {
+				height: 100%;
+				width: 100%;
 
-			// }
+			}
 		}
 	}
-
-	&:nth-of-type(2) {
-		--sponsor-height: 65px;
+	.sponsor--link-logo {
+		--sponsor-height: 80px;
+		height: var(--sponsor-height);
 	}
 
-	&:nth-of-type(3) {
-		--sponsor-height: 55px;
+	&:nth-of-type(2) .sponsor--link-logo {
+		--sponsor-height: 40px
 	}
 
-	&:nth-of-type(4) {
-		--sponsor-height: 45px;
+	&:nth-of-type(3) .sponsor--link-logo {
+		--sponsor-height: 30px;
+	}
+
+	&:nth-of-type(4) .sponsor--link-logo {
+		--sponsor-height: 30px;
 	}
 }
 

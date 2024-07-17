@@ -11,6 +11,7 @@ module.exports = {
 	entry: {
 		...getWebpackEntryPoints(),
 		main: './src/index.js',
+		countdownTimer: './src/scripts/countdownTimer.js',
 	},
 	output: {
 		path: path.resolve( __dirname, 'dist' ),

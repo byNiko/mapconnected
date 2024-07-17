@@ -354,6 +354,17 @@
   box-shadow: var(--box-shadow-1);
 }
 
+@media screen and (min-width: 50rem) {
+  .columns__2 {
+    -moz-columns: 2;
+         columns: 2;
+  }
+}
+.columns__2 .column__no-break {
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
+}
+
 /**************************\
   Basic Modal Styles
 \**************************/
@@ -2193,6 +2204,9 @@ body:not(.wp-admin) .with_frm_style .frm_required {
   border-radius: var(--border-radius, 4px);
   box-shadow: var(--box-shadow);
   border: 1px solid #333;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .card__image-wrap img {
   -o-object-fit: cover;
@@ -2662,6 +2676,33 @@ body:not(.wp-admin) .with_frm_style .frm_required {
   --hamburger-color: var(--color-secondary-100);
 }
 
+.clockdiv {
+  /* color: #fff; */
+  display: inline-block;
+  text-align: center;
+  font-size: var(--font-size--xxl);
+}
+
+.clockdiv > div {
+  padding: 10px;
+  border-radius: 3px;
+  background: var(--color-primary-75);
+  display: inline-block;
+}
+
+.clockdiv div > span {
+  padding: 15px;
+  border-radius: 3px;
+  background: var(--color-primary-25);
+  display: inline-block;
+  font-weight: 600;
+}
+
+.smalltext {
+  padding-top: 5px;
+  font-size: 16px;
+}
+
 ul.no-bullets, ul.no-bullet {
   list-style-type: none;
   padding-left: 0;
@@ -3095,12 +3136,14 @@ section[class*=theme--] > :last-child .slider {
 .annual_summit {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
 }
 .annual_summit :target:before {
   content: "";
   display: block;
   height: 50px;
+}
+.annual_summit .py-4 + .py-4 {
+  margin-top: -2rem;
 }
 .annual_summit .travel_troup {
   padding: var(--spacer-12) 0;
@@ -3256,49 +3299,41 @@ section[class*=theme--] > :last-child .slider {
 }
 
 .sponsor-level {
-  margin: 2rem 0;
   border-radius: var(--radius-1);
-  padding-top: 0rem;
-  padding-bottom: 2rem;
-  --sponsor-link-flex: initial;
-  --logo-width: 20%;
+  --sponsor-height: 85px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
   position: relative;
 }
-.sponsor-level:after {
-  display: none;
-  content: "";
-  width: 25%;
-  height: 2px;
-  margin: 4rem auto 2rem;
-  background: #ccc;
-}
 .sponsor-level .sponsor-level__title {
-  font-weight: 600;
+  font-weight: 800;
   letter-spacing: 2px;
   text-align: center;
-  margin: 0 0 2rem;
   padding: 0.51rem;
-  background-color: #ccc;
-  min-width: 200px;
+  /* background-color: #ccc; */
+  /* min-width: 200px; */
   width: auto;
   display: inline-block;
-  color: white;
+  color: var(--color-text);
   align-items: center;
-  border-radius: var(--radius-1);
+  /* border-radius: var(--radius-1); */
+  border-bottom: 2px solid var(--color-primary-75);
+  font-size: var(--font-size--body-lg);
+  text-transform: uppercase;
 }
 .sponsor-level .grid {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 2rem;
 }
 .sponsor-level .grid .sponsor__link {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
 }
 .sponsor-level .grid .sponsor__link.uses-background-logo {
   background-size: contain;
@@ -3308,14 +3343,22 @@ section[class*=theme--] > :last-child .slider {
   width: var(--logo-width, 20%);
   height: 100%;
 }
-.sponsor-level:nth-of-type(2) {
-  --sponsor-height: 65px;
+.sponsor-level .grid .sponsor__link img {
+  height: 100%;
+  width: 100%;
 }
-.sponsor-level:nth-of-type(3) {
-  --sponsor-height: 55px;
+.sponsor-level .sponsor--link-logo {
+  --sponsor-height: 80px;
+  height: var(--sponsor-height);
 }
-.sponsor-level:nth-of-type(4) {
-  --sponsor-height: 45px;
+.sponsor-level:nth-of-type(2) .sponsor--link-logo {
+  --sponsor-height: 40px ;
+}
+.sponsor-level:nth-of-type(3) .sponsor--link-logo {
+  --sponsor-height: 30px;
+}
+.sponsor-level:nth-of-type(4) .sponsor--link-logo {
+  --sponsor-height: 30px;
 }
 
 .sponsor__logo__wrapper {
