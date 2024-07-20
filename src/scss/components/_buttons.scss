@@ -3,6 +3,7 @@
 @mixin button($backgroundColor: var(--color-primary-400), $color: var(--color-white), $size: "sm", $weight: 500) {
 	--background: $backgroundColor;
 	--text-color: $color;
+	--color-link : var(--text-color);
 	--hoverBackground: var(--text-color, $color);
 	--hoverTextColor: var(--background, $background);
 	display: inline-block;

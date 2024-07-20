@@ -144,6 +144,24 @@
             "selected": 0
         },
         {
+            "key": "field_669a7015c4fd4",
+            "label": "Headshot Infos",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "<b>250px by 375px<\/b>\r\nLarger images will be cropped automatically by the system.",
+            "new_lines": "wpautop",
+            "esc_html": 0
+        },
+        {
             "key": "field_663fdfa151824",
             "label": "Primary Headshot",
             "name": "primary_headshot",
@@ -159,8 +177,8 @@
             },
             "return_format": "array",
             "library": "all",
-            "min_width": 300,
-            "min_height": 300,
+            "min_width": 250,
+            "min_height": 375,
             "min_size": "",
             "max_width": "",
             "max_height": "",
@@ -184,8 +202,8 @@
             },
             "return_format": "array",
             "library": "all",
-            "min_width": "",
-            "min_height": "",
+            "min_width": 250,
+            "min_height": 375,
             "min_size": "",
             "max_width": "",
             "max_height": "",
@@ -263,5 +281,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719099125
+    "modified": 1721400890
 }

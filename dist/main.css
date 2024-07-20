@@ -1746,6 +1746,7 @@ p {
 .button, .highlight-button a {
   --background: $backgroundColor;
   --text-color: $color;
+  --color-link: var(--text-color);
   --hoverBackground: var(--text-color, $color);
   --hoverTextColor: var(--background, $background);
   display: inline-block;
