@@ -239,7 +239,7 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/sidebar-functions.php';
 require get_template_directory() . '/inc/acf-functions.php';
 include(get_template_directory() . '/acf-flex-starter/helper-functions.php');
-require get_template_directory() . '/inc/update-speaker-headshot.php.php';
+require get_template_directory() . '/inc/update-speaker-headshot.php';
 
 // only load block assets when needed
 add_filter('should_load_separate_core_block_assets', '__return_true');
