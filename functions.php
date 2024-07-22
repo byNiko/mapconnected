@@ -239,6 +239,7 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/sidebar-functions.php';
 require get_template_directory() . '/inc/acf-functions.php';
 include(get_template_directory() . '/acf-flex-starter/helper-functions.php');
+require get_template_directory() . '/inc/update-speaker-headshot.php.php';
 
 // only load block assets when needed
 add_filter('should_load_separate_core_block_assets', '__return_true');
@@ -418,20 +419,6 @@ function byniko_cpt_custom_search_filter($query) {
 	return $query;
 }
 add_filter('pre_get_posts', 'byniko_cpt_custom_search_filter');
-
-
-
-function acf_set_featured_image($value, $post_id, $field) {
-	if ($value != '') {
-		//Add the value which is the image ID to the _thumbnail_id meta data for the current post
-		update_post_meta($post_id, '_thumbnail_id', $value);
-	}
-
-	return $value;
-}
-
-// acf/update_value/name={$field_name} - filter for a specific field based on it's name
-add_filter('acf/update_value/name=primary_headshot', 'acf_set_featured_image', 10, 3);
 
 
 add_action('acf/init', 'my_acf_form_init');

@@ -50,7 +50,6 @@ class Speaker {
 			: null;
 	}
 	public function get_headshot1_object() {
-
 		return $this->headshot1_object;
 	}
 	public function get_headshot1() {
@@ -60,33 +59,48 @@ class Speaker {
 	public function get_the_headshot1() {
 		echo $this->get_headshot1();
 	}
+
+	public function get_active_headshot(){
+		/**
+		 * this realies on the featured image being updated correctly 
+		 * useing filters in functions acf_set_featured_image
+		**/
+		$id = get_post_thumbnail_id($this->ID);
+		return wp_get_attachment_image($id, 'portrait');
+	}
 	public function get_headshot2_object() {
 		return $this->headshot2_object;
 	}
 	public function get_headshot2() {
 		return wp_get_attachment_image($this->get_headshot2_object()['ID'], 'full');
 	}
+
+	public function get_headshot2_url($size = 'large') {
+		return wp_get_attachment_image_src($this->get_headshot2_object()['ID'], $size)[0];
+	}
+	public function get_secondary_image_data() {
+		return wp_get_attachment_metadata($this->get_headshot2_object()['ID']);
+	}
 	public function get_associated_events() {
 		return $this->associated_events;
-	}
+	
 
-	public function get_speakers($args = array()) {
-		$default_args = array(
-			'posts_per_page' => -1,
-			'post_type' => 'speaker',
-			'post_status' => 'publish',
-			'orderby'        => 'rand',
-			'post__not_in' => [],
-			// 'tax_query' => array(
-			// 	array(
-			// 		'taxonomy' => 'testimonial-type',
-			// 		'field' => 'name',
-			// 		'terms' => 'Brand Member',
-			// 	)
-			// ),
-		);
-		$args = array_merge($default_args, $args);
-		return get_posts($args);
+		// $default_args = array(
+		// 	'posts_per_page' => -1,
+		// 	'post_type' => 'speaker',
+		// 	'post_status' => 'publish',	
+		// 	'orderby'        => 'rand',
+		// 	'post__not_in' => [],
+		// 	// 'tax_query' => array(
+		// 	// 	array(
+		// 	// 		'taxonomy' => 'testimonial-type',
+		// 	// 		'field' => 'name',
+		// 	// 		'terms' => 'Brand Member',
+		// 	// 	)
+		// 	// ),
+		// );
+		// $args = array_merge($default_args, $args);
+		// return get_posts($args);
 	}
 
 	public function get_the_speaker_card($include_anchor = false) {
@@ -118,7 +132,8 @@ class Speaker {
 	</div>%s",
 			$include_anchor ? "<a href='" . $this->get_permalink() . "'>" : null,
 			$this->get_logo(),
-			$this->get_headshot1(),
+			// $this->get_headshot1(),
+			$this->get_active_headshot(),
 			$this->get_name(),
 			$this->get_title(),
 			$this->get_company(),
