@@ -13,6 +13,7 @@ class Event {
 	public $location;
 	public $is_past;
 	public $tags;
+	public $is_multi_day;
 
 	public function __construct($post) {
 		$this->post                                 = $post;
@@ -33,7 +34,14 @@ class Event {
 		$this->location								= get_field('location', $post);
 		$this->is_past								= $this->is_past();
 		$this->tags									= wp_get_post_terms($post->ID, 'event-type');
-		$this->is_this_year							= $this->time['start'] && $this->time['start']->format('Y') !== date("Y");
+		$this->is_this_year							= $this->time['start'] && $this->time['start']->format('Y') === date("Y");
+		$this->is_multi_day							= ($this->time['start'] && $this->time['end'])? $this->time['start']->format('d') !==  $this->time['end']->format('d') : false;
+	}
+
+	public function is_multi_day(){
+		if($this->time['start'] && $this->time['end']):
+			return $this->time['start']->format('d') !==  $this->time['end']->format('d');
+		endif;
 	}
 	public function get_title(){
 		return $this->post->post_title;

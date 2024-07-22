@@ -14,17 +14,15 @@ $startDate = $start_datetime ? $start_datetime->format('jS') : null;
 	</div>
 	<div class="event-item--info">
 		<header class="event--header ">
-			<div class="event--start-time fz-sm">
+			<div class="event--start-time fz-xs">
 
 				<?php
-				$format = $event->is_this_year ? 'F d, Y | g:iA' : 'F d | g:iA';
+				$format = $event->is_this_year ?  'F d @ g:iA': 'F d, Y @ g:iA';
+				$end_format = $event->is_multi_day()? ' - F d @ g:iA': ' - g:iA';
 				echo !empty($start_datetime) ? $start_datetime->format($format) : "";
-				echo !empty($end_datetime) ? $end_datetime->format(' - g:iA') : '';
+				echo !empty($end_datetime) ? $end_datetime->format($end_format) : '';
 				echo !empty($start_datetime)? " ET": ''; // timezone hardcoded. WP and ACF have complicated Timezone issues.
 				?>
-			</div>
-			<div class="event--categories pillbox">
-				<?= $event->get_event_tag_pills(); ?>
 			</div>
 		</header>
 		<h3 class="h3 event--title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -34,6 +32,11 @@ $startDate = $start_datetime ? $start_datetime->format('jS') : null;
 				echo wp_trim_words($desc, 55); 
 			} else the_excerpt();
 				?> 
+		</div>
+		<div class="event--footer">
+		<div class="event--categories pillbox">
+				<?= $event->get_event_tag_pills(); ?>
+			</div>
 		</div>
 	</div>
 	<aside class="event-archive-item--sidebar">
