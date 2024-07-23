@@ -11,7 +11,7 @@ get_header();
     <?php
     // $fields = get_field_objects($post, 'options' );
 
-    print_r($fields);
+    // print_r($fields);
     while (have_posts()) :
       the_post();
 
@@ -33,52 +33,61 @@ get_header();
           // $fields = get_field_objects('options');
           // print_r($fields);
           $count = 0;
+         $note = [];
+
           foreach ($packages as $package) :
             // var_dump($package);
+
             if (have_rows($package, 'options')) : while (have_rows($package, 'options')) : the_row($package, 'options');
-                $count++;
+               
                 $title = get_sub_field('title');
-                $note = get_sub_field("note");
+                $note[$count] = get_sub_field("note");
                 $id = sanitize_title($title);
                 echo "<li id='$id' class=''>$title</li>";
+                $count++;
               endwhile;
             endif;
           endforeach;
+          
           ?>
         </ul>
         <ul class="pricing-table__tabs-content tabs-content">
 
           <?php
+         // var_dump($note);
+         $label_count = 0;
           foreach ($packages as $package) :
-            $label_count = 0;
+           
             if (have_rows($package, 'options')) : while (have_rows($package, 'options')) : the_row($package, 'options');
+           
                 echo "<li>";
-                echo "<ul class=' benefits__wrap'>";
-
+                echo "<h2 class='h2 text-center subheading my-1'>$note[$label_count]</h2>";
+                echo "<ul class=' benefits__wrap '>";
+                $label_count++;
                 // labels loop
-                if (have_rows('packages', 'options')) : while (have_rows('packages', 'options')) : the_row('packages', 'options');
-                    $label_count++;
-                    if ($label_count === 1) {
-                      echo "<li class='benefit__labels benefit-column-grid'>";
-                      echo "<div class='benefit benefit__label'>title</div>";
-                      echo "<div class='benefit benefit__label'>price</div>";
-                      echo "<div class='benefit benefit__label'>link</div>";
-                      $benefits = get_sub_field('benefits');
-                      $benefit_keys = [];
-                      foreach ($benefits as $key => $value) {
-                        $benefit_keys[] = $key;
-                      }
-                      if (have_rows('benefits', 'options')) : while (have_rows('benefits', 'options')) : the_row('benefits', 'options');
-                          foreach ($benefit_keys as $key) {
-                            $label = acf_get_field($key)['label'];
-                            echo "<div class='benefit benefit__label'>$label</div>";
-                          }
-                        endwhile;
-                      endif;
-                    }
-                    echo "</li>";
-                  endwhile;
-                endif;
+                // if (have_rows('packages', 'options')) : while (have_rows('packages', 'options')) : the_row('packages', 'options');
+                //     $label_count++;
+                //     if ($label_count === 1) {
+                //       echo "<li class='benefit__labels benefit-column-grid'>";
+                //       echo "<div class='benefit benefit__label'>title</div>";
+                //       echo "<div class='benefit benefit__label'>price</div>";
+                //       echo "<div class='benefit benefit__label'>link</div>";
+                //       $benefits = get_sub_field('benefits');
+                //       $benefit_keys = [];
+                //       foreach ($benefits as $key => $value) {
+                //         $benefit_keys[] = $key;
+                //       }
+                //       if (have_rows('benefits', 'options')) : while (have_rows('benefits', 'options')) : the_row('benefits', 'options');
+                //           foreach ($benefit_keys as $key) {
+                //             $label = acf_get_field($key)['label'];
+                //             echo "<div class='benefit benefit__label'>$label</div>";
+                //           }
+                //         endwhile;
+                //       endif;
+                //     }
+                //     echo "</li>";
+                //   endwhile;
+                // endif;
                 // levels loop
                 if (have_rows('packages')) : while (have_rows('packages')) : the_row('packages');
                     $level = get_sub_field('level_name');

@@ -9,7 +9,7 @@
     "advanced_configuration": 1,
     "icon_url": "",
     "menu_title": "MAPconnected Settings",
-    "position": 30,
+    "position": 26,
     "redirect": 0,
     "description": "",
     "menu_icon": {
@@ -22,5 +22,5 @@
     "data_storage": "options",
     "post_id": "",
     "autoload": 0,
-    "modified": 1718327980
+    "modified": 1721738815
 }

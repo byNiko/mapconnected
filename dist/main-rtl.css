@@ -2473,10 +2473,6 @@ body:not(.wp-admin) .with_frm_style .frm_required {
   flex-direction: column;
 }
 
-.pricing-table__tabs-content {
-  background: var(--color-primary-900);
-}
-
 .benefits__wrap {
   padding: 0;
   display: grid;
@@ -2569,6 +2565,13 @@ body:not(.wp-admin) .with_frm_style .frm_required {
     padding: 1rem;
     font-size: var(--font-size--md);
   }
+}
+
+.pricing-table__tabs-content {
+  background: var(--color-primary-900);
+}
+.pricing-table__tabs-content .subheading {
+  color: var(--color-secondary-100);
 }
 
 /*!
