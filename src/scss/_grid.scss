@@ -23,9 +23,9 @@
 	}
 
 	aside {
-		@include bp(md){
-		flex: 0 0 250px;
-	}
+		@include bp(md) {
+			flex: 0 0 250px;
+		}
 	}
 }
 
@@ -35,9 +35,11 @@ main {
 
 .container {
 	width: 100%;
-@include bp(md){
-	max-width: 90%;
-}
+
+	@include bp(md) {
+		max-width: 90%;
+	}
+
 	margin-left: auto;
 	margin-right: auto;
 	padding-left: var(--spacer-grid);
@@ -49,6 +51,7 @@ main {
 	width: 100%;
 	max-width: 100%;
 }
+
 .container--wide {
 	@extend .container;
 	width: 100%;
@@ -89,6 +92,14 @@ main {
 	// &.__2x &.__3x &.__4x &.__5x {
 	// 	display: block;
 	// }
+	&.__5x {
+		grid-template-columns: 1fr 1fr;
+		grid-gap: var(--gap);
+
+		@include bp(sm) {
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		}
+	}
 
 	@include bp(md) {
 		&.__2x {
@@ -98,16 +109,12 @@ main {
 		&.__3x {
 			// grid-template-columns: repeat(3, 1fr);
 			grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-			
+
 		}
 
 		&.__4x {
 			// grid-template-columns: repeat(4, 1fr);
 			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-		}
-
-		&.__5x {
-			grid-template-columns: repeat(5, 1fr);
 		}
 	}
 }
@@ -124,7 +131,7 @@ main {
 
 .flex-row {
 	display: flex;
-	
+
 	flex-direction: column;
 	gap: var(--spacer-grid);
 

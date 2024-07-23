@@ -1171,6 +1171,15 @@ main {
   display: grid;
   gap: var(--spacer-grid);
 }
+.grid.__5x {
+  grid-template-columns: 1fr 1fr;
+  grid-gap: var(--gap);
+}
+@media screen and (min-width: 30rem) {
+  .grid.__5x {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
 @media screen and (min-width: 50rem) {
   .grid.__2x {
     grid-template-columns: repeat(2, 1fr);
@@ -1180,9 +1189,6 @@ main {
   }
   .grid.__4x {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-  .grid.__5x {
-    grid-template-columns: repeat(5, 1fr);
   }
 }
 

@@ -100,7 +100,7 @@ get_header();
 	<section class="theme--medium-1 mt-1">
 		<div class="container--narrow">
 			<header class="h2 text-center"><?php the_field('speaker_list_title');?></header>
-			<div class="flex-row __5x speakers-list">
+			<div class="grid __5x speakers-list">
 				<?php
 
 				$speakers = get_field('speakers_group');

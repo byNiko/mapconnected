@@ -148,7 +148,7 @@ get_header(); ?>
 						</div>
 
 						<div class="container">
-							<div class="all-speakers-grid justify--center">
+							<div class="grid __5x justify--center">
 								<?php
 								foreach ($all_speakers as $speaker) :
 									$sp = new Speaker($speaker);
