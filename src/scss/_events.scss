@@ -5,6 +5,13 @@
 .event__buttons-list{
 	gap: var(--spacer-3);
 }
+.single-event {
+	.entry-content {
+		display: flex;
+		flex-direction: column;
+		gap: var(--grid-gap, 2rem);
+	}
+}
 .single-event,.single-post {
 	.h1 {
 		font-size: var(--font-size--xl);
@@ -16,11 +23,6 @@
 		grid-template-columns : 1fr var(--sidebar-width);
 	}
 	
-	.entry-content {
-		display: flex;
-		flex-direction: column;
-		gap: var(--grid-gap, 2rem);
-	}
 	.sidebar {
 		dl:last-of-type {
 			margin-bottom: 0;;

@@ -3468,6 +3468,12 @@ section[class*=theme--] > :last-child .slider {
   gap: var(--spacer-3);
 }
 
+.single-event .entry-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--grid-gap, 2rem);
+}
+
 .single-event .h1, .single-post .h1 {
   font-size: var(--font-size--xl);
   font-weight: 500;
@@ -3476,11 +3482,6 @@ section[class*=theme--] > :last-child .slider {
   margin-top: var(--spacer-body-top-margin, 2rem);
   display: grid;
   grid-template-columns: 1fr var(--sidebar-width);
-}
-.single-event .entry-content, .single-post .entry-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--grid-gap, 2rem);
 }
 .single-event .sidebar dl:last-of-type, .single-post .sidebar dl:last-of-type {
   margin-bottom: 0;
