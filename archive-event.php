@@ -43,11 +43,14 @@ get_header();
 					<?php
 					$terms = get_terms(array(
 						'taxonomy'   => 'event-type',
-						'hide_empty' => true,
+						'hide_empty' => true
 					));
 					if ($terms) :
 						foreach ($terms as $term) :
-							$arr_params = array('event-type' => $term->slug);
+							$arr_params = array(
+								'event-type' => $term->slug,
+								'event-range' => 'all'
+							);
 							$params = esc_url(add_query_arg($arr_params));
 							echo "<a class='pill' href='$params'>$term->name</a>";
 						endforeach;
