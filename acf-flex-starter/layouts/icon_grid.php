@@ -1,7 +1,8 @@
 
 <?php
 $icon_position = get_sub_field('icon_position') === "left" ? "icon-left" : "icon-top";
-
+$container_width = '';
+$theme = '';
 if ($theme_group = 	get_sub_field('theme_group')) :
 	$container_width = 'container--' . $theme_group['container_width'];
 	$theme = 'theme--' . $theme_group['theme'];
