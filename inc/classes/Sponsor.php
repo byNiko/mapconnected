@@ -12,6 +12,7 @@ class Sponsor {
 	private $slug;
 	private $sponsorship_level;
 	private $sponsor_page_url;
+	public $downloadable_file;
 	public function __construct($post) {
 		$this->name = $post->post_title;
 		$this->ID = $post->ID;
@@ -24,6 +25,7 @@ class Sponsor {
 		$this->description = get_field('description', $post);
 		$this->sponsorship_level = get_field('sponsorship_level');
 		$this->sponsor_page_url = get_home_url() . "/mywarrantynetworkmarketplace";
+		$this->downloadable_file = get_field('downloadable_file', $post);
 	}
 
 	public function get_ID() {

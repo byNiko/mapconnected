@@ -144,7 +144,11 @@ get_header();
 									<button class="show-more button--text fz-sm" data-toggle-text="Show Less" data-toggle="collapse" data-target="#<?= $sponsor->get_slug() . '__collapse'; ?>">
 										Show More ...
 									</button>
+									
 									<a href="<?= $sponsor->get_company_url(); ?>" class="button button--primary">Website</a>
+									<?php if($sponsor->downloadable_file): ?>
+									<a download href="<?= $sponsor->downloadable_file['url']; ?>" class="button button--outline">Download Sponsor Prospectus</a>
+									<?php endif; ?>
 								</div>
 							<?php endforeach; ?>
 						</div>
