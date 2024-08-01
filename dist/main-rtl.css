@@ -3359,10 +3359,10 @@ section[class*=theme--] > :last-child .slider {
   --sponsor-height: 40px ;
 }
 .sponsor-level:nth-of-type(3) .sponsor--link-logo {
-  --sponsor-height: 30px;
+  --sponsor-height: 40px;
 }
 .sponsor-level:nth-of-type(4) .sponsor--link-logo {
-  --sponsor-height: 30px;
+  --sponsor-height: 40px;
 }
 
 .sponsor__logo__wrapper {
