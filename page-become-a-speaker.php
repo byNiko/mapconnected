@@ -98,7 +98,7 @@ get_header();
 	</section>
 
 	<section class="theme--medium-1 mt-1">
-		<div class="container--narrow">
+		<div class="container--wide">
 			<header class="h2 text-center"><?php the_field('speaker_list_title');?></header>
 			<div class="grid __5x speakers-list">
 				<?php
