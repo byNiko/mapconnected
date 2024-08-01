@@ -86,7 +86,9 @@ get_header();
 
 	$args = array(
 		'post_type' => ['event', 'post'],
-		'status' => 'publish'
+		'status' => 'publish',
+		'posts_per_page' => 12,
+		'orderby'        => 'date'
 	);
 	$q = new WP_Query($args);
 	if ($q->have_posts()) :
@@ -99,9 +101,16 @@ get_header();
 				<div class="grid __4x justify--center">
 
 					<?php while ($q->have_posts()) : $q->the_post(); ?>
-						<?php $event = new Event($post); ?>
+						<?php 
+						$event = new Event($post); 
+						$type = get_post_type($post);
+						?>
+
 						<div class="card-item">
-							<h3 class="h3 event--title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+							<div class="pillbox">
+							<div class="pill pill--post-type__<?= $type;?>"><?= $type;?></div>
+							</div>
+							<h3 class="h3 event--title mt-1"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 							<div class="event--description"><?= wp_trim_words($event->get_description(), 15); ?> </div>
 						</div>
 				<?php

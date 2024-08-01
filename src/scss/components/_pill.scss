@@ -1,9 +1,25 @@
 .pill {
+
 	font-size: var(--font-size--xs);
 	background-color: var(--color-secondary-200);
 	padding: .125em 1em;
 	border-radius: 1rem;
 	border: 1px dotted var(--color-secondary-400);
+}
+
+[class*=pill--post-type__]{
+	margin-left: auto;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 10px;
+}
+.pill--post-type {
+	// &__post {
+	// 	color: var(--color-secondary-800);
+	// }
+	// &__event {
+	// 	color: var(--color-secondary-200);
+	// }
 }
 
 .pillbox {
