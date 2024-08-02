@@ -160,8 +160,16 @@
 	z-index: 0;
 
 }
-
-
+.button--light {
+	background-color: var(--color-primary-25);
+	color: var(--color-text);
+	&:hover {
+		background-color: var(--color-primary-75);
+	}
+}
+.button--thin {
+	padding: 5px 20px;
+}
 .button--play {
 	--dim: 40px;
 	position: relative;
