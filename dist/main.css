@@ -201,6 +201,10 @@
   align-self: center;
 }
 
+.align-self-start {
+  align-self: start;
+}
+
 .text-uppercase {
   text-transform: uppercase;
 }
@@ -3500,7 +3504,11 @@ section[class*=theme--] > :last-child .slider {
 .single-event .site-content, .single-post .site-content {
   margin-top: var(--spacer-body-top-margin, 2rem);
   display: grid;
-  grid-template-columns: 1fr var(--sidebar-width);
+}
+@media screen and (min-width: 50rem) {
+  .single-event .site-content, .single-post .site-content {
+    grid-template-columns: 1fr var(--sidebar-width);
+  }
 }
 .single-event .sidebar dl:last-of-type, .single-post .sidebar dl:last-of-type {
   margin-bottom: 0;
