@@ -1,4 +1,14 @@
 .widget-area {
+	.frm_fields_container {
+		display: flex!important;flex-direction: column!important;;
+	}
+	.frm_forms.with_frm_style.frm_inline_form.frm_style_formidable-style{
+		width: 100%;
+	}
+	.frm_button_submit.frm_button_submit {
+		width: 100%!important;
+		background: var(--color-primary-300) !important;
+	}
 	.frm_style_formidable-style.with_frm_style .form-field {
 		margin-bottom: 0;
 		input {
