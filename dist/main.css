@@ -980,10 +980,6 @@ html, body, .site {
   color: var(--color-text);
 }
 
-html * {
-  color: var(--color-text);
-}
-
 img {
   max-width: 100%;
   height: auto;
@@ -1680,6 +1676,10 @@ p {
 .theme--bright-1 {
   --color-text: var(--color-primary-900);
   background-color: var(--color-secondary-600);
+}
+
+section.theme--dark-1, section.theme--dark-gradient-1, .modal.modal-form section.modal__container, section.theme--medium-1, .event-card__wrapper:nth-of-type(2) section.event-card, section.theme--medium-2 {
+  color: var(--color-text);
 }
 
 .theme--medium-1, .event-card__wrapper:nth-of-type(2) .event-card {
