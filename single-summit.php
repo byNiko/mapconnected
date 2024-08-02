@@ -5,6 +5,7 @@ $spships = new Sponsorships();
 $s = new Summit($post);
 get_header(); ?>
 
+
 <main class="annual_summit">
 	<section class="hero theme--dark-gradient-1 pb-4">
 		<div class="secondary-nav__wrapper">
@@ -16,7 +17,7 @@ get_header(); ?>
 				<a href="#travel" class="button button--text">Hotel</a>
 			</nav>
 		</div>
-		<?php get_template_part('/template-parts/summit/summit', 'landing-section'); ?>
+		<?php get_template_part('/template-parts/summit/summit', 'landing-section', ['summit-data'=> $s]); ?>
 	</section>
 	<?php
 	if ($key_speakers = get_field('speakers_group')) :
@@ -56,6 +57,7 @@ get_header(); ?>
 						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')); ?>" class="button button--secondary">Become a Sponsor</a>
 						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Speaker')); ?>" class="button button--secondary">Become a Speaker</a>
 					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -81,6 +83,11 @@ get_header(); ?>
 						<div class="content flex-row">
 							<div class="col">
 								<?= $highlights ?>
+							</div>
+							<div class="col">
+							<?php 
+get_template_part('/template-parts/components/ratings', null, ['summit-data' => $s]);
+?>
 							</div>
 						</div>
 				</div>

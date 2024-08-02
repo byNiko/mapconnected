@@ -119,7 +119,7 @@ class Summit {
 		$html = false;
 		if ($highlights = $this->get_agenda_section_data('agenda_highlights')) :
 
-			$html = "<dl class='columns__2'>";
+			$html = "<dl class='columns__1'>";
 			$html .= array_reduce($highlights, function ($acc, $itt) {
 				if (!$itt['title']) return $acc;
 
