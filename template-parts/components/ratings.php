@@ -2,7 +2,8 @@
 if ($args['summit-data']->get_statistics_section_data('ratings'))
 	$ratings = $args['summit-data']->get_statistics_section_data('ratings');
 ?>
-<div class="ratings-group">
+<div class="ratings-group px-4 py-4 theme--medium-1 border-radius-2">
+<h3 class="h3">Summit Feedback</h3>
 	<?php
 	foreach ($ratings as $r) :
 		$title = $r['title'];

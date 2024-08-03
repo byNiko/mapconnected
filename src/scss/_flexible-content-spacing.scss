@@ -72,7 +72,7 @@ section[class*=theme--] > :last-child{
 .flexible-content-wrap + .flexible-content-wrap  {
 	padding-top: var(--section-padding);
 }
-.theme--false + .theme--false,
+// .theme--false + .theme--false,
 .theme--medium-1 + .theme--medium-1,
 .theme--light-1 + .theme--light-1,
 .theme--light-1 + .theme--false {

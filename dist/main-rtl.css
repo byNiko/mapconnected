@@ -1618,6 +1618,7 @@ p {
   margin-right: auto;
   margin-left: auto;
   --color-text: var(--color-secondary-100);
+  color: var(--color-text);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -2822,7 +2823,6 @@ section[class*=theme--] > :last-child .slider {
   padding-top: var(--section-padding);
 }
 
-.theme--false + .theme--false > :first-child,
 .theme--medium-1 + .theme--medium-1 > :first-child,
 .theme--light-1 + .theme--light-1 > :first-child,
 .theme--light-1 + .theme--false > :first-child {
