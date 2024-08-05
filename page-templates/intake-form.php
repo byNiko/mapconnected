@@ -1,3 +1,5 @@
+<?php /* Template Name: Intake Form Template */ ?>
+
 <?php acf_form_head(); ?>
 <?php get_header(); ?>
 <div class="container--very-narrow">
@@ -13,7 +15,8 @@
 			</header>
 			<?php
 			else:
-			echo "<h1 class='page_title h1'> Speaker Intake Form</h1>";
+				$title = get_the_title();
+			echo "<h1 class='page_title h1'>  $title </h1>";
 			the_content();
 			endif;
 		endwhile; // End of the loop.

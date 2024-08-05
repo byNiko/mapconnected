@@ -145,6 +145,14 @@ function byniko_widgets_init() {
 }
 add_action('widgets_init', 'byniko_widgets_init');
 
+add_filter('protected_title_format', 'bl_remove_protected_title');
+
+function bl_remove_protected_title($title) {
+	// Return only the title portion as defined by %s, not the additional 
+	// 'Protected: ' as added in core
+	return "%s";
+}
+
 
 
 function byNiko_add_preconnect_links() {
@@ -390,7 +398,7 @@ function byniko_fb_opengraph() {
 		<meta property="og:site_name" content="<?php echo get_bloginfo(); ?>" />
 		<meta property="og:image" content="<?php echo $img_src; ?>" />
 
-<?php
+	<?php
 	} else {
 		return;
 	}
@@ -420,14 +428,30 @@ function byniko_cpt_custom_search_filter($query) {
 }
 add_filter('pre_get_posts', 'byniko_cpt_custom_search_filter');
 
-
-add_action('acf/init', 'my_acf_form_init');
-function my_acf_form_init() {
+add_action('acf/init', 'register_front_end_intake_acf_forms');
+function register_front_end_intake_acf_forms() {
 
 	// Check function exists.
 	if (function_exists('acf_register_form')) {
 
-		// Register form.
+		// Register Sponsor Intake form.
+		acf_register_form(array(
+			'id'       => 'new-sponsor',
+			'post_id'  => 'new_post',
+			'new_post' => array(
+				'post_title' => "Pending Intake",
+				'post_type'   => 'sponsor',
+				'post_status' => 'pending',
+			),
+			'post_title'  => false,
+			'post_content' => false,
+			// 'return' => home_url(),
+			'submit_value'	=> 'Submit Sponsor Info',
+			'updated_message' => __("<h1>Post updated</h1><div>Thanks! We got your info</div>", 'acf'),
+			'uploader' => 'wp', // wp | baseic
+		));
+		
+		// Register Speaker Intake form.
 		acf_register_form(array(
 			'id'       => 'new-speaker',
 			'post_id'  => 'new_post',
@@ -446,35 +470,16 @@ function my_acf_form_init() {
 	}
 }
 
+add_shortcode('new-sponsor-form', 'byniko_new_sponsor_front_end_form');
+function byniko_new_sponsor_front_end_form() {
+	acf_form_head();
+	ob_start();
 
-
-// Auto add and update Title field for Event Post Type
-// todo: take a look at this to figure out the issue we've got
-// https://wordpress.stackexchange.com/questions/105926/rewriting-post-slug-before-post-save
-function byniko_custom_event_post_title_and_slug($post_id) {
-
-	if (get_post_type() == 'speaker') {
-		$my_post = array();
-		$my_post['ID'] = $post_id;
-		$my_post['post_title'] = get_field('name', $post_id);
-		$my_post['post_name'] = sanitize_title($my_post['post_title']);
-
-		remove_action('save_post', 'byniko_custom_event_post_title_and_slug', 10, 3);
-		wp_update_post($my_post);
-		add_action('save_post', 'byniko_custom_event_post_title_and_slug', 10, 3);
-		//do_action('acf/save_post' , $post_id);
-		// wp_redirect( home_url(), 301);
-
-	}
+	acf_form('new-sponsor');
+	return ob_get_clean();
 }
 
-// run after ACF saves the $_POST['fields'] data
-add_action('acf/save_post', 'byniko_custom_event_post_title_and_slug', 20);
-
-
-
 add_shortcode('new-speaker-form', 'byniko_new_speaker_front_end_form');
-
 function byniko_new_speaker_front_end_form() {
 	acf_form_head();
 	ob_start();
@@ -483,6 +488,27 @@ function byniko_new_speaker_front_end_form() {
 	return ob_get_clean();
 }
 
+
+
+
+// Auto add and update Title field for Event Post Type
+// todo: take a look at this to figure out the issue we've got
+// https://wordpress.stackexchange.com/questions/105926/rewriting-post-slug-before-post-save
+function byniko_custom_event_post_title_and_slug($post_id) {
+	if (get_post_type() == 'speaker' || get_post_type() == 'sponsor') {
+		$my_post = array();
+		$my_post['ID'] = $post_id;
+		$my_post['post_title'] = get_field('name', $post_id);
+		$my_post['post_name'] = sanitize_title($my_post['post_title']);
+
+		remove_action('save_post', 'byniko_custom_event_post_title_and_slug', 10, 3);
+		wp_update_post($my_post);
+		add_action('save_post', 'byniko_custom_event_post_title_and_slug', 10, 3);
+	}
+}
+
+// run after ACF saves the $_POST['fields'] data
+add_action('acf/save_post', 'byniko_custom_event_post_title_and_slug', 20);
 
 function add_slug_body_class($classes) {
 	global $post;
@@ -516,9 +542,21 @@ function get_summit_brochure_thumb() {
 	$thumb = '';
 	if ($brochure_group = get_field('global_summit_group', 'options')) :
 		if ($img = $brochure_group['summit_brochure_thumbnail']) :
-			$thumb = wp_get_attachment_image($img, 'medium', false, ['loading' => 'lazy', 'class'=>"mt-1"]);
+			$thumb = wp_get_attachment_image($img, 'medium', false, ['loading' => 'lazy', 'class' => "mt-1"]);
 		endif;
 	endif;
 	return $thumb;
 }
 
+
+
+add_action('acf/admin_print_footer_scripts', 'acf_make_first_tab_default_on_load');
+function acf_make_first_tab_default_on_load() {
+	?>
+	<script type="text/javascript">
+		jQuery(function($) {
+			$('.acf-tab-group li:first-child a').trigger("click");
+		});
+	</script>
+<?php
+}

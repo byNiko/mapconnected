@@ -60,7 +60,7 @@ section[class*=theme--] > :first-child{
 // }
 }
 
-section[class*=theme--] > :last-child{
+section[class*=theme--]{
 	padding-bottom: var(--section-padding);
 	
 	.slider {
@@ -69,16 +69,15 @@ section[class*=theme--] > :last-child{
 	}
 }
 
+.theme--false + .theme--false,
 .flexible-content-wrap + .flexible-content-wrap  {
-	padding-top: var(--section-padding);
+	padding-top: calc(.5 * var(--section-padding));
 }
 // .theme--false + .theme--false,
 .theme--medium-1 + .theme--medium-1,
 .theme--light-1 + .theme--light-1,
 .theme--light-1 + .theme--false {
-	 &>:first-child{
 	padding-top:0;;
-	}
 }
 
 .who_attends_logos__wrapper {

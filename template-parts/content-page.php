@@ -8,7 +8,7 @@
  */
 
 ?>
-
+<!-- <div class="container"> -->
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<!-- <header class="entry-header">
 		<?php //the_title( '<h1 class="entry-title">', '</h1>' ); ?>
@@ -20,6 +20,7 @@
 	<?php
 	include(get_template_directory() . '/acf-flex-starter/flexible-content-loop.php');
 	?>
+	<div class="container">
 		<?php
 		the_content();
 
@@ -30,6 +31,7 @@
 			)
 		);
 		?>
+		</div>
 	</div><!-- .entry-content -->
 
 	<?php if ( get_edit_post_link() ) : ?>
@@ -55,3 +57,5 @@
 		</footer><!-- .entry-footer -->
 	<?php endif; ?>
 </article><!-- #post-<?php the_ID(); ?> -->
+
+<!-- </div> -->

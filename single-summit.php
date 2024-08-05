@@ -17,7 +17,7 @@ get_header(); ?>
 				<a href="#travel" class="button button--text">Hotel</a>
 			</nav>
 		</div>
-		<?php get_template_part('/template-parts/summit/summit', 'landing-section', ['summit-data'=> $s]); ?>
+		<?php get_template_part('/template-parts/summit/summit', 'landing-section', ['summit-data' => $s]); ?>
 	</section>
 	<?php
 	if ($key_speakers = get_field('speakers_group')) :
@@ -57,7 +57,7 @@ get_header(); ?>
 						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')); ?>" class="button button--secondary">Become a Sponsor</a>
 						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Speaker')); ?>" class="button button--secondary">Become a Speaker</a>
 					</div>
-					
+
 				</div>
 			</div>
 		</div>
@@ -85,9 +85,11 @@ get_header(); ?>
 								<?= $highlights ?>
 							</div>
 							<div class="col">
-							<?php 
-get_template_part('/template-parts/components/ratings', null, ['summit-data' => $s]);
-?>
+								<?php get_template_part(
+									'/template-parts/components/ratings',
+									null,
+									['summit-data' => $s]
+								); ?>
 							</div>
 						</div>
 				</div>
@@ -238,7 +240,7 @@ get_template_part('/template-parts/components/ratings', null, ['summit-data' => 
 					the_row();
 					if (!get_sub_field('hide')) :;
 	?>
-						<section id="sponsorships" >
+						<section id="sponsorships">
 							<header class="text-center">
 								<h2 class="h2"><?php the_sub_field('section_title'); ?></h2>
 								<div class="text-center">
