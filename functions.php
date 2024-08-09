@@ -377,7 +377,7 @@ function byniko_get_theme_image($filename, $atts) {
 function byniko_fb_opengraph() {
 	global $post;
 
-	if (is_singular(array('event'))) {
+	if (is_singular(array('event', 'speaker'))) {
 		if (has_post_thumbnail($post->ID)) {
 			$img_src = wp_get_attachment_image_url(get_post_thumbnail_id($post->ID), 'medium');
 		} else {
