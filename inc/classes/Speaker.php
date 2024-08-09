@@ -133,7 +133,7 @@ class Speaker {
 			$include_anchor ? "<a href='" . $this->get_permalink() . "'>" : null,
 			$this->get_logo(),
 			// $this->get_headshot1(),
-			$this->get_active_headshot(),
+			$this->get_headshot1(),
 			$this->get_name(),
 			$this->get_title(),
 			$this->get_company(),
