@@ -325,13 +325,14 @@ add_filter('wp_link_query', 'byniko_add_archive_to_link_query', 9, 2);
 
 
 function byniko_track_testimonials_on_page_with_session() {
-	if (!session_id()) {
-		session_start();
-	}
+	// if (!session_id()) {
+	// 	session_start();
+	// }
 	// track testimonials post on page already
 	// use as value for 'post__not_in' in wp_queries 
 	// where you don't want to repeat testimonials on a page.
 	$_SESSION['testimonials_on_page'] = [];
+	// session_write_close();
 }
 add_action('init', 'byniko_track_testimonials_on_page_with_session', 1);
 
@@ -522,6 +523,7 @@ add_filter('body_class', 'add_slug_body_class');
 
 add_action('wp_footer', 'byniko_footer_modal');
 function byniko_footer_modal() {
+	//print_r($_SESSION['testimonials_on_page']);
 	//get_template_part('/template-parts/components/modal-form__contact');
 }
 
