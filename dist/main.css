@@ -1569,6 +1569,11 @@ p {
   width: 100% !important;
 }
 
+.img-fluid, .size-img-fluid {
+  max-width: none;
+  width: 100% !important;
+}
+
 .homepage-top-slider {
   height: auto;
   background-color: var(--black);

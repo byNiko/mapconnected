@@ -10,7 +10,7 @@ if (have_rows('features')) :
 <div class="flexible-content-wrap">
     <div class="features">
         <!-- Replace '=container--narrow' with your own container class -->
-        <div class="<?= get_css_classes('=container--narrow', $columns_class, $alignment_class); ?>">
+        <div class="<?= get_css_classes('container--narrow', $columns_class, $alignment_class); ?>">
            <?php
                 while (have_rows('features')) : the_row();
                     $image = get_sub_field('image');

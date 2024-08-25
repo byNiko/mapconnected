@@ -2223,6 +2223,85 @@
                     ],
                     "min": "",
                     "max": ""
+                },
+                "layout_66cb3db5bfc71": {
+                    "key": "layout_66cb3db5bfc71",
+                    "name": "marquee",
+                    "label": "Marquee",
+                    "display": "block",
+                    "sub_fields": [
+                        {
+                            "key": "field_66cb3dcbbfc73",
+                            "label": "Image",
+                            "name": "image",
+                            "aria-label": "",
+                            "type": "image",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "id",
+                            "library": "all",
+                            "min_width": "",
+                            "min_height": "",
+                            "min_size": "",
+                            "max_width": "",
+                            "max_height": "",
+                            "max_size": "",
+                            "mime_types": "",
+                            "preview_size": "medium"
+                        },
+                        {
+                            "key": "field_66cb4241858c0",
+                            "label": "Paragraph",
+                            "name": "paragraph",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_669285cd2ff76"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        },
+                        {
+                            "key": "field_66cb3ddbbfc74",
+                            "label": "Button Row",
+                            "name": "button_row",
+                            "aria-label": "",
+                            "type": "clone",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "clone": [
+                                "field_665a1011e2876"
+                            ],
+                            "display": "seamless",
+                            "layout": "block",
+                            "prefix_label": 0,
+                            "prefix_name": 0
+                        }
+                    ],
+                    "min": "",
+                    "max": ""
                 }
             },
             "min": "",
@@ -2693,5 +2772,5 @@
     "active": false,
     "description": "This group provides template structures for the other field groups. It is the source of truth for repeated elements liked buttons, layouts, etc.",
     "show_in_rest": 0,
-    "modified": 1720878588
+    "modified": 1724597006
 }

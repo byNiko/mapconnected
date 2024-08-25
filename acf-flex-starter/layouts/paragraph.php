@@ -1,5 +1,5 @@
 <?php
 $paragraph = get_sub_field('paragraph');
 if (!empty($paragraph)) : ?>
-				<?= $paragraph;?>
+				<?= $paragraph; ?>
 <?php endif;
