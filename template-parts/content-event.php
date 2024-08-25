@@ -42,7 +42,7 @@ $expired_class = $event->is_past()? "event-started" : null;
 			$plural = count($speakers) > 1;
 		?>
 			<section class="event--speakers">
-				<h5 class="h5">Your Host<?= $plural ?  "s" : "";?></h5>
+				<h5 class="h5">Speaker<?= $plural ?  "s" : "";?></h5>
 				<div class="event-speakers--items flex-row __4x">
 					<?php
 					foreach ($speakers as $speaker) :
