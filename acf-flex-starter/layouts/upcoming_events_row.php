@@ -1,13 +1,21 @@
 <?php
-
+$dateNow = (new Byniko())->future_expiration();
 $query_args = array(
 	'posts_per_page' => 2,
 	'post_type' => 'event',
 	'post_status' => 'publish',
+	'orderby' => 'meta_value',
+	'order'=> 'ASC',
+					'meta_key' => 'start_date__time',
 	// 'orderby'        => 'rand',
-	// 'tax_query' => array(
-	// 	array()
-	// ),
+	'meta_query' => array(
+		array(
+			'key' => 'start_date__time',
+			'compare' => '>',
+			'value' => $dateNow,
+			'type' => 'DATETIME',
+		)
+	)
 );
 
 $q = new WP_Query($query_args);
@@ -68,8 +76,8 @@ if ($q->have_posts()) :
 			<footer class="text-center mt-1">
 				<h3 class="h3">
 					<a class="button button--text button--primary fz-lg fw-bold" href="/events">View All Events</a>
-				</h2>
-			</header>
+					</h2>
+					</header>
 		</div>
 	</div>
 <?php
