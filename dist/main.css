@@ -2436,6 +2436,18 @@ body:not(.wp-admin) .with_frm_style .frm_required {
   max-width: 100%;
 }
 
+.content-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.speaker__events-list {
+  padding: 1rem;
+  background: var(--color-primary-50);
+  border-radius: 4px;
+}
+
 .iframe-modal .modal__close {
   color: var(--black);
 }

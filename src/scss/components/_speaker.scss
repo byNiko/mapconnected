@@ -58,3 +58,14 @@ row-gap: var(--spacer-8);
 		max-width: 100%;
 	}
 }
+
+.content-column {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+.speaker__events-list {
+	padding: 1rem;
+    background: var(--color-primary-50);
+    border-radius: 4px;
+}
