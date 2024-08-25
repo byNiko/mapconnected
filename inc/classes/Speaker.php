@@ -237,4 +237,13 @@ class Speaker {
 		}
 		return $query;
 	}
+
+	function get_session_info(){
+		$info = array(
+		'sess_title' => get_field('session_title', $this->ID),
+		'sess_desc' => get_field('session_description', $this->ID),
+		);
+		return $info;
+
+	}
 }

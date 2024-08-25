@@ -145,7 +145,7 @@
         },
         {
             "key": "field_669a7015c4fd4",
-            "label": "Headshot Infos",
+            "label": "Headshot Info",
             "name": "",
             "aria-label": "",
             "type": "message",
@@ -261,6 +261,64 @@
             "bidirectional_target": [
                 "field_663ff4de069eb"
             ]
+        },
+        {
+            "key": "field_66cb7a1bb6a5e",
+            "label": "Session Info",
+            "name": "",
+            "aria-label": "",
+            "type": "tab",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "placement": "top",
+            "endpoint": 0,
+            "selected": 0
+        },
+        {
+            "key": "field_66cb7a2bb6a5f",
+            "label": "Session Title",
+            "name": "session_title",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
+            "key": "field_66cb7a34b6a60",
+            "label": "Session Description",
+            "name": "session_description",
+            "aria-label": "",
+            "type": "wysiwyg",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "tabs": "all",
+            "toolbar": "full",
+            "media_upload": 1,
+            "delay": 0
         }
     ],
     "location": [
@@ -281,5 +339,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721400890
+    "modified": 1724611141
 }

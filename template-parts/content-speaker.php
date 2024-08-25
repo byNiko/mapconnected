@@ -26,14 +26,31 @@ $speaker = new Speaker($post);
 				<header class="entry-header">
 					<?php the_title('<h1 class="entry-title h1">', '</h1>'); ?>
 				</header><!-- .entry-header -->
-				<div class="speaker__bio">
-					<?= $speaker->get_bio(); ?>
-				</div>
-				<?php if($speaker->get_future_events()): ?>
-				<div class="speaker__events-list">
-					<h4 class="h4">Upcoming Events</h4>
-					<?php $speaker->the_events_list(); ?>
-				</div>
+				<?php if ($info = $speaker->get_session_info()):	?>
+					<div class="speaker__session-info">
+						<h2 class="speaker__session-title h2">
+							<?= $info['sess_title']; ?>
+						</h2>
+						<div class="speaker__session-desc">
+							<?= $info['sess_desc'];?>
+						</div>
+					</div>
+				<?php endif; ?>
+				
+				<?php if ($speaker->get_future_events()): ?>
+					<div class="speaker__events-list">
+						<h4 class="h4">Upcoming Events</h4>
+						<?php $speaker->the_events_list(); ?>
+					</div>
+				<?php endif; ?>
+
+				
+
+				<?php if ($bio = $speaker->get_bio()): ?>
+					<div class="speaker__bio">
+						<h3 class="h3">Bio</h3>
+						<?= $bio; ?>
+					</div>
 				<?php endif; ?>
 			</div>
 		</div>
