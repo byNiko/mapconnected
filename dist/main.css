@@ -3329,6 +3329,28 @@ section[class*=theme--] .slider {
   font-family: "montserrat";
   font-weight: 400;
 }
+.annual_summit #primary-reg-link-section {
+  margin: -1rem;
+  padding: 1rem;
+  border-radius: 24px;
+}
+.annual_summit #primary-reg-link-section:before {
+  display: none;
+}
+.annual_summit #primary-reg-link-section:target {
+  scroll-margin: 5rem;
+  animation: flashYellow 2s ease-in-out 1s 1 forwards;
+}
+@keyframes flashYellow {
+  from {
+    background: hsla(0, 0%, 10%, 0.5);
+    scale: 1.05;
+  }
+  to {
+    background: transparent;
+    scale: 1;
+  }
+}
 
 .sponsor-level {
   border-radius: var(--radius-1);

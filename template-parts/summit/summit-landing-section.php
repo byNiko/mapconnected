@@ -36,22 +36,23 @@ if (have_rows('landing_section')) :
 	while (have_rows('landing_section')) :
 		the_row();
 ?>
-<div class="container--narrow landing__container">
-	<div class="summit-logo text-center">
-		<?= $s->get_summit_logo();?>
-	</div>
-	<div class="landing__text">
-		<?= $s->landing_text ;?>
-	</div>
-	<!-- new glass section -->
-	<div class="glass">
-		<div class="stats-list">
-			<?php getStatCounters(); ?>
+		<div class="container--narrow landing__container">
+			<div class="summit-logo text-center">
+				<?= $s->get_summit_logo(); ?>
+			</div>
+			<div class="landing__text">
+				<?= $s->landing_text; ?>
+			</div>
+			<!-- new glass section -->
+			<div class="glass">
+				<div class="stats-list">
+					<?php getStatCounters(); ?>
+				</div>
+			</div>
+			<div id="primary-reg-link-section">
+				<?= $s->getRegistrationLinksSection(); ?>
+			</div>
 		</div>
-	</div>
-
-<?=  $s->getRegistrationLinksSection();?>
-</div>
 <?php
 	endwhile;
 endif;

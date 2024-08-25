@@ -1,23 +1,29 @@
 @use "../mixins" as *;
+
 .annual_summit {
 	:target:before {
 		content: "";
 		display: block;
 		height: 50px;
 	}
+
 	// font-family: "montserrat", var(--font-family--display);
 	display: flex;
 	flex-direction: column;
+
 	// gap: 2rem;
-.py-4 + .py-4 {
-	margin-top: -2rem;
-}
+	.py-4 + .py-4 {
+		margin-top: -2rem;
+	}
+
 	.travel_troup {
 		padding: var(--spacer-12) 0;
 	}
+
 	.landing__ctas {
 		margin-bottom: var(--spacer-8);
 	}
+
 	.button--register {
 		font-weight: 800;
 		letter-spacing: 1px;
@@ -28,21 +34,26 @@
 		.speaker__headshot {
 			border: 1px solid;
 		}
+
 		.speaker__name {
-			order:0;
+			order: 0;
 		}
+
 		.speaker__logo-wrapper {
 			background: var(--color-primary-33);
 		}
+
 		.speaker__meta {
 			display: flex;
 			flex-direction: column;
 		}
+
 		.speaker__company {
 			order: -1;
 			font-weight: 600;
 			font-size: var(--font-size--md);
 		}
+
 		.speaker__title {
 			font-weight: 400;
 			font-size: var(--font-size--xs);
@@ -77,13 +88,16 @@
 		font-size: var(--font-size--sm);
 		margin-bottom: 1rem;
 	}
-.agenda__contents {
-	font-size: var(--font-size--sm);
-	li {
-		line-height: 1.2;
-		margin-bottom: var(--spacer-2);
+
+	.agenda__contents {
+		font-size: var(--font-size--sm);
+
+		li {
+			line-height: 1.2;
+			margin-bottom: var(--spacer-2);
+		}
 	}
-}
+
 	.landing__container {
 		position: relative;
 		display: flex;
@@ -135,9 +149,11 @@
 			white-space: nowrap;
 			font-weight: 400;
 			padding: 1rem .5rem;
-			@include bp(md){
+
+			@include bp(md) {
 				padding: 1rem 2rem;
 			}
+
 			display: flex;
 
 			&:hover {
@@ -195,6 +211,35 @@
 		font-family: "montserrat";
 		font-weight: 400;
 	}
+
+	#primary-reg-link-section {
+		margin: -1rem;
+		padding: 1rem;
+		border-radius: 24px;
+
+		&:before {
+			display: none;
+		}
+
+		&:target {
+			scroll-margin: 5rem;
+			animation: flashYellow 2s ease-in-out 1s 1 forwards;
+		}
+
+	}
+
+
+	@keyframes flashYellow {
+		from {
+			background: hsla(0, 0%, 10%, .5);
+			scale: 1.05;
+		}
+
+		to {
+			background: transparent;
+			scale: 1;
+		}
+	}
 }
 
 .sponsor-level {
@@ -210,6 +255,7 @@
 	flex-direction: column;
 	justify-content: center;
 	position: relative;
+
 	.sponsor-level__title {
 		font-weight: 800;
 		letter-spacing: 2px;
@@ -228,12 +274,13 @@
 		font-size: var(--font-size--body-lg);
 		text-transform: uppercase;
 	}
+
 	.grid {
 		display: flex;
 		justify-content: center;
 		flex-wrap: wrap;
 		padding: 2rem;
-		
+
 		// background: var(--color-primary-50);
 
 		.sponsor__link {
@@ -241,14 +288,15 @@
 			align-items: center;
 			justify-content: center;
 			height: 100%;
+
 			// flex: var(--sponsor-link-flex);
 			// width: var(--logo-width);
 			&.uses-background-logo {
 				background-size: contain;
-				background-position: center; 
-				background-repeat:no-repeat;
+				background-position: center;
+				background-repeat: no-repeat;
 				aspect-ratio: 1 / 1;
-				width:var(--logo-width, 20%);
+				width: var(--logo-width, 20%);
 				height: 100%;
 			}
 
@@ -259,6 +307,7 @@
 			}
 		}
 	}
+
 	.sponsor--link-logo {
 		--sponsor-height: 80px;
 		height: var(--sponsor-height);
@@ -302,14 +351,16 @@
 	flex-wrap: wrap;
 	gap: var(--gap);
 	justify-content: center;
+
 	.logo-item {
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		padding: 10px;
 		flex: 0 1 40%;
-		@include bp(md){
-		flex: 0 1 15%;
-	}
+
+		@include bp(md) {
+			flex: 0 1 15%;
+		}
 	}
 }
