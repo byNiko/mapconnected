@@ -41,7 +41,7 @@ if ($speakers) :
 				<?php
 				foreach ($speakers as $speaker) :
 					$s = new Speaker($speaker);
-					$html = $s->get_the_speaker_card();
+					$html = $s->get_the_speaker_card(true);
 					echo "<li class='splide__slide'>$html</li>";
 				endforeach;
 				?>

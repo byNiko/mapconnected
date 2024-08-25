@@ -161,7 +161,7 @@ get_header(); ?>
 								<?php
 								foreach ($all_speakers as $speaker) :
 									$sp = new Speaker($speaker);
-									echo $sp->get_the_speaker_card();
+									echo $sp->get_the_speaker_card(true);
 								endforeach;
 								?>
 							</div>
