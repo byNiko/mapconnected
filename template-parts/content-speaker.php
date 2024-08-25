@@ -22,12 +22,12 @@ $speaker = new Speaker($post);
 				<?= $speaker->the_speaker_card(); ?>
 			</aside>
 
-			<div class="speaker__info content-column">
+			<div class="speaker__info ">
 				<header class="entry-header">
 					<?php the_title('<h1 class="entry-title h1">', '</h1>'); ?>
 				</header><!-- .entry-header -->
 			
-
+				<div class="content-column">
 				<?php if ($speaker->get_future_events()): ?>
 					<div class="speaker__events-list">
 						<h4 class="h4">Upcoming Events</h4>
@@ -46,8 +46,6 @@ $speaker = new Speaker($post);
 					</div>
 				<?php endif; ?>
 
-				
-
 				<?php if ($bio = $speaker->get_bio()): ?>
 					<div class="speaker__bio">
 						<h3 class="h3">Bio</h3>
@@ -56,7 +54,7 @@ $speaker = new Speaker($post);
 				<?php endif; ?>
 			</div>
 		</div>
-
+		</div>
 	</div><!-- .entry-content -->
 
 	<?php if (get_edit_post_link()) : ?>
