@@ -2427,11 +2427,9 @@ body:not(.wp-admin) .with_frm_style .frm_required {
 }
 
 .speaker__logo-content {
-  max-width: 150px;
-  max-width: 50%;
   height: 40px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
 }
 .speaker__logo-content > img {
   max-height: 100%;

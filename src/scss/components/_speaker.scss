@@ -47,11 +47,11 @@ row-gap: var(--spacer-8);
 }
 
 .speaker__logo-content {
-	max-width: 150px;
-	max-width: 50%;
+	// max-width: 150px;
+	// max-width: 50%;
 	height: 40px;
 	display: flex;
-	align-items: flex-end;
+	align-items: center;
 
 	& > img {
 		max-height: 100%;
