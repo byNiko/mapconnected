@@ -3123,8 +3123,6 @@ section[class*=theme--] .slider {
 }
 .single-speaker .speaker__logo-wrapper {
   order: 10;
-  justify-content: start;
-  padding: 0;
 }
 .single-speaker .speaker-card .speaker__name {
   display: none;
