@@ -390,7 +390,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 100;
 }
 
 .modal__container {
@@ -3344,11 +3344,9 @@ section[class*=theme--] .slider {
 @keyframes flashYellow {
   from {
     background: hsla(0, 0%, 10%, 0.5);
-    scale: 1.05;
   }
   to {
     background: transparent;
-    scale: 1;
   }
 }
 

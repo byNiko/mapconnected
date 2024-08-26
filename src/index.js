@@ -7,6 +7,7 @@ import './scripts/pin';
 import './scripts/micromodal';
 import './scripts/tabs';
 import './scripts/mobileNav';
+import './scripts/modalAutoShow';
 
 // start scripts
 

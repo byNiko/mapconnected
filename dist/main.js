@@ -141,6 +141,24 @@ function toggleNav(e) {
 
 /***/ }),
 
+/***/ "./src/scripts/modalAutoShow.js":
+/*!**************************************!*\
+  !*** ./src/scripts/modalAutoShow.js ***!
+  \**************************************/
+/***/ (() => {
+
+(() => {
+  const modalId = new URLSearchParams(window.location.search).get('modal_id');
+  const target = document.querySelector(`#${modalId}`);
+  if (target) {
+    setTimeout(() => {
+      MicroModal.show(modalId);
+    }, 500);
+  }
+})();
+
+/***/ }),
+
 /***/ "./src/scripts/navStickObserve.js":
 /*!****************************************!*\
   !*** ./src/scripts/navStickObserve.js ***!
@@ -8686,7 +8704,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_tabs__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_scripts_tabs__WEBPACK_IMPORTED_MODULE_5__);
 /* harmony import */ var _scripts_mobileNav__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./scripts/mobileNav */ "./src/scripts/mobileNav.js");
 /* harmony import */ var _scripts_mobileNav__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_scripts_mobileNav__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _scripts_modalAutoShow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./scripts/modalAutoShow */ "./src/scripts/modalAutoShow.js");
+/* harmony import */ var _scripts_modalAutoShow__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_scripts_modalAutoShow__WEBPACK_IMPORTED_MODULE_7__);
 // import main stylesheet
+
 
 
 

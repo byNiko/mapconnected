@@ -390,7 +390,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10;
+  z-index: 100;
 }
 
 .modal__container {
@@ -1711,9 +1711,6 @@ section.theme--dark-1, section.theme--dark-gradient-1, .modal.modal-form section
   font-family: var(--ff-display);
   color: var(--color-text);
   font-size: var(--font-size--xl);
-}
-.modal .modal__content {
-  max-height: 85vh;
 }
 .modal .modal__close {
   position: absolute;

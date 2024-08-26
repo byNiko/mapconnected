@@ -5,7 +5,8 @@ class ModalIframe {
 	public $iframe_url;
 
 	public function __construct($iframe_url, $id) {
-		$this->id           = sanitize_title($id). uniqid();
+		// $this->id           = sanitize_title($id). uniqid();
+		$this->id           = sanitize_title($id);
 		$this->iframe_url   = esc_url($iframe_url);
 
 		echo $this->get_modal_html();
