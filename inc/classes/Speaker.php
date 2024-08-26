@@ -239,10 +239,15 @@ class Speaker {
 	}
 
 	function get_session_info(){
+		$title = get_field('session_title', $this->ID);
+		$desc = get_field('session_description', $this->ID);
+		$info = false;
+		if($title || $desc){
 		$info = array(
-		'sess_title' => get_field('session_title', $this->ID),
-		'sess_desc' => get_field('session_description', $this->ID),
+		'sess_title' => $title,
+		'sess_desc' => $desc,
 		);
+	}
 		return $info;
 
 	}
