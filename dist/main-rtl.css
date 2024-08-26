@@ -1706,10 +1706,6 @@ section.theme--dark-1, section.theme--dark-gradient-1, .modal.modal-form section
   color: var(--color-text);
   font-size: var(--font-size--xl);
 }
-.modal .modal__content {
-  max-height: 85vh;
-  overflow-y: auto;
-}
 .modal .modal__close {
   position: absolute;
   left: 0;
