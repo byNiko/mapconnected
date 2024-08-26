@@ -1712,6 +1712,9 @@ section.theme--dark-1, section.theme--dark-gradient-1, .modal.modal-form section
   color: var(--color-text);
   font-size: var(--font-size--xl);
 }
+.modal .modal__content {
+  max-height: 85vh;
+}
 .modal .modal__close {
   position: absolute;
   right: 0;
@@ -3350,11 +3353,9 @@ section[class*=theme--] .slider {
 @keyframes flashYellow {
   from {
     background: hsla(0, 0%, 10%, 0.5);
-    scale: 1.05;
   }
   to {
     background: transparent;
-    scale: 1;
   }
 }
 
