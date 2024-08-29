@@ -730,6 +730,26 @@
                     "ui": 1
                 },
                 {
+                    "key": "field_66d0d1e619107",
+                    "label": "Hide All Speakers Button",
+                    "name": "hide_all_speakers_button",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Hide the button to jump down the page to show all speakers",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "Hide",
+                    "ui_off_text": "Show",
+                    "ui": 1
+                },
+                {
                     "key": "field_6685e20c4e438",
                     "label": "Key Speakers Title",
                     "name": "key_speakers_title",
@@ -1572,5 +1592,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1721140535
+    "modified": 1724961301
 }

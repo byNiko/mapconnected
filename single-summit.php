@@ -31,6 +31,13 @@ get_header(); ?>
 						<h2 class="h2 fz-xxl"><?= $title; ?></h2>
 					</header>
 					<?php get_template_part('/template-parts/summit/summit', 'key-speakers', ['summit_post' => $post]); ?>
+					<?php
+					if (!$key_speakers['hide_all_speakers_button']):
+					?>
+						<footer class="text-center mt-1">
+							<a href="#all-leadership" class="button button--tertiary">View All Speakers</a>
+						</footer>
+					<?php endif; ?>
 				</div>
 			</section>
 	<?php endif;
