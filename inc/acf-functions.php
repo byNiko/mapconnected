@@ -105,3 +105,47 @@ function byniko_acf_fields_flexible_content_container_title($title, $field, $lay
 	return $title;
 }
 add_filter('acf/fields/flexible_content/layout_title/name=content_container', 'byniko_acf_fields_flexible_content_container_title', 10, 4);
+
+
+add_filter('acf/load_value/key=field_66e1c57f98d30',  'byniko_secondary_nav_acf_load_my_defaults', 10, 3);
+
+function byniko_secondary_nav_acf_load_my_defaults($value, $post_id, $field) {
+
+  if ($value === false) {
+
+    $value = array();
+
+    $value[] = array(
+      'field_66e1c61e98d36' => true,
+      'field_66e1c60c98d34' => 'Speakers',
+      'field_66e1c61598d35' => 'key-speakers',
+    );
+    $value[] = array(
+      'field_66e1c61e98d36' => true,
+      'field_66e1c60c98d34' => 'Agenda',
+      'field_66e1c61598d35' => 'agenda',
+    );
+    $value[] = array(
+      'field_66e1c61e98d36' => true,
+      'field_66e1c60c98d34' => 'Sponsors',
+      'field_66e1c61598d35' => 'sponsorships',
+    );
+    $value[] = array(
+      'field_66e1c61e98d36' => true,
+      'field_66e1c60c98d34' => 'Download Brochure',
+      'field_66e1c61598d35' => 'brochure-download',
+    );
+    $value[] = array(
+      'field_66e1c61e98d36' => true,
+      'field_66e1c60c98d34' => 'Hotel',
+      'field_66e1c61598d35' => 'travel',
+    );
+    $value[] = array(
+      'field_66e1c61e98d36' => true,
+      'field_66e1c60c98d34' => 'Tickets!',
+      'field_66e1c61598d35' => 'primary-reg-link-section',
+    );
+  }
+
+  return $value;
+}
