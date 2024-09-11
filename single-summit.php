@@ -13,7 +13,7 @@ get_header(); ?>
 				<a href="#key-speakers" class="button button--text">Speakers</a>
 				<a href="#agenda" class="button button--text">Agenda</a>
 				<a href="#sponsorships" class="button button--text">Sponsors</a>
-				<a href="<?= $s->getAgendaScrollLink(); ?>" class="button button--text">Download Brochure</a>
+				<a href="#brochure-download" class="button button--text">Download Brochure</a>
 				<a href="#travel" class="button button--text">Hotel</a>
 				<a href="#primary-reg-link-section" class="button button--text">Tickets!</a>
 			</nav>
