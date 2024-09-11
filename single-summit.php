@@ -13,7 +13,7 @@ get_header(); ?>
 				<a href="#key-speakers" class="button button--text">Speakers</a>
 				<a href="#agenda" class="button button--text">Agenda</a>
 				<a href="#sponsorships" class="button button--text">Sponsors</a>
-				<a href="#brochure-download" class="button button--text">Download Brochure</a>
+				<a href="<?= $s->getAgendaScrollLink(); ?>" class="button button--text">Download Brochure</a>
 				<a href="#travel" class="button button--text">Hotel</a>
 				<a href="#primary-reg-link-section" class="button button--text">Tickets!</a>
 			</nav>
@@ -136,7 +136,13 @@ get_header(); ?>
 					<p><?= $s->get_agenda_section_data('subtitle'); ?></p>
 				</div>
 				<footer class="text-center mt-1">
-					<button data-micromodal-trigger="modal-summit-brochure" class="button button--outline ">Get the Full Agenda</a>
+					<?php
+					$button_action = 'data-micromodal-trigger="modal-summit-brochure" ';
+					if ($s->isAgendaDownloadAvailable()):
+						$button_action = 'target="_blank" href="' . $s->getAgendaDownloadLink() . '" ';
+					endif;
+					?>
+					<a <?= $button_action; ?> class="button button--outline ">Get the Full Agenda</a>
 				</footer>
 			</div>
 		</div>

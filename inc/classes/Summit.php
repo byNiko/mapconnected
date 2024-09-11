@@ -132,12 +132,27 @@ class Summit {
 		return $html;
 	}
 
-	public function longCopySections(){
-		
+	public function longCopySections() {
 	}
 
-	public function getLongCopySectionData($index = 0){
+	public function getLongCopySectionData($index = 0) {
 		$sections = get_field('long_copy_sections', $this->post);
 		return $sections[$index];
+	}
+
+	function isAgendaDownloadAvailable() {
+		return $this->get_agenda_section_data('direct_agenda_download_available');
+	}
+	function getAgendaDownloadLink() {
+		$link = false;
+		if ($this->get_agenda_section_data('direct_agenda_download_available')) {
+			$link = $this->get_agenda_section_data('download_agenda_button');
+		}
+		return $link;
+	}
+
+	function getAgendaScrollLink() {
+		$agenda_download_link = $this->getAgendaDownloadLink();
+		return $agenda_download_link ? '#agenda' : '#brochure-download';
 	}
 }

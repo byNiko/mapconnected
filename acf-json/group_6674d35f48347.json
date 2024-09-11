@@ -499,6 +499,54 @@
             "layout": "block",
             "sub_fields": [
                 {
+                    "key": "field_66e19cd8c0f6c",
+                    "label": "Direct Agenda Download Available",
+                    "name": "direct_agenda_download_available",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "If NO - This button and the Agenda button in the Secondary Nav at the top of the page will scroll users to the button that opens the popup form",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1
+                },
+                {
+                    "key": "field_66e19d6235b4a",
+                    "label": "Download Agenda Button",
+                    "name": "download_agenda_button",
+                    "aria-label": "",
+                    "type": "file",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": [
+                        [
+                            {
+                                "field": "field_66e19cd8c0f6c",
+                                "operator": "==",
+                                "value": "1"
+                            }
+                        ]
+                    ],
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "url",
+                    "library": "all",
+                    "min_size": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
                     "key": "field_66956fc7084a0",
                     "label": "Main Title",
                     "name": "main_title",
@@ -1592,5 +1640,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1724961301
+    "modified": 1726063038
 }
