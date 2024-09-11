@@ -9,14 +9,7 @@ get_header(); ?>
 <main class="annual_summit">
 	<section class="hero theme--dark-gradient-1 pb-4">
 		<div class="secondary-nav__wrapper">
-			<nav class="secondary-nav">
-				<a href="#key-speakers" class="button button--text">Speakers</a>
-				<a href="#agenda" class="button button--text">Agenda</a>
-				<a href="#sponsorships" class="button button--text">Sponsors</a>
-				<a href="#brochure-download" class="button button--text">Download Brochure</a>
-				<a href="#travel" class="button button--text">Hotel</a>
-				<a href="#primary-reg-link-section" class="button button--text">Tickets!</a>
-			</nav>
+			<?php get_template_part('/template-parts/summit/summit', 'secondary-nav'); ?>
 		</div>
 		<?php get_template_part('/template-parts/summit/summit', 'landing-section', ['summit-data' => $s]); ?>
 	</section>

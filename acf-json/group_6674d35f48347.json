@@ -3,6 +3,93 @@
     "title": "Post Type: Summits",
     "fields": [
         {
+            "key": "field_66e1c57f98d30",
+            "label": "Secondary Navigation",
+            "name": "secondary_navigation",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "table",
+            "pagination": 0,
+            "min": 0,
+            "max": 6,
+            "collapsed": "field_66e1c60c98d34",
+            "button_label": "Add button",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_66e1c61e98d36",
+                    "label": "Is Active",
+                    "name": "is_active",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": "",
+                    "ui": 1,
+                    "parent_repeater": "field_66e1c57f98d30"
+                },
+                {
+                    "key": "field_66e1c60c98d34",
+                    "label": "Button Text",
+                    "name": "button_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_66e1c57f98d30"
+                },
+                {
+                    "key": "field_66e1c61598d35",
+                    "label": "Button Anchor",
+                    "name": "button_anchor",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "Do Not Change these without knowing what you're doing.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "#",
+                    "append": "",
+                    "parent_repeater": "field_66e1c57f98d30"
+                }
+            ]
+        },
+        {
             "key": "field_66953099a8f33",
             "label": "Landing Section",
             "name": "landing_section",
@@ -1640,5 +1727,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726063038
+    "modified": 1726072585
 }
