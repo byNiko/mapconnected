@@ -16,13 +16,12 @@ $speaker = new Speaker($post);
 		//yoast_breadcrumb('<div id="breadcrumbs" class="breadcrumbs">', '</div>');
 	}
 	?>
-	<div class="entry-content ">
-		<div class="d-flex column-gap--large">
-			<aside class="flex-30 ">
+	<div class="entry-content grid has-sidebar ">
+			<aside class="sidebar">
 				<?= $speaker->the_speaker_card(); ?>
 			</aside>
 
-			<div class="speaker__info ">
+			<div class="speaker__info main">
 				<header class="entry-header">
 					<?php the_title('<h1 class="entry-title h1">', '</h1>'); ?>
 				</header><!-- .entry-header -->
@@ -53,7 +52,6 @@ $speaker = new Speaker($post);
 					</div>
 				<?php endif; ?>
 			</div>
-		</div>
 		</div>
 	</div><!-- .entry-content -->
 

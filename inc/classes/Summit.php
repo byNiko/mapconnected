@@ -175,6 +175,70 @@ class Summit {
 		endif;
 		return $arr;
 	}
+
+	public function get_modal_speaker_html($speaker) {
+		$events_list = '';
+		if ($speaker->get_future_events()):
+			$events_list .= '<div class="speaker__events-list">
+				<h4 class="h4">Upcoming Events</h4>' .
+				$speaker->get_events_list() . '
+			</div>';
+		endif;
+
+		$session_info = '';
+		if ($info = $speaker->get_session_info()):
+			$session_info.= '<div class="speaker__session-info">
+						<h2 class="speaker__session-title h2">
+							' . $info['sess_title'] . '
+						</h2>
+						<div class="speaker__session-desc">
+							' . $info['sess_desc'] . '
+						</div>
+					</div>';
+		endif;
+
+		$speaker_bio = '';
+		if ($bio = $speaker->get_bio()):
+			$speaker_bio = '<div class="speaker__bio">
+				<h3 class="h3">Bio</h3>
+			' . $bio . '
+			</div>';
+		endif;
+
+		$pattern = '
+		<div class="entry-content modal-speaker-content grid has-sidebar mt-4">
+			<aside class="sidebar ">
+				%1$s
+			</aside>
+			<div class="speaker__info main">
+				<header class="entry-header">
+					<h2>' . $speaker->get_name() . '</h2>
+				</header>
+				<div class="content-column">
+			
+ 				%2$s
+				%3$s
+				%4$s
+
+				</div>
+				</div>
+				</div>
+				<hr>
+			';
+
+
+		return sprintf(
+			$pattern,
+			$speaker->get_the_speaker_card(),
+			$events_list,
+			$session_info,
+			$speaker_bio
+
+		);
+?>
+
+<?php
+	}
 	public function get_all_speakers_modal() {
 
 		$data = $this->active_speakers_data;
@@ -202,11 +266,12 @@ class Summit {
 		$speakersHtml = "";
 		foreach ($all_reduced as $speaker) :
 			$sp = new Speaker($speaker);
-			$speakersHtml .= $sp->get_the_speaker_card(true);
+			// $speakersHtml .= $sp->get_the_speaker_card(true);
+			$speakersHtml .= $this->get_modal_speaker_html($sp);
 		endforeach;
 
 		$html = "
-	<div class='grid __5x justify--center'>
+	<div class='modal-speakers-container'>
 	$speakersHtml
 	</div>";
 

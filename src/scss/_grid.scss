@@ -88,6 +88,20 @@ main {
 .grid {
 	display: grid;
 	gap: var(--spacer-grid);
+	&.has-sidebar {
+		grid-template-columns: 1fr;
+		grid-template-areas: "sidebar""main";
+		@include bp(md) {
+			grid-template-areas: "sidebar main";
+			grid-template-columns: 250px 1fr;
+		}
+		.sidebar {
+			grid-area: sidebar;
+		}
+		.main {
+			grid-area: main;
+		}
+	}
 
 	// &.__2x &.__3x &.__4x &.__5x {
 	// 	display: block;

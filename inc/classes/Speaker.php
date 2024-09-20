@@ -60,11 +60,11 @@ class Speaker {
 		echo $this->get_headshot1();
 	}
 
-	public function get_active_headshot(){
+	public function get_active_headshot() {
 		/**
 		 * this realies on the featured image being updated correctly 
 		 * useing filters in functions acf_set_featured_image
-		**/
+		 **/
 		$id = get_post_thumbnail_id($this->ID);
 		return wp_get_attachment_image($id, 'portrait');
 	}
@@ -83,7 +83,7 @@ class Speaker {
 	}
 	public function get_associated_events() {
 		return $this->associated_events;
-	
+
 
 		// $default_args = array(
 		// 	'posts_per_page' => -1,
@@ -158,8 +158,7 @@ class Speaker {
 		return $this->associated_events;
 	}
 
-
-	public function the_events_list() {
+	public function get_events_list() {
 		$events = $this->get_future_events();
 		if (!$events) return;;
 		$html = "<ul class='speaker-events-list'>";
@@ -172,12 +171,16 @@ class Speaker {
 			$html .= sprintf($format, $evt->get_permalink(), $evt->post->post_title);
 		}
 		$html .= "</ul>";
-		echo $html;
+		return $html;
+	}
+
+	public function the_events_list() {
+		echo $this->get_events_list();
 	}
 
 	public function get_future_events() {
 		$events = $this->get_events();
-		
+
 		$byniko = new Byniko();
 		if (!$events) return false;
 
@@ -187,7 +190,7 @@ class Speaker {
 			$start_date = strtotime(get_field('start_date__time', $evt));
 			$end_date = strtotime(get_field('end_date__time', $evt));
 			// use the end date if we have one;
-			$expire_on = $end_date?: $start_date;
+			$expire_on = $end_date ?: $start_date;
 			if ($today_now < $expire_on) {
 				$future[] = $evt;
 			}
@@ -238,17 +241,16 @@ class Speaker {
 		return $query;
 	}
 
-	function get_session_info(){
+	function get_session_info() {
 		$title = get_field('session_title', $this->ID);
 		$desc = get_field('session_description', $this->ID);
 		$info = false;
-		if($title || $desc){
-		$info = array(
-		'sess_title' => $title,
-		'sess_desc' => $desc,
-		);
-	}
+		if ($title || $desc) {
+			$info = array(
+				'sess_title' => $title,
+				'sess_desc' => $desc,
+			);
+		}
 		return $info;
-
 	}
 }

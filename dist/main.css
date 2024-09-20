@@ -1167,6 +1167,36 @@ main {
   display: grid;
   gap: var(--spacer-grid);
 }
+.grid.has-sidebar {
+  grid-template-columns: 1fr;
+  grid-template-areas: "sidebar" "main";
+}
+@media screen and (min-width: 50rem) {
+  .grid.has-sidebar {
+    grid-template-areas: "sidebar main";
+    grid-template-columns: 250px 1fr;
+  }
+}
+.grid.has-sidebar .sidebar {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  grid-area: sidebar;
+}
+.grid.has-sidebar .main {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  grid-area: main;
+}
+@media screen and (min-width: 50rem){
+  .grid.has-sidebar .sidebar {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .grid.has-sidebar .main {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+  }
+}
 .grid.__5x {
   grid-template-columns: 1fr 1fr;
   grid-gap: var(--gap);
