@@ -1746,6 +1746,7 @@ section.theme--dark-1, section.theme--dark-gradient-1, .modal.modal-form section
 .full-page-modal .modal__container {
   width: 95%;
   max-width: none;
+  max-height: 90vh;
 }
 
 .has-shadow-1 {

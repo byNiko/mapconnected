@@ -153,7 +153,7 @@ function toggleNav(e) {
   if (target) {
     setTimeout(() => {
       MicroModal.show(modalId);
-    }, 500);
+    }, 1000);
   }
 })();
 

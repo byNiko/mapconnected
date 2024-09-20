@@ -845,6 +845,24 @@
             "layout": "block",
             "sub_fields": [
                 {
+                    "key": "field_66ec367be9a44",
+                    "label": "Speakers Config Options",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0
+                },
+                {
                     "key": "field_6689c9db023f6",
                     "label": "Hide Key Speakers",
                     "name": "hide_key_speakers",
@@ -883,6 +901,44 @@
                     "ui_on_text": "Hide",
                     "ui_off_text": "Show",
                     "ui": 1
+                },
+                {
+                    "key": "field_66ec34899ca42",
+                    "label": "Hide All Speakers Popup Button",
+                    "name": "hide_all_speakers_popup_button",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Hide the button to open the All Speakers Popup",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "Hide",
+                    "ui_off_text": "Show",
+                    "ui": 1
+                },
+                {
+                    "key": "field_66ec361e1149f",
+                    "label": "Key Speakers",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0
                 },
                 {
                     "key": "field_6685e20c4e438",
@@ -936,6 +992,24 @@
                     ],
                     "bidirectional": 0,
                     "bidirectional_target": []
+                },
+                {
+                    "key": "field_66ec3635114a0",
+                    "label": "All Speakers Repeaters",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0
                 },
                 {
                     "key": "field_667f44a60b204",
@@ -1036,6 +1110,82 @@
                             "parent_repeater": "field_667f44a60b204"
                         }
                     ]
+                },
+                {
+                    "key": "field_66ec34399ca41",
+                    "label": "All Speaker Popup Options",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "accordion",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "open": 0,
+                    "multi_expand": 0,
+                    "endpoint": 0
+                },
+                {
+                    "key": "field_66ec34f3a3bed",
+                    "label": "Modal URL",
+                    "name": "",
+                    "aria-label": "",
+                    "type": "message",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "Automatically open this popup on page load using this url:\r\nhttps:\/\/mapconnected.com\/summits\/THIS-SUMMIT-PAGE-TITLE\/?modal=all-speakers",
+                    "new_lines": "wpautop",
+                    "esc_html": 0
+                },
+                {
+                    "key": "field_66ec33fc9ca3f",
+                    "label": "All Speakers Popup Button Text",
+                    "name": "all_speakers_popup_button_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "View All Speakers",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_66ec341d9ca40",
+                    "label": "All Speakers Popup Title Text",
+                    "name": "all_speakers_popup_title_text",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "All Speakers",
+                    "maxlength": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
                 }
             ]
         },
@@ -1727,5 +1877,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1726073948
+    "modified": 1726756607
 }

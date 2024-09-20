@@ -3,6 +3,7 @@
 $byniko = new Byniko();
 $spships = new Sponsorships();
 $s = new Summit($post);
+
 get_header(); ?>
 
 
@@ -143,43 +144,13 @@ get_header(); ?>
 			<?php get_template_part('/template-parts/summit/daily-agendas', null, ['summit_post' => $post]); ?>
 		</div>
 	</section>
-	<?php
-	if ($speakers_group = get_field('speakers_group')) :
-		if ($speakers_repeater = $speakers_group['speakers_repeater']) :
-			foreach ($speakers_repeater as $group) :
-				$hide = $group['hide_group'];
-				$title = $group['summit_speakers_title'];
-				$all_speakers = $group['all_speakers'];
-				if ($all_speakers && !$hide) :
-	?>
-					<section id="all-leadership" class="all-leadership py-4">
-						<div class="container--narrow">
-							<?php
-							if ($title) : ?>
-								<header class="flex-column text-center">
-									<h3 class="h3 text-center"><?= $title; ?></h3>
-								</header>
-							<?php
-							endif; ?>
-						</div>
+	
 
-						<div class="container">
-							<div class="grid __5x justify--center">
-								<?php
-								foreach ($all_speakers as $speaker) :
-									$sp = new Speaker($speaker);
-									echo $sp->get_the_speaker_card(true);
-								endforeach;
-								?>
-							</div>
-						</div>
-					</section>
-	<?php
-				endif;
-			endforeach;
-		endif;
-	endif;
-	?>
+	<?php if ($speakers_group = get_field('speakers_group')) :?>
+	<section id="all-leadership" class="all-leadership py-4">
+		<?php get_template_part('/template-parts/summit/summit-all-speakers' );?>
+	</section>
+	<?php endif;  ?>
 
 	<div class="container--narrow py-4">
 		<div id="who-attends">
@@ -290,13 +261,6 @@ get_header(); ?>
 		get_template_part('/template-parts/summit/travel', null,  ['summit_post' => $post]);
 	endif;
 	?>
-
-	<!-- <section id="timer">
-		<div class="container--single-column">
-			<?php //get_template_part('/template-parts/components/countdown-timer'); 
-			?>
-		</div>
-	</section> -->
 
 </main>
 
