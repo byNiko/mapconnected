@@ -207,7 +207,7 @@ class Summit {
 
 		$pattern = '
 		<div class="entry-content modal-speaker-content grid has-sidebar mt-4">
-			<aside class="sidebar ">
+			<aside class="sidebar">
 				%1$s
 			</aside>
 			<div class="speaker__info main">
@@ -250,10 +250,12 @@ class Summit {
 		// Remove Duplicates & set first name and last name
 		$all_reduced = array_reduce($merged_speakers, function ($acc, $item) {
 			if (!isset($acc[$item->ID])) {
-				$bN = new Byniko();
-				$name = $bN->split_name($item->post_title);
-				$item->first_name = $name[0];
-				$item->last_name = $name[1];
+				$s = new Speaker($item);
+				$item->company = $s->get_company(); 
+				// $bN = new Byniko();
+				// $name = $bN->split_name($item->post_title);
+				// $item->first_name = $name[0];
+				// $item->last_name = $name[1];
 				$acc[$item->ID] = $item;
 			}
 			return $acc;
@@ -261,7 +263,7 @@ class Summit {
 
 		// Sort by last name
 		usort($all_reduced, function ($a, $b) {
-			return strcmp($a->last_name, $b->last_name);
+			return strcmp($a->compahny, $b->company);
 		});
 		$speakersHtml = "";
 		foreach ($all_reduced as $speaker) :
