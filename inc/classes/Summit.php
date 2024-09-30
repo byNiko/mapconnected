@@ -247,7 +247,7 @@ class Summit {
 
 		// Merge key speakers with all speakers
 		$merged_speakers = array_merge($key_speakers, $all_speakers);
-		// Remove Duplicates & set first name and last name
+		// Remove Duplicates & set company name
 		$all_reduced = array_reduce($merged_speakers, function ($acc, $item) {
 			if (!isset($acc[$item->ID])) {
 				$s = new Speaker($item);
@@ -263,7 +263,7 @@ class Summit {
 
 		// Sort by last name
 		usort($all_reduced, function ($a, $b) {
-			return strcmp($a->compahny, $b->company);
+			return strcmp($a->company, $b->company);
 		});
 		$speakersHtml = "";
 		foreach ($all_reduced as $speaker) :
