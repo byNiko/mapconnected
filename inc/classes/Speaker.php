@@ -26,8 +26,10 @@ class Speaker {
 	public function get_ID() {
 		return $this->ID;
 	}
-	public function get_name() {
-		$hide = get_field('hide_names_group_hide_speaker_names', 'option');
+	public function get_name($override = null) {
+		$hide_option = get_field('hide_names_group_hide_speaker_names', 'option');
+		$hide = isset($override) ? $override : $hide_option;
+
 		return $hide ? false : $this->name;
 	}
 	public function get_bio() {
@@ -103,7 +105,17 @@ class Speaker {
 		// return get_posts($args);
 	}
 
-	public function get_the_speaker_card($include_anchor = false) {
+	public function get_the_speaker_card($args = []) {
+		$default_args = [
+			'include_anchor' => true,
+			'show_name' => true
+		];
+		if (is_bool($args)) {
+			$args = array('include_anchor' => $args);
+		}
+		$args = array_merge($default_args, $args);
+		$include_anchor =  $args['include_anchor'];
+		$show_name = $args['show_name'];
 
 		return sprintf(
 			"%s
@@ -134,15 +146,15 @@ class Speaker {
 			$this->get_logo(),
 			// $this->get_headshot1(),
 			$this->get_headshot1(),
-			$this->get_name(),
+			$show_name ? $this->get_name() : null,
 			$this->get_title(),
 			$this->get_company(),
 			$include_anchor ? "</a>" : null,
 		);
 	}
 
-	public function the_speaker_card($include_anchor = false) {
-		echo $this->get_the_speaker_card($include_anchor);
+	public function the_speaker_card($args = []) {
+		echo $this->get_the_speaker_card($args);
 	}
 
 	public function get_permalink() {

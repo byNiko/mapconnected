@@ -37,7 +37,11 @@ if (
 			<?php
 			foreach ($active_speakers as $speaker) :
 				$sp = new Speaker($speaker);
-				echo $sp->get_the_speaker_card(true);
+				$args = array(
+					'include_anchor' => true,
+					'show_name' => true
+				);
+				echo $sp->get_the_speaker_card($args);
 			endforeach;
 			?>
 		</div>

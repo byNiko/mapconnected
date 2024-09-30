@@ -107,7 +107,11 @@ get_header();
 				if ($speakers) :
 					foreach ($speakers as $sp) :
 						$s = new Speaker($sp);
-						$s->the_speaker_card();
+						$args = array(
+							'show_name' => false,
+							'include_anchor' => false
+						);
+						$s->the_speaker_card($args);
 
 					endforeach;
 				endif;

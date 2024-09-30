@@ -41,7 +41,11 @@ if ($speakers) :
 				<?php
 				foreach ($speakers as $speaker) :
 					$s = new Speaker($speaker);
-					$html = $s->get_the_speaker_card(true);
+					$args = array(
+						'include_anchor' => true,
+						'show_name' => true
+					);
+					$html = $s->get_the_speaker_card($args);
 					echo "<li class='splide__slide'>$html</li>";
 				endforeach;
 				?>
