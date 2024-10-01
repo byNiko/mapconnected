@@ -88,7 +88,7 @@ get_header();
 		'post_type' => ['event', 'post'],
 		'status' => 'publish',
 		'posts_per_page' => 12,
-		'orderby'        => 'date'
+		'orderby'        => 'menu_order'
 	);
 	$q = new WP_Query($args);
 	if ($q->have_posts()) :
