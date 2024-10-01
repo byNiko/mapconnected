@@ -83,19 +83,31 @@ get_header();
 	</section>
 
 	<?php
-
+$futureNow = (new Byniko())->future_expiration();
 	$args = array(
 		'post_type' => ['event', 'post'],
 		'status' => 'publish',
 		'posts_per_page' => 12,
-		'orderby'        => 'menu_order',
+		
 		'order' => 'ASC',
+		'meta_query' => array(
+			array(
+				'key' => 'start_date__time',
+				// 'value' => current_time('timestamp'),
+				// 'compare' => '>=',
+				'type' => 'DATETIME',
+				'orderby' => 'meta_value_num',
+				'compare' => '>',
+			'value' => $futureNow,
+			)
+		),
 		'tax_query' => array(
 			'relation' => 'OR',
 			array(
 				'taxonomy' => 'category',
 				'field' => 'name',
-				'terms' => 'news'
+				'terms' => 'news',
+				'orderby'        => 'menu_order ',
 			),
 			array(
 				'taxonomy' => 'event-type',
