@@ -88,7 +88,21 @@ get_header();
 		'post_type' => ['event', 'post'],
 		'status' => 'publish',
 		'posts_per_page' => 12,
-		'orderby'        => 'menu_order'
+		'orderby'        => 'menu_order',
+		'order' => 'ASC',
+		'tax_query' => array(
+			'relation' => 'OR',
+			array(
+				'taxonomy' => 'category',
+				'field' => 'name',
+				'terms' => 'news'
+			),
+			array(
+				'taxonomy' => 'event-type',
+				'field' => 'name',
+				'terms' => get_terms('event-type')[0]->name
+			)
+		)
 	);
 	$q = new WP_Query($args);
 	if ($q->have_posts()) :
@@ -101,14 +115,14 @@ get_header();
 				<div class="grid __4x justify--center">
 
 					<?php while ($q->have_posts()) : $q->the_post(); ?>
-						<?php 
-						$event = new Event($post); 
+						<?php
+						$event = new Event($post);
 						$type = get_post_type($post);
 						?>
 
 						<div class="card-item">
 							<div class="pillbox">
-							<div class="pill pill--post-type__<?= $type;?>"><?= $type;?></div>
+								<div class="pill pill--post-type__<?= $type; ?>"><?= $type; ?></div>
 							</div>
 							<h3 class="h3 event--title mt-1"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 							<div class="event--description"><?= wp_trim_words($event->get_description(), 15); ?> </div>
@@ -153,10 +167,10 @@ get_header();
 									<button class="show-more button--text fz-sm" data-toggle-text="Show Less" data-toggle="collapse" data-target="#<?= $sponsor->get_slug() . '__collapse'; ?>">
 										Show More ...
 									</button>
-									
+
 									<a href="<?= $sponsor->get_company_url(); ?>" class="button button--primary">Website</a>
-									<?php if($sponsor->downloadable_file): ?>
-									<a download href="<?= $sponsor->downloadable_file['url']; ?>" class="button button--outline">Download Sponsor Prospectus</a>
+									<?php if ($sponsor->downloadable_file): ?>
+										<a download href="<?= $sponsor->downloadable_file['url']; ?>" class="button button--outline">Download Sponsor Prospectus</a>
 									<?php endif; ?>
 								</div>
 							<?php endforeach; ?>
