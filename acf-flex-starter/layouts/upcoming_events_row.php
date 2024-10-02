@@ -1,5 +1,5 @@
 <?php
-$dateNow = (new Byniko())->future_expiration();
+$dateNow = Byniko::future_expiration();
 $query_args = array(
 	'posts_per_page' => 2,
 	'post_type' => 'event',

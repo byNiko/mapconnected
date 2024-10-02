@@ -192,13 +192,11 @@ class Speaker {
 
 	public function get_future_events() {
 		$events = $this->get_events();
-
-		$byniko = new Byniko();
 		if (!$events) return false;
 
 		$future = [];
 		foreach ($events as $evt) {
-			$today_now = strtotime($byniko->future_expiration());
+			$today_now = strtotime(Byniko::future_expiration());
 			$start_date = strtotime(get_field('start_date__time', $evt));
 			$end_date = strtotime(get_field('end_date__time', $evt));
 			// use the end date if we have one;

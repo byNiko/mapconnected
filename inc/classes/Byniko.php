@@ -50,12 +50,36 @@ class Byniko {
 	 * event by removing 43,000 seconds (equivalent to 12 hours) from the current date and time. The
 	 * returned value is in the format 'Y-m-d H:i:s
 	 */
-	public function future_expiration() {
+	static public function future_expiration() {
 		$dateNow = wp_date('Y/m/d h:m:s');
 		// remove 43000 seconds = 12 hours from comparison to keep the post up for the day of the event.
 		return date('Y-m-d H:i:s', strtotime($dateNow) - 43000);
 	}
 
+	/**
+	 * The function `compare_dates` in PHP compares two dates and returns true if the first date is
+	 * greater than the second date.
+	 * 
+	 * @param a The `compare_dates` function you provided compares two dates and returns `true` if the
+	 * first date `` is greater than the second date ``, otherwise it returns `false`.
+	 * @param b It looks like you have provided a function `compare_dates` that compares two dates. The
+	 * function returns `true` if date `` is greater than date ``, otherwise it returns `false`.
+	 * 
+	 * @return a boolean value indicating whether the date represented by variable  is greater than the
+	 * date represented by variable .
+	 */
+
+	
+	static public function date_is_past($date, $ammend = false) {
+		$now = new DateTime();
+		// $date must be a string
+		$date = new DateTime($date);
+		// $ammend must be a string
+		if(is_string($ammend)){
+			$date->add(new DateInterval($ammend));
+		}
+		return $date < $now;
+	}
 	public function archive_query() {
 	}
 	public function get_total_number_archive_pages() {

@@ -14,6 +14,10 @@ class Event {
 	public $is_past;
 	public $tags;
 	public $is_multi_day;
+	public $toggle_speaker_names;
+	public $toggle_speaker_delay_in_days;
+	public $toggle_speaker_date_is_past;
+	public $hide_speaker_names;
 
 	public function __construct($post) {
 		$this->post                                 = $post;
@@ -21,7 +25,7 @@ class Event {
 		$this->permalink                            = get_permalink($post);
 		$this->description                          = get_field('description', $post);
 		$this->time['start_date']                   = get_field('start_date__time', $post);
-		$this->time['start']                        = get_field('start_date__time', $post) ? new DateTime(get_field('start_date__time', $post)) : false;
+		$this->time['start']                        = get_field('start_date__time', $post) ? new DateTime($this->time['start_date']) : false;
 		$this->time['end']                          = get_field('end_date__time', $post) ? new DateTime(get_field('end_date__time', $post)) : false;
 		$this->time['registration_open']            = get_field('registration_opens', $post) ? new DateTime(get_field('registration_opens', $post)) : false;
 		$this->time['registration_ends']            = get_field('registration_ends', $post) ? new DateTime(get_field('registration_ends', $post)) : false;
@@ -36,12 +40,21 @@ class Event {
 		$this->tags									= wp_get_post_terms($post->ID, 'event-type');
 		$this->is_this_year							= $this->time['start'] && $this->time['start']->format('Y') === date("Y");
 		$this->is_multi_day							= ($this->time['start'] && $this->time['end'])? $this->time['start']->format('d') !==  $this->time['end']->format('d') : false;
+		$this->toggle_speaker_names					= get_field('toggle_speaker_names', $post);	
+		$this->toggle_speaker_delay_in_days			= get_field('toggle_speaker_delay_in_days', $post); // days after event start to show speakers
+		$this->toggle_speaker_date_is_past			= $this->toggle_speaker__date_is_past();// date to show speakers
+		$this->hide_speaker_names					= $this->toggle_speaker_date_is_past && $this->toggle_speaker_names;
+	}
+
+	public function toggle_speaker__date_is_past(){
+		$this->toggle_speaker_delay_in_days	;
+		return true;
 	}
 
 	public function is_multi_day(){
-		if($this->time['start'] && $this->time['end']):
+		if($this->time['start'] && $this->time['end'])
 			return $this->time['start']->format('d') !==  $this->time['end']->format('d');
-		endif;
+		return false;
 	}
 	public function get_title(){
 		return $this->post->post_title;
@@ -72,10 +85,16 @@ class Event {
 	public function get_speakers() {
 		return $this->speakers;
 	}
+	public function event_has_ended() {
+		if( $this->time['end']):
+			return false;
+		endif;
+				return $this->is_past();
+	}
 	public function is_past() {
 		$start = get_field('start_date__time', $this->post) ;
-		$b = new Byniko();
-		$future = $b->future_expiration();
+		// $b = new Byniko();
+		$future = Byniko::future_expiration();
 		// return true;
 		return strtotime("$future") > strtotime("$start");
 	}
