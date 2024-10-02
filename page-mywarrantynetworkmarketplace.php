@@ -1,20 +1,5 @@
 <?php
-
-/**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package byniko
- */
-
 get_header();
-
 ?>
 <main id="primary" class="site-main">
 	<section class="hero-section mb-4">
@@ -54,9 +39,7 @@ get_header();
 					</div>
 				</div>
 			</section>
-		<?php
-		endif;
-		?>
+		<?php endif;  ?>
 		<div class="leader-content py-1">
 			<div class="container--single-column fz-md">
 				<?php
