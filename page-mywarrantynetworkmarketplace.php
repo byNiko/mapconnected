@@ -83,56 +83,104 @@ get_header();
 	</section>
 
 	<?php
-
-	$args = array(
-		'post_type' => ['event', 'post'],
-		'status' => 'publish',
-		'posts_per_page' => 12,
-		'orderby'        => 'menu_order',
-		'order' => 'ASC',
-		'tax_query' => array(
-			'relation' => 'OR',
-			array(
-				'taxonomy' => 'category',
-				'field' => 'name',
-				'terms' => 'news'
+	$arr1    = array(
+		'News' => array(
+			'post_type' => ['post'],
+			'status' => 'publish',
+			'posts_per_page' => 12,
+			'orderby'        => 'menu_order',
+			'order' => 'ASC',
+			'tax_query' => array(
+				'relation' => 'OR',
+				array(
+					'taxonomy' => 'category',
+					'field' => 'name',
+					'terms' => 'news'
+				)
+			)
+		),
+		'Events' => array(
+			'posts_per_page' => 12,
+			'post_type' => 'event',
+			'post_status' => 'publish',
+			'orderby' => 'meta_value',
+			'order' => 'ASC',
+			'meta_key' => 'start_date__time',
+			// 'orderby'        => 'rand',
+			'meta_query' => array(
+				array(
+					'key' => 'start_date__time',
+					'compare' => '>',
+					'value' => Byniko::future_expiration(),
+					'type' => 'DATETIME',
+				)
 			)
 		)
 	);
-	$q = new WP_Query($args);
-	if ($q->have_posts()) :
+
+
+	// $psts = new WP_Query($arr1);
+	// $evts = new WP_Query($arr2);
+	// var_dump($psts);
+
+	// $args = array(
+	// 	'post_type' => ['event', 'post'],
+	// 	'status' => 'publish',
+	// 	'posts_per_page' => 12,
+	// 	'orderby'        => 'menu_order',
+	// 	'order' => 'ASC',
+	// 	'tax_query' => array(
+	// 		'relation' => 'OR',
+	// 		array(
+	// 			'taxonomy' => 'category',
+	// 			'field' => 'name',
+	// 			'terms' => 'news'
+	// 		)
+	// 	)
+	// );
+	// $q = new WP_Query($arr2);
+	$count = 0;
+	foreach ($arr1 as $arr => $data) :
+		$count++;
+		$q = new WP_Query($data);
+		if ($q->have_posts()) :
 	?>
-		<section class="blog_and_news__wrapper theme--medium-1 py-4">
-			<header class="text-center">
-				<h2 class="fz-display">News and Events</h2>
-			</header>
-			<div class="container-fluid">
-				<div class="grid __4x justify--center">
+			<section class="blog_and_news__wrapper theme--medium-1 py-4">
+				<header class="text-center">
+					<h2 class="fz-display"><?= $arr;?></h2>
+				</header>
+				<div class="container-fluid">
+					<div class="grid __4x justify--center">
 
-					<?php while ($q->have_posts()) : $q->the_post(); ?>
-						<?php
-						$event = new Event($post);
-						$type = get_post_type($post);
-						?>
+						<?php while ($q->have_posts()) : $q->the_post(); ?>
+							<?php
+							$event = new Event($post);
+							$type = get_post_type($post);
+							?>
 
-						<div class="card-item">
-							<div class="pillbox">
-								<div class="pill pill--post-type__<?= $type; ?>"><?= $type; ?></div>
+							<div class="card-item">
+								<div class="pillbox">
+									<div class="pill pill--post-type__<?= $type; ?>"><?= $type; ?></div>
+								</div>
+								<h3 class="h3 event--title mt-1"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+								<div class="event--description"><?= wp_trim_words($event->get_description(), 15); ?> </div>
 							</div>
-							<h3 class="h3 event--title mt-1"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-							<div class="event--description"><?= wp_trim_words($event->get_description(), 15); ?> </div>
-						</div>
-				<?php
-					endwhile;
-				endif;
-				wp_reset_query();
-				?>
+					<?php
+						endwhile;
+					endif;
+					wp_reset_query();
+					?>
+					</div>
 				</div>
-			</div>
-			<footer class="text-center pt-4">
-				<a href="/news" class="button button--text fz-lg">View all News</a>
-			</footer>
-		</section>
+				<footer class="text-center py-4">
+					<?php if($count ===1): ?>
+					<a href="/news" class="button button--text fz-lg">View all News</a>
+					<hr>
+					<?php endif; ?>
+				</footer>
+			</section>
+			<!-- <hr> -->
+		<?php endforeach;  ?>
 		<?php
 		if ($partner_group) :
 			$count = 0;
