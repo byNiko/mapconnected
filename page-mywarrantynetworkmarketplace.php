@@ -14,7 +14,6 @@ get_header();
 		</header>
 		<?php
 		$partner_group = get_field('partner_group');
-		// print_r($partner_group);
 		if ($partner_group[0] && $partner_group[0]['sponsors_group']) :
 			$sponsors = $partner_group[0]['sponsors_group'];
 		?>
@@ -101,27 +100,6 @@ get_header();
 		)
 	);
 
-
-	// $psts = new WP_Query($arr1);
-	// $evts = new WP_Query($arr2);
-	// var_dump($psts);
-
-	// $args = array(
-	// 	'post_type' => ['event', 'post'],
-	// 	'status' => 'publish',
-	// 	'posts_per_page' => 12,
-	// 	'orderby'        => 'menu_order',
-	// 	'order' => 'ASC',
-	// 	'tax_query' => array(
-	// 		'relation' => 'OR',
-	// 		array(
-	// 			'taxonomy' => 'category',
-	// 			'field' => 'name',
-	// 			'terms' => 'news'
-	// 		)
-	// 	)
-	// );
-	// $q = new WP_Query($arr2);
 	$count = 0;
 	foreach ($arr1 as $arr => $data) :
 		$count++;

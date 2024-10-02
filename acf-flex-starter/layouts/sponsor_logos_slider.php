@@ -31,8 +31,6 @@ $splideOptions = filter_empty_values([
 	// 'adaptiveHeight' => $adaptive_height, // custom option to auto adjust height per slide
 	// More Splide.js options can be added here
 ], ['pagination', 'arrows', 'pauseOnHover']); // Retain false values for these keys
-// print_r($splideOptions);
-// print_r($args_slider_options);
 // $splideOptions = array_merge($splideOptions, $args_slider_options);
 $splideOptions = wp_parse_args($args_slider_options,$splideOptions );
 

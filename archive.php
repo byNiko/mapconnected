@@ -10,10 +10,7 @@
 get_header();
 ?>
 	<main id="primary" class="site-main">
-		<?php
-// global $wp_query;
-// print_r($wp_query);
-		?>
+
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">

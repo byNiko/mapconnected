@@ -9,9 +9,6 @@ get_header();
       <h1 class="h1">Membership & Sponsorship Packages</h1>
     </header>
     <?php
-    // $fields = get_field_objects($post, 'options' );
-
-    // print_r($fields);
     while (have_posts()) :
       the_post();
 
@@ -30,13 +27,10 @@ get_header();
         <ul class="tabs-header pricing-table__header">
 
           <?php
-          // $fields = get_field_objects('options');
-          // print_r($fields);
           $count = 0;
          $note = [];
 
           foreach ($packages as $package) :
-            // var_dump($package);
 
             if (have_rows($package, 'options')) : while (have_rows($package, 'options')) : the_row($package, 'options');
                
@@ -54,7 +48,6 @@ get_header();
         <ul class="pricing-table__tabs-content tabs-content">
 
           <?php
-         // var_dump($note);
          $label_count = 0;
           foreach ($packages as $package) :
            
