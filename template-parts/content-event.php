@@ -49,7 +49,6 @@ $expired_class = $event->is_past()? "event-started" : null;
 					<?php
 					// invert bool hide_speaker_info_after_delay
 					$hide_speaker_info = !(new Byniko())->hide_speaker_info_after_delay($event);
-					$hide_speaker_info = !$event->hide_speaker_info();
 					foreach ($speakers as $speaker) :
 						$speaker = new Speaker($speaker);
 						$args = array(
