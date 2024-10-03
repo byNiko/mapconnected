@@ -1,9 +1,15 @@
 <?php
+$evt = new Event($post);
 $summit_post = $args['summit_post'];
+$summit_obj = $args['summit_object'];
 $speakers_group = get_field('speakers_group', $summit_post);
 // $speakers = get_field('key_speakers', $summit_post);
 $speakers = $speakers_group['key_speakers'];
 $slider_id = $summit_post->post_name;
+
+// $summit_end_date = $s->get_summit_dates_section_data('summit_end_date');
+
+
 
 $splideOptions = filter_empty_values([
 	'type' => 'slide', // loop, slide, fade - only for single slides
@@ -41,9 +47,11 @@ if ($speakers) :
 				<?php
 				foreach ($speakers as $speaker) :
 					$s = new Speaker($speaker);
+					// invert bool hide_speaker_info_after_delay
+					$hide_speaker_info = !(new Byniko())->hide_speaker_info_after_delay($summit_obj);
 					$args = array(
-						'include_anchor' => true,
-						'show_name' => true
+						'include_anchor' => $hide_speaker_info,
+						'show_name' => $hide_speaker_info
 					);
 					$html = $s->get_the_speaker_card($args);
 					echo "<li class='splide__slide'>$html</li>";

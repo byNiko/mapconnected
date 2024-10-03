@@ -15,6 +15,8 @@ $end_datetime = $times['end'];
 $startDay = $start_datetime ? $start_datetime->format('D') : null;
 $startDate = $start_datetime ? $start_datetime->format('dS') : null;
 $expired_class = $event->is_past()? "event-started" : null; 
+
+
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class([$expired_class]); ?>>
@@ -45,9 +47,16 @@ $expired_class = $event->is_past()? "event-started" : null;
 				<h5 class="h5">Speaker<?= $plural ?  "s" : "";?></h5>
 				<div class="event-speakers--items flex-row __4x">
 					<?php
+					// invert bool hide_speaker_info_after_delay
+					$hide_speaker_info = !(new Byniko())->hide_speaker_info_after_delay($event);
+					$hide_speaker_info = !$event->hide_speaker_info();
 					foreach ($speakers as $speaker) :
 						$speaker = new Speaker($speaker);
-						$speaker->the_speaker_card(true);?>
+						$args = array(
+							'include_anchor' => $hide_speaker_info,
+							'show_name' => $hide_speaker_info
+						);
+						$speaker->the_speaker_card($args);?>
 					<?php 	endforeach; 	?>
 				</div>
 			</section>

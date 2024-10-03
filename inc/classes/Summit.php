@@ -1,8 +1,8 @@
 <?php
 
 class Summit {
-	private $post;
-	public $summit_logo_id,
+	public $post,
+	$summit_logo_id,
 		$landing_text,
 		$theme_title,
 		$theme_subtitle,
@@ -37,6 +37,12 @@ class Summit {
 		$statistics = get_field('statistics_group', $this->post);
 
 		return $key ?  $statistics[$key] : $statistics;
+	}
+
+	public function get_summit_dates_section_data($key = false) {
+		$dates = get_field('dates', $this->post);
+
+		return $key ?  $dates[$key] : $dates;
 	}
 
 	public function get_summit_logo() {
@@ -119,6 +125,11 @@ class Summit {
 		return wp_video_shortcode($attr);
 	}
 
+	public function get_end_date(){
+		return $this->get_summit_dates_section_data('summit_end_date');
+		// return new DateTime("October 2, 2024");
+	}
+
 	public function getAgendaHighlights() {
 		$html = false;
 		if ($highlights = $this->get_agenda_section_data('agenda_highlights')) :
@@ -178,6 +189,12 @@ class Summit {
 
 	public function get_modal_speaker_html($speaker) {
 		$events_list = '';
+		$hide_speaker_info = !(new Byniko())->hide_speaker_info_after_delay($this);
+		$speaker_card_args = array(
+			'include_anchor' => $hide_speaker_info,
+			'show_name' => $hide_speaker_info
+		);
+
 		if ($speaker->get_future_events()):
 			$events_list .= '<div class="speaker__events-list">
 				<h4 class="h4">Upcoming Events</h4>' .
@@ -212,7 +229,7 @@ class Summit {
 			</aside>
 			<div class="speaker__info main">
 				<header class="entry-header">
-					<h2>' . $speaker->get_name() . '</h2>
+					<h2> %5$s</h2>
 				</header>
 				<div class="content-column">
 			
@@ -229,11 +246,11 @@ class Summit {
 
 		return sprintf(
 			$pattern,
-			$speaker->get_the_speaker_card(),
+			$speaker->get_the_speaker_card($speaker_card_args),
 			$events_list,
 			$session_info,
-			$speaker_bio
-
+			$speaker_bio,
+			$hide_speaker_info? $speaker->get_name(): null, 
 		);
 ?>
 
@@ -244,7 +261,7 @@ class Summit {
 		$data = $this->active_speakers_data;
 		$all_speakers = $data['active_speakers'];
 		$key_speakers = $data['key_speakers'];
-
+		
 		// Merge key speakers with all speakers
 		$merged_speakers = array_merge($key_speakers, $all_speakers);
 		// Remove Duplicates & set company name

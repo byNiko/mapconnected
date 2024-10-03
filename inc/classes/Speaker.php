@@ -26,11 +26,11 @@ class Speaker {
 	public function get_ID() {
 		return $this->ID;
 	}
-	public function get_name($override = null) {
-		$hide_option = get_field('hide_names_group_hide_speaker_names', 'option');
-		$hide = isset($override) ? $override : $hide_option;
-
-		return $hide ? false : $this->name;
+	public function get_name($override = false) {
+		// $hide_option = get_field('hide_names_group_hide_speaker_names', 'option');
+		// $hide = $override;
+return $this->name;
+		// return $hide ? false : $this->name;
 	}
 	public function get_bio() {
 		return $this->bio;
@@ -205,7 +205,6 @@ class Speaker {
 				$future[] = $evt;
 			}
 		}
-		// var_dump($future);
 		return $future;
 	}
 

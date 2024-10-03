@@ -17,7 +17,7 @@ class Event {
 	public $toggle_speaker_names;
 	public $toggle_speaker_delay_in_days;
 	public $toggle_speaker_date_is_past;
-	public $hide_speaker_names;
+	public $hide_speaker_info;
 
 	public function __construct($post) {
 		$this->post                                 = $post;
@@ -39,24 +39,30 @@ class Event {
 		$this->is_past								= $this->is_past();
 		$this->tags									= wp_get_post_terms($post->ID, 'event-type');
 		$this->is_this_year							= $this->time['start'] && $this->time['start']->format('Y') === date("Y");
-		$this->is_multi_day							= ($this->time['start'] && $this->time['end'])? $this->time['start']->format('d') !==  $this->time['end']->format('d') : false;
-		$this->toggle_speaker_names					= get_field('toggle_speaker_names', $post);	
-		$this->toggle_speaker_delay_in_days			= get_field('toggle_speaker_delay_in_days', $post); // days after event start to show speakers
-		$this->toggle_speaker_date_is_past			= $this->toggle_speaker__date_is_past();// date to show speakers
-		$this->hide_speaker_names					= $this->toggle_speaker_date_is_past && $this->toggle_speaker_names;
+		$this->is_multi_day							= ($this->time['start'] && $this->time['end']) ? $this->time['start']->format('d') !==  $this->time['end']->format('d') : false;
+		// $this->toggle_speaker_names					= get_field('toggle_speaker_names', $post);	
+		// $this->toggle_speaker_delay_in_days			= get_field('toggle_speaker_delay_in_days', $post); // days after event start to show speakers
+		// $this->toggle_speaker_date_is_past			= $this->toggle_speaker__date_is_past();// date to show speakers
+		$this->hide_speaker_info					= $this->toggle_speaker_date_is_past && $this->toggle_speaker_names;
 	}
 
-	public function toggle_speaker__date_is_past(){
-		$this->toggle_speaker_delay_in_days	;
-		return true;
+	public function get_end_date() {
+		return $this->time['end'] ?:  $this->time['start'];
+	}
+	public function event_has_ended() {
+		return Byniko::date_is_past($this->get_end_date());
 	}
 
-	public function is_multi_day(){
-		if($this->time['start'] && $this->time['end'])
+	public function hide_speaker_info() {
+		return (new Byniko())->hide_speaker_info_after_delay($this);
+	}
+
+	public function is_multi_day() {
+		if ($this->time['start'] && $this->time['end'])
 			return $this->time['start']->format('d') !==  $this->time['end']->format('d');
 		return false;
 	}
-	public function get_title(){
+	public function get_title() {
 		return $this->post->post_title;
 	}
 	public function get_reservation_link() {
@@ -66,10 +72,10 @@ class Event {
 		return $this->permalink;
 	}
 	public function remove_forced_spaces($content) {
-		if($content){
-		$string = htmlentities($content);
-		$content = str_replace("&nbsp;", " ", $string);
-		$content = html_entity_decode($content);
+		if ($content) {
+			$string = htmlentities($content);
+			$content = str_replace("&nbsp;", " ", $string);
+			$content = html_entity_decode($content);
 		}
 		return $content;
 	}
@@ -85,14 +91,10 @@ class Event {
 	public function get_speakers() {
 		return $this->speakers;
 	}
-	public function event_has_ended() {
-		if( $this->time['end']):
-			return false;
-		endif;
-				return $this->is_past();
-	}
+
+
 	public function is_past() {
-		$start = get_field('start_date__time', $this->post) ;
+		$start = get_field('start_date__time', $this->post);
 		// $b = new Byniko();
 		$future = Byniko::future_expiration();
 		// return true;
@@ -100,18 +102,16 @@ class Event {
 	}
 	public function get_event_tag_pills() {
 		$tags = $this->tags;
-		//print_r($tags);
 		$html = '';
 		if ($tags) :
-			foreach($tags as $tag):
-				//print_r($tag);
-			$html .= sprintf(
-				'<span 
+			foreach ($tags as $tag):
+				$html .= sprintf(
+					'<span 
 				class="pill taxonomy-pill"
 				data-taxonomy="event-type" data-taxonomy-slug="%2$s">%1$s
-				</span>', 
-				$tag->name,
-				$tag->slug
+				</span>',
+					$tag->name,
+					$tag->slug
 				);
 			endforeach;
 			return $html;

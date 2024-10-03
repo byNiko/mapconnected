@@ -522,6 +522,56 @@
             "selected": 0
         },
         {
+            "key": "field_66fd4f3e6b9e4",
+            "label": "Toggle Speaker Names",
+            "name": "toggle_speaker_names",
+            "aria-label": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 1,
+            "ui_on_text": "",
+            "ui_off_text": "",
+            "ui": 1
+        },
+        {
+            "key": "field_66fd4f7f6b9e5",
+            "label": "Toggle Speaker Delay (days)",
+            "name": "toggle_speaker_delay_in_days",
+            "aria-label": "",
+            "type": "number",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_66fd4f3e6b9e4",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": 31,
+            "min": "",
+            "max": "",
+            "placeholder": "",
+            "step": "",
+            "prepend": "",
+            "append": ""
+        },
+        {
             "key": "field_663ff4de069eb",
             "label": "Speakers",
             "name": "speakers",
@@ -573,5 +623,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1719082344
+    "modified": 1727877039
 }

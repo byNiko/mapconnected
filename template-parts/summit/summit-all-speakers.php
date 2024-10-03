@@ -37,10 +37,11 @@ if (
 			<?php
 			foreach ($active_speakers as $speaker) :
 				$sp = new Speaker($speaker);
-				$args = array(
-					'include_anchor' => true,
-					'show_name' => true
-				);
+				$hide_speaker_info = !(new Byniko())->hide_speaker_info_after_delay($s);
+					$args = array(
+						'include_anchor' => $hide_speaker_info,
+						'show_name' => $hide_speaker_info
+					);
 				echo $sp->get_the_speaker_card($args);
 			endforeach;
 			?>

@@ -1,5 +1,5 @@
 <?php
-if ($deadline = $args['count_down_date']) :
+if ($deadline = $args['summit_start_date']) :
 	$data = json_encode(array(
 		'deadline' => $deadline
 	));

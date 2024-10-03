@@ -4,7 +4,11 @@ $byniko = new Byniko();
 $spships = new Sponsorships();
 $s = new Summit($post);
 
-get_header(); ?>
+get_header();
+
+
+
+?>
 
 
 <main class="annual_summit">
@@ -24,7 +28,7 @@ get_header(); ?>
 					<header class="text-center">
 						<h2 class="h2 fz-xxl"><?= $title; ?></h2>
 					</header>
-					<?php get_template_part('/template-parts/summit/summit', 'key-speakers', ['summit_post' => $post]); ?>
+					<?php get_template_part('/template-parts/summit/summit', 'key-speakers', ['summit_post' => $post, 'summit_object' => $s]); ?>
 					<?php
 					if (!$key_speakers['hide_all_speakers_button']):
 					?>
@@ -144,12 +148,12 @@ get_header(); ?>
 			<?php get_template_part('/template-parts/summit/daily-agendas', null, ['summit_post' => $post]); ?>
 		</div>
 	</section>
-	
 
-	<?php if ($speakers_group = get_field('speakers_group')) :?>
-	<section id="all-leadership" class="all-leadership py-4">
-		<?php get_template_part('/template-parts/summit/summit-all-speakers' );?>
-	</section>
+
+	<?php if ($speakers_group = get_field('speakers_group')) : ?>
+		<section id="all-leadership" class="all-leadership py-4">
+			<?php get_template_part('/template-parts/summit/summit-all-speakers'); ?>
+		</section>
 	<?php endif;  ?>
 
 	<div class="container--narrow py-4">
@@ -248,9 +252,9 @@ get_header(); ?>
 
 	?>
 	<?php
-	if ($s->get_statistics_section_data('show_countdown_timer'))
-		$data = $s->get_statistics_section_data();
-	get_template_part('/template-parts/components/countdown-timer', null, $data);
+	$dates_data = $s->get_summit_dates_section_data();
+	if ($dates_data['show_countdown_timer'])
+		get_template_part('/template-parts/components/countdown-timer', null, $dates_data);
 	?>
 	<div class="container--narrow py-4">
 		<?php echo $s->getRegistrationLinksSection(); ?>

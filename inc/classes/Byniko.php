@@ -56,27 +56,52 @@ class Byniko {
 		return date('Y-m-d H:i:s', strtotime($dateNow) - 43000);
 	}
 
-	/**
-	 * The function `compare_dates` in PHP compares two dates and returns true if the first date is
-	 * greater than the second date.
-	 * 
-	 * @param a The `compare_dates` function you provided compares two dates and returns `true` if the
-	 * first date `` is greater than the second date ``, otherwise it returns `false`.
-	 * @param b It looks like you have provided a function `compare_dates` that compares two dates. The
-	 * function returns `true` if date `` is greater than date ``, otherwise it returns `false`.
-	 * 
-	 * @return a boolean value indicating whether the date represented by variable  is greater than the
-	 * date represented by variable .
-	 */
+	private function get_event_end_date($evt_obj) {
+		return $evt_obj->get_end_date();
+	}
+	private function toggle_speaker__date_is_past($end_date, $ammend = false) {
+		return $this->date_is_past($end_date, $ammend);
+	}
+
+	 public function hide_speaker_info_after_delay($evt_obj){
+
+		// $evt_obj is an Event object or a Summit object
+		$type = get_class($evt_obj);
+		$hide_info = false;
+		if($type === 'Event'){
+			$hide_info = get_field ('toggle_speaker_names', $evt_obj->post);
+			if ($hide_info):
+				$add_days_to_end = get_field('toggle_speaker_delay_in_days', $evt_obj->post);
+				$toggle_date = $this->get_event_end_date($evt_obj);  
+				return $this->toggle_speaker__date_is_past($toggle_date, "$add_days_to_end days");
+				// return $type;
+			endif;
+			return false;
+		}
+		if($type === 'Summit'){
+			$hide_info = $evt_obj->speakers_group['toggle_speaker_names'];
+			
+			if ( $hide_info ):
+				$add_days_to_end = $evt_obj->speakers_group['toggle_speaker_delay_in_days'];
+				$toggle_date = $this->get_event_end_date($evt_obj);  
+				return $this->toggle_speaker__date_is_past($toggle_date, "$add_days_to_end days");
+				
+			endif;
+			return false;
+		}		
+	
+	 }
 
 	
 	static public function date_is_past($date, $ammend = false) {
 		$now = new DateTime();
-		// $date must be a string
-		$date = new DateTime($date);
+		// $date must be a DateTime object
+		if(is_string($date)){
+			$date = new DateTime($date);
+		}
 		// $ammend must be a string
 		if(is_string($ammend)){
-			$date->add(new DateInterval($ammend));
+			$date->add( DateInterval::createFromDateString($ammend));
 		}
 		return $date < $now;
 	}
