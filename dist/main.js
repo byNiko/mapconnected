@@ -36,6 +36,52 @@ function toggleCollapse(el) {
 
 /***/ }),
 
+/***/ "./src/scripts/gsapFadeInUp.js":
+/*!*************************************!*\
+  !*** ./src/scripts/gsapFadeInUp.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _vendor_gsap_index__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./vendor/gsap/index */ "./src/scripts/vendor/gsap/index.js");
+/* harmony import */ var _vendor_gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./vendor/gsap/ScrollTrigger */ "./src/scripts/vendor/gsap/ScrollTrigger.js");
+
+
+_vendor_gsap_index__WEBPACK_IMPORTED_MODULE_0__["default"].registerPlugin(_vendor_gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__["default"]);
+_vendor_gsap_index__WEBPACK_IMPORTED_MODULE_0__["default"].defaults({
+  ease: 'power3'
+});
+_vendor_gsap_index__WEBPACK_IMPORTED_MODULE_0__["default"].set('.fade_in_up', {
+  y: 30,
+  scale: 0.98,
+  opacity: 0
+});
+_vendor_gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__["default"].batch('.fade_in_up', {
+  // end: 'center center',
+  // interval: 1,
+  // batchMax: 13,
+  // start: 'top+=50px bottom-=50px',
+  onEnter: item => {
+    _vendor_gsap_index__WEBPACK_IMPORTED_MODULE_0__["default"].to(item, {
+      duration: 2.5,
+      stagger: 0.21,
+      opacity: 1,
+      y: 0,
+      scale: 1
+    });
+  },
+  markers: false
+});
+_vendor_gsap_ScrollTrigger__WEBPACK_IMPORTED_MODULE_1__["default"].batch('.fade_in', {
+  onEnter: batch => _vendor_gsap_index__WEBPACK_IMPORTED_MODULE_0__["default"].to(batch, {
+    opacity: 1,
+    stagger: 0.1
+  })
+});
+
+/***/ }),
+
 /***/ "./src/scripts/micromodal.js":
 /*!***********************************!*\
   !*** ./src/scripts/micromodal.js ***!
@@ -8706,7 +8752,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scripts_mobileNav__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_scripts_mobileNav__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _scripts_modalAutoShow__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./scripts/modalAutoShow */ "./src/scripts/modalAutoShow.js");
 /* harmony import */ var _scripts_modalAutoShow__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_scripts_modalAutoShow__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var _scripts_gsapFadeInUp__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./scripts/gsapFadeInUp */ "./src/scripts/gsapFadeInUp.js");
 // import main stylesheet
+
 
 
 

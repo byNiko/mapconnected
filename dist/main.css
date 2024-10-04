@@ -1583,7 +1583,6 @@ p {
 .size-thumbnail {
   max-width: 100%;
   height: auto;
-  width: initial !important;
 }
 
 .wp-video {
@@ -2775,6 +2774,48 @@ body:not(.wp-admin) .with_frm_style .frm_required {
   font-size: 16px;
 }
 
+.flex-gallery {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 2rem;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+
+.flex-gallery__item {
+  max-width: 100px;
+  display: flex;
+}
+@media screen and (min-width: 30rem) {
+  .flex-gallery__item {
+    max-width: 175px;
+  }
+}
+@media screen and (min-width: 50rem) {
+  .flex-gallery__item {
+    max-width: 300px;
+  }
+}
+
+.flex-gallery__item img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  max-height: 100px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.flex-gallery__item:before {
+  content: "";
+  display: none;
+  padding-top: 100%;
+}
+
 ul.no-bullets, ul.no-bullet {
   list-style-type: none;
   padding-left: 0;
@@ -2849,10 +2890,10 @@ dd {
   --section-padding: 4rem;
 }
 
-section[class*=theme--] > :first-child {
+section[class*=theme--]:not(.no-padding) > :first-child {
   padding-top: var(--section-padding);
 }
-section[class*=theme--] > :first-child .slider {
+section[class*=theme--]:not(.no-padding) > :first-child .slider {
   margin-top: calc(-1 * var(--section-padding));
 }
 

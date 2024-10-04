@@ -18,7 +18,7 @@ function byniko_has_sidebar(){
 		is_home(),
 		// is_archive(),
 		is_page_template(
-			// array( 'custom-template-3.php' )
+			array( 'Past Attendees')
 		)
 	);
 	return in_array(true, $has_sidebar);

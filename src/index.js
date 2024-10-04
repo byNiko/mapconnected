@@ -8,6 +8,7 @@ import './scripts/micromodal';
 import './scripts/tabs';
 import './scripts/mobileNav';
 import './scripts/modalAutoShow';
+import './scripts/gsapFadeInUp';
 
 // start scripts
 

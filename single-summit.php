@@ -5,11 +5,7 @@ $spships = new Sponsorships();
 $s = new Summit($post);
 
 get_header();
-
-
-
 ?>
-
 
 <main class="annual_summit">
 	<section class="hero theme--dark-gradient-1 pb-4">

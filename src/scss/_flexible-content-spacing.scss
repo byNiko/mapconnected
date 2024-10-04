@@ -47,7 +47,7 @@
 // 	padding-bottom: calc(.5 * var(--section-padding));
 // }
 
-section[class*=theme--] > :first-child{
+section[class*=theme--]:not(.no-padding) > :first-child{
 	padding-top: var(--section-padding);
 	
 	.slider {
