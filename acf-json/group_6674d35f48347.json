@@ -1397,6 +1397,26 @@
             "layout": "block",
             "sub_fields": [
                 {
+                    "key": "field_66ff2a06576b7",
+                    "label": "Show Current or Past Attenddees",
+                    "name": "show_current_or_past_attenddees",
+                    "aria-label": "",
+                    "type": "true_false",
+                    "instructions": "Past Attendees are administered in the WordPress Admin Menu -> MAPconnected Settings.",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui_on_text": "Show Current",
+                    "ui_off_text": "Show Past",
+                    "ui": 1
+                },
+                {
                     "key": "field_668ac7a10a9e1",
                     "label": "Title",
                     "name": "title",
@@ -1955,5 +1975,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727887966
+    "modified": 1727998587
 }
