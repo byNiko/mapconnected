@@ -32,7 +32,7 @@
 
 
 .top-nav--menu {
-	--link-size: var(--font-size--xl);
+	// --link-size: var(--font-size--xl);
 	margin-left:auto;
 	list-style-type: none;
 	display:flex;
@@ -40,7 +40,7 @@
 	column-gap: var(--spacer-6);
 	font-size: var(--link-size);
 	@include bp(md){
-		--link-size: var(--font-size--xs);
+		// --link-size: var(--font-size--xs);
 		align-items: end;
 
 	}

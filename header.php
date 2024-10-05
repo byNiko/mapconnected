@@ -61,7 +61,7 @@
 						)
 					);
 					?>
-					<nav id="site-navigation" class="main-navigation">
+					<!-- <nav id="site-navigation" class="main-navigation"> -->
 						<?php
 						wp_nav_menu(
 							array(
@@ -69,13 +69,13 @@
 								'menu_class' 		=> 'main-nav--menu menu',
 								'menu_id'       	=> 'primary-nav',
 								'container'			=> 'nav',
-								'container_class'	=> 'main-nav--container',
+								'container_class'	=> 'main-nav--container main-navigation',
 								'container_id'		=> 'main-nav--container',
 								'item_spacing'		=> 'discard'
 							)
 						);
 						?>
-					</nav><!-- #site-navigation -->
+					<!-- </nav>#site-navigation -->
 				</div>
 			</div>
 			<!-- </div> -->

@@ -984,8 +984,8 @@ img {
 }
 
 ul.menu {
-  padding-right: 0;
-  margin-bottom: 0;
+  padding: 0;
+  margin: 0;
 }
 
 blockquote p:last-of-type {
@@ -1729,6 +1729,7 @@ section.theme--dark-1, section.theme--dark-gradient-1, .modal.modal-form section
   position: relative;
   display: flex;
   justify-content: center;
+  margin-block: 1rem 2rem;
 }
 .modal .modal__title {
   font-family: var(--ff-display);
@@ -2737,10 +2738,6 @@ body:not(.wp-admin) .with_frm_style .frm_required {
 .hamburger {
   --hamburger-color: var(--color-link);
 }
-.hamburger.is-active {
-  --hamburger-color: var(--color-secondary-100);
-}
-
 .clockdiv {
   /* color: #fff; */
   display: inline-block;
@@ -2947,7 +2944,6 @@ section[class*=theme--] .slider {
 }
 
 .top-nav--menu {
-  --link-size: var(--font-size--xl);
   margin-right: auto;
   list-style-type: none;
   display: flex;
@@ -2958,7 +2954,6 @@ section[class*=theme--] .slider {
 }
 @media screen and (min-width: 50rem) {
   .top-nav--menu {
-    --link-size: var(--font-size--xs);
     align-items: end;
   }
 }
@@ -3028,20 +3023,30 @@ section[class*=theme--] .slider {
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
+  width: 85%;
+  max-width: 310px;
   background-image: var(--dark-gradient-1);
   transform: translatex(100%);
   transition: transform 0.2s;
   z-index: 100;
+}
+.primary-navbar.is-active {
+  transform: translatex(0);
+  box-shadow: -2px 0 70px 0px black;
 }
 .primary-navbar .inner-primary-nav {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  margin-top: 2rem;
+  row-gap: var(--spacer);
 }
-.primary-navbar.is-active {
-  transform: translatex(0);
+@media screen and (min-width: 50rem) {
+  .primary-navbar .inner-primary-nav {
+    margin-top: 0;
+  }
 }
 @media screen and (min-width: 50rem) {
   .primary-navbar {
@@ -3051,25 +3056,19 @@ section[class*=theme--] .slider {
     margin-top: var(--spacer-sm);
     background-color: var(--color-text);
     transform: translatex(0);
+    width: 100%;
+    max-width: initial;
+    box-shadow: none;
   }
 }
 
-.main-navigation {
-  margin-right: auto;
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .main-navigation .main-nav--menu {
   list-style-type: none;
   display: flex;
-  -moz-column-gap: var(--spacer);
-       column-gap: var(--spacer);
+  gap: var(--spacer);
   word-spacing: -0.1em;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   height: 100%;
 }
 @media screen and (min-width: 50rem) {
@@ -3079,18 +3078,25 @@ section[class*=theme--] .slider {
 }
 .main-navigation .menu-item {
   font-weight: 300;
-  font-size: var(--font-size--main-nav);
   color: var(--color-main-nav-link);
-  border-bottom: 1px solid transparent;
-  border-top: 1px solid transparent;
   letter-spacing: 0.5px;
-  margin: 5px 0;
 }
-.main-navigation .menu-item.current-menu-item, .main-navigation .menu-item:hover {
-  border-bottom-color: var(--color-secondary-600);
+@media screen and (min-width: 50rem) {
+  .main-navigation .menu-item {
+    margin: 5px 0;
+    font-size: var(--font-size--main-nav);
+  }
+}
+.main-navigation .menu-item a {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.2rem;
+  text-decoration-thickness: 1px;
 }
 .main-navigation .menu-item.current-menu-item a, .main-navigation .menu-item:hover a {
   color: var(--color-secondary-800);
+  text-decoration-color: var(--color-secondary-800);
+  text-underline-offset: 0.5rem;
 }
 
 .menu-toggle {
@@ -3103,14 +3109,20 @@ section[class*=theme--] .slider {
   }
 }
 
+@media screen and (max-width: 50rem) {
+  .top-nav--container, .main-navigation {
+    width: 100%;
+  }
+}
+
 .top-nav--container {
   --color-link: var(--color-secondary-100);
   order: 10;
 }
 @media screen and (min-width: 50rem) {
   .top-nav--container {
-    --color-link: var(--color-text);
     --link-size: var(--font-size--xs);
+    --color-link: var(--color-text);
     order: 0;
     position: absolute;
     left: var(--gap);
@@ -3124,6 +3136,7 @@ section[class*=theme--] .slider {
 @media screen and (max-width: 50rem) {
   .top-nav--menu {
     flex-direction: column;
+    row-gap: var(--spacer);
   }
 }
 
