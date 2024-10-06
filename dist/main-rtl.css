@@ -3135,6 +3135,7 @@ section[class*=theme--] .slider {
     order: 0;
     position: absolute;
     left: var(--gap);
+    left: 0;
     top: 0;
     transform: translateY(-200%);
     display: flex;
