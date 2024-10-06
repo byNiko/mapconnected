@@ -1616,6 +1616,7 @@ p {
 .splide__slide > img {
   max-height: 100%;
   max-width: 100%;
+  width: initial;
 }
 
 .splide:not(.is-overflow) .splide__arrows {
