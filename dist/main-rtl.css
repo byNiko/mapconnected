@@ -2483,18 +2483,27 @@ body:not(.wp-admin) .with_frm_style .frm_required {
 }
 
 .top-notification-bar {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-block: 10px;
   font-size: var(--font-size--sm);
 }
-@media screen and (max-width: 50rem) {
-  .top-notification-bar .flex-row {
-    gap: 10px;
+.top-notification-bar button {
+  padding-block: 5px;
+}
+
+.notification__text {
+  max-width: 70ch;
+  text-wrap: balance;
+}
+@media screen and (min-width: var(--container--narrow)) {
+  .notification__text {
+    text-wrap: pretty;
   }
 }
-.top-notification-bar button {
-  padding-top: 10px;
-  padding-bottom: 10px;
+
+.notification__anchor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.51rem;
 }
 
 .tabs-header {

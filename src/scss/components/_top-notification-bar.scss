@@ -1,17 +1,20 @@
 @use "../mixins" as *;
 .top-notification-bar {
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding-block: 10px;
 	font-size: var(--font-size--sm);
-	.flex-row {
-		
-		@include bp(md, 'max-width'){
-			gap: 10px;
-		}
-	}
-
 	button {
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding-block: 5px;
 	}
+}
+.notification__text {
+	max-width: 70ch;
+	text-wrap:balance;
+	@include bp(lg){
+		text-wrap:pretty;
+	}
+}
+.notification__anchor {
+display: flex;
+flex-wrap:wrap;
+gap: .51rem;
 }
