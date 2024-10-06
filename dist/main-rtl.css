@@ -1577,6 +1577,7 @@ p {
 .size-thumbnail {
   max-width: 100%;
   height: auto;
+  width: initial !important;
 }
 
 .wp-video {
