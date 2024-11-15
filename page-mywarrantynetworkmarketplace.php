@@ -128,7 +128,7 @@ get_header();
 							</div>
 					<?php
 						endwhile;
-					endif;
+					
 					wp_reset_query();
 					?>
 					</div>
@@ -141,7 +141,7 @@ get_header();
 				</footer>
 			</section>
 			<!-- <hr> -->
-		<?php endforeach;  ?>
+		<?php endif; endforeach;  ?>
 		<?php
 		if ($partner_group) :
 			$count = 0;
@@ -180,7 +180,6 @@ get_header();
 							<?php endforeach; ?>
 						</div>
 					</div>
-
 				</section>
 		<?php
 			endforeach;
