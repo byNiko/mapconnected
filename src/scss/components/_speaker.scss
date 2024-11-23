@@ -6,9 +6,9 @@
 	// font-size: clamp(.8rem, 7cqi, 1.2rem)
 }
 .speaker__title {
-	font-size: 1em;;
+	// font-size: 1em;;
 }
-.speaker__company {
+.speaker__title {
 	font-style: italic;
 	font-weight: 400;
 	font-size: .7rem;
@@ -56,6 +56,7 @@ row-gap: var(--spacer-8);
 	& > img {
 		max-height: 100%;
 		max-width: 100%;
+		width: auto;
 	}
 }
 

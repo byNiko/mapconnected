@@ -133,13 +133,13 @@ return $this->name;
 					 %s
 				</div>
 			 <div class='speaker__meta'>
-				
-				<div class='speaker__title'>
-				 %s 
-				</div>
 				<div class='speaker__company'>
 				 %s 
 				</div>
+				<div class='speaker__title'>
+				 %s 
+				</div>
+				
 		</div>
 	</div>%s",
 			$include_anchor ? "<a href='" . $this->get_permalink() . "'>" : null,
@@ -147,8 +147,8 @@ return $this->name;
 			// $this->get_headshot1(),
 			$this->get_headshot1(),
 			$show_name ? $this->get_name() : null,
-			$this->get_title(),
 			$this->get_company(),
+			$this->get_title(),
 			$include_anchor ? "</a>" : null,
 		);
 	}
