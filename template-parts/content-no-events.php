@@ -12,14 +12,17 @@
 <section class="no-results not-found py-4">
 	<header class="page-header">
 		<h1 class="page-title"><?php esc_html_e( 'No Future Events :(', 'byniko' ); ?></h1>
-		That page wasn't helpful, so here are some links to keep you in the loop:
+		We've got nothing comingup - but here are some links to keep you in the loop:
 	</header><!-- .page-header -->
 
 	<div class="page-content">
 			
 			<ul>
 				<li>
-				Stay up to date with our <a class="button button--text" href="/vehicle-service-and-warranty-lifecycle-summit">Annual Summit</a>.
+				<a class="button button--text" href="/events/?event-range=past">Past Events</a>
+				</li>
+				<li>
+				Stay up to date with our <a class="button button--text" href="/annual-summit">Annual Summit</a>.
 				</li>
 				<li>
 				Learn More about becoming a member at the <a class="button button--text" href="/members-network">Members Network</a>.
