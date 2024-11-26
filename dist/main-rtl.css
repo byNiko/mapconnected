@@ -2403,7 +2403,6 @@ body:not(.wp-admin) .with_frm_style .frm_required {
   line-height: 1.2;
   font-size: var(--font-size--sm);
   font-weight: 500;
-  font-size: 1rem;
 }
 
 .speaker__title {
@@ -3301,7 +3300,7 @@ section[class*=theme--] .slider {
 .annual_summit .all-leadership .speaker__company {
   order: -1;
   font-weight: 600;
-  font-size: var(--font-size--md);
+  font-size: var(--font-size--sm);
 }
 .annual_summit .key-speakers .speaker__title,
 .annual_summit .all-leadership .speaker__title {
