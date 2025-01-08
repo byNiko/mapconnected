@@ -259,8 +259,9 @@ class Summit {
 	public function get_all_speakers_modal() {
 
 		$data = $this->active_speakers_data;
-		$all_speakers = $data['active_speakers'];
-		$key_speakers = $data['key_speakers'];
+		$all_speakers = is_array($data['active_speakers']) ? $data['active_speakers'] : [];
+		$key_speakers = is_array($data['key_speakers']) ? $data['key_speakers'] : [];
+		// $key_speakers = $data['key_speakers'];
 		
 		// Merge key speakers with all speakers
 		$merged_speakers = array_merge($key_speakers, $all_speakers);

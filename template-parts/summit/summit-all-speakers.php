@@ -35,6 +35,7 @@ if (
 	<div class="container mt-1">
 		<div class="grid __5x justify--center">
 			<?php
+			if (is_array($active_speakers)) :
 			foreach ($active_speakers as $speaker) :
 				$sp = new Speaker($speaker);
 				$hide_speaker_info = !(new Byniko())->hide_speaker_info_after_delay($s);
@@ -44,6 +45,7 @@ if (
 					);
 				echo $sp->get_the_speaker_card($args);
 			endforeach;
+		endif;
 			?>
 		</div>
 	</div>
