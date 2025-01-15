@@ -6,7 +6,11 @@ get_header();
 		<header class="container--narrow">
 			<h1 class="h1 text-center ">
 				<div>Welcome to</div>
-				<?= wp_get_attachment_image(838, 'full'); ?>
+			<?php
+			$logo_id = get_field('mywarrantynetworkhub_logo'); 
+			echo wp_get_attachment_image($logo_id, 'full',false,['style'=>'max-width:800px;']);
+			?>
+				<?// = wp_get_attachment_image(838, 'full'); ?>
 			</h1>
 			<h3 class="h4 subtitle text-center py-1">
 				At MAPconnected, we're deeply grateful for the incredible support of our sponsors.
