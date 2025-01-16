@@ -8,7 +8,7 @@ get_header();
 				<div>Welcome to</div>
 			<?php
 			$logo_id = get_field('mywarrantynetworkhub_logo'); 
-			echo wp_get_attachment_image($logo_id, 'full',false,['style'=>'max-width:800px;']);
+			echo wp_get_attachment_image($logo_id, 'full',false,['style'=>'max-width:800px;width: 100%']);
 			?>
 				<?// = wp_get_attachment_image(838, 'full'); ?>
 			</h1>
