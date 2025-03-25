@@ -38,13 +38,13 @@ get_header();
 					);
 					?>
 					<div class="flex-row justify--center mt-1 ">
-						<a href="#marketplace-1" class="text-link fw-semi-bold text-uppercase">Show me the marketplace</a>
+						<a href="https://www.mywarrantynetwork.com" class="text-link fw-semi-bold text-uppercase">Show me the marketplace</a>
 					</div>
 				</div>
 			</section>
 		<?php endif;  ?>
 		<div class="leader-content py-1">
-			<div class="container--single-column fz-md">
+			<div class="container fz-md">
 				<?php
 				while (have_posts()) :
 					the_post();
@@ -52,7 +52,7 @@ get_header();
 					get_template_part('template-parts/content', 'page');
 				endwhile; // End of the loop.
 				?>
-				<div class="two-button-cta">
+				<div class="two-button-cta d-none">
 					<div class="flex-row  justify--center">
 						<div class="flex-column">
 							<span class="fz-sm fw-semi-bold">Have a Project or Training need</span>
@@ -69,6 +69,7 @@ get_header();
 	</section>
 
 	<?php
+	if (1 === 2) :
 	$arr1    = array(
 		'News' => array(
 			'post_type' => ['post'],
@@ -189,7 +190,7 @@ get_header();
 			endforeach;
 		endif;
 		?>
-
+<?php endif; // end of turning off this section ?>
 
 
 </main><!-- #main -->
