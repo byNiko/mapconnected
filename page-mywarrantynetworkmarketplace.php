@@ -4,7 +4,7 @@ get_header();
 <main id="primary" class="site-main">
 	<section class="hero-section mb-4">
 		<header class="container--narrow">
-			<h1 class="h1 text-center ">
+			<h1 class="h1 text-center d-none">
 				<div>Welcome to</div>
 			<?php
 			$logo_id = get_field('mywarrantynetworkhub_logo'); 
