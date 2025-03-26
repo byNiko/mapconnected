@@ -16,7 +16,17 @@ get_header();
 				At MAPconnected, we're deeply grateful for the incredible support of our sponsors.
 			</h3>
 		</header>
-		<?php
+		
+		<div class="leader-content py-1">
+			<div class="container fz-md">
+				<?php
+				while (have_posts()) :
+					the_post();
+
+					get_template_part('template-parts/content', 'page');
+				endwhile; // End of the loop.
+				?>
+				<?php
 		$partner_group = get_field('partner_group');
 		if ($partner_group[0] && $partner_group[0]['sponsors_group']) :
 			$sponsors = $partner_group[0]['sponsors_group'];
@@ -43,15 +53,6 @@ get_header();
 				</div>
 			</section>
 		<?php endif;  ?>
-		<div class="leader-content py-1">
-			<div class="container fz-md">
-				<?php
-				while (have_posts()) :
-					the_post();
-
-					get_template_part('template-parts/content', 'page');
-				endwhile; // End of the loop.
-				?>
 				<div class="two-button-cta d-none">
 					<div class="flex-row  justify--center">
 						<div class="flex-column">
