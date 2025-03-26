@@ -12,7 +12,7 @@ get_header();
 			?>
 				<?// = wp_get_attachment_image(838, 'full'); ?>
 			</h1>
-			<h3 class="h4 subtitle text-center py-1">
+			<h3 class="h4 subtitle text-center py-1 d-none">
 				At MAPconnected, we're deeply grateful for the incredible support of our sponsors.
 			</h3>
 		</header>
@@ -31,7 +31,7 @@ get_header();
 		if ($partner_group[0] && $partner_group[0]['sponsors_group']) :
 			$sponsors = $partner_group[0]['sponsors_group'];
 		?>
-			<section id="marketplace_sponsor_logos_wrap ">
+			<section id="marketplace_sponsor_logos_wrap mt-4 ">
 				<div class="container--very-narrow theme--medium-1 py-1">
 					<header class="my-1">
 						<h4 class="text-center"><?= $partner_group[0]['label'] ?? "Marketplace Sponsors "; ?></h4>
@@ -48,7 +48,7 @@ get_header();
 					);
 					?>
 					<div class="flex-row justify--center mt-1 ">
-						<a href="https://www.mywarrantynetwork.com" class="text-link fw-semi-bold text-uppercase">Show me the marketplace</a>
+						<a href="https://www.mywarrantynetwork.com/sponsormarketplace" class="text-link fw-semi-bold text-uppercase">Show me the marketplace</a>
 					</div>
 				</div>
 			</section>
