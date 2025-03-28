@@ -1621,7 +1621,8 @@ p {
 .splide__slide > img {
   max-height: 100%;
   max-width: 100%;
-  width: initial;
+  height: auto;
+  width: 100%;
   min-width: 0;
 }
 
