@@ -4,9 +4,9 @@
  */
 import { initSplide } from './initSplide.js';
 
+// document.addEventListener( 'DOMContentLoaded', () => {
 initSplide();
-document.addEventListener( 'load', () => {
-} );
+// } );
 
 // How to call a custom JS function
 import './exampleFunction.js';

@@ -13,14 +13,9 @@
 	// flex: 0 0 auto;;
 }
 .splide__slide > img {
-max-height: 100%;
-width: auto;
-min-width: 10px;
-// max-width: 100%;
-// height: auto;
-// width: 100%;
-// min-width: 0;
-
+	height: 100%;
+	width: auto;
+	flex: 1;
 }
 .splide, .splide__track, .splide__list	{
 	height: 100%;
