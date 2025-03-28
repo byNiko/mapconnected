@@ -7,7 +7,7 @@ export function initSplide() {
 		slide.parentElement.parentElement.style.height = slide.offsetHeight + 'px';
 	};
 
-	document.addEventListener( 'DOMContentLoaded', function() {
+	document.addEventListener( 'load', function() {
 		// Query all sliders
 		const splideElements = document.querySelectorAll( '.splide' );
 
