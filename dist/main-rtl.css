@@ -1611,6 +1611,7 @@ p {
   max-height: 100%;
   max-width: 100%;
   width: initial;
+  min-width: 0;
 }
 
 .splide:not(.is-overflow) .splide__arrows {
