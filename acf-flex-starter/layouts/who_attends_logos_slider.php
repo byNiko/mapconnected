@@ -14,7 +14,7 @@ $splideOptions = filter_empty_values([
 	'autoScroll'=>['speed'=> ".5"],
 	// 'clones'=> 0,
 	'cover' => false,
-	'autoWidth' => false,
+	'autoWidth' => true,
 	'gap' => "1rem",
 	'fixedHeight' => "40px",
 	"lazyLoad" => 'nearby',
@@ -44,7 +44,7 @@ if ($gallery) : ?>
 							$url = wp_get_attachment_image_url($imageID, 'small');
 							$alt = get_post_meta($imageID, '_wp_attachment_image_alt', true) ?: "Attending Member Log";
 						?>
-							<div class="splide__slide who_attends_logos-gallery-slide" style="width: 200px">
+							<div class="splide__slide who_attends_logos-gallery-slide" >
 								<?php
 								echo "<img  src='". get_transparent_img_src()."' data-splide-lazy='$url' alt='$alt'/>"
 								// echo "<img src='$url'  alt='$alt'/>"
