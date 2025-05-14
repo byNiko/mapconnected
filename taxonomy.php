@@ -13,7 +13,7 @@ global $wp_query;
 ?>
 
 
-<main id="primary" class="site-main">fggg
+<main id="primary" class="site-main">fff
 	<?php if (have_posts()) : ?>
 			<header class="page-header">
 			</header><!-- .page-header -->

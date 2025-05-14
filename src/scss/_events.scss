@@ -18,11 +18,10 @@
 		font-weight: 500;
 	}
 	.site-content {
-	
-		margin-top: var(--spacer-body-top-margin, 2rem);
 		display:grid;
 		@include bp(md){
-		grid-template-columns : 1fr var(--sidebar-width);}}
+		grid-template-columns : 1fr var(--sidebar-width);}
+	}
 	
 	
 	.sidebar {
@@ -31,7 +30,7 @@
 		}
 	}
 	.event-sidebar {
-		margin-top: 1rem;
+		// margin-top: 1rem;
 	}
 }
 

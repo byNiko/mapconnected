@@ -1,1 +1,6 @@
 
+.has-sidebar {
+	.site-content{
+		padding-block: var(--spacer-body-top-margin, 2rem);
+	}
+}

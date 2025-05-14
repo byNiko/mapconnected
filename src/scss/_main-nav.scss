@@ -24,7 +24,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		width: 80%;
+		width: 90%;
 		margin-top: 2rem;
 		row-gap: var(--spacer);
 		@include bp(md) {
@@ -48,6 +48,7 @@
 
 .main-navigation {
 	@include bp(md){
+		width:100%;
 		// margin-left: auto;
 		// margin-right: auto;
 	}
@@ -70,6 +71,7 @@
 
 		@include bp(md) {
 			flex-direction: row;
+			justify-content: space-evenly;
 		}
 	}
 
@@ -131,8 +133,6 @@
 		order: 0;
 		position: absolute;
 		right: var(--gap);
-		right:0;
-		top: 0;
 		transform: translateY(-200%);
 		display: flex;
 		align-items: center;
