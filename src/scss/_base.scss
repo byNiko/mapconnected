@@ -186,7 +186,7 @@ body:not(.page-home):not(.single-summit) .site-content {
 
 	a.post-thumbnail {
 		float: left;
-		width: 200px;
+		width: min(50%,300px);
 		margin-right: 1rem;
 	}
 }

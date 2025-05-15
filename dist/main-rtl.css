@@ -1114,7 +1114,7 @@ blockquote p:last-of-type {
 .archive a.post-thumbnail,
 .blog a.post-thumbnail {
   float: right;
-  width: 200px;
+  width: min(50%, 300px);
   margin-left: 1rem;
 }
 
