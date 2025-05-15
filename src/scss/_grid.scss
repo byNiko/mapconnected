@@ -18,8 +18,10 @@
 	}
 
 	.has-sidebar & {
-		flex-direction: row;
-
+		flex-direction: column;
+		@include bp(md) {
+			flex-direction: row;
+		}
 	}
 
 	aside {

@@ -1109,6 +1109,10 @@ blockquote p:last-of-type {
   border-bottom: 1px solid #ccc;
   padding-block: 2rem 2rem;
 }
+.archive .hentry:first-of-type,
+.blog .hentry:first-of-type {
+  margin-top: 0;
+}
 .archive a.post-thumbnail,
 .blog a.post-thumbnail {
   float: left;
@@ -1132,7 +1136,12 @@ blockquote p:last-of-type {
   overflow: hidden;
 }
 .has-sidebar .site-content {
-  flex-direction: row;
+  flex-direction: column;
+}
+@media screen and (min-width: 50rem) {
+  .has-sidebar .site-content {
+    flex-direction: row;
+  }
 }
 @media screen and (min-width: 50rem) {
   .site-content aside {
