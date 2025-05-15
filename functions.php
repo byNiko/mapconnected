@@ -573,3 +573,9 @@ function acf_make_first_tab_default_on_load() {
 	</script>
 <?php
 }
+
+
+add_filter( 'get_the_archive_title', 'remove_string_from_archive_title', 10, 3 );
+function remove_string_from_archive_title( $title,  $original_title,  $prefix ) {
+return $original_title;
+}

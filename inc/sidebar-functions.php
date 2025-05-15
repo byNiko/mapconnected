@@ -12,6 +12,7 @@ function byniko_has_sidebar(){
 	$has_sidebar = array(
 		is_singular('event'),
 		is_singular('post'),
+		is_category(),
 		is_post_type_archive(
 			array('')
 		),

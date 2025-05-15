@@ -972,7 +972,9 @@ html {
   }
 }
 
-html, body, .site {
+html,
+body,
+.site {
   height: 100%;
   scroll-padding: var(--scroll-padding);
   color: var(--color-text);
@@ -1095,6 +1097,21 @@ blockquote p:last-of-type {
 
 .page-become-a-sponsor .icon-grid__wrapper {
   border-radius: var(--border-radius);
+}
+
+.archive .hentry,
+.blog .hentry {
+  margin-block: 2rem;
+  clear: both;
+  overflow: hidden;
+  border-bottom: 1px solid #ccc;
+  padding-block: 2rem 2rem;
+}
+.archive a.post-thumbnail,
+.blog a.post-thumbnail {
+  float: right;
+  width: 200px;
+  margin-left: 1rem;
 }
 
 .site {
