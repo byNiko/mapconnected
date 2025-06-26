@@ -579,3 +579,49 @@ add_filter( 'get_the_archive_title', 'remove_string_from_archive_title', 10, 3 )
 function remove_string_from_archive_title( $title,  $original_title,  $prefix ) {
 return $original_title;
 }
+
+function mytheme_register_custom_button_styles() {
+	// Secondary button
+	register_block_style(
+		'core/button',
+		array(
+			'name'  => 'accent',
+			'label' => __('Accent', 'mytheme'),
+			'inline_style' => '
+		  .is-style-accent .wp-block-button__link:hover {
+			background-color: transparent;
+			color: var(--wp--preset--color--accent);
+		  }
+		',
+		)
+	);
+
+	// Secondary outline button
+	register_block_style(
+		'core/button',
+		array(
+			'name'  => 'accent-outline',
+			'label' => __('Accent Outline', 'mytheme'),
+			'inline_style' => '
+		  .is-style-accent-outline .wp-block-button__link:hover {
+			background-color: transparent;;
+			color: color-mix(in srgb, var(--wp--preset--color--accent), darkorange 50%); 
+		  }
+		',
+		)
+	);
+	// Secondary outline button
+	register_block_style(
+		'core/heading',
+		array(
+			'name'  => 'display',
+			'label' => __('Display', 'mytheme'),
+			'inline_style' => '
+		  .is-style-display {
+			
+		  }
+		',
+		)
+	);
+}
+add_action('init', 'mytheme_register_custom_button_styles');

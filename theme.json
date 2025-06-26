@@ -11,7 +11,13 @@
 			"customGradient": true,
 			"defaultGradients": true,
 			"duotone": [],
-			"gradients": [],
+			"gradients": [
+				{
+					"name": "Primary Gradient",
+					"slug": "primary-gradient",
+					"gradient": "linear-gradient(0deg, var(--wp--preset--color--primary) 0%, var(--wp--preset--color--primary-text) 100%)"
+				}
+			],
 			"link": false,
 			"text": true,
 			"defaultPalette": false,
@@ -24,25 +30,30 @@
 				{
 					"name": "Real White",
 					"slug": "white-real",
-					"color": "#ffffff"
+					"color": "#fff"
 				},
 				{
-					"name": "Orange",
-					"slug": "orange",
-					"color": "orange"
+					"name": "Primary",
+					"slug": "primary",
+					"color": "#017969"
 				},
 				{
-					"name": "Purple",
-					"slug": "purple",
-					"color": "purple"
+					"name": "Primary Text",
+					"slug": "primary-text",
+					"color": "#01590f"
+				},
+				{
+					"name": "Accent",
+					"slug": "accent",
+					"color": "#ffc223"
 				}
 			]
 		},
 		"border": {
-			"color": false,
-			"radius": false,
-			"style": false,
-			"width": false
+			"color": true,
+			"radius": true,
+			"style": true,
+			"width": true
 		},
 		"dimensions": {
 			"aspectRatio": false,
@@ -100,24 +111,24 @@
 					"slug": "large"
 				},
 				{
-					"name": "X-Large",
+					"name": "Xl",
 					"size": "1.5rem",
 					"slug": "xl"
 				},
 				{
-					"name": "XX-Large",
+					"name": "2Xl",
 					"size": "2rem",
-					"slug": "xxl"
+					"slug": "2xl"
 				},
 				{
-					"name": "XXX-Large",
+					"name": "3Xl",
 					"size": "2.5rem",
-					"slug": "xxxl"
+					"slug": "3xl"
 				},
 				{
-					"name": "XXXX-Large",
+					"name": "4Xl",
 					"size": "4rem",
-					"slug": "xxxxl"
+					"slug": "4xl"
 				}
 			],
 			"fontStyle": true,
@@ -130,19 +141,15 @@
 			"textTransform": true
 		},
 		"blocks": {
-			"core/paragraph": {
-				"border": {},
-				"color": {},
-				"custom": {},
-				"layout": {},
-				"spacing": {},
+			"core/button": {
 				"typography": {
+				},
+				"color": {
+					"text": true
 				}
 			},
 			"core/heading": {
-				"typography": {
-					
-				}
+				"typography": {}
 			}
 		},
 		"custom": {
@@ -153,6 +160,70 @@
 		}
 	},
 	"styles": {
+		"blocks": {
+			"core/heading": {
+				"variations": {
+					"display": {
+						"background": {
+						},
+						"typography": {
+							"fontSize": "var(--font-size--xxxxl)", 
+							"letterSpacing": "-.07em",
+							"fontWeight": "800",
+							"lineHeight": "1.2"
+						}
+					}
+				}
+			},
+			"core/button": {
+				"variations": {
+					"outline": {
+
+					},
+					"accent":{
+						"color": {
+							"background": "var(--wp--preset--color--accent)"
+						},
+						"border": {
+							"style": "solid",
+							"width": "2px",
+							"color": "var(--wp--preset--color--accent)"
+						}
+					},
+					"accent-outline":{
+						"color": {
+							"background": "transparent",
+							"text": "var(--wp--preset--color--accent)"
+						},
+						"border": {
+							"style": "solid",
+							"width": "2px",
+							"color": "currentColor"
+						}
+					}
+
+				},
+				"spacing": {
+					"padding": {
+						"top": "var(--spacer-3) ",
+						"right": "var(--spacer-5)",
+						"bottom": "var(--spacer-3)",
+						"left": "var(--spacer-5)"
+					}
+				},
+				"color": {
+					"background": "var(--wp--preset--color--primary)"
+				},
+				"typography": {
+					"fontWeight": "500",
+					"fontSize": "var(--font-size--md)",
+					"lineHeight": "1"
+				},
+				"border": {
+					"radius": "var(--radius-btn)"
+				}
+			}
+		},
 		"spacing": {
 			"margin": {
 				"top": "0px",
@@ -168,16 +239,13 @@
 			}
 		},
 		"color": {
-			
 			"background": "var(--body-bg)"
 		},
 		"typography": {
-			"fontFamily": "var(--font-family--main)",
+			"fontSize": "var(--font-size--md)",
 			"fontWeight": "300"
 		},
 		"elements": {
-			"button": {
-			},
 			"h1": {},
 			"heading": {
 				"typography": {
@@ -189,9 +257,6 @@
 					"text": "var(--color-link)"
 				},
 				":hover": {
-					"typography": {
-						"textDecoration": "none"
-					}
 				},
 				":focus": {
 					"typography": {
@@ -210,8 +275,7 @@
 					"textDecoration": "none"
 				}
 			},
-			"h2": {
-			}
+			"h2": {}
 		}
 	}
 }
