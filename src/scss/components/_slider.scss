@@ -2,15 +2,19 @@
 .homepage-top-slider{
 	height:auto;
 	background-color: var(--black);
-	// --slider-aspect-ratio: 2/1;
+	--slider-aspect-ratio: 1.25/1;
+	@include bp(sm){
+		--slider-aspect-ratio: 1.75/1;
+	}
 	@include bp(md){
-		--slider-aspect-ratio: 28/9;
+		--slider-aspect-ratio: 8/3;
 	}
 }
 
 .splide__slide {
 	// min-width: 0;
 	// flex: 0 0 auto;;
+	// padding-block: 4rem;
 }
 .splide__slide > img {
 	height: 100%;
@@ -47,7 +51,7 @@
 	}
 
 	.slide__overlay {
-		@include bp(md){
+		// @include bp(md){
 		position:absolute;
 		top:0;
 		left:0;
@@ -59,7 +63,7 @@
 		justify-content: center;
 		align-items: center;
 		}
-	}
+	// }
 	.inner-slide {
 		max-width: 1080px;
 		width: 95%;
