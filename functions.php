@@ -625,3 +625,13 @@ function mytheme_register_custom_button_styles() {
 	);
 }
 add_action('init', 'mytheme_register_custom_button_styles');
+
+
+
+function byniko_the_testimoial_slider(){
+	ob_start();
+	get_template_part('/acf-flex-starter/templates/testimonial-slider');
+	return ob_get_clean();
+}
+
+add_shortcode('testimonial-slider', 'byniko_the_testimoial_slider');
