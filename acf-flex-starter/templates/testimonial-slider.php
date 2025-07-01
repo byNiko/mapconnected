@@ -31,25 +31,25 @@ $splideOptions = filter_empty_values([
 	'gap' => "2rem",
 	'omitEnd' => false,
 	'updateOnMove' => true,
-	'breakpoints'=>[
-		'1600'=> [
+	'adaptiveHeight' => true, // custom option to auto adjust height per slide
+	'breakpoints' => [
+		'1600' => [
 			'perPage' => 3,
-			'autoplay' => true
+			// 'autoplay' => true
 			// 'destroy'=> true,
 		],
-		'1180'=> [
+		'1180' => [
 			'perPage' => 2,
-			'autoplay' => true
+			// 'autoplay' => true
 			// 'destroy'=> true,
 		],
-		'800'=> [
+		'800' => [
 			'perPage' => 1,
-			'autoplay' => true
+			// 'autoplay' => true
 			// 'destroy'=> true,
 		]
-			]
+	]
 	// 'breakpoints' => $breakpoints,
-	//'adaptiveHeight' => true, // custom option to auto adjust height per slide
 	// More Splide.js options can be added here
 ], ['pagination', 'arrows', 'pauseOnHover']); // Retain false values for these keys
 
@@ -74,11 +74,8 @@ $arrowSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" view
 								$video_url = $t->get_video_url();
 								?>
 								<li class="splide__slide <?= $video_url ? "has-video" : null; ?>">
-									<div class="testimonial-card testimonial-slider--item d-flex <?= $video_url ? "has-video" : null; ?> ">
-										<div class="testimonial-card__quote-wrapper">
-											<q><?= $t->get_short_quote(); ?></q>
-											<?php get_template_part('/template-parts/components/testimonial-footer', null, array('testimonial' => $t)); ?>
-										</div>
+									<div class="testimonial-slider--item  <?= $video_url ? "has-video" : null; ?> ">
+										<?= $t->get_single_testimonial_html(); ?>
 									</div>
 								</li>
 							<?php endforeach; ?>

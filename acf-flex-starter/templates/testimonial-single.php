@@ -23,7 +23,7 @@ foreach ($posts as $p) :
 
 	$t = new Testimonial($p);
 
-	$_SESSION['testimonials_on_page'][] = $p->ID;
+	$_SESSION['testimonials_on_page'][] = $t->ID;
 	$vertical_image = $t->get_vertical_image();
 	$company_logo = $t->get_company_logo();
 	$vm = $t->video_url ? new VideoModal($t->video_url, $t->get_name()) : null;
@@ -31,8 +31,8 @@ foreach ($posts as $p) :
 
 ?>
 
-	<div class="flexible-content-wrap">
-		<?= $t->get_single_testimonial_html(); ?>
+	<div class="flexible-content-wrap ">
+		<?= $t->get_single_testimonial_html('single-testimonial__wrap '); ?>
 	</div>
 
 <?php endforeach; ?>

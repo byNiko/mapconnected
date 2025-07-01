@@ -11,7 +11,9 @@ class Testimonial {
 	private $vertical_image;
 	private $name;
 	public $video_embed;
+	public $ID;
 	public function __construct($post) {
+		$this->ID = $post->ID;
 		$this->name = $post->post_title;
 		$this->has_video = get_field('has_video', $post);
 		$this->video_url = ($this->has_video && get_field('video_url', $post)) ? get_field('video_url', $post, false) : false;
@@ -66,31 +68,42 @@ class Testimonial {
 		return $this->vertical_image;
 	}
 
-	public function get_single_testimonial_html() {
+	public function the_vertical_image() {
+		if ($this->get_vertical_image()) {
+			echo '<div class="testimonials-card__image-wrapper">';
+			echo wp_get_attachment_image($this->vertical_image['id'], 'portrait');
+			echo '</div>';
+		}
+	}
+
+	public function get_single_testimonial_html($wrapper_class = '') {
 		$vm = $this->video_url ? new VideoModal($this->video_url, $this->get_name()) : null;
-		$has_video = $vm ?  "testimonial_has_video" : '';
+		// $has_video = $vm ?  "testimonial_has_video" : '';
 
 		$footer = byniko_load_template_part('/template-parts/components/testimonial-footer', null, array('testimonial' => $this));
 		$video_modal = $vm ? $vm->get_video_modal_html() : '';
+
 		$format = '
-		<div class="single-testimonial %1$s theme--false">
-			<div class="single-testimonial__wrap">
-				<div>
+		<div class="testimonial__wrap %1$s">
+
+		<div class="testimonial-card">
+
+				<div class="testimonial-card__quote-wrapper">
 					<blockquote>
 						%2$s
 					</blockquote>
+					</div>
 					%3$s
-				</div>
-					%4$s
 			</div>
-	
+			%4$s
 		</div>';
 		return sprintf(
 			$format,
-			$has_video,
+			$wrapper_class,
 			$this->get_short_quote(),
 			$footer,
-			$video_modal
+			$video_modal,
+			
 		);
 	}
 }
