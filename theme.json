@@ -38,6 +38,16 @@
 					"color": "#017969"
 				},
 				{
+					"name": "Primary 50",
+					"slug": "primary-50",
+					"color": "#EBF2EC"
+				},
+				{
+					"name": "Primary 75",
+					"slug": "primary-75",
+					"color": "#B2CFCB"
+				},
+				{
 					"name": "Primary Text",
 					"slug": "primary-text",
 					"color": "#01590f"

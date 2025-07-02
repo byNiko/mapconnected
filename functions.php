@@ -462,7 +462,7 @@ function register_front_end_intake_acf_forms() {
 			'updated_message' => __("<h1>Post updated</h1><div>Thanks! We got your info</div>", 'acf'),
 			'uploader' => 'wp', // wp | baseic
 		));
-		
+
 		// Register Speaker Intake form.
 		acf_register_form(array(
 			'id'       => 'new-speaker',
@@ -571,13 +571,13 @@ function acf_make_first_tab_default_on_load() {
 			$('.acf-tab-group li:first-child a').trigger("click");
 		});
 	</script>
-<?php
+	<?php
 }
 
 
-add_filter( 'get_the_archive_title', 'remove_string_from_archive_title', 10, 3 );
-function remove_string_from_archive_title( $title,  $original_title,  $prefix ) {
-return $original_title;
+add_filter('get_the_archive_title', 'remove_string_from_archive_title', 10, 3);
+function remove_string_from_archive_title($title,  $original_title,  $prefix) {
+	return $original_title;
 }
 
 function mytheme_register_custom_button_styles() {
@@ -628,10 +628,56 @@ add_action('init', 'mytheme_register_custom_button_styles');
 
 
 
-function byniko_the_testimoial_slider(){
+function byniko_the_testimoial_slider() {
 	ob_start();
 	get_template_part('/acf-flex-starter/templates/testimonial-slider');
 	return ob_get_clean();
 }
 
 add_shortcode('testimonial-slider', 'byniko_the_testimoial_slider');
+
+function byniko_sponsor_logos_slider($args = []) {
+	ob_start();
+	$sponsors = get_field('sponsors_group');
+	if ($sponsors) :
+		$args = wp_parse_args($args, [
+		]);
+		$count = count($sponsors);
+		$group1 = array_slice($sponsors, 0, intval(ceil($count / 2)));
+		$group2 = array_slice($sponsors, intval(floor($count / 2)));
+
+	?>
+		<section id="curent_prev_sponsors" class=" p-relative">
+			<div class="">
+				<div class=" pt-1">
+					<?php
+					get_template_part(
+						'/acf-flex-starter/layouts/sponsor_logos_slider',
+						null,
+						array(
+							'sponsors' => $group1,
+							'slider_options' => ['perPage' => "8"]
+						)
+					);
+					?>
+				</div>
+				<div class=" py-1 ">
+					<?php
+					get_template_part(
+						'/acf-flex-starter/layouts/sponsor_logos_slider',
+						null,
+						array(
+							'sponsors' => $group2,
+							'slider_options' => ['perPage' => "8", 'autoScroll' => ['speed' => '-.25']]
+						)
+					);
+					?>
+				</div>
+			</div>
+		</section>
+<?php
+	endif;
+	return ob_get_clean();
+}
+
+add_shortcode('sponsor-logos-slider', 'byniko_sponsor_logos_slider');
