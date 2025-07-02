@@ -74,14 +74,17 @@ return $this->name;
 		return $this->headshot2_object;
 	}
 	public function get_headshot2() {
-		return wp_get_attachment_image($this->get_headshot2_object()['ID'], 'full');
+		if($this->headshot2_object && $ID = $this->get_headshot2_object()['ID'])
+			return wp_get_attachment_image($ID, 'full');
 	}
 
 	public function get_headshot2_url($size = 'large') {
-		return wp_get_attachment_image_src($this->get_headshot2_object()['ID'], $size)[0];
+		if($this->headshot2_object && $ID = $this->get_headshot2_object()['ID'])
+			return wp_get_attachment_image_src($ID, $size)[0];
 	}
 	public function get_secondary_image_data() {
-		return wp_get_attachment_metadata($this->get_headshot2_object()['ID']);
+		if($this->headshot2_object && $ID = $this->get_headshot2_object()['ID'])
+			return wp_get_attachment_metadata($ID);
 	}
 	public function get_associated_events() {
 		return $this->associated_events;

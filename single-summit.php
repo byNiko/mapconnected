@@ -12,6 +12,33 @@ get_header();
 		<div class="secondary-nav__wrapper">
 			<?php get_template_part('/template-parts/summit/summit', 'secondary-nav'); ?>
 		</div>
+		<section id="title-section" class="title-section py-4">
+			<header class="text-center">
+				<div class="fz-xxxl fw-extra-bold summit-title"><?= $s->theme_title; ?></div>
+				<div class="summit-subtitle"><?= $s->theme_subtitle; ?></div>
+			</header>
+			<div class="container--narrow">
+				<div class="flex-row __2x">
+					<div class="col">
+						<div class="text-block">
+							<?= $s->theme_summit_text; ?>
+						</div>
+						<?php echo $s->getRegistrationLinksSection();	?>
+
+					</div>
+					<div class="col flex-column gap-1">
+						<div class="video-container">
+							<?= $s->get_promotional_video(); ?>
+						</div>
+						<div class="flex-row justify--center">
+							<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')); ?>" class="button button--secondary">Become a Sponsor</a>
+							<a href="<?= get_permalink($byniko->get_page_by_title('Become a Speaker')); ?>" class="button button--secondary">Become a Speaker</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
 		<?php get_template_part('/template-parts/summit/summit', 'landing-section', ['summit-data' => $s]); ?>
 	</section>
 	<?php
@@ -37,33 +64,7 @@ get_header();
 	<?php endif;
 	endif; ?>
 
-	<section id="title-section" class="title-section py-4">
-		<header class="text-center">
-			<div class="fz-xxxl fw-extra-bold summit-title"><?= $s->theme_title; ?></div>
-			<div class="summit-subtitle"><?= $s->theme_subtitle; ?></div>
-		</header>
-		<div class="container--narrow">
-			<div class="flex-row __2x">
-				<div class="col">
-					<div class="text-block">
-						<?= $s->theme_summit_text; ?>
-					</div>
-					<?php echo $s->getRegistrationLinksSection();	?>
 
-				</div>
-				<div class="col flex-column gap-1">
-					<div class="video-container">
-						<?= $s->get_promotional_video(); ?>
-					</div>
-					<div class="flex-row justify--center">
-						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')); ?>" class="button button--secondary">Become a Sponsor</a>
-						<a href="<?= get_permalink($byniko->get_page_by_title('Become a Speaker')); ?>" class="button button--secondary">Become a Speaker</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<?php
 	if (get_field('attending_companies_group')) :
