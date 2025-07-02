@@ -55,7 +55,7 @@ return $this->name;
 		return $this->headshot1_object;
 	}
 	public function get_headshot1() {
-		if ($ID = $this->get_headshot1_object()['ID'])
+		if($this->headshot1_object && $ID = $this->get_headshot1_object()['ID'])
 			return wp_get_attachment_image($ID, 'portrait');
 	}
 	public function get_the_headshot1() {
