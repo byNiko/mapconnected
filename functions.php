@@ -651,8 +651,7 @@ function byniko_sponsor_logos_slider($args = []) {
 	ob_start();
 	$sponsors = get_field('sponsors_group');
 	if ($sponsors) :
-		$args = wp_parse_args($args, [
-		]);
+		$args = wp_parse_args($args, []);
 		$count = count($sponsors);
 		$group1 = array_slice($sponsors, 0, intval(ceil($count / 2)));
 		$group2 = array_slice($sponsors, intval(floor($count / 2)));
@@ -686,9 +685,25 @@ function byniko_sponsor_logos_slider($args = []) {
 				</div>
 			</div>
 		</section>
-<?php
+	<?php
 	endif;
 	return ob_get_clean();
 }
 
 add_shortcode('sponsor-logos-slider', 'byniko_sponsor_logos_slider');
+
+
+add_action('after_setup_theme', function () {
+	// Let WordPress know you support block template parts
+	add_theme_support('block-template-parts');
+});
+
+add_action('wp_enqueue_scripts', function () {
+	wp_enqueue_style('wp-block-library');
+});
+
+
+function byniko_register_event_search_widget_block() {
+	register_block_type(__DIR__ . '/blocks/build/event-search');
+}
+add_action('init', 'byniko_register_event_search_widget_block');

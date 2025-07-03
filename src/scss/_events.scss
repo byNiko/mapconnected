@@ -1,10 +1,11 @@
 @use './mixins' as *;
-.event-archive-item-sidebar {
-	
-}
-.event__buttons-list{
+
+.event-archive-item-sidebar {}
+
+.event__buttons-list {
 	gap: var(--spacer-3);
 }
+
 .single-event {
 	.entry-content {
 		display: flex;
@@ -12,23 +13,30 @@
 		gap: var(--grid-gap, 2rem);
 	}
 }
-.single-event,.single-post {
+
+.single-event,
+.single-post {
 	.h1 {
 		font-size: var(--font-size--xl);
 		font-weight: 500;
 	}
+
 	.site-content {
-		display:grid;
-		@include bp(md){
-		grid-template-columns : 1fr var(--sidebar-width);}
-	}
-	
-	
-	.sidebar {
-		dl:last-of-type {
-			margin-bottom: 0;;
+		display: grid;
+
+		@include bp(md) {
+			grid-template-columns: 1fr var(--sidebar-width);
 		}
 	}
+
+
+	.sidebar {
+		dl:last-of-type {
+			margin-bottom: 0;
+			;
+		}
+	}
+
 	.event-sidebar {
 		// margin-top: 1rem;
 	}
@@ -40,28 +48,46 @@
 		width: 80px;
 		border-bottom: 2px solid transparent;
 		transition: border .2s, opacity .2s;
+
 		&:hover {
 			border-color: currentColor;
 			opacity: 1;
 		}
 	}
 }
-
+.event__time-list {
+	--gap: var(--spacer-2);
+	display: flex;
+	flex-direction: column;
+	gap: var(--gap);
+}
 .event__time {
 	display: flex;
+	flex-direction: column;
 	justify-content: space-between;
 	align-items: start;
 	line-height: 1.2;
 	font-size: var(--font-size--sm);
 
+	&:after {
+		content: "";
+		width: 100%;
+		height: 1px;
+		margin-top: var(--gap);
+		border-bottom: 1px dotted;
+		opacity: 0.3;
+	}
+
 }
+
 .event__time-label {
-	text-align:left;
+	text-align: left;
 	max-width: 45%;
 	font-weight: 400;
 }
+
 .event__time-value {
-	margin:0;
+	margin: 0;
 	text-align: right;
 }
 
@@ -72,8 +98,25 @@
 
 .sponsors-grid {
 	display: flex;
-		flex-wrap: wrap;
-		gap: 1.5rem;
-		justify-content: center;
-		align-items: center;
+	flex-wrap: wrap;
+	gap: 1.5rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.events-search__wrapper {
+	display: flex;
+	flex-direction: column;
+	button, input {
+		width: 100%;
+	}
+}
+
+.single-event-sidebar {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacer-2);
+& > * {
+	width: 100%;
+}
 }

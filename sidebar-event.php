@@ -26,7 +26,7 @@ function byniko_get_event_time_list_item($value, $label, $time = true) {
 	// endif;
 }
 ?>
-<aside id="event-sidebar" class="sidebar">
+<aside id="event-sidebar" class="sidebar single-event-sidebar">
 	<?= get_acf_link($event->get_reservation_link(), "$expired_class d-flex justify--center  text-uppercase  has-shadow-1 button button--accent"); 	?>
 	<div class="event__time-list  event-sidebar sidebar--default-theme">
 		<?= $event->is_virtual_event
@@ -70,5 +70,5 @@ function byniko_get_event_time_list_item($value, $label, $time = true) {
 		// endif;
 		?>
 	</div>
-	<?php dynamic_sidebar( 'sidebar-events' ); ?>
+	<?php dynamic_sidebar('sidebar-events'); ?>
 </aside><!-- #secondary -->

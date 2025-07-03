@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "byniko/event-search-widget",
+  "title": "Event Search Widget",
+  "description": "A customizable search bar for widget areas, allowing post type selection.",
+  "category": "widgets",
+  "icon": "search",
+  "keywords": [
+    "search",
+    "form",
+    "widget",
+    "query",
+    "post type"
+  ],
+  "textdomain": "byniko",
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php",
+  "style": "file:./style.css",
+  "attributes": {
+    "placeholder": {
+      "type": "string",
+      "default": "Search...",
+      "source": "attribute",
+      "selector": "input[type='search']",
+      "attribute": "placeholder"
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "Search",
+      "source": "html",
+      "selector": ".wp-block-byniko-event-search-widget button span"
+    },
+    "showButton": {
+      "type": "boolean",
+      "default": true
+    },
+    "postType": {
+      "type": "string",
+      "default": "any"
+    }
+  }
+}

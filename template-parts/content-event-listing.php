@@ -29,7 +29,7 @@ $startDate = $start_datetime ? $start_datetime->format('jS') : null;
 		<div class="event--description">
 			<?
 			if($desc = $event->get_description()){
-				echo wp_trim_words($desc, 55); 
+				echo wp_trim_words($desc, 15); 
 			} else the_excerpt();
 				?> 
 		</div>

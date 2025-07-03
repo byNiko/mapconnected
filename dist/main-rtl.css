@@ -1136,9 +1136,6 @@ blockquote p:last-of-type {
        column-gap: var(--spacer-grid);
   flex-direction: column;
 }
-.site-content main {
-  overflow: hidden;
-}
 .has-sidebar .site-content {
   flex-direction: column;
 }
@@ -3719,19 +3716,23 @@ section[class*=theme--] .slider {
   gap: var(--grid-gap, 2rem);
 }
 
-.single-event .h1, .single-post .h1 {
+.single-event .h1,
+.single-post .h1 {
   font-size: var(--font-size--xl);
   font-weight: 500;
 }
-.single-event .site-content, .single-post .site-content {
+.single-event .site-content,
+.single-post .site-content {
   display: grid;
 }
 @media screen and (min-width: 50rem) {
-  .single-event .site-content, .single-post .site-content {
+  .single-event .site-content,
+  .single-post .site-content {
     grid-template-columns: 1fr var(--sidebar-width);
   }
 }
-.single-event .sidebar dl:last-of-type, .single-post .sidebar dl:last-of-type {
+.single-event .sidebar dl:last-of-type,
+.single-post .sidebar dl:last-of-type {
   margin-bottom: 0;
 }
 .event--sponsors-wrap .event-sponsor {
@@ -3745,12 +3746,28 @@ section[class*=theme--] .slider {
   opacity: 1;
 }
 
+.event__time-list {
+  --gap: var(--spacer-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
+}
+
 .event__time {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: start;
   line-height: 1.2;
   font-size: var(--font-size--sm);
+}
+.event__time:after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  margin-top: var(--gap);
+  border-bottom: 1px dotted;
+  opacity: 0.3;
 }
 
 .event__time-label {
@@ -3775,6 +3792,23 @@ section[class*=theme--] .slider {
   gap: 1.5rem;
   justify-content: center;
   align-items: center;
+}
+
+.events-search__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+.events-search__wrapper button, .events-search__wrapper input {
+  width: 100%;
+}
+
+.single-event-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer-2);
+}
+.single-event-sidebar > * {
+  width: 100%;
 }
 
 .scrollbar-styled::-webkit-scrollbar-track {

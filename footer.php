@@ -1,7 +1,8 @@
 </div> <!-- <div class="site-content"> -->
 
+
 <footer id="colophon" class="site-footer ">
-	<?php get_template_part('/template-parts/components/footer-gallery'); ?>
+
 	<div id="inner-footer" class="inner-footer container">
 		<div class="flex-row no-wrap" style="flex-wrap:nowrap">
 			<div class="first-footer-col">
@@ -22,9 +23,9 @@
 				</div>
 			</div>
 			<div class="footer-col">
-					<div class="footer-col-widgets">
-						<?php dynamic_sidebar( 'footer-1' ); ?>
-					</div>
+				<div class="footer-col-widgets">
+					<?php dynamic_sidebar('footer-1'); ?>
+				</div>
 			</div>
 		</div>
 	</div>
