@@ -22,56 +22,9 @@
 				</div>
 			</div>
 			<div class="footer-col">
-				<div class="flex-row">
-					<div class="footer-col">
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location' 	=> 'menu-3',
-								'menu_class' 		=> 'footer-nav--menu menu',
-								'menu_id'        	=> 'menu-3',
-								'container'			=> 'nav',
-								'container_class'	=> 'footer-nav--container',
-								'container_id'		=> 'footer-nav--container',
-								'item_spacing'		=> 'discard'
-							)
-						);
-						?>
-					</div>
-					<div class="footer-col">
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location' 	=> 'menu-4',
-								'menu_class' 		=> 'footer-nav--menu menu',
-								'menu_id'        	=> 'menu-4',
-								'container'			=> 'nav',
-								'container_class'	=> 'footer-nav--container',
-								'container_id'		=> 'footer-nav--container',
-								'item_spacing'		=> 'discard'
-							)
-						);
-						?>
-					</div>
-					<div class="footer-col">
-						<?php
-						wp_nav_menu(
-							array(
-								'theme_location' 	=> 'menu-5',
-								'menu_class' 		=> 'footer-nav--menu menu',
-								'menu_id'        	=> 'menu-5',
-								'container'			=> 'nav',
-								'container_class'	=> 'footer-nav--container',
-								'container_id'		=> 'footer-nav--container',
-								'item_spacing'		=> 'discard'
-							)
-						);
-						?>
-					</div>
-					<div class="footer-col-wide">
+					<div class="footer-col-widgets">
 						<?php dynamic_sidebar( 'footer-1' ); ?>
 					</div>
-				</div><!-- .site-info -->
 			</div>
 		</div>
 	</div>

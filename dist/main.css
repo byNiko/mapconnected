@@ -3112,6 +3112,16 @@ section[class*=theme--] .slider {
      object-fit: cover;
 }
 
+.footer-col-widgets {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+.footer-col-widgets > * {
+  flex: 1 1 300px;
+}
+
 .primary-navbar {
   position: fixed;
   top: 0;
