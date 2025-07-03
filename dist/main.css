@@ -2090,19 +2090,8 @@ body:not(.wp-admin) section:not(.widget) .with_frm_style .frm_required {
   color: var(--color-text);
 }
 
-.site-footer .with_frm_style legend + h3,
-.site-footer .with_frm_style h3.frm_form_title {
-  font-size: var(--font-size--lg);
-  --title-margin-top: 0;
-  --title-margin-bottom: 0;
-}
-
-.with_frm_style .frm-show-form div.frm_description p {
-  --form-desc-margin-bottom: 0;
-}
-
-.widget_block .wp-block-categories-list {
-  font-size: var(--font-size--sm);
+.site-footer .widget .frm_primary_label {
+  --color-text: #777;
 }
 
 .breadcrumbs {
