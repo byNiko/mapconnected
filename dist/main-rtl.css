@@ -3083,7 +3083,7 @@ section[class*=theme--] .slider {
   font-family: var(--font-family--display);
 }
 .site-footer .footer-col {
-  flex: 1;
+  flex: auto;
 }
 .site-footer .first-footer-col {
   min-width: 13rem;
