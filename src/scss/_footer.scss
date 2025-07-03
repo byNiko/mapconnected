@@ -21,9 +21,17 @@
 		letter-spacing: 1px;
 		font-family: var(--font-family--display);
 	}
+
+	.footer-col {
+		flex:1;
+	}
+	.first-footer-col {
+		min-width: 13rem;
+	}
 	.footer-col-wide {
 		flex: 1;
-		max-width: 400px;
+		min-width: 300px;
+		width: 100%;
 	}
 
 	.menu {

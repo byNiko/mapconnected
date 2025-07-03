@@ -144,9 +144,20 @@ function byniko_widgets_init() {
 	);
 	register_sidebar(
 		array(
-			'name'          => esc_html__('Sidebar 2', 'byniko'),
-			'id'            => 'sidebar-2',
-			'description'   => esc_html__('Sidebar 2 widgets here.', 'byniko'),
+			'name'          => esc_html__('Events Sidebar', 'byniko'),
+			'id'            => 'sidebar-events',
+			'description'   => esc_html__('Sidebar for events widgets here.', 'byniko'),
+			'before_widget' => '<section id="%1$s" class="widget %2$s">',
+			'after_widget'  => '</section>',
+			'before_title'  => '<h2 class="events-widget-title">',
+			'after_title'   => '</h2>',
+		)
+	);
+	register_sidebar(
+		array(
+			'name'          => esc_html__('Footer Widgets', 'byniko'),
+			'id'            => 'footer-1',
+			'description'   => esc_html__('Footer Widgets', 'byniko'),
 			'before_widget' => '<section id="%1$s" class="widget %2$s">',
 			'after_widget'  => '</section>',
 			'before_title'  => '<h2 class="widget-title">',

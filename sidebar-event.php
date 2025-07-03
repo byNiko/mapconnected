@@ -58,8 +58,8 @@ function byniko_get_event_time_list_item($value, $label, $time = true) {
 				if ($layout == 'download') {
 					$file_url = get_sub_field('download_file');
 					$label = get_sub_field('download_label') ?: "Download";
-					if($file_url && $label)
-					echo "<a href='$file_url' class='button button--tertiary button--outline' download>$label <span class='dashicons dashicons-download'></span></a>";
+					if ($file_url && $label)
+						echo "<a href='$file_url' class='button button--tertiary button--outline' download>$label <span class='dashicons dashicons-download'></span></a>";
 				}
 			endwhile;
 		endif;
@@ -70,4 +70,5 @@ function byniko_get_event_time_list_item($value, $label, $time = true) {
 		// endif;
 		?>
 	</div>
+	<?php dynamic_sidebar( 'sidebar-events' ); ?>
 </aside><!-- #secondary -->

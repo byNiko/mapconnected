@@ -2046,8 +2046,8 @@ section.theme--dark-1, section.theme--dark-gradient-1, .modal.modal-form section
   display: none;
 }
 
-body:not(.wp-admin) .frm_form_field input:not([type=search]),
-body:not(.wp-admin) .frm_form_field textarea {
+body:not(.wp-admin) section:not(.widget) .frm_form_field input:not([type=search]),
+body:not(.wp-admin) section:not(.widget) .frm_form_field textarea {
   --bg-color: var(--color-primary-900);
   border: 1px dotted var(--color-secondary-400);
   --border-color: var(--color-primary-1000);
@@ -2055,28 +2055,48 @@ body:not(.wp-admin) .frm_form_field textarea {
   border-radius: var(--radius-input);
   --field-height: 39px;
 }
-body:not(.wp-admin) .frm_form_field input:not([type=search]):focus,
-body:not(.wp-admin) .frm_form_field textarea:focus {
+body:not(.wp-admin) section:not(.widget) .frm_form_field input:not([type=search]):focus,
+body:not(.wp-admin) section:not(.widget) .frm_form_field textarea:focus {
   --text-color: white;
   background-color: var(--color-primary-cta) !important;
 }
-body:not(.wp-admin) .frm_style_formidable-style.with_frm_style div.frm_description,
-body:not(.wp-admin) .frm_style_formidable-style.with_frm_style p.description, body:not(.wp-admin) .frm_style_formidable-style.with_frm_style div.description, body:not(.wp-admin) .frm_style_formidable-style.with_frm_style div.frm_description, body:not(.wp-admin) .frm_style_formidable-style.with_frm_style .frm-show-form > div.frm_description, body:not(.wp-admin) .frm_style_formidable-style.with_frm_style .frm_error, body:not(.wp-admin) .frm_style_formidable-style.with_frm_style .frm_pro_max_limit_desc {
+body:not(.wp-admin) section:not(.widget) .frm_style_formidable-style.with_frm_style div.frm_description,
+body:not(.wp-admin) section:not(.widget) .frm_style_formidable-style.with_frm_style p.description,
+body:not(.wp-admin) section:not(.widget) .frm_style_formidable-style.with_frm_style div.description,
+body:not(.wp-admin) section:not(.widget) .frm_style_formidable-style.with_frm_style div.frm_description,
+body:not(.wp-admin) section:not(.widget) .frm_style_formidable-style.with_frm_style .frm-show-form > div.frm_description,
+body:not(.wp-admin) section:not(.widget) .frm_style_formidable-style.with_frm_style .frm_error,
+body:not(.wp-admin) section:not(.widget) .frm_style_formidable-style.with_frm_style .frm_pro_max_limit_desc {
   color: var(--color-text);
   opacity: 0.7;
 }
-body:not(.wp-admin) .frm_style_formidable-style.with_frm_style {
+body:not(.wp-admin) section:not(.widget) .frm_style_formidable-style.with_frm_style {
   --section-color: var(--color-text);
   --section-font-size: 1.25rem;
 }
-body:not(.wp-admin) .frm_style_formidable-style.with_frm_style .frm_submit button {
+body:not(.wp-admin) section:not(.widget) .frm_style_formidable-style.with_frm_style .frm_submit button {
   background: var(--color-primary-accent);
   border: 1px solid var(--color-primary-800);
   box-shadow: none;
 }
-body:not(.wp-admin) .with_frm_style .frm_required {
+body:not(.wp-admin) section:not(.widget) .with_frm_style .frm_required {
   color: var(--color-primary-accent);
   color: var(--color-text);
+}
+
+.site-footer .with_frm_style legend + h3,
+.site-footer .with_frm_style h3.frm_form_title {
+  font-size: var(--font-size--lg);
+  --title-margin-top: 0;
+  --title-margin-bottom: 0;
+}
+
+.with_frm_style .frm-show-form div.frm_description p {
+  --form-desc-margin-bottom: 0;
+}
+
+.widget_block .wp-block-categories-list {
+  font-size: var(--font-size--sm);
 }
 
 .breadcrumbs {
@@ -3073,9 +3093,16 @@ section[class*=theme--] .slider {
   letter-spacing: 1px;
   font-family: var(--font-family--display);
 }
+.site-footer .footer-col {
+  flex: 1;
+}
+.site-footer .first-footer-col {
+  min-width: 13rem;
+}
 .site-footer .footer-col-wide {
   flex: 1;
-  max-width: 400px;
+  min-width: 300px;
+  width: 100%;
 }
 .site-footer .menu {
   list-style-type: none;
