@@ -3119,7 +3119,7 @@ section[class*=theme--] .slider {
   gap: 1rem;
 }
 .footer-col-widgets > * {
-  flex: 1 1 300px;
+  flex: auto;
 }
 
 .primary-navbar {
