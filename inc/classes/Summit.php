@@ -45,6 +45,10 @@ class Summit {
 		return $key ?  $dates[$key] : $dates;
 	}
 
+	public function has_summit_logo() {
+		return wp_validate_boolean($this->summit_logo_id);
+	}
+
 	public function get_summit_logo() {
 		return wp_get_attachment_image($this->summit_logo_id, 'full');
 	}

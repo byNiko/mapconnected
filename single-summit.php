@@ -37,9 +37,10 @@ get_header();
 
 					</div>
 				</div>
+				<?php get_template_part('/template-parts/summit/summit', 'landing-section', ['summit-data' => $s]); ?>
 			</div>
 		</section>
-		<?php get_template_part('/template-parts/summit/summit', 'landing-section', ['summit-data' => $s]); ?>
+
 	</section>
 	<?php
 	if ($key_speakers = get_field('speakers_group')) :

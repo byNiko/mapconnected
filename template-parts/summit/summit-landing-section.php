@@ -37,9 +37,11 @@ if (have_rows('landing_section')) :
 		the_row();
 ?>
 		<div class="container--narrow landing__container">
+			<?php if ($s->has_summit_logo()): ?>
 			<div class="summit-logo text-center">
 				<?= $s->get_summit_logo(); ?>
 			</div>
+			<?php endif; ?>
 			<div class="landing__text">
 				<?= $s->landing_text; ?>
 			</div>
