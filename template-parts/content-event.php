@@ -68,7 +68,7 @@ $expired_class = $event->is_past()? "event-started" : null;
 		?>
 			<section class="event--sponsors-wrap ">
 			<h5 class="h5">Sponsor<?= $plural ?  "s" : "";?></h5>
-			<div class="flex-row align-center justify--space-evenly px-1 py-1 theme--medium-1 border-radius-1">
+			<div class="sponsors-grid align-center justify--space-evenly px-1 py-1 theme--medium-1 border-radius-1">
 					<?php
 					foreach ($sponsors as $sponsor) :
 						$sponsor = new Sponsor($sponsor);
