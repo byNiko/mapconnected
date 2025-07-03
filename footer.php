@@ -69,7 +69,7 @@
 						?>
 					</div>
 					<div class="footer-col-wide">
-						<?php echo FrmFormsController::get_form_shortcode(array('id' => 3)); ?>
+						<?php dynamic_sidebar( 'footer-1' ); ?>
 					</div>
 				</div><!-- .site-info -->
 			</div>
