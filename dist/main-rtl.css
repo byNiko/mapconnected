@@ -3789,24 +3789,24 @@ section[class*=theme--] .slider {
   scrollbar-width: thin;
 }
 
-.widget-area .frm_fields_container {
+.widget .frm_fields_container {
   display: flex !important;
   flex-direction: column !important;
 }
-.widget-area .frm_forms.with_frm_style.frm_inline_form.frm_style_formidable-style {
+.widget .frm_forms.with_frm_style.frm_inline_form.frm_style_formidable-style {
   width: 100%;
 }
-.widget-area .frm_button_submit.frm_button_submit {
+.widget .frm_button_submit.frm_button_submit {
   width: 100% !important;
   background: var(--color-primary-300) !important;
 }
-.widget-area .frm_style_formidable-style.with_frm_style .form-field {
+.widget .frm_style_formidable-style.with_frm_style .form-field {
   margin-bottom: 0;
 }
-.widget-area .frm_style_formidable-style.with_frm_style .form-field input {
+.widget .frm_style_formidable-style.with_frm_style .form-field input {
   background: var(--color-primary-25);
 }
-.widget-area .with_frm_style .frm_form_fields > fieldset {
+.widget .with_frm_style .frm_form_fields > fieldset {
   padding-bottom: 0;
 }
 
