@@ -3115,7 +3115,7 @@ section[class*=theme--] .slider {
 .footer-col-widgets > * {
   flex: auto;
 }
-.footer-col-widgets > * > .widget {
+.footer-col-widgets > * .widget {
   width: 100%;
 }
 
