@@ -53,11 +53,12 @@
 	flex-wrap:wrap;
 	justify-content: center;
 	gap: 1rem;
-	.widget > .widget{
-		width: 100%;
-	}
+	
 	& > * {
 		flex: auto;
 		// min-width: 300px;
+		& > .widget{
+			width: 100%;
+		}
 	}
 }

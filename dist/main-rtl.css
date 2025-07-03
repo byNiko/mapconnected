@@ -3112,11 +3112,11 @@ section[class*=theme--] .slider {
   justify-content: center;
   gap: 1rem;
 }
-.footer-col-widgets .widget > .widget {
-  width: 100%;
-}
 .footer-col-widgets > * {
   flex: auto;
+}
+.footer-col-widgets > * > .widget {
+  width: 100%;
 }
 
 .primary-navbar {
