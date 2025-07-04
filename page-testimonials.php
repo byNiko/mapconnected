@@ -50,7 +50,7 @@ shuffle($content_items);
 	.loading {
 		text-align: center;
 		position: absolute;
-		top: 25cqh;
+		top: 5cqh;
 		/* left: 50%; */
 		/* transform: translateX(-50%); */
 		font-size: var(--font-size--lg);
