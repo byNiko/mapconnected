@@ -78,15 +78,17 @@ shuffle($content_items);
 
 	.grid-item {
 		opacity: 0;
-		transition: opacity .5s;
+		transform: translatey(20px);
+		transition: opacity .5s ease-in-out, transform .5s ease-in-out;
 		container-type: inline-size;
 		position: absolute;
 		padding: 1rem;
 		width: calc(100%);
 		min-width: min-content;
 
-		&.is-loaded {
+		&.animate-in {
 			opacity: 1;
+			transform: translatey(0);
 		}
 
 		@media (min-width: 768px) {
@@ -151,7 +153,6 @@ shuffle($content_items);
 					<?php
 						}
 					endforeach;
-
 					?>
 				</div>
 		<?php
@@ -186,10 +187,63 @@ shuffle($content_items);
 				$item.classList.add('is-loaded');
 			}, delay);
 
+		})
+	})
+</script>
+
+<script>
+	function watchElementsOnScreen(selector, callback, options = {}) {
+		// Check if IntersectionObserver is supported by the browser
+		if (!('IntersectionObserver' in window)) {
+			console.warn('IntersectionObserver is not supported by this browser. Elements will not be observed.');
+			// Fallback: Just execute the callback for all elements immediately if not supported
+			document.querySelectorAll(selector).forEach(element => {
+				callback(element, {
+					isIntersecting: true,
+					intersectionRatio: 1
+				});
+			});
+			return;
+		}
+
+		// Create a new IntersectionObserver instance
+		const observer = new IntersectionObserver((entries, observerInstance) => {
+			entries.forEach(entry => {
+				// Call the provided callback function for each entry
+				// Pass the element and the entry object
+				callback(entry.target, entry);
+			});
+		}, options); // Pass the optional configuration to the observer
+
+		// Select all elements matching the given selector
+		const elementsToObserve = document.querySelectorAll(selector);
+
+		// Start observing each selected element
+		elementsToObserve.forEach(element => {
+			observer.observe(element);
 		});
 
-		// $grid.addClass('is-loaded');
+		// Return the observer instance so it can be used to unobserve elements later if needed
+		return observer;
+	}
 
-	})
-	// });
+	// You would typically call this function in your script after the DOM is loaded,
+	// for example, within a 'DOMContentLoaded' event listener:
+
+	document.addEventListener('DOMContentLoaded', () => {
+	  // Example usage:
+	  const observer = watchElementsOnScreen('.grid-item', (element, entry) => {
+	    if (entry.isIntersecting) {
+	      element.classList.add('animate-in'); // Add a class to trigger CSS animation
+	      // If you only want to animate once, you can unobserve:
+	      // observer.unobserve(element);
+	    } else {
+	      // console.log(`${element.id || element.tagName} is no longer visible.`);
+	      // element.classList.remove('animate-in'); // If you want to reset animation
+	    }
+	  }, {
+	    rootMargin: '0px', // No margin around the viewport
+	    threshold: 0.2 // Trigger when 20% of the element is visible
+	  });
+	});
 </script>
