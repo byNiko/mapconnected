@@ -14,6 +14,7 @@
  */
 
 get_header();
+
 $gallery_page = get_page_by_path('gallery');
 $gallery_items = get_field('gallery_group', $gallery_page);
 
@@ -45,36 +46,60 @@ endforeach;
 // var_dump($content_items);
 shuffle($content_items);
 ?>
-<main id="primary" class="site-main">
-	<style>
-		.masonry-gallery {
+<style>
+	.masonry-gallery {
+		height: 102vh;
+		position: relative;
+		/* opacity: 0; */
+		transition: opacity .2s;
+
+		&.is-loaded {
+			opacity: 1;
+		}
+	}
+
+	.grid-item {
+		opacity: 0;
+		transition: opacity .2s;
+		container-type: inline-size;
+		position: absolute;
+		padding: 1rem;
+		width: calc(100%);
+		min-width: min-content;
+
+		&.is-loaded {
+			opacity: 1;
+		}
+
+		@media (min-width: 768px) {
+			width: 50%;
+		}
+
+		@media (min-width: 1224px) {
+			width: 33.33%;
+		}
+
+		.inner {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			position: relative;
-		}
+			background: var(--color-secondary-200);
+			border-radius: .5rem;
+			filter: drop-shadow(1px 1px 5px #ccc);
+			border: 1px solid #ccc;
 
-		.grid-item {
-			position: absolute;
-			padding: 1rem;
-			width: 31.4%;
-			background: orange;
-
-			@media (max-width: 768px) {
-				width: 100%;
-				position: initial;
-				margin-bottom: 1rem;
-
-				&:last-of-type {
-					margin-bottom: 0;
-				}
-			}
-
-			h3 {
-				margin: 0 0 1rem;
-				border-bottom: 1px solid white;
-				text-align: left;
-				font-size: 24px;
+			img {
+				margin: 2rem;
+				border-radius: .5rem;
+				overflow: hidden;
 			}
 		}
-	</style>
+
+	}
+</style>
+<main id="primary" class="site-main">
+
 	<div class="container">
 		<?php
 		if (have_posts()) :
@@ -83,25 +108,13 @@ shuffle($content_items);
 			get_template_part('template-parts/content', 'page');
 			if (! empty($content_items)) : ?>
 				<div id="masonry-gallery" class="masonry-gallery ">
-					<div class="grid-sizer"></div>
-					<div class="grid-item"></div>
+
 					<?php
-					$width_classes = [
-						'grid-item--width2',
-						'grid-item--width3',
-						'grid-item--width4',
-					];
-					$height_classes = [
-						'grid-item--height2',
-						'grid-item--height3',
-						'grid-item--height4',
-					];
+
 					foreach ($content_items as $item) :
-						$rand_height = array_rand($height_classes, 1);
-						$rand_width = array_rand($width_classes, 1);
 						if (is_a($item, 'Testimonial')) {
 					?>
-							<div class="grid-item <?= $height_classes[$rand_width]; ?> <?= $height_classes[$rand_height]; ?>">
+							<div class="grid-item is-testimonial">
 								<?php
 								echo $t->get_single_testimonial_html();
 								?>
@@ -109,10 +122,12 @@ shuffle($content_items);
 						<?php
 						} else {
 						?>
-							<div class="grid-item <?= $height_classes[$rand_width]; ?> <?= $height_classes[$rand_height]; ?>">
-								<?php
-								echo wp_get_attachment_image($item['id'], 'full');
-								?>
+							<div class="grid-item ">
+								<div class="inner">
+									<?php
+									echo wp_get_attachment_image($item['id'], 'full');
+									?>
+								</div>
 							</div>
 					<?php
 						}
@@ -132,57 +147,26 @@ shuffle($content_items);
 <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.js"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script>
-	var colCount = 0;
-	var colWidth = 0;
-	var windowWidth = 0;
-	var blocks = [];
 	const $ = jQuery;
 
-	function positionBlocks() {
+	const items = document.querySelectorAll('.grid-item');
+	// $(document).ready(function() {
+	var $grid = $('.masonry-gallery').masonry({
+		// options...
+		itemSelector: '.grid-item',
+		// fitWidth: true
+	});
+	// layout Masonry after each image loads
+	$grid.imagesLoaded(function() {
+		$grid.masonry();
+		items.forEach(function($item) {
+			setTimeout(function() {
+				$item.classList.add('is-loaded');
+			}, 1000);
 
-		$('.grid-item').each(function() {
-			var min = Array.min(blocks),
-				index = $.inArray(min, blocks),
-				leftPos = margin + (index * (colWidth + margin));
-			$(this).css({
-				'left': leftPos + 'px',
-				'top': min + 'px'
-			});
-			blocks[index] = min + $(this).outerHeight() + margin;
 		});
-	}
+		// $grid.addClass('is-loaded');
 
-	function setupBlocks() {
-		windowWidth = $('.masonry-gallery').width();
-		console.log(windowWidth);
-		if (windowWidth <= 768) {
-			return;
-		}
-		colWidth = $('.grid-item').outerWidth();
-		margin = (windowWidth - colWidth * 3) / 4;
-		blocks = [];
-		colCount = Math.floor(windowWidth / (colWidth + margin));
-		for (var i = 0; i < colCount; i++) {
-			blocks.push(margin);
-		}
-		positionBlocks();
-		$('.masonry-gallery').height(Array.max(blocks));
-	}
-
-	$(function() {
-		$(window).resize(setupBlocks);
-	});
-
-	// Function to get the Min value in Array
-	Array.min = function(array) {
-		return Math.min.apply(Math, array);
-	};
-	// Function to get the Max value in Array
-	Array.max = function(array) {
-		return Math.max.apply(Math, array);
-	};
-
-	$(document).ready(function() {
-		setupBlocks();
-	});
+	})
+	// });
 </script>
