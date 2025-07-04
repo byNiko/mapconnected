@@ -104,13 +104,11 @@ shuffle($content_items);
 		<?php
 		if (have_posts()) :
 			the_post();
-			the_title("<h1 class='page-title'>", "</h1>");
 			get_template_part('template-parts/content', 'page');
 			if (! empty($content_items)) : ?>
 				<div id="masonry-gallery" class="masonry-gallery ">
 
 					<?php
-
 					foreach ($content_items as $item) :
 						if (is_a($item, 'Testimonial')) {
 					?>
