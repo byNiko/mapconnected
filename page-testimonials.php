@@ -116,7 +116,7 @@ shuffle($content_items);
 					?>
 							<div class="grid-item is-testimonial">
 								<?php
-								echo $t->get_single_testimonial_html();
+								echo $item->get_single_testimonial_html();
 								?>
 							</div>
 						<?php
