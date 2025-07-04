@@ -47,6 +47,24 @@ endforeach;
 shuffle($content_items);
 ?>
 <style>
+	.loading {
+		text-align: center;
+		position: absolute;
+		top: 25cqh;
+		/* left: 50%; */
+		/* transform: translateX(-50%); */
+		font-size: var(--font-size--lg);
+		width: 100%;
+		margin-top: 2rem;
+		display: flex;
+		justify-content: center;
+		/* align-items: center; */
+	}
+
+	.is-loaded .loading {
+		display: none;
+	}
+
 	.masonry-gallery {
 		height: 102vh;
 		position: relative;
@@ -60,7 +78,7 @@ shuffle($content_items);
 
 	.grid-item {
 		opacity: 0;
-		transition: opacity .2s;
+		transition: opacity .5s;
 		container-type: inline-size;
 		position: absolute;
 		padding: 1rem;
@@ -106,8 +124,11 @@ shuffle($content_items);
 			the_post();
 			get_template_part('template-parts/content', 'page');
 			if (! empty($content_items)) : ?>
-				<div id="masonry-gallery" class="masonry-gallery ">
 
+				<div id="masonry-gallery" class="masonry-gallery ">
+					<div class="loading">
+						...loading
+					</div>
 					<?php
 					foreach ($content_items as $item) :
 						if (is_a($item, 'Testimonial')) {
@@ -137,6 +158,7 @@ shuffle($content_items);
 			endif;
 		endif; // End of the loop.
 		?>
+
 	</div>
 </main><!-- #main -->
 <?php //get_sidebar('sidebar'); 
@@ -146,23 +168,26 @@ shuffle($content_items);
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script>
 	const $ = jQuery;
-
 	const items = document.querySelectorAll('.grid-item');
-	// $(document).ready(function() {
-	var $grid = $('.masonry-gallery').masonry({
+	const $container = $('.masonry-gallery');
+
+	const $grid = $container.masonry({
 		// options...
 		itemSelector: '.grid-item',
-		// fitWidth: true
 	});
 	// layout Masonry after each image loads
 	$grid.imagesLoaded(function() {
 		$grid.masonry();
-		items.forEach(function($item) {
+		$container.addClass('is-loaded');
+		let count = 0;
+		items.forEach(function($item, index) {
+			const delay = index * 200;
 			setTimeout(function() {
 				$item.classList.add('is-loaded');
-			}, 1000);
+			}, delay);
 
 		});
+
 		// $grid.addClass('is-loaded');
 
 	})
