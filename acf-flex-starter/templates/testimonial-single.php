@@ -1,6 +1,6 @@
 <?php
 
-$type = get_sub_field('testimonial_type');
+$type = get_sub_field('testimonial_type') ?: 'Brand Member';
 
 $query_args = array(
 	'posts_per_page' => 1,
@@ -17,7 +17,6 @@ $query_args = array(
 	),
 );
 $posts = get_posts($query_args);
-
 
 foreach ($posts as $p) :
 

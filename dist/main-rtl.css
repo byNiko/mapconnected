@@ -1668,6 +1668,9 @@ p {
   background-size: cover;
   background-position: center;
 }
+.slider .wp-block-splide-carousel {
+  margin-bottom: 0;
+}
 .slider .slide__overlay {
   position: absolute;
   top: 0;

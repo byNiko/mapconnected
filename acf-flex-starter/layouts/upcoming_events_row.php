@@ -98,7 +98,7 @@ endif;
 			</div>
 			<footer class="text-center mt-1">
 				<h3 class="h3">
-					<a class="button button--text button--primary fz-lg fw-bold" href="/events">View All Events</a>
+					<a class="button button--text  fw-bold" href="/events">View All Events</a>
 					</h2>
 					</header>
 		</div>

@@ -49,7 +49,9 @@
 	background-size: cover;
 	background-position: center;
 	}
-
+		.wp-block-splide-carousel {
+			margin-bottom: 0;
+		}
 	.slide__overlay {
 		// @include bp(md){
 		position:absolute;
