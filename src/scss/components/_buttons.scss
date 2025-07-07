@@ -20,16 +20,24 @@
 	border-radius: var(--radius-btn);
 	line-height: 1;
 	text-align: center;
-	transition: background-color .2s, color .2s;
+	transition: background-color .2s, color .2s, scale .2s, box-shadow .2s;
 	position: relative;
 
 	&:hover {
+		
 		background-color: var(--hoverBackground);
 		color: var(--hoverTextColor);
 		background-color: var(--hoverBackground);
 		// color: var(--hoverTextColor);
 	}
 }
+
+.wp-block-button__link{
+transition: box-shadow .2s, scale .2s;
+&:hover {
+	box-shadow: 1px 1px 10px -4px currentColor, 2px 2px 8px grey;
+		scale: 1.01;
+}}
 
 .theme--medium-1,
 .theme--medium-2 {

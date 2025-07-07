@@ -26,3 +26,4 @@ ScrollTrigger.batch( '.fade_in_up', {
 ScrollTrigger.batch( '.fade_in', {
 	onEnter: ( batch ) => gsap.to( batch, { opacity: 1, stagger: 0.1 } ),
 } );
+

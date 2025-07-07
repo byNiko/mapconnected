@@ -5,9 +5,10 @@
 	background-color: var(--color-secondary-100);
     padding: 1rem;
     border-radius: var(--radius-2);
-    border: 1px solid #ccc;
+    border: 1px solid currentcolor;
     box-shadow: 0 3px 5px -3px #333;
     position: relative;
+	
 }
 
 .icon-grid {
@@ -152,6 +153,7 @@
 	border: 1px solid;
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow-1);
+	color: var(--color-text);
 }
 
 .event__top-bar {

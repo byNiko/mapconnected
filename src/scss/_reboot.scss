@@ -181,7 +181,7 @@
    transition: color .2s;
  }
  a:hover {
-   color: var(--color-link__hover);
+  //  color: var(--color-link__hover);
  }
  
  a:not([href]):not([class]), a:not([href]):not([class]):hover {

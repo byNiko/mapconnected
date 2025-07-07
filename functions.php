@@ -647,50 +647,21 @@ function byniko_the_testimoial_slider() {
 
 add_shortcode('testimonial-slider', 'byniko_the_testimoial_slider');
 
-function byniko_sponsor_logos_slider($args = []) {
+function byniko_the_testimoial() {
 	ob_start();
-	$sponsors = get_field('sponsors_group');
-	if ($sponsors) :
-		$args = wp_parse_args($args, []);
-		$count = count($sponsors);
-		$group1 = array_slice($sponsors, 0, intval(ceil($count / 2)));
-		$group2 = array_slice($sponsors, intval(floor($count / 2)));
-
-	?>
-		<section id="curent_prev_sponsors" class=" p-relative">
-			<div class="">
-				<div class=" pt-1">
-					<?php
-					get_template_part(
-						'/acf-flex-starter/layouts/sponsor_logos_slider',
-						null,
-						array(
-							'sponsors' => $group1,
-							'slider_options' => ['perPage' => "8"]
-						)
-					);
-					?>
-				</div>
-				<div class=" py-1 ">
-					<?php
-					get_template_part(
-						'/acf-flex-starter/layouts/sponsor_logos_slider',
-						null,
-						array(
-							'sponsors' => $group2,
-							'slider_options' => ['perPage' => "8", 'autoScroll' => ['speed' => '-.25']]
-						)
-					);
-					?>
-				</div>
-			</div>
-		</section>
-	<?php
-	endif;
+	get_template_part('/acf-flex-starter/templates/testimonial-single');
 	return ob_get_clean();
 }
 
-add_shortcode('sponsor-logos-slider', 'byniko_sponsor_logos_slider');
+add_shortcode('testimonial-single', 'byniko_the_testimoial');
+
+function byniko_future_events() {
+	ob_start();
+	get_template_part('acf-flex-starter/layouts/upcoming_events_row');
+	return ob_get_clean();
+}
+
+add_shortcode('upcoming-events', 'byniko_future_events');
 
 
 add_action('after_setup_theme', function () {
@@ -703,7 +674,7 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 
-function byniko_register_event_search_widget_block() {
+function byniko_register_blocks() {
 	register_block_type(__DIR__ . '/blocks/build/event-search');
 }
-add_action('init', 'byniko_register_event_search_widget_block');
+add_action('init', 'byniko_register_blocks');

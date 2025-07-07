@@ -1,0 +1,27 @@
+.logo_slider_wrapper {
+	.has-background {
+		padding: 10px;
+	}
+
+	figure {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100%;
+
+		img {
+			height: 100%;
+			width: auto;
+		}
+	}
+}
+
+.wp-block-splide-carousel .splide__arrows--ltr {
+	.splide__arrow--prev {
+		left: 1em!important;
+	}
+
+	.splide__arrow--next {
+		right: 1em!important;
+	}
+}

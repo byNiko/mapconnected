@@ -38,6 +38,11 @@
 					"color": "#017969"
 				},
 				{
+					"name": "Primary 33",
+					"slug": "primary-33",
+					"color": "#F3F7F3"
+				},
+				{
 					"name": "Primary 50",
 					"slug": "primary-50",
 					"color": "#EBF2EC"
@@ -50,7 +55,7 @@
 				{
 					"name": "Primary Text",
 					"slug": "primary-text",
-					"color": "#01590f"
+					"color": "#055f52"
 				},
 				{
 					"name": "Accent",
