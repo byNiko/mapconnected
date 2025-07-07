@@ -1646,7 +1646,9 @@ p {
   flex: 1;
 }
 
-.splide, .splide__track, .splide__list {
+.splide,
+.splide__track,
+.splide__list {
   height: 100%;
   width: 100%;
   flex: 0 0 auto;
@@ -1660,6 +1662,10 @@ p {
   justify-content: center;
 }
 
+.wp-block-splide-carousel {
+  margin-bottom: 0;
+}
+
 .slider {
   aspect-ratio: var(--slider-aspect-ratio);
 }
@@ -1667,9 +1673,6 @@ p {
   aspect-ratio: var(--slider-aspect-ratio);
   background-size: cover;
   background-position: center;
-}
-.slider .wp-block-splide-carousel {
-  margin-bottom: 0;
 }
 .slider .slide__overlay {
   position: absolute;

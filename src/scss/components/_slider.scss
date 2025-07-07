@@ -1,12 +1,15 @@
 @use "../mixins" as *;
-.homepage-top-slider{
-	height:auto;
+
+.homepage-top-slider {
+	height: auto;
 	background-color: var(--black);
 	--slider-aspect-ratio: 1.25/1;
-	@include bp(sm){
+
+	@include bp(sm) {
 		--slider-aspect-ratio: 1.75/1;
 	}
-	@include bp(md){
+
+	@include bp(md) {
 		--slider-aspect-ratio: 8/3;
 	}
 }
@@ -16,12 +19,16 @@
 	// flex: 0 0 auto;;
 	// padding-block: 4rem;
 }
+
 .splide__slide > img {
 	height: 100%;
 	width: auto;
 	flex: 1;
 }
-.splide, .splide__track, .splide__list	{
+
+.splide,
+.splide__track,
+.splide__list {
 	height: 100%;
 	width: 100%;
 	flex: 0 0 auto;
@@ -29,12 +36,18 @@
 
 	// height: 100%;
 }
+
 .splide:not(.is-overflow) .splide__arrows {
 	display: none;
-  }
-  .splide:not( .is-overflow ) .splide__list {
+}
+
+.splide:not(.is-overflow) .splide__list {
 	justify-content: center;
-  }
+}
+
+.wp-block-splide-carousel {
+	margin-bottom: 0;
+}
 .slider {
 	// height: 100%;
 	aspect-ratio: var(--slider-aspect-ratio);
@@ -42,29 +55,28 @@
 	// margin-right: calc(-1 * var(--spacer-8));
 	// background: var(--color-primary-900);
 	// background-image: url('/images/background-dark-gears.jpg');
-	
-	
+
+
 	.splide__slide {
 		aspect-ratio: var(--slider-aspect-ratio);
-	background-size: cover;
-	background-position: center;
+		background-size: cover;
+		background-position: center;
 	}
-		.wp-block-splide-carousel {
-			margin-bottom: 0;
-		}
+
 	.slide__overlay {
 		// @include bp(md){
-		position:absolute;
-		top:0;
-		left:0;
+		position: absolute;
+		top: 0;
+		left: 0;
 		right: 0;
-		bottom:0;
-		background: hsla(0,0%,20%, .8);
+		bottom: 0;
+		background: hsla(0, 0%, 20%, .8);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		}
+	}
+
 	// }
 	.inner-slide {
 		max-width: 1080px;
