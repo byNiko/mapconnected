@@ -17,9 +17,6 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-<?php
-	include(get_template_directory() . '/acf-flex-starter/flexible-content-loop.php');
-	?>
 
 	<?php the_content(); ?>
 
