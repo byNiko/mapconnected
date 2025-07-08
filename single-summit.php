@@ -23,7 +23,7 @@ get_header();
 						<div class="text-block">
 							<?= $s->theme_summit_text; ?>
 						</div>
-						<?php echo $s->getRegistrationLinksSection();	?>
+						<?php //echo $s->getRegistrationLinksSection();	?>
 
 					</div>
 					<div class="col flex-column gap-1">
