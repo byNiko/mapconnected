@@ -1,9 +1,251 @@
 {
-    "key": "group_6681d3cccba2b",
-    "title": "Options : Pricing Packages",
+    "key": "group_686a797ca1d0e",
+    "title": "Options : Pricing Packages (copy)",
     "fields": [
         {
-            "key": "field_6682bfc273720",
+            "key": "field_686a79b88d2f6",
+            "label": "Package Categories",
+            "name": "package_categories",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "field_686a7a0d8d2f9",
+            "button_label": "Add Membership Category",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_686a7a0d8d2f9",
+                    "label": "Title",
+                    "name": "title",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_686a79b88d2f6"
+                },
+                {
+                    "key": "field_686a7a0d8d2fa",
+                    "label": "Note",
+                    "name": "note",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "30",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 1,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_686a79b88d2f6"
+                },
+                {
+                    "key": "field_686a7a0d8d2fb",
+                    "label": "Packages",
+                    "name": "packages",
+                    "aria-label": "",
+                    "type": "repeater",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "layout": "block",
+                    "min": 0,
+                    "max": 0,
+                    "collapsed": "field_686a7a0d8d2fc",
+                    "button_label": "Add Package Level",
+                    "rows_per_page": 20,
+                    "sub_fields": [
+                        {
+                            "key": "field_686a7a0d8d2fc",
+                            "label": "Level Name",
+                            "name": "level_name",
+                            "aria-label": "",
+                            "type": "text",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "maxlength": "",
+                            "allow_in_bindings": 1,
+                            "placeholder": "",
+                            "prepend": "",
+                            "append": "",
+                            "parent_repeater": "field_686a7a0d8d2fb"
+                        },
+                        {
+                            "key": "field_686a7a0d8d2fd",
+                            "label": "Price",
+                            "name": "price",
+                            "aria-label": "",
+                            "type": "number",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "default_value": "",
+                            "min": "",
+                            "max": "",
+                            "allow_in_bindings": 1,
+                            "placeholder": "",
+                            "step": "",
+                            "prepend": "$",
+                            "append": "\/yr",
+                            "parent_repeater": "field_686a7a0d8d2fb"
+                        },
+                        {
+                            "key": "field_686a7a0d8d2fe",
+                            "label": "Registration Link",
+                            "name": "registration_link",
+                            "aria-label": "",
+                            "type": "link",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "33",
+                                "class": "",
+                                "id": ""
+                            },
+                            "return_format": "array",
+                            "allow_in_bindings": 1,
+                            "parent_repeater": "field_686a7a0d8d2fb"
+                        },
+                        {
+                            "key": "field_686a7bc2a9650",
+                            "label": "benefit",
+                            "name": "benefit",
+                            "aria-label": "",
+                            "type": "repeater",
+                            "instructions": "",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "table",
+                            "min": 0,
+                            "max": 0,
+                            "collapsed": "field_686a7bd3a9651",
+                            "button_label": "Add Benefit",
+                            "rows_per_page": 20,
+                            "sub_fields": [
+                                {
+                                    "key": "field_686a7bd3a9651",
+                                    "label": "Title",
+                                    "name": "title",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_686a7bc2a9650"
+                                },
+                                {
+                                    "key": "field_686a7bd9a9652",
+                                    "label": "Description",
+                                    "name": "description",
+                                    "aria-label": "",
+                                    "type": "text",
+                                    "instructions": "",
+                                    "required": 0,
+                                    "conditional_logic": 0,
+                                    "wrapper": {
+                                        "width": "",
+                                        "class": "",
+                                        "id": ""
+                                    },
+                                    "default_value": "",
+                                    "maxlength": "",
+                                    "allow_in_bindings": 0,
+                                    "placeholder": "",
+                                    "prepend": "",
+                                    "append": "",
+                                    "parent_repeater": "field_686a7bc2a9650"
+                                }
+                            ],
+                            "parent_repeater": "field_686a7a0d8d2fb"
+                        },
+                        {
+                            "key": "field_686a7a0d8d2ff",
+                            "label": "Benefits",
+                            "name": "benefits",
+                            "aria-label": "",
+                            "type": "group",
+                            "instructions": "Empty fields will not show on the front end.",
+                            "required": 0,
+                            "conditional_logic": 0,
+                            "wrapper": {
+                                "width": "100",
+                                "class": "",
+                                "id": ""
+                            },
+                            "layout": "block",
+                            "sub_fields": [],
+                            "parent_repeater": "field_686a7a0d8d2fb"
+                        }
+                    ],
+                    "parent_repeater": "field_686a79b88d2f6"
+                }
+            ]
+        },
+        {
+            "key": "field_686a797ca671d",
             "label": "Brands Membership Group",
             "name": "brands_membership_group",
             "aria-label": "",
@@ -19,7 +261,7 @@
             "layout": "row",
             "sub_fields": [
                 {
-                    "key": "field_6682cb7731414",
+                    "key": "field_686a797ca743e",
                     "label": "Title",
                     "name": "title",
                     "aria-label": "",
@@ -39,7 +281,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_6682b907637fb",
+                    "key": "field_686a797ca7445",
                     "label": "Note",
                     "name": "note",
                     "aria-label": "",
@@ -59,7 +301,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_6681dd3d739e8",
+                    "key": "field_686a797ca744a",
                     "label": "Packages",
                     "name": "packages",
                     "aria-label": "",
@@ -80,7 +322,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_6681d795efad7",
+                            "key": "field_686a797ca8e12",
                             "label": "Level Name",
                             "name": "level_name",
                             "aria-label": "",
@@ -98,10 +340,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_6681dd3d739e8"
+                            "parent_repeater": "field_686a797ca744a"
                         },
                         {
-                            "key": "field_6681da020845c",
+                            "key": "field_686a797ca8e16",
                             "label": "Price",
                             "name": "price",
                             "aria-label": "",
@@ -121,10 +363,10 @@
                             "step": "",
                             "prepend": "$",
                             "append": "\/yr",
-                            "parent_repeater": "field_6681dd3d739e8"
+                            "parent_repeater": "field_686a797ca744a"
                         },
                         {
-                            "key": "field_6681d857efadb",
+                            "key": "field_686a797ca8e19",
                             "label": "Registration Link",
                             "name": "registration_link",
                             "aria-label": "",
@@ -138,10 +380,10 @@
                                 "id": ""
                             },
                             "return_format": "array",
-                            "parent_repeater": "field_6681dd3d739e8"
+                            "parent_repeater": "field_686a797ca744a"
                         },
                         {
-                            "key": "field_6681da2a0845d",
+                            "key": "field_686a797ca8e1b",
                             "label": "Benefits",
                             "name": "benefits",
                             "aria-label": "",
@@ -157,7 +399,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_6681da9d0845e",
+                                    "key": "field_686a797cab21e",
                                     "label": "Online Profiles",
                                     "name": "online_profiles",
                                     "aria-label": "",
@@ -177,7 +419,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6681daac0845f",
+                                    "key": "field_686a797cab221",
                                     "label": "Members-Only Message Forum",
                                     "name": "members-only_message_forum",
                                     "aria-label": "",
@@ -197,7 +439,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6681dac908460",
+                                    "key": "field_686a797cab223",
                                     "label": "Virtual Live Round Robin Benchmarking",
                                     "name": "virtual_live_round_robin_benchmarking",
                                     "aria-label": "",
@@ -217,7 +459,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6681dadb08461",
+                                    "key": "field_686a797cab226",
                                     "label": "Network Surveys & Polls ( Give \/ Receive )",
                                     "name": "network_surveys_&_polls__give__receive_",
                                     "aria-label": "",
@@ -237,7 +479,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6681daf908462",
+                                    "key": "field_686a797cab229",
                                     "label": "Network Marketplace Sponsored Webinars",
                                     "name": "network_marketplace_sponsored_webinars",
                                     "aria-label": "",
@@ -257,7 +499,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6681db0a08463",
+                                    "key": "field_686a797cab22b",
                                     "label": "Customized Topic Survey Services",
                                     "name": "customized_topic_survey_services",
                                     "aria-label": "",
@@ -277,7 +519,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6681db1e08464",
+                                    "key": "field_686a797cab22e",
                                     "label": "Free Annual Summit Tickets",
                                     "name": "free_annual_summit_tickets",
                                     "aria-label": "",
@@ -297,7 +539,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6681db2a08465",
+                                    "key": "field_686a797cab230",
                                     "label": "Discounted Summit & Club Study Tickets",
                                     "name": "discounted_summit_&_club_study_tickets",
                                     "aria-label": "",
@@ -317,14 +559,14 @@
                                     "append": ""
                                 }
                             ],
-                            "parent_repeater": "field_6681dd3d739e8"
+                            "parent_repeater": "field_686a797ca744a"
                         }
                     ]
                 }
             ]
         },
         {
-            "key": "field_6682c03673721",
+            "key": "field_686a797ca6720",
             "label": "Industry Membership Group",
             "name": "industry_membership_group",
             "aria-label": "",
@@ -340,7 +582,7 @@
             "layout": "row",
             "sub_fields": [
                 {
-                    "key": "field_6682cc67392e7",
+                    "key": "field_686a797cb1613",
                     "label": "Title",
                     "name": "title",
                     "aria-label": "",
@@ -360,7 +602,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_6682c03673723",
+                    "key": "field_686a797cb1616",
                     "label": "Note",
                     "name": "note",
                     "aria-label": "",
@@ -380,7 +622,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_6682c03673724",
+                    "key": "field_686a797cb1619",
                     "label": "Packages",
                     "name": "packages",
                     "aria-label": "",
@@ -402,7 +644,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_6682c03673725",
+                            "key": "field_686a797cb3558",
                             "label": "Level Name",
                             "name": "level_name",
                             "aria-label": "",
@@ -420,10 +662,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_6682c03673724"
+                            "parent_repeater": "field_686a797cb1619"
                         },
                         {
-                            "key": "field_6682c03673726",
+                            "key": "field_686a797cb355b",
                             "label": "Price",
                             "name": "price",
                             "aria-label": "",
@@ -443,10 +685,10 @@
                             "step": "",
                             "prepend": "$",
                             "append": "\/yr",
-                            "parent_repeater": "field_6682c03673724"
+                            "parent_repeater": "field_686a797cb1619"
                         },
                         {
-                            "key": "field_6682c03673727",
+                            "key": "field_686a797cb355e",
                             "label": "Registration Link",
                             "name": "registration_link",
                             "aria-label": "",
@@ -460,10 +702,10 @@
                                 "id": ""
                             },
                             "return_format": "",
-                            "parent_repeater": "field_6682c03673724"
+                            "parent_repeater": "field_686a797cb1619"
                         },
                         {
-                            "key": "field_6682c03673728",
+                            "key": "field_686a797cb3560",
                             "label": "Benefits",
                             "name": "benefits",
                             "aria-label": "",
@@ -479,7 +721,7 @@
                             "layout": "",
                             "sub_fields": [
                                 {
-                                    "key": "field_6682c03673729",
+                                    "key": "field_686a797cb5580",
                                     "label": "Online Profiles",
                                     "name": "online_profiles",
                                     "aria-label": "",
@@ -499,7 +741,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c0367372a",
+                                    "key": "field_686a797cb5583",
                                     "label": "Members-Only Message Forum",
                                     "name": "members-only_message_forum",
                                     "aria-label": "",
@@ -519,7 +761,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c0367372c",
+                                    "key": "field_686a797cb5586",
                                     "label": "Network Surveys & Polls ( Give \/ Receive )",
                                     "name": "network_surveys_&_polls__give__receive_",
                                     "aria-label": "",
@@ -539,7 +781,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c0367372d",
+                                    "key": "field_686a797cb5589",
                                     "label": "Network Marketplace Sponsored Webinars",
                                     "name": "network_marketplace_sponsored_webinars",
                                     "aria-label": "",
@@ -559,7 +801,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c0367372f",
+                                    "key": "field_686a797cb558b",
                                     "label": "Annual Summit Tickets",
                                     "name": "free_annual_summit_tickets",
                                     "aria-label": "",
@@ -579,7 +821,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c03673730",
+                                    "key": "field_686a797cb558e",
                                     "label": "Discounted Summit Tickets",
                                     "name": "discounted_summit_tickets",
                                     "aria-label": "",
@@ -599,14 +841,14 @@
                                     "append": ""
                                 }
                             ],
-                            "parent_repeater": "field_6682c03673724"
+                            "parent_repeater": "field_686a797cb1619"
                         }
                     ]
                 }
             ]
         },
         {
-            "key": "field_6682c04173737",
+            "key": "field_686a797ca6722",
             "label": "Warranty Network Sponsorships",
             "name": "warranty_network_sponsorships",
             "aria-label": "",
@@ -622,7 +864,7 @@
             "layout": "row",
             "sub_fields": [
                 {
-                    "key": "field_6682cc53392e6",
+                    "key": "field_686a797cba0d3",
                     "label": "Title",
                     "name": "title",
                     "aria-label": "",
@@ -642,7 +884,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_6682c04273739",
+                    "key": "field_686a797cba0d8",
                     "label": "Note",
                     "name": "note",
                     "aria-label": "",
@@ -662,7 +904,7 @@
                     "append": ""
                 },
                 {
-                    "key": "field_6682c0427373a",
+                    "key": "field_686a797cba0dc",
                     "label": "Packages",
                     "name": "packages",
                     "aria-label": "",
@@ -684,7 +926,7 @@
                     "rows_per_page": 20,
                     "sub_fields": [
                         {
-                            "key": "field_6682c0427373b",
+                            "key": "field_686a797cbb8d7",
                             "label": "Level Name",
                             "name": "level_name",
                             "aria-label": "",
@@ -702,10 +944,10 @@
                             "placeholder": "",
                             "prepend": "",
                             "append": "",
-                            "parent_repeater": "field_6682c0427373a"
+                            "parent_repeater": "field_686a797cba0dc"
                         },
                         {
-                            "key": "field_6682c0427373c",
+                            "key": "field_686a797cbb8da",
                             "label": "Price",
                             "name": "price",
                             "aria-label": "",
@@ -725,10 +967,10 @@
                             "step": "",
                             "prepend": "$",
                             "append": "\/yr",
-                            "parent_repeater": "field_6682c0427373a"
+                            "parent_repeater": "field_686a797cba0dc"
                         },
                         {
-                            "key": "field_6682c0427373d",
+                            "key": "field_686a797cbb8dc",
                             "label": "Registration Link",
                             "name": "registration_link",
                             "aria-label": "",
@@ -742,10 +984,10 @@
                                 "id": ""
                             },
                             "return_format": "array",
-                            "parent_repeater": "field_6682c0427373a"
+                            "parent_repeater": "field_686a797cba0dc"
                         },
                         {
-                            "key": "field_6682c0427373e",
+                            "key": "field_686a797cbb8df",
                             "label": "Benefits",
                             "name": "benefits",
                             "aria-label": "",
@@ -761,7 +1003,7 @@
                             "layout": "block",
                             "sub_fields": [
                                 {
-                                    "key": "field_6682c0427373f",
+                                    "key": "field_686a797cbdb3b",
                                     "label": "Online Profiles",
                                     "name": "online_profiles",
                                     "aria-label": "",
@@ -781,7 +1023,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c04273740",
+                                    "key": "field_686a797cbdb3e",
                                     "label": "Members-Only Message Forum",
                                     "name": "members-only_message_forum",
                                     "aria-label": "",
@@ -801,7 +1043,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c04273743",
+                                    "key": "field_686a797cbdb41",
                                     "label": "Network Marketplace Directory Listing",
                                     "name": "network_marketplace_directory",
                                     "aria-label": "",
@@ -821,7 +1063,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c04273749",
+                                    "key": "field_686a797cbdb43",
                                     "label": "Whitepaper\/Advertising Download",
                                     "name": "whitepaperadvertising_download",
                                     "aria-label": "",
@@ -841,7 +1083,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c0427374a",
+                                    "key": "field_686a797cbdb46",
                                     "label": "One(1) Co-Hosted Webinar (Regular rate $3k)",
                                     "name": "one1_co-hosted_webinar_regular_rate_$3k",
                                     "aria-label": "",
@@ -861,7 +1103,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c0427374b",
+                                    "key": "field_686a797cbdb48",
                                     "label": "Marketing\/Survey Services\/Annual Summit",
                                     "name": "marketingsurvey_servicesannual_summit",
                                     "aria-label": "",
@@ -881,7 +1123,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_6682c0427374c",
+                                    "key": "field_686a797cbdb4b",
                                     "label": "Blog\/White Paper Promotions​",
                                     "name": "blogwhite_paper_promotions​",
                                     "aria-label": "",
@@ -901,7 +1143,7 @@
                                     "append": ""
                                 },
                                 {
-                                    "key": "field_668447c2f3773",
+                                    "key": "field_686a797cbdb4d",
                                     "label": "Annual Summit Tickets",
                                     "name": "annual_summit_tickets",
                                     "aria-label": "",
@@ -921,7 +1163,7 @@
                                     "append": ""
                                 }
                             ],
-                            "parent_repeater": "field_6682c0427373a"
+                            "parent_repeater": "field_686a797cba0dc"
                         }
                     ]
                 }
@@ -958,8 +1200,8 @@
         "tags",
         "send-trackbacks"
     ],
-    "active": false,
+    "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1751808430
+    "modified": 1751988750
 }

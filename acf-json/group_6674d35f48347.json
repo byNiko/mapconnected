@@ -1953,21 +1953,13 @@
     ],
     "menu_order": 0,
     "position": "acf_after_title",
-    "style": "seamless",
+    "style": "default",
     "label_placement": "left",
     "instruction_placement": "label",
     "hide_on_screen": [
-        "permalink",
-        "the_content",
-        "excerpt",
         "discussion",
         "comments",
-        "revisions",
-        "slug",
         "author",
-        "format",
-        "page_attributes",
-        "featured_image",
         "categories",
         "tags",
         "send-trackbacks"
@@ -1975,5 +1967,5 @@
     "active": true,
     "description": "",
     "show_in_rest": 0,
-    "modified": 1727998587
+    "modified": 1751998139
 }
