@@ -8,10 +8,14 @@ get_header();
 ?>
 
 <main class="annual_summit">
-	<section class="hero theme--dark-gradient-1 pb-4">
-		<div class="secondary-nav__wrapper">
+	<section class="hero theme--dark-gradient-1 pb-4" style="position:relative;">
+		<div class="secondary-nav__wrapper" style="position:absolute; top:0; left: 50%; transform: translateX(-50%);">
 			<?php get_template_part('/template-parts/summit/summit', 'secondary-nav'); ?>
 		</div>
+		<section class="entry-content">
+			<?php the_content(); ?>
+		</section>
+
 		<section id="title-section" class="title-section py-4">
 			<header class="text-center">
 				<div class="fz-xxxl fw-extra-bold summit-title"><?= $s->theme_title; ?></div>
@@ -23,7 +27,8 @@ get_header();
 						<div class="text-block">
 							<?= $s->theme_summit_text; ?>
 						</div>
-						<?php //echo $s->getRegistrationLinksSection();	?>
+						<?php //echo $s->getRegistrationLinksSection();	
+						?>
 
 					</div>
 					<div class="col flex-column gap-1">
