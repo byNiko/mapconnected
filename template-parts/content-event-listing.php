@@ -4,12 +4,13 @@ $event = new Event($post);
 $times = $event->get_time();
 $start_datetime = $times['start'];
 $end_datetime = $times['end'];
+$startMonth = $start_datetime ? $start_datetime->format('M') : null;
 $startDay = $start_datetime ? $start_datetime->format('D') : null;
 $startDate = $start_datetime ? $start_datetime->format('jS') : null;
 ?>
 <div class="event-archive-item event d-flex">
 	<div class="event-archive-item--meta-date text-center">
-		<div class="fz-sm"><?= $startDay; ?></div>
+		<div class="fz-sm"><?= $startMonth; ?></div>
 		<div class="fz-md fw-semi-bold"><?= $startDate; ?></div>
 	</div>
 	<div class="event-item--info">
