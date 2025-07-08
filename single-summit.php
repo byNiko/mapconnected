@@ -16,7 +16,7 @@ get_header();
 			<?php the_content(); ?>
 		</section>
 
-		<section id="title-section" class="title-section py-4">
+		<section id="title-section" class="title-section py-4 mt-4">
 			<header class="text-center">
 				<div class="fz-xxxl fw-extra-bold summit-title"><?= $s->theme_title; ?></div>
 				<div class="summit-subtitle"><?= $s->theme_subtitle; ?></div>
