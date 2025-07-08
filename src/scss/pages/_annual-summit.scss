@@ -1,5 +1,10 @@
 @use "../mixins" as *;
 
+.special-title {
+	font-size: var(--font-size--lg);
+	font-weight: 800;
+	text-align: center;
+}
 .annual_summit {
 	:target:before {
 		content: "";

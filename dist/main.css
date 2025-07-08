@@ -3391,6 +3391,12 @@ section[class*=theme--] .slider {
   grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
 }
 
+.special-title {
+  font-size: var(--font-size--lg);
+  font-weight: 800;
+  text-align: center;
+}
+
 .annual_summit {
   display: flex;
   flex-direction: column;
