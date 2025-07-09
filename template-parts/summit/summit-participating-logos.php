@@ -5,7 +5,8 @@ if ($attending_group = get_field('attending_companies_group')) :
 	$show_current = $attending_group['show_current_or_past_attenddees']?? false;
 
 	$attending_logos = $show_current ?  $attending_group['attending_company_logos']: get_field('past_attendees_logos', 'options') ;
-	if (count($attending_logos) > 0) :
+
+	if ($attending_logos && count($attending_logos) > 0) :
 		$logo_limit = $attending_group['limit'];
 		$title = $attending_group['title'];
 		$button_text = $attending_group['view_all_logos_button_text'];
