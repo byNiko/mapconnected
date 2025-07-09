@@ -206,7 +206,7 @@ function toggleNav(e) {
 /***/ (() => {
 
 (() => {
-  const modalId = new URLSearchParams(window.location.search).get('modal_id');
+  const modalId = new URLSearchParams(window.location.search).get('modal');
   const target = document.querySelector(`#${modalId}`);
   if (target) {
     setTimeout(() => {
