@@ -206,6 +206,11 @@ get_header();
 		<section id="brochure-download" class="py-4">
 			<div class="d-flex justify--center ">
 				<div class="text-center theme--medium-1 py-4 px-4 border-radius-2 ">
+					<button class="eb-form-action" onclick='eh_render_dynamic_form("6085877926461440", "popup")' data-form-id="6085877926461440" style="all:unset;font-family:Helvetica,Arial,sans-serif;display:inline-block;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#FFFFFF;font-weight:bold;cursor:pointer;line-height:auto;text-align:center;margin:0;
+
+text-decoration:;
+
+ font-size:20px;border-radius:50px;padding-left:25px;padding-right:25px;padding-top:15px;padding-bottom:15px; background-color:#0445AF"> Launch Me </button>
 					<button class="button button--secondary " data-micromodal-trigger="modal-summit-brochure">
 						<div class="h4"><?= $brochure['download_brochure_label']; ?></div>
 						<?php echo get_summit_brochure_thumb(); ?>
