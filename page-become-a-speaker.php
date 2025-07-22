@@ -20,22 +20,22 @@ get_header();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/regular.min.css" integrity="sha512-KYEnM30Gjf5tMbgsrQJsR0FSpufP9S4EiAYi168MvTjK6E83x3r6PTvLPlXYX350/doBXmTFUEnJr/nCsDovuw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/solid.min.css" integrity="sha512-Hp+WwK4QdKZk9/W0ViDvLunYjFrGJmNDt6sCflZNkjgvNq9mY+0tMbd6tWMiAlcf1OQyqL4gn2rYp7UsfssZPA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <main id="primary" class="site-main py-4">
-	<?php 
- // nested flexible content
- if (have_rows('layouts')) :  while (have_rows('layouts')) : the_row();
-		 $layout = get_row_layout();
-		 // Increment the counter for each slider
-		 if ($layout == 'slider' || $layout == 'testimonials') {
-			 $slider_counter++;
-			 set_query_var('slider_id', 'slider-' . $slider_counter);
-		 }
+	<?php
+	// nested flexible content
+	if (have_rows('layouts')) :  while (have_rows('layouts')) : the_row();
+			$layout = get_row_layout();
+			// Increment the counter for each slider
+			if ($layout == 'slider' || $layout == 'testimonials') {
+				$slider_counter++;
+				set_query_var('slider_id', 'slider-' . $slider_counter);
+			}
 
-		 // Include the layout file
-		 get_template_part('acf-flex-starter/layouts/' . $layout);
+			// Include the layout file
+			get_template_part('acf-flex-starter/layouts/' . $layout);
 
-	 endwhile;
+		endwhile;
 
- endif;
+	endif;
 	?>
 	<section>
 		<div class="container--very-narrow">
@@ -99,7 +99,7 @@ get_header();
 
 	<section class="theme--medium-1 mt-1">
 		<div class="container--wide">
-			<header class="h2 text-center"><?php the_field('speaker_list_title');?></header>
+			<header class="h2 text-center"><?php the_field('speaker_list_title'); ?></header>
 			<div class="grid __5x speakers-list">
 				<?php
 
@@ -124,7 +124,9 @@ get_header();
 			<header class="text-center">
 				<h2 class="fz-display">Become a Speaker </h2>
 			</header>
-			<?php echo FrmFormsController::get_form_shortcode(array('id' => 4)); ?>
+			<div class="engage-hub-form-embed" id="eh_form_5742211957522432" data-id="5742211957522432"></div>
+			<?php //echo FrmFormsController::get_form_shortcode(array('id' => 4)); 
+			?>
 		</div>
 	</section>
 
