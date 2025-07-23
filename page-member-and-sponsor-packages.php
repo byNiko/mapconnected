@@ -25,7 +25,6 @@ get_header();
           if (have_rows('package_categories', 'options')) : while (have_rows('package_categories', 'options')) : the_row('package_categories', 'options');
 
               $title = get_sub_field('title');
-              $note = get_sub_field("note");
               $id = sanitize_title($title);
               echo "<li id='$id' class=''>$title</li>";
             endwhile;
@@ -37,7 +36,7 @@ get_header();
           <?php
 
           if (have_rows('package_categories', 'options')) : while (have_rows('package_categories', 'options')) : the_row('package_categories', 'options');
-
+              $note = get_sub_field("note");
               echo "<li>";
               echo "<h2 class='h2 text-center subheading my-1'>$note</h2>";
               echo "<ul class=' benefits__wrap '>";
