@@ -647,6 +647,14 @@ function byniko_the_testimoial_slider() {
 
 add_shortcode('testimonial-slider', 'byniko_the_testimoial_slider');
 
+function byniko_the_speakers_group() {
+	ob_start();
+	get_template_part('/template-parts/components/speakers-group');
+	return ob_get_clean();
+}
+
+add_shortcode('speakers-group', 'byniko_the_speakers_group');
+
 function byniko_the_testimoial() {
 	ob_start();
 	get_template_part('/acf-flex-starter/templates/testimonial-single');
