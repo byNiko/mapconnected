@@ -1144,7 +1144,7 @@ blockquote p:last-of-type {
 }
 @media screen and (min-width: 50rem) {
   .site-content aside {
-    flex: 0 0 250px;
+    flex: 0 0 var(--sidebar-width);
   }
 }
 
