@@ -43,7 +43,7 @@ get_header();
 			</div>
 			<div class="flex-row __2x justify--center">
 				<a href="#speaker-form" class="button button--primary">Apply to Speak</a>
-				<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')); ?> " class="button button--primary">Apply to Sponsor</a>
+				<a href="<?= get_permalink($byniko->get_page_by_title('Become a Sponsor')) . "/#sponsor-form"; ?> " class="button button--primary">Apply to Sponsor</a>
 			</div>
 		</div>
 	</section>
