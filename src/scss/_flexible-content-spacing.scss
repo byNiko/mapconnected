@@ -75,7 +75,7 @@ section[class*=theme--]{
 }
 // .theme--false + .theme--false,
 .theme--medium-1 + .theme--medium-1,
-.theme--light-1 + .theme--light-1,
+.theme--light-1 + .theme--light-1:not(.image-card),
 .theme--light-1 + .theme--false {
 	padding-top:0;;
 }
